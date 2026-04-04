@@ -71,11 +71,11 @@ function ProductsDropdown() {
 function IndustriesDropdown() {
   const industries = [
     { name: "Construction", href: "/industries/construction-sites", img: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&q=80&w=600" },
-    { name: "Parking Lots", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&q=80&w=600" },
-    { name: "Events", href: "/industries/events", img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=600" },
-    { name: "Oil & Gas", href: "/industries/oil-gas", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600" },
-    { name: "Auto Dealers", href: "/industries/car-dealerships", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=600" },
-    { name: "Schools", href: "/industries/school-campuses", img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600" },
+    { name: "Parking Management", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&q=80&w=600" },
+    { name: "Event Security", href: "/industries/events", img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=600" },
+    { name: "Oil & Gas Logistics", href: "/industries/oil-gas", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600" },
+    { name: "Law Enforcement", href: "/industries/law-enforcement", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" },
+    { name: "Retail & ORC", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState(0);

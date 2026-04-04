@@ -33,8 +33,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  // 3. Industry Sectors (Priority 0.85)
-  const industrySlugs = ['construction-sites', 'parking-lots', 'events', 'retail', 'data-centers', 'logistics'];
+  // 3. Industry Sectors (Priority 0.85) - Sector-5 Deployment
+  const industrySlugs = ['construction-sites', 'parking-lots', 'events', 'oil-gas', 'law-enforcement'];
   const industryRoutes = industrySlugs.map(slug => ({
     url: `${baseUrl}/industries/${slug}`,
     lastModified: new Date(),
