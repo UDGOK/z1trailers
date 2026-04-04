@@ -176,33 +176,51 @@ function ProcurementHub() {
           <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] mt-1">Select Tier Allocation // OpEx vs CapEx</p>
         </div>
 
-        {/* Sophisticated Mode Toggle */}
-        <div className="flex bg-black/40 p-1 border border-white/5 rounded-none relative">
+        {/* Sophisticated Mode Toggle with Scanning Pulse */}
+        <div className="flex bg-black/40 p-1 border border-white/5 rounded-none relative group/toggle overflow-hidden">
+          {/* Pulsing Scan-Line Effect to guide the user */}
           <motion.div 
-            className="absolute bg-brand-teal/20 border border-brand-teal h-[calc(100%-8px)]"
-            initial={false}
+            className="absolute inset-x-0 h-[1px] bg-brand-teal/40 z-20 pointer-events-none"
             animate={{ 
-              x: isRent ? 4 : 110,
-              width: isRent ? 106 : 110
+              top: ["0%", "100%", "0%"]
             }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 3, 
+              ease: "linear" 
+            }}
           />
+          
           <button 
             onClick={() => setMode("rent")}
             className={cn(
-              "relative z-10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300",
+              "relative z-10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors duration-500",
               isRent ? "text-white" : "text-white/40 hover:text-white/60"
             )}
           >
+            {isRent && (
+               <motion.div 
+                 layoutId="mode-bg"
+                 className="absolute inset-0 bg-brand-teal/20 border border-brand-teal -z-10"
+                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
+               />
+            )}
             Monthly Rental
           </button>
           <button 
             onClick={() => setMode("buy")}
             className={cn(
-              "relative z-10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300",
+              "relative z-10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors duration-500",
               !isRent ? "text-white" : "text-white/40 hover:text-white/60"
             )}
           >
+            {!isRent && (
+               <motion.div 
+                 layoutId="mode-bg"
+                 className="absolute inset-0 bg-brand-teal/20 border border-brand-teal -z-10"
+                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
+               />
+            )}
             Direct Purchase
           </button>
         </div>
@@ -237,7 +255,7 @@ function ProcurementHub() {
               <p className="font-mono text-[9px] uppercase tracking-widest text-white/50 group-hover:text-brand-teal transition-colors font-bold">{tier.desc}</p>
               <p className="font-display font-black uppercase tracking-wider mt-1 text-base text-white">{tier.name}</p>
               
-              <div className="mt-4 pt-4 border-t border-white/5 flex items-baseline overflow-hidden h-10">
+              <div className="mt-4 pt-4 border-t border-white/5 flex items-baseline overflow-visible h-12">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={mode}
@@ -249,13 +267,13 @@ function ProcurementHub() {
                   >
                     {isRent ? (
                       <>
-                        <span className="font-display font-black text-2xl text-brand-teal tracking-tighter">{tier.rent}</span>
-                        <span className="font-mono text-[9px] ml-1 text-white/40 tracking-widest">{tier.period}</span>
+                        <span className="font-display font-black text-3xl text-brand-teal tracking-tighter shrink-0">{tier.rent}</span>
+                        <span className="font-mono text-[9px] ml-1.5 text-white/40 tracking-widest translate-y-[-2px]">{tier.period}</span>
                       </>
                     ) : (
                       <>
-                        <span className="font-display font-black text-2xl text-white tracking-tighter">{tier.buy}</span>
-                        <span className="font-mono text-[9px] ml-1 text-white/40 tracking-widest">{tier.buyPeriod}</span>
+                        <span className="font-display font-black text-3xl text-white tracking-tighter shrink-0">{tier.buy}</span>
+                        <span className="font-mono text-[9px] ml-1.5 text-white/40 tracking-widest translate-y-[-2px]">{tier.buyPeriod}</span>
                       </>
                     )}
                   </motion.div>
