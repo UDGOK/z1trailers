@@ -9,15 +9,56 @@ const components: PortableTextComponents = {
         return null
       }
       return (
-        <div className="relative w-full h-[400px] md:h-[600px] my-12 rounded-xl overflow-hidden border border-brand-teal/20 shadow-2xl shadow-brand-teal/5">
-          <Image
-            src={urlForImage(value)?.url() as string}
-            alt={value.alt || 'Blog Post Image'}
-            fill
-            className="object-cover"
-          />
-        </div>
+        <figure className="my-16">
+          <div className="relative w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden border border-brand-teal/20 shadow-2xl shadow-brand-teal/5 group">
+            <div className="absolute inset-0 bg-brand-navy/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+            <Image
+              src={urlForImage(value)?.url() as string}
+              alt={value.alt || 'Tactical Visual'}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Tactical HUD Overlay for Images */}
+            <div className="absolute top-4 right-4 z-20 bg-black/60 backdrop-blur-md border border-brand-teal/30 px-3 py-1 font-jetbrains-mono text-[10px] text-brand-teal uppercase tracking-widest">
+              HD-THERMAL OVERLAY // {value.caption ? 'ACTIVE' : 'READY'}
+            </div>
+          </div>
+          {value.caption && (
+            <figcaption className="mt-4 text-center font-jetbrains-mono text-[11px] text-brand-teal/60 uppercase tracking-[0.2em] italic">
+              [ {value.caption} ]
+            </figcaption>
+          )}
+        </figure>
       )
+    },
+    simpleTable: ({ value }: any) => {
+      if (!value?.rows) return null;
+      return (
+        <div className="my-16 overflow-x-auto border border-brand-teal/20 rounded-xl bg-brand-navy/40 backdrop-blur-sm shadow-[0_0_30px_rgba(27,154,170,0.05)]">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-brand-teal/10 border-b border-brand-teal/20">
+                {value.rows[0]?.cells?.map((cell: string, i: number) => (
+                  <th key={i} className="p-6 font-space-grotesk font-black text-brand-teal uppercase tracking-widest text-xs">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {value.rows.slice(1).map((row: any, i: number) => (
+                <tr key={i} className="border-b border-white/5 hover:bg-brand-teal/5 transition-colors group">
+                  {row.cells?.map((cell: string, j: number) => (
+                    <td key={j} className="p-6 font-inter text-gray-300 text-sm border-r border-white/5 last:border-r-0 group-hover:text-white transition-colors">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
     },
   },
   block: {

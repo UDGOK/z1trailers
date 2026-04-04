@@ -32,6 +32,18 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        },
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Tactical Caption',
+        }
+      ]
     }),
     defineField({
       name: 'categories',
@@ -55,7 +67,45 @@ export default defineType({
         {
           type: 'image',
           options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Tactical Caption',
+            }
+          ]
         },
+        {
+          type: 'object',
+          name: 'simpleTable',
+          title: 'Tactical Data Table',
+          fields: [
+            {
+              name: 'rows',
+              type: 'array',
+              title: 'Table Rows',
+              of: [
+                {
+                  type: 'object',
+                  name: 'tableRow',
+                  fields: [
+                    {
+                      name: 'cells',
+                      type: 'array',
+                      title: 'Cells',
+                      of: [{ type: 'string' }]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       ],
     }),
     defineField({
