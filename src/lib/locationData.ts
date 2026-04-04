@@ -488,5 +488,533 @@ export const locationDb: Record<string, StateRegion> = {
         powerSpec: "LiFePO4 Power Hub."
       }
     }
+  },
+
+  // --- FINAL NATIONWIDE SATURATION (Phase 4) ---
+  "alaska": {
+    name: "Alaska",
+    slug: "alaska",
+    subtitle: "ARCTIC DIVISION",
+    desc: "Securing the primary energy and maritime perimeters of the Great North. Z1 units are engineered for sub-zero lithium stability and low-light arctic survival.",
+    weatherContext: "Heating-shroud LiFePO4 cores and winter-spec solar logic.",
+    cities: {
+      "anchorage": {
+        name: "Anchorage",
+        slug: "anchorage",
+        desc: "Securing Anchorage's maritime and energy logistics. Real-time AI surveillance in extreme arctic environments.",
+        keywords: ["Alaska Surveillance", "Anchorage Security Trailers", "Arctic Solar Security"],
+        industryAnchor: "Oil, Gas & Maritime",
+        threatFocus: "Critical Infrastructure Sabotage",
+        powerSpec: "Sub-Zero LiFePO4 Thermal Shroud."
+      }
+    }
+  },
+  "pennsylvania": {
+    name: "Pennsylvania",
+    slug: "pennsylvania",
+    subtitle: "KEYSTONE COMMAND",
+    desc: "Securing the industrial and logistics corridor of the Keystone State. From Philly's urban landscape to Pittsburgh's energy perimeters.",
+    weatherContext: "Ruggedized multi-carrier 5G failover for diverse terrain.",
+    cities: {
+      "philadelphia": {
+        name: "Philadelphia",
+        slug: "philadelphia",
+        desc: "Protecting Philly's logistical and retail perimeters. AI-driven security for high-density urban work zones.",
+        keywords: ["Philadelphia Surveillance", "Philly Site Security", "Solar Trailers Pennsylvania"],
+        industryAnchor: "Logistics & Commercial Development",
+        threatFocus: "Asset Theft & Vandalism",
+        powerSpec: "LiFePO4 Urban Power Hub."
+      }
+    }
+  },
+  "new-jersey": {
+    name: "New Jersey",
+    slug: "new-jersey",
+    subtitle: "GARDEN LOGISTICS",
+    desc: "Securing the busiest logistics corridor in the Northeast. Z1 provides the NJ port and warehouse sectors with high-authority solar security.",
+    weatherContext: "Port-spec anti-corrosive hardware and heavy-traffic LTE density.",
+    cities: {
+      "newark": {
+        name: "Newark",
+        slug: "newark",
+        desc: "Securing Newark's port and logistical perimeters. Tactical AI surveillance for the Northeast's primary shipping hub.",
+        keywords: ["Newark Port Security", "New Jersey Surveillance", "Solar Security NJ"],
+        industryAnchor: "Ports & 3PL Logistics",
+        threatFocus: "Cargo Theft & Unauthorized Entry",
+        powerSpec: "Maritime-Spec LiFePO4 Hub."
+      }
+    }
+  },
+  "maryland": {
+    name: "Maryland",
+    slug: "maryland",
+    subtitle: "CHESAPEAKE DIVISION",
+    desc: "Securing the high-stakes defense and maritime corridors of Maryland. AI surveillance for the Chesapeake's primary infrastructure.",
+    weatherContext: "Salt-spray-rated mast systems and maritime coatings.",
+    cities: {
+      "baltimore": {
+        name: "Baltimore",
+        slug: "baltimore",
+        desc: "Protecting Baltimore's maritime and urban construction perimeters. AI-driven trailers for high-density security needs.",
+        keywords: ["Baltimore Port Security", "Maryland Surveillance", "Solar Security MD"],
+        industryAnchor: "Defense & Maritime Logistics",
+        threatFocus: "Supply Chain Sabotage & Asset Loss",
+        powerSpec: "LiFePO4 Redundant Power Array."
+      }
+    }
+  },
+  "massachusetts": {
+    name: "Massachusetts",
+    slug: "massachusetts",
+    subtitle: "BAY STATE COMMAND",
+    desc: "Securing the tech Bay's high-stakes education and research perimeters. Z1 provides Boston with elite solar-autonomous surveillance.",
+    weatherContext: "Winter-spec mobility and high-density urban 5G vectors.",
+    cities: {
+      "boston": {
+        name: "Boston",
+        slug: "boston",
+        desc: "Protecting Boston's research and construction corridors. AI-driven surveillance trailers for the Northeast tech boom.",
+        keywords: ["Boston Security Trailers", "MA Solar Surveillance", "AI Mobile Security Boston"],
+        industryAnchor: "Tech, Education & Construction",
+        threatFocus: "Theft of High-Value Research Assets",
+        powerSpec: "LiFePO4 Winter-Spec Hub."
+      }
+    }
+  },
+  "michigan": {
+    name: "Michigan",
+    slug: "michigan",
+    subtitle: "MOTOR CITY SECTOR",
+    desc: "Securing the industrial heart of MI. Z1 delivers robust solar surveillance to Detroit's automotive and manufacturing perimeters.",
+    weatherContext: "Snow-shedding array angles and cold-optimized battery chemistry.",
+    cities: {
+      "detroit": {
+        name: "Detroit",
+        slug: "detroit",
+        desc: "Protecting Detroit's manufacturing and logistical hubs. Operating in the toughest industrial environments in the Motor City.",
+        keywords: ["Detroit Surveillance", "Michigan Site Security", "Solar Security MI"],
+        industryAnchor: "Automotive & Heavy Industrial",
+        threatFocus: "Metal Scrap Theft & Industrial Vandalism",
+        powerSpec: "LiFePO4 Industrial Core."
+      }
+    }
+  },
+  "wisconsin": {
+    name: "Wisconsin",
+    slug: "wisconsin",
+    subtitle: "BADGER DIVISION",
+    desc: "Securing the manufacturing and agricultural perimeters of WI. Z1 provides the region's most reliable winter-hardened security trailers.",
+    weatherContext: "High-yield central solar arrays and zero-degree battery heaters.",
+    cities: {
+      "milwaukee": {
+        name: "Milwaukee",
+        slug: "milwaukee",
+        desc: "Protecting Milwaukee's industrial and retail perimeters. AI-driven trailers for reliable security in the Badger State.",
+        keywords: ["Milwaukee Surveillance", "Wisconsin Security Trailers", "Solar Security WI"],
+        industryAnchor: "Manufacturing & Retail Logistics",
+        threatFocus: "After-hours Loitering & Asset Theft",
+        powerSpec: "LiFePO4 Winter-Spec Hub."
+      }
+    }
+  },
+  "minnesota": {
+    name: "Minnesota",
+    slug: "minnesota",
+    subtitle: "NORTH STAR SECTOR",
+    desc: "Securing the high-growth medical and logistics sectors of MN. Z1 units are engineered for deep-winter operational uptime.",
+    weatherContext: "Arctic-rated monocrystalline solar and heated lithium cores.",
+    cities: {
+      "minneapolis": {
+        name: "Minneapolis",
+        slug: "minneapolis",
+        desc: "Protecting the Twin Cities' medical and construction perimeters. AI-driven security for the upper Midwest hub.",
+        keywords: ["Minneapolis Surveillance", "Minnesota Site Security", "Solar Security MN"],
+        industryAnchor: "Medical & Construction Logistics",
+        threatFocus: "High-Value Copper & Tool Theft",
+        powerSpec: "LiFePO4 Cold-Optimized Power."
+      }
+    }
+  },
+  "oregon": {
+    name: "Oregon",
+    slug: "oregon",
+    subtitle: "PACIFIC COAST COMMAND",
+    desc: "Securing the high-growth PNW tech and logistical perimeters. Z1 provides Oregon with elite solar-autonomous surveillance for overcast environments.",
+    weatherContext: "Low-light monocrystalline conversion and maritime anti-corrosive coatings.",
+    cities: {
+      "portland": {
+        name: "Portland",
+        slug: "portland",
+        desc: "Protecting Portland's tech and logistical hubs. AI-driven security for the Oregon corridor.",
+        keywords: ["Portland Security Trailers", "OR Solar Surveillance", "AI Mobile Security"],
+        industryAnchor: "Tech & 3PL Logistics",
+        threatFocus: "Retail Crime & Asset Theft",
+        powerSpec: "Overcast-rated LiFePO4 Hub."
+      }
+    }
+  },
+  "utah": {
+    name: "Utah",
+    slug: "utah",
+    subtitle: "BEEHIVE TECH SECTOR",
+    desc: "Securing the Silicon Slopes of Utah. Tactical solar-powered trailers for high-desert tech perimeters and mining logistics.",
+    weatherContext: "Heat-shielded solar chassis and desert-grade cooling vectors.",
+    cities: {
+      "salt-lake-city": {
+        name: "Salt Lake City",
+        slug: "salt-lake-city",
+        desc: "Protecting SLC's tech corridors and industrial perimeters. Tactical surveillance rated for the high-desert mountain sector.",
+        keywords: ["Salt Lake City Surveillance", "Utah Security Trailers", "Solar Security UT"],
+        industryAnchor: "Defense, Mining & Tech",
+        threatFocus: "Unauthorized Perimeter Access",
+        powerSpec: "LiFePO4 Desert Power Hub."
+      }
+    }
+  },
+  "new-mexico": {
+    name: "New Mexico",
+    slug: "new-mexico",
+    subtitle: "LAND OF ENCHANTMENT OPS",
+    desc: "Securing the high-tech defense and energy sectors of NM. Z1 provides New Mexico with the region's most reliable heat-hardened units.",
+    weatherContext: "Independently cooled lithium core and solar-shade chassis design.",
+    cities: {
+      "albuquerque": {
+        name: "Albuquerque",
+        slug: "albuquerque",
+        desc: "Protecting ABQ metro's industrial perimeters. AI-driven security for New Mexico's primary hub.",
+        keywords: ["Albuquerque Surveillance", "NM Security Trailers", "Solar Security NM"],
+        industryAnchor: "Defense & Logistics",
+        threatFocus: "Critical Asset Theft & Sabotage",
+        powerSpec: "Heat-Shielded LiFePO4 Core."
+      }
+    }
+  },
+  "illinois": {
+    name: "Illinois",
+    slug: "illinois",
+    subtitle: "MIDWEST COMMAND",
+    desc: "Securing the industrial heart of the Midwest. Z1 delivers robust solar surveillance and LiFePO4 power to Chicago's massive logistics and manufacturing hubs.",
+    weatherContext: "Snow-shedding arrays and winter-rated battery heaters.",
+    cities: {
+      "chicago": {
+        name: "Chicago",
+        slug: "chicago",
+        desc: "The primary defense for Chicago's industrial and construction perimeters. Operating in the toughest urban environments in the Windy City.",
+        keywords: ["Chicago Surveillance", "Illinois Site Security", "Solar Security IL"],
+        industryAnchor: "Manufacturing & 3PL Logistics",
+        threatFocus: "Supply Chain Sabotage & Metal Theft",
+        powerSpec: "LiFePO4 Core with Industrial Inverter."
+      }
+    }
+  },
+  "iowa": {
+    name: "Iowa",
+    slug: "iowa",
+    subtitle: "HAWKEYE LOGISTICS",
+    desc: "Securing the central transport and logistics hubs of Iowa. Z1 provides high-authority solar security for the regional distribution centers.",
+    weatherContext: "High-wind rated prairie specs and winter-hardened logic.",
+    cities: {
+      "des-moines": {
+        name: "Des Moines",
+        slug: "des-moines",
+        desc: "Protecting Des Moines's logistical and insurance perimeters. AI-driven trailers for the Iowa hub.",
+        keywords: ["Des Moines Surveillance", "Iowa Security Trailers", "Solar Security IA"],
+        industryAnchor: "Logistics & Finance",
+        threatFocus: "Cargo Theft & After-hours Breaches",
+        powerSpec: "LiFePO4 Supplemental Power Hub."
+      }
+    }
+  },
+  "kentucky": {
+    name: "Kentucky",
+    slug: "kentucky",
+    subtitle: "BLUEGRASS LOGISTICS",
+    desc: "Securing the high-growth manufacturing and logistics hubs of KY. Z1 delivers robust solar surveillance to Louisville's primary distribution corridors.",
+    weatherContext: "Variable humidity protection and high-yield solar arrays.",
+    cities: {
+      "louisville": {
+        name: "Louisville",
+        slug: "louisville",
+        desc: "Protecting Louisville's shipping and logistical perimeters. AI-driven security for the Kentucky transport hub.",
+        keywords: ["Louisville Surveillance", "Kentucky Site Security", "Solar Trailers KY"],
+        industryAnchor: "Logistics & Manufacturing",
+        threatFocus: "Supply Chain Theft & Industrial Loitering"
+      }
+    }
+  },
+  "south-carolina": {
+    name: "South Carolina",
+    slug: "south-carolina",
+    subtitle: "PALMETTO COMMAND",
+    desc: "Securing the coastal and manufacturing sectors of SC. Z1 provides high-authority solar security for the Palmetto State's primary industrial perimeters.",
+    weatherContext: "Maritime-spec coatings and storm-spec mast anchors.",
+    cities: {
+      "charleston": {
+        name: "Charleston",
+        slug: "charleston",
+        desc: "Protecting Charleston's maritime and historic construction perimeters. AI-driven trailers for high-density security needs.",
+        keywords: ["Charleston Port Security", "South Carolina Surveillance", "Solar Security SC"],
+        industryAnchor: "Maritime & Heritage Development",
+        threatFocus: "Port Sabotage & Asset Theft"
+      }
+    }
+  },
+  "missouri": {
+    name: "Missouri",
+    slug: "missouri",
+    subtitle: "SHOW-ME LOGISTICS",
+    desc: "Securing the central logistics and infrastructure hubs of MO. Z1 delivers reliable solar surveillance to St. Louis and KC's distribution perimeters.",
+    weatherContext: "Variable Midwest climate resilience and high-yield arrays.",
+    cities: {
+      "st-louis": {
+        name: "St. Louis",
+        slug: "st-louis",
+        desc: "Protecting St. Louis's logistical and urban construction perimeters. AI-driven security for the Missouri gateway.",
+        keywords: ["St. Louis Surveillance", "Missouri Site Security", "Solar Trailers MO"],
+        industryAnchor: "Logistics & Infrastructure",
+        threatFocus: "Cargo Theft & Vandalism"
+      }
+    }
+  },
+  "hawaii": {
+    name: "Hawaii",
+    slug: "hawaii",
+    subtitle: "PACIFIC ISLAND OPS",
+    desc: "Securing the high-stakes tourism and maritime perimeters of the Hawaiian Islands. Z1 units are engineered for high-salinity and tropical moisture environments.",
+    weatherContext: "Anti-corrosive maritime chassis and tropical-yield solar logic.",
+    cities: {
+      "honolulu": {
+        name: "Honolulu",
+        slug: "honolulu",
+        desc: "Securing Honolulu's maritime and tourism perimeters. Real-time AI surveillance in tropical island environments.",
+        keywords: ["Hawaii Surveillance", "Honolulu Security Trailers", "Maritime Solar Security"],
+        industryAnchor: "Maritime & Tourism",
+        threatFocus: "Asset Loss & Coastal Sabotage",
+        powerSpec: "Tropical-Rated LiFePO4 Hub."
+      }
+    }
+  },
+  "idaho": {
+    name: "Idaho",
+    slug: "idaho",
+    subtitle: "GEM STATE TECH",
+    desc: "Securing the high-growth tech and agricultural sectors of ID. Z1 provides Boise with the region's most reliable solar-autonomous security trailers.",
+    weatherContext: "High-altitude winter-hardened battery heaters.",
+    cities: {
+      "boise": {
+        name: "Boise",
+        slug: "boise",
+        desc: "Protecting Boise's tech and construction perimeters. AI-driven security for the rapid-growth Idaho corridor.",
+        keywords: ["Boise Surveillance", "Idaho Security Trailers", "Solar Security ID"],
+        industryAnchor: "Tech & Construction",
+        threatFocus: "Copper Wire & Equipment Theft"
+      }
+    }
+  },
+  "connecticut": {
+    name: "Connecticut",
+    slug: "connecticut",
+    subtitle: "CONSTITUTION COMMAND",
+    desc: "Securing the high-stakes defense and maritime corridors of CT. AI surveillance for Connecticut's primary infrastructure.",
+    weatherContext: "Maritime coatings and winter-spec mobility.",
+    cities: {
+      "hartford": {
+        name: "Hartford",
+        slug: "hartford",
+        desc: "Protecting Hartford's commercial and industrial perimeters. AI-driven trailers for the Connecticut hub.",
+        keywords: ["Hartford Surveillance", "Connecticut Site Security", "Solar Security CT"],
+        industryAnchor: "Insurance & Manufacturing Logistics",
+        threatFocus: "Asset Theft & Vandalism"
+      }
+    }
+  },
+  "montana": {
+    name: "Montana",
+    slug: "montana",
+    subtitle: "TREASURE STATE OPS",
+    desc: "Securing remote mining and energy perimeters. Z1 units are engineered for high-altitude, off-grid survival in the Montana wilderness.",
+    weatherContext: "Snow-shedding arrays and extreme-cold battery logic.",
+    cities: {
+      "billings": {
+        name: "Billings",
+        slug: "billings",
+        desc: "Protecting Billings's industrial and energy sectors. Strategic AI surveillance for remote Montana perimeters.",
+        keywords: ["Billings Surveillance", "Montana Security Trailers", "Off-grid Solar Security"],
+        industryAnchor: "Energy & Industrial",
+        threatFocus: "Theft of Critical Materials",
+        powerSpec: "Arctic-Spec LiFePO4 Thermal Shroud."
+      }
+    }
+  },
+  "nebraska": {
+    name: "Nebraska",
+    slug: "nebraska",
+    subtitle: "CORNHUSKER LOGISTICS",
+    desc: "Securing the central transport and logistics hubs of NE. Z1 delivers robust solar surveillance to Omaha's distribution perimeters.",
+    weatherContext: "High-wind rated prairie specs.",
+    cities: {
+      "omaha": {
+        name: "Omaha",
+        slug: "omaha",
+        desc: "Protecting Omaha's logistical and data center perimeters. AI-driven security for the Nebraska central hub.",
+        keywords: ["Omaha Surveillance", "Nebraska Site Security", "Solar Security NE"],
+        industryAnchor: "3PL Logistics & Finance",
+        threatFocus: "Cargo Theft & After-hours Breaches"
+      }
+    }
+  },
+  "west-virginia": {
+    name: "West Virginia",
+    slug: "west-virginia",
+    subtitle: "MOUNTAIN STATE OPS",
+    desc: "Securing critical infrastructure and energy perimeters. Z1 provides West Virginia with ruggedized, off-grid security terminals.",
+    weatherContext: "Terrain-hardened chassis and mountain-spec mobility.",
+    cities: {
+      "charleston-wv": {
+        name: "Charleston",
+        slug: "charleston",
+        desc: "Protecting West Virginia's capital and energy perimeters. AI-driven trailers for rugged environment security.",
+        keywords: ["Charleston WV Surveillance", "WV Security Trailers", "Off-grid Energy Monitoring"],
+        industryAnchor: "Energy & Infrastructure",
+        threatFocus: "Equipment Sabotage & Metal Theft"
+      }
+    }
+  },
+  "rhode-island": {
+    name: "Rhode Island",
+    slug: "rhode-island",
+    subtitle: "OCEAN STATE COMMAND",
+    desc: "Securing the maritime and commercial hubs of Rhode Island. Z1 units are engineered for high-salinity coastal survival.",
+    weatherContext: "Anti-corrosive coatings and maritime storm anchors.",
+    cities: {
+      "providence": {
+        name: "Providence",
+        slug: "providence",
+        desc: "Protecting Providence's urban and maritime perimeters. AI-driven security for high-density Rhode Island sectors.",
+        keywords: ["Providence Surveillance", "RI Security Trailers", "Maritime Solar Security"],
+        industryAnchor: "Maritime & Commercial",
+        threatFocus: "Asset Loss & Vandalism"
+      }
+    }
+  },
+  "delaware": {
+    name: "Delaware",
+    slug: "delaware",
+    subtitle: "CORPORATE COMMAND",
+    desc: "Securing the logistics and corporate hubs of DE. Z1 provides high-authority solar security for the Northeast logistics corridor.",
+    weatherContext: "Atlantic coastal resilience and port-spec hardware.",
+    cities: {
+      "wilmington": {
+        name: "Wilmington",
+        slug: "wilmington",
+        desc: "Protecting Wilmington's logistical and finance perimeters. AI-driven trailers for Delaware's primary hub.",
+        keywords: ["Wilmington Surveillance", "Delaware Site Security", "Solar Security DE"],
+        industryAnchor: "Logistics & Corporate Perimeters",
+        threatFocus: "Cargo Theft & Unauthorized Entry"
+      }
+    }
+  },
+  "south-dakota": {
+    name: "South Dakota",
+    slug: "south-dakota",
+    subtitle: "MOUNT RUSHMORE COMMAND",
+    desc: "Securing the high-growth finance and agricultural sectors of SD. Z1 provides the region's most reliable winter-hardened trailers.",
+    weatherContext: "Prairie-spec wind anchors and winter-spec battery heaters.",
+    cities: {
+      "sioux-falls": {
+        name: "Sioux Falls",
+        slug: "sioux-falls",
+        desc: "Protecting Sioux Falls's commercial and finance perimeters. AI-driven security for the South Dakota hub.",
+        keywords: ["Sioux Falls Surveillance", "SD Security Trailers", "Solar Security SD"],
+        industryAnchor: "Finance & Retail Logistics",
+        threatFocus: "After-hours Loitering & Asset Theft"
+      }
+    }
+  },
+  "north-dakota": {
+    name: "North Dakota",
+    slug: "north-dakota",
+    subtitle: "PEACE GARDEN OPS",
+    desc: "Securing remote oil and agricultural perimeters. Z1 units are engineered for extreme-cold off-grid survival.",
+    weatherContext: "Arctic-spec solar arrays and heated lithium cores.",
+    cities: {
+      "fargo": {
+        name: "Fargo",
+        slug: "fargo",
+        desc: "Protecting Fargo's logistical and energy perimeters. AI-driven trailers for the North Dakota corridor.",
+        keywords: ["Fargo Surveillance", "ND Security Trailers", "Arctic Solar Monitoring"],
+        industryAnchor: "Energy & 3PL Logistics",
+        threatFocus: "Critical Asset Theft & Sabotage"
+      }
+    }
+  },
+  "wyoming": {
+    name: "Wyoming",
+    slug: "wyoming",
+    subtitle: "EQUALITY STATE OPS",
+    desc: "Securing the energy and mineral perimeters of WY. Z1 provides the region's most reliable off-grid security terminals.",
+    weatherContext: "High-wind-rated prairie specs and snow-shedding arrays.",
+    cities: {
+      "casper": {
+        name: "Casper",
+        slug: "casper",
+        desc: "Protecting Casper's industrial and energy sectors. Strategic AI surveillance for remote Wyoming perimeters.",
+        keywords: ["Casper Surveillance", "Wyoming Security Trailers", "Off-grid Solar Monitoring"],
+        industryAnchor: "Energy & Mineral Logistics",
+        threatFocus: "Job-site Vandalism & Equipment Loss"
+      }
+    }
+  },
+  "vermont": {
+    name: "Vermont",
+    slug: "vermont",
+    subtitle: "GREEN MOUNTAIN OPS",
+    desc: "Securing remote perimeters and small-town sectors with 100% solar autonomy. Z1 provides reliable security where the grid ends.",
+    weatherContext: "Mountain-spec mobility and winter-hardened logic.",
+    cities: {
+      "burlington": {
+        name: "Burlington",
+        slug: "burlington",
+        desc: "Protecting Burlington's urban and research perimeters. AI-driven security for the Vermont hub.",
+        keywords: ["Burlington Surveillance", "Vermont Site Security", "Off-grid Solar Vermont"],
+        industryAnchor: "Education & Logistics",
+        threatFocus: "Asset Theft & Vandalism"
+      }
+    }
+  },
+  "new-hampshire": {
+    name: "New Hampshire",
+    slug: "new-hampshire",
+    subtitle: "GRANITE COMMAND",
+    desc: "Securing the high-growth tech and manufacturing perimeters of NH. Z1 provides the region's most reliable winter-hardened security trailers.",
+    weatherContext: "Winter-spec mobility and snow-rated array anchors.",
+    cities: {
+      "manchester": {
+        name: "Manchester",
+        slug: "manchester",
+        desc: "Protecting Manchester's tech and industrial perimeters. AI-driven security for the New Hampshire hub.",
+        keywords: ["Manchester Surveillance", "NH Security Trailers", "Solar Security NH"],
+        industryAnchor: "Tech & Manufacturing",
+        threatFocus: "After-hours Loitering & Asset Theft"
+      }
+    }
+  },
+  "maine": {
+    name: "Maine",
+    slug: "maine",
+    subtitle: "PINE TREE COMMAND",
+    desc: "Securing the maritime and logistical corridors of the Maine coast. Z1 units are engineered for high-salinity and winter survival.",
+    weatherContext: "Anti-corrosive coatings and arctic-spec heated batteries.",
+    cities: {
+      "portland-me": {
+        name: "Portland",
+        slug: "portland",
+        desc: "Protecting Portland's maritime and logistical perimeters. AI-driven security for high-density Maine sectors.",
+        keywords: ["Portland ME Surveillance", "Maine Port Security", "Solar Security ME"],
+        industryAnchor: "Maritime & 3PL Logistics",
+        threatFocus: "Port Sabotage & Cargo Theft"
+      }
+    }
   }
 };
+
