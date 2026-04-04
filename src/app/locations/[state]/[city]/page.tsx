@@ -1,256 +1,247 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target, Cpu, Battery, Sun } from "lucide-react";
 import { Metadata } from 'next';
-
-const cityDb: Record<string, Record<string, any>> = {
-  "oklahoma": {
-    "oklahoma-city": {
-      name: "Oklahoma City",
-      state: "Oklahoma",
-      subtitle: "COMMAND HQ",
-      desc: "Z1 Trailers serves Oklahoma City with rapidly deployable solar security trailers. Same-day delivery available for OKC construction sites, parking lots, and events.",
-      primary: ["Downtown OKC", "Edmond Corridor", "Norman Logistics", "Midwest City"],
-    },
-    "tulsa": {
-      name: "Tulsa",
-      state: "Oklahoma",
-      subtitle: "REGIONAL HUB",
-      desc: "Z1 Trailers provides mobile surveillance trailers to Tulsa and surrounding areas. Protect construction sites, lots, and events with AI-powered security.",
-      primary: ["Downtown Tulsa", "Broken Arrow", "Bixby Grid", "Owasso Logistics"],
-    },
-    "edmond": {
-      name: "Edmond / Norman",
-      state: "Oklahoma",
-      subtitle: "URBAN SECTOR",
-      desc: "Safeguarding expanding construction parameters in the northern and southern OKC metro sectors with 100% solar tactical gear.",
-      primary: ["Edmond Commercial", "Norman Retail", "Moore Corridors", "Guthrie Development"],
-    }
-  },
-  "texas": {
-    "dallas": {
-      name: "Dallas",
-      state: "Texas",
-      subtitle: "PRIMARY DIVISION",
-      desc: "Deploying solar surveillance trailers throughout Dallas and DFW. Serving construction sites, parking lots, dealerships, and events.",
-      primary: ["Downtown Dallas", "Plano/Frisco Tech Corridor", "Irving Hubs", "Garland Industrial"],
-    },
-    "fort-worth": {
-      name: "Fort Worth",
-      state: "Texas",
-      subtitle: "HEAVY INDUSTRIAL",
-      desc: "Securing industrial perimeters and construction equipment throughout Tarrant County with automated AI-active trailers.",
-      primary: ["Fort Worth Industrial", "Arlington Entertainment", "Alliance Logistics", "HEB Corridor"],
-    },
-    "houston": {
-      name: "Houston",
-      state: "Texas",
-      subtitle: "PORT & LOGISTICS",
-      desc: "Commanding extreme infrastructure near Houston ports. Protecting logistics yards and rebuilding sectors from supply chain theft.",
-      primary: ["Port of Houston", "The Woodlands", "Katy Development", "Sugar Land Sector"],
-    },
-    "austin": {
-      name: "Austin",
-      state: "Texas",
-      subtitle: "TECH DEVELOPMENT",
-      desc: "Protecting high-value commercial builds and multi-family construction parameters stretching across Central Texas.",
-      primary: ["Downtown Austin", "Round Rock Tech", "Georgetown Builds", "San Marcos Logistics"],
-    }
-  },
-  "arkansas": {
-    "little-rock": {
-      name: "Little Rock",
-      state: "Arkansas",
-      subtitle: "SUPPLY CHAIN",
-      desc: "Providing security surveillance trailers to protect Little Rock distribution centers and heavy trucking logistics vectors.",
-      primary: ["Port of Little Rock", "North Little Rock", "Conway Corridors", "Pine Bluff Sector"],
-    },
-    "fayetteville": {
-      name: "Fayetteville",
-      state: "Arkansas",
-      subtitle: "NWA CORRIDOR",
-      desc: "Rapid response security trailers tracking construction expansions across Northwest Arkansas supply networks.",
-      primary: ["Fayetteville Urban", "Springdale Logistics", "Rogers Operations", "Bentonville HQ"],
-    }
-  },
-  "kansas": {
-    "wichita": {
-      name: "Wichita",
-      state: "Kansas",
-      subtitle: "AVIATION VECTOR",
-      desc: "Securing manufacturing, aviation development, and construction growth in South Kansas with zero grid reliance.",
-      primary: ["Wichita Manufacturing", "Derby Developments", "Andover Projects", "Hutchinson Corridors"],
-    }
-  },
-  "louisiana": {
-    "shreveport": {
-      name: "Shreveport",
-      state: "Louisiana",
-      subtitle: "NORTH GULF",
-      desc: "High-humidity rated mobile security tracking for Bossier City and Shreveport commercial site developments.",
-      primary: ["Shreveport City", "Bossier Developments", "I-20 Logistics", "Barksdale Perimeter"],
-    },
-    "baton-rouge": {
-      name: "Baton Rouge",
-      state: "Louisiana",
-      subtitle: "CAPITAL OPERATIONS",
-      desc: "Protecting Delta region logistics along Baton Rouge with fully off-grid surveillance matrix systems.",
-      primary: ["Capital Operations", "Mississippi River Ports", "Gonzalez Logistics", "Denham Springs"],
-    }
-  },
-  "alabama": {
-    "birmingham": {
-      name: "Birmingham",
-      state: "Alabama",
-      subtitle: "HEAVY INDUSTRY",
-      desc: "Deploying highly durable security hubs throughout Jefferson County manufacturing locations and distribution setups.",
-      primary: ["Downtown Birmingham", "Hoover Operations", "Bessemer Logistics", "Trussville Corridors"],
-    },
-    "huntsville": {
-      name: "Huntsville",
-      state: "Alabama",
-      subtitle: "AEROSPACE VECTOR",
-      desc: "Safeguarding highly secured defense sector builds and high-tech parameters across Madison County.",
-      primary: ["Research Park", "Redstone Perimeters", "Madison City", "Decatur Industrial"],
-    }
-  }
-};
+import { locationDb } from "@/lib/locationData";
 
 export function generateStaticParams() {
-  const params: { state: string, city: string }[] = [];
-  
-  for (const [stateKey, cities] of Object.entries(cityDb)) {
-    for (const cityKey of Object.keys(cities)) {
-      params.push({
-        state: stateKey,
-        city: cityKey
-      });
-    }
-  }
-  
+  const params: any[] = [];
+  Object.keys(locationDb).forEach((state) => {
+    Object.keys(locationDb[state].cities).forEach((city) => {
+      params.push({ state, city });
+    });
+  });
   return params;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ state: string, city: string }> }): Promise<Metadata> {
   const { state, city } = await params;
-  const loc = cityDb[state]?.[city];
-  if (!loc) return {};
+  const stateData = locationDb[state];
+  const cityData = stateData?.cities[city];
+  
+  if (!stateData || !cityData) return {};
   
   return {
-    title: `Mobile Security Trailers in ${loc.name}, ${loc.state} | Z1 Trailers`,
-    description: loc.desc,
+    title: `Mobile Surveillance, Solar, & Battery Trailers in ${cityData.name}, ${stateData.name} | Z1 Trailers`,
+    description: cityData.desc,
   };
 }
 
 export default async function CityLocationPage({ params }: { params: Promise<{ state: string, city: string }> }) {
   const { state, city } = await params;
-  const loc = cityDb[state]?.[city];
+  const stateData = locationDb[state];
+  const cityData = stateData?.cities[city];
   
-  if (!loc) {
+  if (!stateData || !cityData) {
     notFound();
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": `Z1 Security Trailer Deployment - ${loc.name}`,
-    "provider": {
-      "@type": "Organization",
-      "name": "Z1 Trailers",
-      "url": "https://z1trailers.com"
+  const cityName = cityData.name;
+  const stateName = stateData.name;
+
+  // AEO FAQ targeting the user's priority keywords
+  const faqs = [
+    {
+      q: `Are surveillance trailers available for immediate deployment in ${cityName}?`,
+      a: `Yes, Z1 Trailers provides rapid-deployment surveillance trailers across ${cityName}. Our mobile units are AI-equipped and ready to secure construction sites, retail perimeters, and industrial hubs instantly.`
     },
-    "areaServed": {
-      "@type": "City",
-      "name": loc.name,
+    {
+      q: `Do your solar trailers require any external power in ${stateName}?`,
+      a: `No. Our solar trailers are 100% autonomous. They utilize high-yield monocrystalline arrays to harvest energy during the day, which is stored in industrial-grade lithium cores for 24/7/365 operational uptime in ${cityName}.`
+    },
+    {
+      q: `What makes your battery trailers better than traditional security?`,
+      a: `Traditional security relies on grid power or human patrols. Our battery-backed surveillance trailers never sleep and never lose power. Even in zero-sunlight conditions, our massive core reserves provide up to 10-20 days of continuous AI-monitored protection.`
+    }
+  ];
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": `Z1 Trailers - ${cityName} Tactical Division`,
+      "image": "https://z1trailers.com/og-image.jpg",
+      "description": cityData.desc,
       "address": {
         "@type": "PostalAddress",
-        "addressRegion": loc.state
+        "addressLocality": cityName,
+        "addressRegion": stateName,
+        "addressCountry": "US"
+      },
+      "url": `https://z1trailers.com/locations/${state}/${city}`,
+      "telephone": "(918) 520-3823",
+      "servesArea": {
+        "@type": "City",
+        "name": cityName
       }
     },
-    "description": loc.desc,
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Mobile Surveillance Trailer Deployment",
+      "provider": { "@type": "Organization", "name": "Z1 Trailers" },
+      "areaServed": cityName,
+      "description": `Elite solar-powered and battery-backed surveillance trailers for ${cityName}, ${stateName}.`
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ];
 
   return (
-    <div className="bg-[#0a111a] min-h-screen pt-32 pb-24 relative overflow-hidden">
+    <div className="bg-[#05080c] min-h-screen pt-32 pb-24 relative overflow-hidden text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* Radar / Cartography background elements */}
-      <div className="absolute top-1/2 left-3/4 -translate-y-1/2 -translate-x-1/2 w-[1200px] h-[1200px] border border-brand-teal/5 rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-3/4 -translate-y-1/2 -translate-x-1/2 w-[800px] h-[800px] border border-brand-teal/10 rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-3/4 -translate-y-1/2 -translate-x-1/2 w-[400px] h-[400px] border border-brand-teal/20 rounded-full pointer-events-none flex items-center justify-center">
-         <div className="w-2 h-2 bg-brand-teal rounded-full shadow-[0_0_20px_rgba(27,154,170,1)] animate-ping" />
-      </div>
+      {/* Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(27,154,170,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(27,154,170,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-10 relative z-10">
+        
+        {/* Navigation Breadcrumb */}
+        <div className="flex items-center space-x-6 mb-20">
+           <Link href={`/locations/${state}`} className="font-mono text-[10px] text-brand-teal uppercase tracking-widest hover:text-white transition-colors border border-brand-teal/20 px-4 py-2 bg-brand-teal/5">
+              &lt; Sector: {stateName}
+           </Link>
+           <div className="h-px w-12 bg-white/10" />
+           <span className="font-mono text-[10px] text-white uppercase tracking-widest opacity-60">Terminal: {cityName}</span>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-10 relative z-10 flex flex-col lg:flex-row mt-12 gap-16">
-         
-         <div className="w-full lg:w-1/2">
-            <Link href={`/locations/${state}`} className="inline-flex items-center space-x-2 text-brand-steel hover:text-white font-mono text-[10px] uppercase tracking-[0.2em] mb-12 transition-colors border border-white/10 hover:border-white px-4 py-2 hover:bg-white/5">
-              <ArrowLeft className="w-4 h-4" /> <span>Back to {loc.state}</span>
-            </Link>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start mb-40">
+           
+           <div>
+              <div className="inline-flex items-center space-x-3 bg-brand-teal/10 border border-brand-teal/30 px-3 py-1 mb-8">
+                 <Cpu className="w-4 h-4 text-brand-teal" />
+                 <span className="font-mono text-[10px] text-brand-teal uppercase tracking-widest font-bold">Local Artificial Intelligence Grid</span>
+              </div>
+              <h1 className="font-display font-black text-7xl md:text-8xl uppercase tracking-tighter leading-none mb-10">
+                {cityName}<span className="text-brand-teal">.</span>
+              </h1>
+              <p className="font-mono text-sm tracking-[0.2em] leading-loose text-brand-steel uppercase mb-16 max-w-xl">
+                 {cityData.desc}
+              </p>
 
-            <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] font-bold mb-4 flex items-center">
-              <Route className="w-4 h-4 mr-3" /> Urban Operational Grid // {loc.subtitle}
-            </p>
-            
-            <h1 className="font-display font-black text-5xl md:text-7xl text-white uppercase tracking-tighter leading-none mb-8">
-              {loc.name}.
-            </h1>
-            
-            <p className="font-mono text-sm tracking-widest leading-loose text-brand-steel uppercase mb-12 max-w-lg">
-              {loc.desc}
-            </p>
-
-            {/* Added Phone CTA for Geo Tracking/Local Business logic */}
-            <div className="bg-brand-navy border-l-4 border-brand-teal p-6 mb-12">
-               <p className="font-display font-black text-white text-lg tracking-widest mb-2">Protect Your {loc.name} Site 24/7</p>
-               <a href="tel:9185203823" className="font-mono text-brand-teal font-bold tracking-widest hover:text-white transition-colors">Call Direct: (918) 520-3823</a>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 p-8 backdrop-blur-md mb-12">
-               <h3 className="font-display font-black text-xl text-white uppercase tracking-widest mb-6 flex items-center border-b border-white/10 pb-4">
-                 <MapPin className="w-5 h-5 text-brand-teal mr-4" /> Priority Dispatches
-               </h3>
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 {loc.primary.map((zone: string) => (
-                   <div key={zone} className="flex items-center space-x-3">
-                     <span className="w-4 h-px bg-brand-teal/50" />
-                     <span className="font-mono text-[10px] font-bold text-white/80 uppercase tracking-widest">{zone}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 {[
+                   { label: "Surveillance Trailers", icon: Shield, val: "ACTIVE" },
+                   { label: "Solar Trailers", icon: Sun, val: "READY" },
+                   { label: "Battery Trailers", icon: Battery, val: "READY" }
+                 ].map((t, i) => (
+                   <div key={i} className="bg-white/5 border border-white/10 p-8 hover:border-brand-teal transition-all group">
+                      <t.icon className="w-6 h-6 text-brand-teal mb-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                      <p className="font-display font-bold text-lg text-white uppercase tracking-widest mb-1">{t.label}</p>
+                      <p className="font-mono text-[9px] text-brand-teal uppercase tracking-widest font-black animate-pulse">{t.val}</p>
                    </div>
                  ))}
-               </div>
-            </div>
+              </div>
+           </div>
 
-            <Link href="/get-a-quote" className="inline-flex px-10 py-5 bg-brand-teal hover:bg-brand-gold text-brand-navy font-display font-black text-[12px] uppercase tracking-[0.25em] transition-colors items-center group">
-               Deploy in {loc.name} <ArrowRight className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform" />
-            </Link>
-         </div>
+           <div className="relative pt-12">
+              {/* Tactical Map Mockup Interface */}
+              <div className="relative w-full aspect-square md:aspect-auto md:h-[600px] border border-white/10 bg-black/40 shadow-2xl p-2 group">
+                 
+                 <div className="absolute top-8 left-8 z-20 bg-brand-navy/90 border border-brand-teal/40 px-6 py-4 backdrop-blur-xl">
+                    <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] font-bold flex items-center mb-2">
+                       <span className="w-2 h-2 rounded-full bg-brand-teal animate-ping mr-3" />
+                       Tactical Overlay 04
+                    </p>
+                    <p className="font-display font-black text-xl text-white tracking-widest uppercase">Target: {cityName}</p>
+                 </div>
 
-         {/* Stats Panel */}
-         <div className="w-full lg:w-1/2 flex flex-col justify-center">
-            <div className="grid grid-cols-2 gap-4">
-               <div className="p-8 border border-white/10 bg-black/40 backdrop-blur-md flex flex-col items-center justify-center text-center">
-                  <ShieldCheck className="w-8 h-8 text-brand-teal mb-4" strokeWidth={1} />
-                  <p className="font-display font-black text-4xl text-white tracking-widest mb-2">99.9%</p>
-                  <p className="font-mono text-[9px] text-brand-steel uppercase tracking-[0.2em] font-bold">Network Uptime</p>
-               </div>
-               <div className="p-8 border border-brand-teal/30 bg-brand-teal/10 backdrop-blur-md flex flex-col items-center justify-center text-center">
-                  <div className="flex space-x-1 mb-4">
-                     <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
-                     <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse delay-75" />
-                     <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse delay-150" />
-                  </div>
-                  <p className="font-display font-black text-4xl text-white tracking-widest mb-2">&lt;15m</p>
-                  <p className="font-mono text-[9px] text-brand-steel uppercase tracking-[0.2em] font-bold">Dispatch Response</p>
-               </div>
-               <div className="col-span-2 p-8 border border-white/10 bg-black/60 backdrop-blur-md text-center">
-                  <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] font-bold mb-4">System Status // {loc.name} Operations</p>
-                  <div className="flex items-center justify-center space-x-6 text-white/50 font-mono text-[9px] uppercase tracking-widest">
-                     <span className="flex items-center"><span className="w-1.5 h-1.5 bg-green-500 mr-2 rounded-full shadow-[0_0_5px_rgba(34,197,94,1)]" /> Optics Grid Stable</span>
-                     <span className="flex items-center"><span className="w-1.5 h-1.5 bg-green-500 mr-2 rounded-full shadow-[0_0_5px_rgba(34,197,94,1)]" /> AI Feed Active</span>
-                  </div>
-               </div>
-            </div>
-         </div>
+                 <iframe 
+                   width="100%" 
+                   height="100%" 
+                   style={{ filter: "invert(90%) hue-rotate(180deg) contrast(110%) grayscale(80%) brightness(0.8)", opacity: 0.7 }}
+                   frameBorder="0" 
+                   scrolling="no" 
+                   src={`https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${cityName},${stateName}&t=&z=12&ie=UTF8&iwloc=B&output=embed`}
+                 ></iframe>
+
+                 <div className="absolute inset-0 border-[20px] border-[#05080c] pointer-events-none" />
+                 <div className="absolute top-0 right-0 w-32 h-32 border-t border-r border-brand-teal opacity-40 translate-x-4 -translate-y-4" />
+                 <div className="absolute bottom-0 left-0 w-32 h-32 border-b border-l border-brand-teal opacity-40 -translate-x-4 translate-y-4" />
+              </div>
+           </div>
+        </div>
+
+        {/* Tactical Keywords & AI Advantage Section */}
+        <section className="py-40 border-y border-white/10 mb-40">
+           <div className="text-center mb-32">
+              <h2 className="font-display font-black text-5xl md:text-7xl uppercase tracking-tighter mb-8 leading-tight">
+                The <span className="text-brand-teal">Off-Grid</span> <br className="hidden md:block" /> Intelligence Matrix.
+              </h2>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+              <div className="flex flex-col items-center text-center p-10 bg-white/5 border border-white/10 hover:border-brand-teal/30 transition-colors cursor-default">
+                 <Shield className="w-12 h-12 text-brand-teal mb-10" strokeWidth={1} />
+                 <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-6">Surveillance Trailers</h3>
+                 <p className="font-mono text-xs text-brand-steel uppercase tracking-widest leading-loose">
+                    Sub-second Edge AI categorization of human and vehicle anomalies. We identify threats before they breach your perimeter in {cityName}.
+                 </p>
+              </div>
+              <div className="flex flex-col items-center text-center p-10 bg-white/5 border border-white/10 hover:border-brand-teal/30 transition-colors cursor-default">
+                 <Sun className="w-12 h-12 text-brand-teal mb-10" strokeWidth={1} />
+                 <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-6">Solar Trailers</h3>
+                 <p className="font-mono text-xs text-brand-steel uppercase tracking-widest leading-loose">
+                    Engineered for the ${stateName} climate. High-yield energy harvesting ensures your security protocols never fall victim to power grid failures.
+                 </p>
+              </div>
+              <div className="flex flex-col items-center text-center p-10 bg-white/5 border border-white/10 hover:border-brand-teal/30 transition-colors cursor-default">
+                 <Battery className="w-12 h-12 text-brand-teal mb-10" strokeWidth={1} />
+                 <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-6">Battery Trailers</h3>
+                 <p className="font-mono text-xs text-brand-steel uppercase tracking-widest leading-loose">
+                    Massive battery cores with 10-20 day autonomy. Zero reliance on exterior fuels or shore power for mission-critical surveillance in {cityName}.
+                 </p>
+              </div>
+           </div>
+        </section>
+
+        {/* Local FAQ Intelligence */}
+        <div className="max-w-4xl mx-auto mb-40">
+           <div className="inline-flex items-center space-x-2 bg-brand-teal/10 border border-brand-teal/30 px-3 py-1 mb-8">
+              <Zap className="w-4 h-4 text-brand-teal" />
+              <span className="font-mono text-[10px] text-brand-teal uppercase tracking-widest font-bold">AEO FAQ Terminal</span>
+           </div>
+           <h2 className="font-display font-black text-4xl uppercase tracking-tighter mb-12">{cityName} Operational Intelligence</h2>
+           <div className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="bg-white/5 border border-white/5 p-10 hover:border-brand-teal/40 transition-all group">
+                   <h3 className="font-display font-bold text-lg text-white uppercase tracking-widest mb-6 flex items-start">
+                      <ChevronDown className="w-6 h-6 mr-6 shrink-0 text-brand-teal" />
+                      {faq.q}
+                   </h3>
+                   <p className="font-mono text-[11px] leading-relaxed text-brand-steel uppercase tracking-widest ml-12">
+                      {faq.a}
+                   </p>
+                </div>
+              ))}
+           </div>
+        </div>
+
+        {/* Specialized Contact/Conversion Bar */}
+        <div className="bg-brand-navy border border-brand-teal/30 p-12 md:p-20 relative overflow-hidden">
+           <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-brand-teal to-transparent" />
+           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+              <div className="max-w-xl text-center md:text-left">
+                 <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tighter mb-6">Deploy to <br /> {cityName} <span className="text-brand-teal">Today.</span></h2>
+                 <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest">Rapid Response // (918) 520-3823</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-6 w-full md:w-auto">
+                 <Link href="/get-a-quote" className="bg-brand-teal text-brand-navy px-12 py-5 font-display font-black text-xs uppercase tracking-widest hover:bg-white transition-colors text-center group flex items-center justify-center">
+                    Request Quote <ArrowRight className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform" />
+                 </Link>
+              </div>
+           </div>
+        </div>
 
       </div>
     </div>
