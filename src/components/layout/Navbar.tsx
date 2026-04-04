@@ -116,74 +116,168 @@ function IndustriesDropdown() {
   );
 }
 
-// --- Sub-component for Trillion-Dollar Pricing Dropdown ---
-function PricingDropdown({ mode }: { mode: "rent" | "buy" }) {
+// --- Sub-component for Sophisticated Procurement Hub (OpEx vs. CapEx) ---
+function ProcurementHub() {
+  const [mode, setMode] = useState<"rent" | "buy">("rent");
   const isRent = mode === "rent";
-  const data = isRent ? [
-    { name: "Z1 Scout", price: "$999", period: "/ MO", desc: "ENTRY // 5 DAY", highlight: false },
-    { name: "Z1 Guardian", price: "$1,750", period: "/ MO", desc: "MID // 10 DAY", highlight: true },
-    { name: "Z1 Apex", price: "$2,800", period: "/ MO", desc: "ADV // THERMAL", highlight: false },
-    { name: "Z1 Command", price: "CUSTOM", period: "QUOTE", desc: "ELITE // STARLINK", highlight: false },
-  ] : [
-    { name: "Z1 Scout", price: "$16.5K", period: "USD", desc: "ENTRY // 5 DAY", highlight: false },
-    { name: "Z1 Guardian", price: "$28.0K", period: "USD", desc: "MID // 10 DAY", highlight: false },
-    { name: "Z1 Apex", price: "$42.0K", period: "USD", desc: "ADV // THERMAL", highlight: false },
-    { name: "Z1 Command", price: "CUSTOM", period: "QUOTE", desc: "ELITE // STARLINK", highlight: false },
+
+  const tiers = [
+    { 
+      name: "Z1 Scout", 
+      rent: "$999", 
+      buy: "$16.5K", 
+      period: "/ MO", 
+      buyPeriod: "USD",
+      desc: "ENTRY // 5 DAY",
+      icon: Crosshair,
+      hero: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=400"
+    },
+    { 
+      name: "Z1 Guardian", 
+      rent: "$1,750", 
+      buy: "$28.0K", 
+      period: "/ MO", 
+      buyPeriod: "USD",
+      desc: "MID // 10 DAY",
+      icon: Sun,
+      highlight: true,
+      hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400"
+    },
+    { 
+      name: "Z1 Apex", 
+      rent: "$2,800", 
+      buy: "$42.0K", 
+      period: "/ MO", 
+      buyPeriod: "USD",
+      desc: "ADV // THERMAL",
+      icon: Shield,
+      hero: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=400"
+    },
+    { 
+      name: "Z1 Command", 
+      rent: "CUSTOM", 
+      buy: "CUSTOM", 
+      period: "QUOTE", 
+      buyPeriod: "QUOTE",
+      desc: "ELITE // STARLINK",
+      icon: MapPin,
+      hero: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=400"
+    },
   ];
 
-  const mainPath = isRent ? "/rent-security-trailer" : "/buy-security-trailer";
-
   return (
-    <div className="p-8 pb-10 w-[950px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-[0_30px_60px_-15px_rgba(27,154,170,0.15)] relative overflow-hidden flex flex-col">
+    <div className="p-8 w-[980px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-[0_30px_60px_-15px_rgba(27,154,170,0.15)] relative overflow-hidden flex flex-col">
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/5 blur-[100px] pointer-events-none" />
       
-      <div className="flex justify-between items-end mb-8 relative z-10 border-b border-white/10 pb-4">
+      {/* Header with Mode Switcher */}
+      <div className="flex justify-between items-center mb-8 relative z-10 border-b border-white/10 pb-6">
         <div>
-          <h3 className="font-display font-black uppercase text-2xl text-white tracking-[0.2em]">{isRent ? "Rental Plans" : "Purchase Plans"}</h3>
-          <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] mt-1">{isRent ? "Transparent Monthly Pricing" : "Hardware Ownership Costs"}</p>
+          <h3 className="font-display font-black uppercase text-2xl text-white tracking-[0.2em]">Procurement Hub</h3>
+          <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] mt-1">Select Tier Allocation // OpEx vs CapEx</p>
         </div>
-        <Link href={mainPath} className="hidden sm:flex border border-brand-teal/30 hover:border-brand-teal bg-white/5 hover:bg-brand-teal/10 px-4 py-2 font-mono text-[10px] text-white uppercase tracking-widest transition-colors duration-300 items-center">
-           View Full Details <ArrowRight className="w-3 h-3 ml-2 text-brand-teal" />
-        </Link>
+
+        {/* Sophisticated Mode Toggle */}
+        <div className="flex bg-black/40 p-1 border border-white/5 rounded-none relative">
+          <motion.div 
+            className="absolute bg-brand-teal/20 border border-brand-teal h-[calc(100%-8px)]"
+            initial={false}
+            animate={{ 
+              x: isRent ? 4 : 110,
+              width: isRent ? 106 : 110
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          />
+          <button 
+            onClick={() => setMode("rent")}
+            className={cn(
+              "relative z-10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300",
+              isRent ? "text-white" : "text-white/40 hover:text-white/60"
+            )}
+          >
+            Monthly Rental
+          </button>
+          <button 
+            onClick={() => setMode("buy")}
+            className={cn(
+              "relative z-10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300",
+              !isRent ? "text-white" : "text-white/40 hover:text-white/60"
+            )}
+          >
+            Direct Purchase
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-4 gap-4 relative z-10">
-        {data.map((tier, idx) => (
+        {tiers.map((tier) => (
           <Link 
-            href={mainPath} 
+            href={isRent ? "/rent-security-trailer" : "/buy-security-trailer"} 
             key={tier.name}
             className={cn(
-              "group relative flex flex-col p-6 border transition-all duration-500 overflow-hidden",
-              tier.highlight ? "border-brand-teal bg-brand-teal/10 hover:bg-brand-teal/20" : "border-white/10 bg-black/20 hover:border-brand-teal/50 hover:bg-white/5"
+              "group relative flex flex-col p-6 border bg-black/30 transition-all duration-500 overflow-hidden min-h-[220px]",
+              tier.highlight ? "border-brand-teal/40 bg-brand-teal/5 shadow-[0_0_30px_-5px_rgba(27,154,170,0.15)]" : "border-white/5 hover:border-brand-teal/40 hover:bg-white/5"
             )}
           >
-            {/* Hover Glare */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out pointer-events-none" />
-
-            {tier.highlight && (
-              <div className="absolute top-0 inset-x-0 h-1 bg-brand-teal" />
-            )}
-
-            <div className="mb-4">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-brand-teal font-bold">{tier.desc}</p>
-              <p className={cn("font-display font-black uppercase tracking-wider mt-1 text-sm", tier.highlight ? "text-white" : "text-white/80")}>{tier.name}</p>
+            {/* Visual Overlays */}
+            <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700">
+               <img src={tier.hero} alt={tier.name} className="w-full h-full object-cover grayscale" />
             </div>
-            
-            <div className="mt-8 flex items-end">
-               {tier.price === "CUSTOM" ? (
-                  <p className="font-display font-black text-2xl text-brand-gold tracking-tight">{tier.price}</p>
-               ) : (
-                  <div className="flex items-baseline">
-                    <span className={cn("font-display font-black text-3xl tracking-tighter", tier.highlight ? "text-brand-teal" : "text-white")}>{tier.price}</span>
-                    <span className="font-mono text-[10px] ml-1 text-white/50 tracking-widest">{tier.period}</span>
-                  </div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-brand-teal/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 pointer-events-none" />
+
+            <div className="relative z-10 mb-4 flex items-start justify-between">
+               <div className="p-2 bg-white/5 border border-white/10 text-brand-teal/50 group-hover:text-brand-teal group-hover:border-brand-teal transition-all">
+                  <tier.icon className="w-4 h-4" strokeWidth={1.5} />
+               </div>
+               {tier.highlight && (
+                  <span className="font-mono text-[8px] bg-brand-teal text-white px-2 py-0.5 uppercase tracking-widest font-black">Most Popular</span>
                )}
             </div>
+
+            <div className="relative z-10 mt-auto">
+              <p className="font-mono text-[9px] uppercase tracking-widest text-white/50 group-hover:text-brand-teal transition-colors font-bold">{tier.desc}</p>
+              <p className="font-display font-black uppercase tracking-wider mt-1 text-base text-white">{tier.name}</p>
+              
+              <div className="mt-4 pt-4 border-t border-white/5 flex items-baseline overflow-hidden h-10">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={mode}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="flex items-baseline"
+                  >
+                    {isRent ? (
+                      <>
+                        <span className="font-display font-black text-2xl text-brand-teal tracking-tighter">{tier.rent}</span>
+                        <span className="font-mono text-[9px] ml-1 text-white/40 tracking-widest">{tier.period}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-display font-black text-2xl text-white tracking-tighter">{tier.buy}</span>
+                        <span className="font-mono text-[9px] ml-1 text-white/40 tracking-widest">{tier.buyPeriod}</span>
+                      </>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
             
-            {/* Tech corner decoration */}
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-brand-teal/50 m-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+            {/* Tech bracket decoration */}
+            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-brand-teal/30 m-2 group-hover:border-brand-teal transition-colors" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-brand-teal/30 m-2 group-hover:border-brand-teal transition-colors" />
           </Link>
         ))}
+      </div>
+
+      <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
+         <div className="flex space-x-6 text-white/30 font-mono text-[9px] uppercase tracking-widest font-bold">
+            <span className="flex items-center gap-2"><CreditCard className="w-3 h-3 text-brand-teal" /> 100% Tax Deductible (Section 179)</span>
+            <span className="flex items-center gap-2"><Banknote className="w-3 h-3 text-brand-teal" /> Flexible Terms</span>
+         </div>
+         <Link href="/get-a-quote" className="font-mono text-[10px] text-white hover:text-brand-teal flex items-center gap-2 transition-colors uppercase tracking-widest font-black">
+            Full Specification Sheet <ArrowRight className="w-3 h-3" />
+         </Link>
       </div>
     </div>
   );
@@ -214,24 +308,20 @@ const navItems = [
       { name: "Schools", href: "/industries/school-campuses" },
     ]
   },
-  { 
-    name: "Rentals", 
+  {
+    name: "Rent / Buy",
     href: "/rent-security-trailer",
-    component: <PricingDropdown mode="rent" />,
-    mobileLinks: [{ name: "View Rental Pricing", href: "/rent-security-trailer" }]
-  },
-  { 
-    name: "Sales", 
-    href: "/buy-security-trailer",
-    component: <PricingDropdown mode="buy" />,
-    mobileLinks: [{ name: "View Purchase Pricing", href: "/buy-security-trailer" }]
+    component: <ProcurementHub />,
+    mobileLinks: [
+      { name: "Rental Options", href: "/rent-security-trailer" },
+      { name: "Purchase Options", href: "/buy-security-trailer" },
+    ]
   },
   {
     name: "Deployments",
     href: "/locations",
     dropdown: (
       <div className="p-8 w-[380px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-2xl relative overflow-hidden">
-         {/* Dropdown HTML Kept intact ... */}
         <div className="absolute -top-32 -right-32 w-64 h-64 bg-brand-teal/10 blur-[80px] pointer-events-none" />
         <div className="relative z-10">
           <p className="font-mono text-xs text-brand-teal mb-6 tracking-[0.25em] uppercase border-b border-brand-teal/20 pb-3 font-bold">Active Regions</p>
