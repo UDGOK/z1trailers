@@ -75,29 +75,47 @@ export const locationDb: Record<string, StateRegion> = {
       "dallas": {
         name: "Dallas",
         slug: "dallas",
-        desc: "Securing DFW's massive data center and skyscraper perimeters. 24/7 AI surveillance with LiFePO4 supplemental power for remote networking hubs.",
-        keywords: ["Surveillance Trailers Dallas", "Solar Security Dallas", "DFW Mobile Surveillance"],
-        industryAnchor: "Data Centers & Skyscrapers",
-        threatFocus: "High-Tech Asset Theft",
-        powerSpec: "LiFePO4 Core with 2000W Inverter Payload."
+        desc: "Dominating the DFW data center and skyscraper perimeters. Z1 Tactical units provide an 'Elite Thermal Shield' for 115°F+ heat load, securing the world's most critical digital infrastructure.",
+        keywords: ["Surveillance Trailers Dallas", "Solar Security Dallas", "DFW Mobile Surveillance", "Data Center Security Dallas"],
+        industryAnchor: "Data Centers & AEC",
+        threatFocus: "High-Tech Asset Theft & Site Sabotage",
+        powerSpec: "Texas-Spec LiFePO4 with 2000W Inverter Payload."
       },
       "houston": {
         name: "Houston",
         slug: "houston",
-        desc: "Protecting Houston's maritime and energy infrastructure. Thermal-imaging solar trailers for the Gulf Coast's primary port sectors.",
-        keywords: ["Houston Security Trailers", "Port Security Houston", "Battery Trailers Houston"],
+        desc: "Protecting Houston's maritime and energy corridors. Deploying anti-corrosive solar trailers for the Port of Houston and Gulf Coast industrial sectors with LiFePO4 stability.",
+        keywords: ["Houston Security Trailers", "Port Security Houston", "Battery Trailers Houston", "Houston Surveillance Rental"],
         industryAnchor: "Maritime & Energy",
-        threatFocus: "Sabotage & Perimeter Breaches",
+        threatFocus: "Port Breaches & Sabotage",
         powerSpec: "Anti-Corrosive LiFePO4 Thermal Protection."
       },
       "austin": {
         name: "Austin",
         slug: "austin",
-        desc: "Securing the silicon hills. 100% solar autonomous surveillance with StarLink connectivity for Austin's high-tech manufacturing perimeters.",
-        keywords: ["Austin Surveillance Trailers", "Solar Security Austin", "Tech Corridor Monitoring"],
-        industryAnchor: "Technology Manufacturing",
-        threatFocus: "Retail Theft & Site Loitering",
-        powerSpec: "LiFePO4 High-Cycle Battery Architecture."
+        desc: "Securing the 'Silicon Hills' and high-capacity events. Our trailers provide Starlink-integrated AI surveillance for Austin's tech manufacturing and SXSW-scale event perimeters.",
+        keywords: ["Austin Surveillance Trailers", "Solar Security Austin", "Austin Construction Security", "Event Surveillance Austin"],
+        industryAnchor: "Tech Manufacturing & Events",
+        threatFocus: "Intellectual Property & Crowd Flow",
+        powerSpec: "Z-Grade LiFePO4 Architecture."
+      },
+      "san-antonio": {
+        name: "San Antonio",
+        slug: "san-antonio",
+        desc: "Securing 'Military City USA' and the industrial healthcare sector. Tactical deterrence for San Antonio's defense perimeters and manufacturing hubs.",
+        keywords: ["San Antonio Security Trailer", "San Antonio Jobsite Camera", "Military Security San Antonio"],
+        industryAnchor: "Defense & Healthcare",
+        threatFocus: "Unauthorized Perimeter Access",
+        powerSpec: "Military-Grade LiFePO4 Core."
+      },
+      "fort-worth": {
+        name: "Fort Worth",
+        slug: "fort-worth",
+        desc: "Dominating the Fort Worth logistics and 3PL sectors. High-visibility Z1 units protecting 'AllianceTexas' parking lots and massive distribution perimeters.",
+        keywords: ["Fort Worth Mobile Security", "Fort Worth Parking Surveillance", "3PL Security Fort Worth"],
+        industryAnchor: "Logistics & Distribution",
+        threatFocus: "Cargo Theft & Parking Lot ORC",
+        powerSpec: "High-Cycle LiFePO4 Solar Island."
       }
     }
   },
