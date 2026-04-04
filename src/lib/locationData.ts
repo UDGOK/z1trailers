@@ -3,6 +3,9 @@ export interface CitySector {
   slug: string;
   desc: string;
   keywords: string[];
+  climateLogic?: string;
+  industryAnchor?: string;
+  threatFocus?: string;
 }
 
 export interface StateRegion {
@@ -11,56 +14,49 @@ export interface StateRegion {
   subtitle: string;
   desc: string;
   cities: Record<string, CitySector>;
+  weatherContext?: string;
 }
 
 export const locationDb: Record<string, StateRegion> = {
+  // --- CORE MID-SOUTH SECTORS (Expanded) ---
   "oklahoma": {
     name: "Oklahoma",
     slug: "oklahoma",
-    subtitle: "COMMAND HQ",
-    desc: "Z1 Trailers operates its central tactical command from Oklahoma. We provide the region's most advanced solar-powered surveillance trailers for construction site security, event monitoring, and industrial perimeter defense.",
+    subtitle: "CENTRAL COMMAND",
+    desc: "Z1 Trailers operates its primary tactical hub from Oklahoma. We protect the region's energy perimeters and construction booms with zero-infrastructure solar surveillance.",
+    weatherContext: "High-wind-rated masts and rapid recharge monocrystalline arrays.",
     cities: {
       "oklahoma-city": {
         name: "Oklahoma City",
         slug: "oklahoma-city",
-        desc: "Dominating the OKC metro with elite surveillance trailers. Our solar-powered units provide 24/7 autonomous monitoring for Oklahoma City's rapid infrastructure growth.",
-        keywords: ["Surveillance Trailers Oklahoma City", "Solar Security Trailers OKC", "Battery Powered Surveillance"]
+        desc: "Dominating OKC metro with elite surveillance trailers. Securing the rapid-growth infrastructure and capitol perimeters with 24/7 AI monitoring.",
+        keywords: ["Surveillance Trailers Oklahoma City", "Solar Security Trailers OKC", "OKC Parking Lot Security"],
+        industryAnchor: "Government & Infrastructure",
+        threatFocus: "High-Value Copper & Equipment Theft"
       },
       "tulsa": {
         name: "Tulsa",
         slug: "tulsa",
-        desc: "Securing Tulsa's industrial and commercial sectors with high-yield thermal imaging trailers. Z1 units are the gold standard for Tulsa asset protection.",
-        keywords: ["Mobile Surveillance Tulsa", "Solar Trailers Tulsa", "Security Trailer Rental Tulsa"]
-      },
-      "edmond": {
-        name: "Edmond",
-        slug: "edmond",
-        desc: "Elite security for Edmond's premier residential and commercial developments. Providing silent, 100% green solar surveillance 24/7.",
-        keywords: ["Edmond Security Trailers", "Solar Powered Surveillance Edmond", "AI Security Trailers"]
-      },
-      "norman": {
-        name: "Norman",
-        slug: "norman",
-        desc: "Tactical perimeter defense for Norman's campus and research sectors. Our battery-backed solar units ensure zero downtime during critical operations.",
-        keywords: ["Norman Surveillance trailers", "Solar trailers Norman", "Battery security trailers"]
-      },
-      "broken-arrow": {
-        name: "Broken Arrow",
-        slug: "broken-arrow",
-        desc: "Self-sustaining security endpoints for Broken Arrow's manufacturing and retail hubs. Deploy in under 15 minutes to any sector.",
-        keywords: ["Broken Arrow Security", "Surveillance trailers Broken Arrow", "Solar trailers BA"]
+        desc: "Protecting Tulsa's industrial heart. Our trailers secure warehouse perimeters and oil & gas logistics with thermal imaging overmatch.",
+        keywords: ["Mobile Surveillance Tulsa", "Solar Trailers Tulsa", "Tulsa Industrial Security"],
+        industryAnchor: "Logistics & Manufacturing",
+        threatFocus: "Industrial Sabotage & Catalytic Converters"
       },
       "bixby": {
         name: "Bixby",
         slug: "bixby",
-        desc: "Precision surveillance for Bixby's expanding residential and commercial perimeters. Z1 Trailers provides the ultimate tactical overmatch in Bixby, OK.",
-        keywords: ["Surveillance Trailers Bixby", "Solar Trailers Bixby", "Battery Trailers Bixby"]
+        desc: "Securing Bixby's high-end residential and commercial growth. Tactical surveillance for South Tulsa's primary expansion sectors.",
+        keywords: ["Bixby Security Trailers", "Solar Trailers Bixby", "Residential Construction Security"],
+        industryAnchor: "Commercial Development",
+        threatFocus: "Site Loitering & Asset Vandalism"
       },
       "jenks": {
         name: "Jenks",
         slug: "jenks",
-        desc: "High-definition, AI-driven security for Jenks' riverfront and commercial sectors. Our solar-autonomous trailers are the primary defense vector for Jenks businesses.",
-        keywords: ["Surveillance Trailers Jenks", "Solar Trailers Jenks", "Battery Trailers Jenks"]
+        desc: "Riverfront and commercial security for the Jenks sector. Deploying rapid-response Z1 units to protect the retail and industrial river district.",
+        keywords: ["Surveillance Trailers Jenks", "Jenks Solar Security", "Jenks Business Security"],
+        industryAnchor: "Retail & Tourism",
+        threatFocus: "Unauthorized Perimeter Access"
       }
     }
   },
@@ -68,112 +64,227 @@ export const locationDb: Record<string, StateRegion> = {
     name: "Texas",
     slug: "texas",
     subtitle: "PRIMARY DIVISION",
-    desc: "Texas infrastructure demands maximum scale and density. Z1 Trailers delivers military-grade solar surveillance across the Lone Star State, from the DFW Metroplex to the Houston Port Logistics sector.",
+    desc: "Texas infrastructure demands maximum scale. We secure the Lone Star State's massive tech corridors and port logistics with military-grade autonomous hardware.",
+    weatherContext: "Heat-dissipating lithium enclosures and high-yield solar arrays.",
     cities: {
       "dallas": {
         name: "Dallas",
         slug: "dallas",
-        desc: "Securing the high-density Dallas skyline and infrastructure projects. Our AI-equipped trailers provide sub-second threat categorization in the DFW metro.",
-        keywords: ["Surveillance Trailers Dallas", "Solar Security Dallas", "Mobile Surveillance DFW"]
+        desc: "Securing DFW's massive data center and skyscraper perimeters. 24/7 AI surveillance with sub-second threat categorization.",
+        keywords: ["Surveillance Trailers Dallas", "Solar Security Dallas", "DFW Mobile Surveillance"],
+        industryAnchor: "Data Centers & Skyscrapers",
+        threatFocus: "High-Tech Asset Theft"
       },
       "houston": {
         name: "Houston",
         slug: "houston",
-        desc: "Protecting Houston's critical energy and maritime assets. Thermal imaging and LPR-equipped solar trailers for 24/7 port security.",
-        keywords: ["Houston Security Trailers", "Solar Port Surveillance", "Battery Backup Security Houston"]
+        desc: "Protecting Houston's critical maritime and energy infrastructure. Thermal-imaging solar trailers for the Gulf Coast's primary port sectors.",
+        keywords: ["Houston Security Trailers", "Port Security Houston", "Battery Trailers Houston"],
+        industryAnchor: "Maritime & Energy",
+        threatFocus: "Sabotage & Perimeter Breaches"
       },
       "austin": {
         name: "Austin",
         slug: "austin",
-        desc: "Next-gen security for the Austin tech corridor. 100% solar autonomous trailers with StarLink connectivity for remote site monitoring.",
-        keywords: ["Austin Surveillance Trailers", "Solar Power Security Austin", "AI Camera Trailers"]
-      },
-      "san-antonio": {
-        name: "San Antonio",
-        slug: "san-antonio",
-        desc: "Protecting San Antonio's historic and commercial sectors. Rapid-deployment trailers for event security and construction site monitoring.",
-        keywords: ["San Antonio Security Trailers", "Solar Surveillance San Antonio", "Battery Security"]
-      },
-      "fort-worth": {
-        name: "Fort Worth",
-        slug: "fort-worth",
-        desc: "Tactical defense for Fort Worth's industrial and logistics hubs. Heavy-duty solar arrays for maximum autonomy and 24/7 uptime.",
-        keywords: ["Fort Worth Surveillance", "Solar Security Trailers Fort Worth", "Mobile Security Fort Worth"]
+        desc: "Securing the silicon hills. 100% solar autonomous surveillance with StarLink connectivity for Austin's high-tech manufacturing perimeters.",
+        keywords: ["Austin Surveillance Trailers", "Solar Security Austin", "Tech Corridor Monitoring"],
+        industryAnchor: "Technology Manufacturing",
+        threatFocus: "Retail Theft & Site Loitering"
       }
     }
   },
-  "louisiana": {
-    name: "Louisiana",
-    slug: "louisiana",
-    subtitle: "REGIONAL SECTOR",
-    desc: "From the Port of New Orleans to the industrial corridors of Baton Rouge, Z1 Trailers provides off-grid security that performs in extreme humidity and sub-tropical environments.",
+
+  // --- PHASE 2: COASTAL & TECH EXPANSION ---
+  "florida": {
+    name: "Florida",
+    slug: "florida",
+    subtitle: "RESILIENCE DIVISION",
+    desc: "Florida demands weather-hardened security. Our units are engineered for high humidity, salt-spray environments, and 150MPH wind-rated deployments.",
+    weatherContext: "Anti-corrosive coatings and storm-rated mast deployment logic.",
     cities: {
-      "new-orleans": {
-        name: "New Orleans",
-        slug: "new-orleans",
-        desc: "Securing the Big Easy's tourism and maritime sectors. Rapid-recharge solar trailers for reliable, off-grid security in New Orleans.",
-        keywords: ["New Orleans Surveillance", "Solar Security Louisiana", "Battery Surveillance NOLA"]
+      "miami": {
+        name: "Miami",
+        slug: "miami",
+        desc: "Securing Miami's luxury skyscraper developments and maritime hubs. Rapid deployment for resilience-focused urban perimeters.",
+        keywords: ["Surveillance Trailers Miami", "Solar Security Miami", "Miami Maritime Security"],
+        industryAnchor: "High-Rise Construction & Ports",
+        threatFocus: "High-Value Asset Loss & Vandalism",
+        climateLogic: "Corrosion-resistant chassis for salt-air proximity."
       },
-      "baton-rouge": {
-        name: "Baton Rouge",
-        slug: "baton-rouge",
-        desc: "Capital region security HQ. Providing high-authority perimeter defense for Baton Rouge industrial and commercial perimeters.",
-        keywords: ["Baton Rouge Security Trailers", "Solar Surveillance Baton Rouge", "Mobile Security BR"]
+      "orlando": {
+        name: "Orlando",
+        slug: "orlando",
+        desc: "Providing scale security for Orlando's massive tourism and event landscape. Temporary perimeters for the world's largest gathering sectors.",
+        keywords: ["Orlando Security Trailers", "Event Surveillance Orlando", "Solar Trailers Orlando"],
+        industryAnchor: "Tourism & Events",
+        threatFocus: "Crowd Flow & Perimeter Breach",
+        climateLogic: "Rapid-recharge arrays for high humidity/storm seasons."
+      },
+      "tampa": {
+        name: "Tampa",
+        slug: "tampa",
+        desc: "Gulf Coast industrial security. Tactical solar trailers for Tampa's shipping and logistical infrastructure hubs.",
+        keywords: ["Surveillance Trailers Tampa", "Solar Security Tampa", "Tampa Port Monitoring"],
+        industryAnchor: "Shipping & Logistics",
+        threatFocus: "Catalytic Converter & Cargo Theft"
       }
     }
   },
-  "arkansas": {
-    name: "Arkansas",
-    slug: "arkansas",
-    subtitle: "REGIONAL SECTOR",
-    desc: "Securing the Natural State with 100% solar-driven surveillance. From Little Rock logistics to Northwest Arkansas tech growth, Z1 is the elite security partner.",
+  "california": {
+    name: "California",
+    slug: "california",
+    subtitle: "WESTERN COMMAND",
+    desc: "California's retail and maritime sectors require aggressive proactive deterrence. Z1 units integrate AI lockdowns to stop crime before it reaches the perimeter.",
+    weatherContext: "Dual-carrier LTE/5G failover for dense urban or remote desert sectors.",
     cities: {
-      "little-rock": {
-        name: "Little Rock",
-        slug: "little-rock",
-        desc: "Central Arkansas hub for tactical surveillance. Protecting retail hubs and construction sites across Little Rock with AI-driven trailers.",
-        keywords: ["Little Rock Surveillance", "Solar Security Arkansas", "Battery Security Little Rock"]
+      "los-angeles": {
+        name: "Los Angeles",
+        slug: "los-angeles",
+        desc: "Securing the Port of LA and retail parking perimeters. Proactive deterrence with 120dB talk-down and thermal AI targeting.",
+        keywords: ["Surveillance Trailers Los Angeles", "LA Retail Security", "Port of LA Monitoring"],
+        industryAnchor: "Ports & Large Retail",
+        threatFocus: "Organized Retail Crime (ORC) & Port Sabotage",
+        climateLogic: "Smog-penetrating optical filters for clear AI detection."
       },
-      "fayetteville": {
-        name: "Fayetteville",
-        slug: "fayetteville",
-        desc: "Protecting the rapid growth of Northwest Arkansas. StarLink-equipped security trailers for remote perimeters in the Ozark region.",
-        keywords: ["Fayetteville Security Trailers", "NWA Solar Surveillance", "AI Mobile Security"]
+      "san-francisco": {
+        name: "San Francisco",
+        slug: "san-francisco",
+        desc: "Protecting the Tech Bay's construction and logistical perimeters. AI-driven security trailers for high-density Bay Area sectors.",
+        keywords: ["Surveillance Trailers San Francisco", "SF Site Security", "Bay Area Mobile Surveillance"],
+        industryAnchor: "High-Tech Infrastructure",
+        threatFocus: "Vehicle Break-ins & Asset Theft"
+      },
+      "san-diego": {
+        name: "San Diego",
+        slug: "san-diego",
+        desc: "Securing San Diego's maritime and research centers. Reliable solar-autonomous security for the southern border corridors.",
+        keywords: ["San Diego Security Trailers", "Solar Trailers SD", "Maritime Monitoring San Diego"],
+        industryAnchor: "Biotech & Defense Logistics",
+        threatFocus: "Unauthorized Perimeter Trespass"
       }
     }
   },
-  "kansas": {
-    name: "Kansas",
-    slug: "kansas",
-    subtitle: "REGIONAL SECTOR",
-    desc: "Securing the heartland with autonomous security endpoints. Z1 provides Wichita and Overland Park with the region's most reliable solar-powered monitoring trailers.",
+  "arizona": {
+    name: "Arizona",
+    slug: "arizona",
+    subtitle: "DESERT COMMAND",
+    desc: "Arizona's data center boom requires extreme-heat-rated security hardware. Z1 units operate in 115°F+ environments with zero thermal throttling.",
+    weatherContext: "Independently cooled lithium core and solar-shade chassis design.",
     cities: {
-      "wichita": {
-        name: "Wichita",
-        slug: "wichita",
-        desc: "Wichita's primary defense vector for industrial and aerospace security. Thermal-equipped solar trailers for 24/7 aircraft and site monitoring.",
-        keywords: ["Wichita Surveillance Trailers", "Solar Security ICT", "Battery Security Kansas"]
+      "phoenix": {
+        name: "Phoenix",
+        slug: "phoenix",
+        desc: "Securing Phoenix's data center corridor and massive residential expansions. Solar trailers rated for the Valley's extreme thermal loads.",
+        keywords: ["Surveillance Trailers Phoenix", "PHX Data Center Security", "Solar Trailers Arizona"],
+        industryAnchor: "Data Centers & Residential Development",
+        threatFocus: "Copper Wire & Heavy Machinery Theft",
+        climateLogic: "Extreme Heat Monocrystalline Array rated for 150°F operation."
       }
     }
   },
-  "alabama": {
-    name: "Alabama",
-    slug: "alabama",
-    subtitle: "REGIONAL SECTOR",
-    desc: "Expanding the southeastern corridor's security infrastructure. Z1 delivers advanced AI surveillance trailers to Birmingham and Huntsville's growing tech sectors.",
+  "new-york": {
+    name: "New York",
+    slug: "new-york",
+    subtitle: "EMPIRE DIVISION",
+    desc: "Securing the vertical perimeters of the Empire State. From NYC skyscraper infrastructure to upstate logistics, Z1 provides the Empire's primary security overmatch.",
+    weatherContext: "Winter-rated battery heaters and high-density urban 5G/LTE failover.",
     cities: {
-      "birmingham": {
-        name: "Birmingham",
-        slug: "birmingham",
-        desc: "Securing Birmingham's commercial and industrial perimeters. Tactical solar-powered trailers for rapid-deployment asset protection.",
-        keywords: ["Birmingham Surveillance", "Solar Security Alabama", "Mobile Security Birmingham"]
+      "new-york-city": {
+        name: "New York City",
+        slug: "new-york-city",
+        desc: "The primary defense for NYC's massive skyscraper and infrastructure projects. Our units operate in the heart of dense Manhattan logistics.",
+        keywords: ["Surveillance Trailers NYC", "Manhattan Site Security", "NYC Construction Monitoring"],
+        industryAnchor: "Architecture & Infrastructure",
+        threatFocus: "Labor Non-Compliance & Asset Loss",
+        climateLogic: "Urban Reflective Solar Capture for low-light city canyons."
+      }
+    }
+  },
+  "georgia": {
+    name: "Georgia",
+    slug: "georgia",
+    subtitle: "SOUTHERN LOGISTICS",
+    desc: "Securing the Southeast's primary logistics and film sectors. From Atlanta's urban expansion to the deep-water ports of Savannah.",
+    weatherContext: "High-humidity circuit protection and rapid-deployment logistics.",
+    cities: {
+      "atlanta": {
+        name: "Atlanta",
+        slug: "atlanta",
+        desc: "Tactical surveillance for Atlanta's massive logistics and film studio perimeters. AI-driven monitoring for the ATL metro boom.",
+        keywords: ["Surveillance Trailers Atlanta", "ATL Logistics Security", "Solar Trailers Georgia"],
+        industryAnchor: "Logistics & Film Production",
+        threatFocus: "High-Value Cargo & Equipment Theft",
+        climateLogic: "Rapid-recharge solar for variable canopy environments."
       },
-      "huntsville": {
-        name: "Huntsville",
-        slug: "huntsville",
-        desc: "High-tech security for Huntsville's aerospace and defense sectors. Our units provide military-grade thermal tracking and solar autonomy.",
-        keywords: ["Huntsville Security Trailers", "Solar Surveillance Rocket City", "AI Security Huntsville"]
+      "savannah": {
+        name: "Savannah",
+        slug: "savannah",
+        desc: "Protecting Savannah's maritime assets and historic perimeters. Tactical hardware for Georgia's primary coastal gateway.",
+        keywords: ["Savannah Security Trailers", "Port of Savannah Monitoring", "Solar Surveillance SAV"],
+        industryAnchor: "Maritime & Heritage Tourism",
+        threatFocus: "Port Sabotage & Unauthorized Access"
+      }
+    }
+  },
+  "north-carolina": {
+    name: "North Carolina",
+    slug: "north-carolina",
+    subtitle: "ATLANTIC COMMAND",
+    desc: "Securing the Research Triangle and the banking capital of the South. Z1 provides elite solar-autonomous surveillance for NC's high-tech corridors.",
+    weatherContext: "Mountain-rated StarLink endpoints and coastal storm-spec hardware.",
+    cities: {
+      "charlotte": {
+        name: "Charlotte",
+        slug: "charlotte",
+        desc: "Protecting Charlotte's financial and commercial expansion sectors. Tactical AI surveillance for the Queen City's rapid development.",
+        keywords: ["Surveillance Trailers Charlotte", "Charlotte Site Security", "Solar Security NC"],
+        industryAnchor: "Finance & Large Retail",
+        threatFocus: "Asset Loitering & Vehicle Break-ins"
+      },
+      "raleigh": {
+        name: "Raleigh",
+        slug: "raleigh",
+        desc: "AI security vectors for the Research Triangle. Protecting high-tech labs and education campuses in the Raleigh-Durham sector.",
+        keywords: ["Raleigh Security Trailers", "Research Triangle Monitoring", "Solar Surveillance Raleigh"],
+        industryAnchor: "Bio-Tech & Education",
+        threatFocus: "Intellectual Property & Lab Sabotage"
+      }
+    }
+  },
+  "illinois": {
+    name: "Illinois",
+    slug: "illinois",
+    subtitle: "MIDWEST DIVISION",
+    desc: "Securing the industrial heart of the Midwest. Z1 delivers robust solar surveillance to Chicago's logistical and manufacturing hubs.",
+    weatherContext: "Winter-rated battery heaters and high-density urban 5G vectors.",
+    cities: {
+      "chicago": {
+        name: "Chicago",
+        slug: "chicago",
+        desc: "The primary defense for Chicago's massive industrial and construction infrastructure. Operating in the toughest urban logistics environments.",
+        keywords: ["Surveillance Trailers Chicago", "Chicago Industrial Security", "Solar Security IL"],
+        industryAnchor: "Manufacturing & Infrastructure",
+        threatFocus: "Heavy Equipment Theft & After-hours Vandalism",
+        climateLogic: "Wind-rated 30ft masts for the Windy City."
+      }
+    }
+  },
+  "mississippi": {
+    name: "Mississippi",
+    slug: "mississippi",
+    subtitle: "GULF SECTOR",
+    desc: "Tactical off-grid security for the Magnolia State. Protecting infrastructure and industrial development in the Mississippi Gulf corridor.",
+    weatherContext: "Hurricane-rated anchor systems and anti-corrosive chassis.",
+    cities: {
+      "jackson": {
+        name: "Jackson",
+        slug: "jackson",
+        desc: "Securing Jackson's commercial and infrastructure hubs. 100% solar autonomous trailers for reliable security in the state capital.",
+        keywords: ["Jackson Surveillance", "Solar Security Mississippi", "Battery Surveillance MS"],
+        industryAnchor: "Infrastructure & Logistics",
+        threatFocus: "Critical Asset Theft & Sabotage"
       }
     }
   }
 };
+

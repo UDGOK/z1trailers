@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target } from "lucide-react";
+import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Cpu } from "lucide-react";
 import { Metadata } from 'next';
 import { locationDb } from "@/lib/locationData";
 
@@ -29,19 +29,20 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
     notFound();
   }
 
-  // Construct AEO FAQ for the state
+  const cityList = Object.values(loc.cities);
+
   const faqs = [
     {
       q: `How long does it take to deploy a security trailer in ${loc.name}?`,
-      a: `In ${loc.name}, Z1 Trailers maintains a rapid-response logistics chain. We can typically deploy a solar-powered surveillance unit to your site in under 24 hours, with set-up taking less than 15 minutes by a single operator.`
+      a: `In ${loc.name}, Z1 Trailers maintains a rapid-response logistics chain. We can typically deploy a solar-powered surveillance unit to your site in under 24-48 hours, with set-up taking less than 15 minutes.`
     },
     {
-      q: `Is solar power effective for security trailers in ${loc.name}?`,
-      a: `Absolutely. Even with ${loc.name}'s varied cloud cover, our monocrystalline solar arrays are engineered for maximum energy harvest. Coupled with massive lithium-ion battery reserves, Z1 units operate 24/7/365 without ever needing grid power.`
+      q: `What is the solar efficiency rating for ${loc.name}?`,
+      a: `Our monocrystalline solar arrays are optimized for ${loc.name}'s specific metadata. Even in low-light conditions, Z1 units harvest maximum energy for 24/7/365 operational uptime.`
     },
     {
-      q: `What types of trailers do you offer in ${loc.name}?`,
-      a: `We offer a full tactical matrix including the Z1 Scout (Entry Vector), Z1 Guardian (Standard Command), Z1 Apex (Thermal/LPR), and Z1 Command (StarLink-equipped satellite endpoints).`
+      q: `Are the units wind-rated for the ${loc.name} sector?`,
+      a: `Yes. All units deployed in the ${loc.name} division feature high-tensile pneumatic masts and anti-tamper security logic, rated for sustained high-velocity conditions.`
     }
   ];
 
@@ -49,26 +50,10 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": `Z1 Security Trailer Deployment - ${loc.name}`,
-      "provider": {
-        "@type": "Organization",
-        "name": "Z1 Trailers",
-        "url": "https://z1trailers.com"
-      },
-      "areaServed": {
-        "@type": "State",
-        "name": loc.name
-      },
+      "name": `Z1 Security Trailer Deployment - ${loc.name} Division`,
+      "provider": { "@type": "Organization", "name": "Z1 Trailers" },
+      "areaServed": { "@type": "State", "name": loc.name },
       "description": loc.desc,
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Security Trailer Rentals",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Surveillance Trailer Rental" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Solar Security Trailer Deployment" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Battery Powered Security Systems" } }
-        ]
-      }
     },
     {
       "@context": "https://schema.org",
@@ -76,119 +61,160 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
       "mainEntity": faqs.map(faq => ({
         "@type": "Question",
         "name": faq.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.a
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": faq.a }
       }))
     }
   ];
 
-  const cityList = Object.values(loc.cities);
-
   return (
-    <div className="bg-[#05080c] min-h-screen pt-32 pb-24 relative overflow-hidden text-white">
+    <div className="bg-[#05080c] min-h-screen text-white font-sans selection:bg-brand-teal selection:text-white pb-24 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* Radial Glows */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-teal/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-teal/5 blur-[150px] rounded-full pointer-events-none" />
+      {/* TACTICAL BACKGROUND ANIMATION GRID */}
+      <div className="absolute inset-0 z-0 opacity-20">
+         <div className="absolute inset-0 bg-[linear-gradient(rgba(27,154,170,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(27,154,170,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05080c_120%)]" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-10 relative z-10">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10 pt-32 lg:pt-48">
         
-        <Link href="/locations" className="inline-flex items-center space-x-2 text-brand-steel hover:text-white font-mono text-[10px] uppercase tracking-[0.2em] mb-16 transition-colors group">
-           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" /> <span>Back to Global Grid</span>
+        <Link href="/locations" className="inline-flex items-center space-x-2 text-brand-teal hover:text-white font-mono text-[9px] uppercase tracking-[0.4em] mb-16 transition-all group">
+           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1" /> <span>Back to Global Grid</span>
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end mb-32">
-           <div>
-              <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-bold mb-6 flex items-center">
-                 <Route className="w-4 h-4 mr-3" /> Tactical Operational Sector // {loc.subtitle}
-              </p>
-              <h1 className="font-display font-black text-7xl md:text-9xl uppercase tracking-tighter leading-none mb-8">
+        {/* HERO SECTION: STATE HEADER */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-end mb-32">
+           <div className="lg:col-span-8">
+              <div className="inline-flex items-center space-x-3 mb-8 bg-brand-teal/10 border border-brand-teal/30 px-3 py-1">
+                 <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
+                 <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-bold">Tactical Sector: {loc.subtitle}</p>
+              </div>
+              <h1 className="font-display font-black text-[12vw] sm:text-[10vw] lg:text-[8rem] leading-[0.8] uppercase tracking-tighter mb-8 text-white drop-shadow-2xl">
                 {loc.name}<span className="text-brand-teal">.</span>
               </h1>
-              <p className="font-mono text-sm tracking-widest leading-loose text-brand-steel uppercase max-w-xl">
+              <p className="font-mono text-sm sm:text-md tracking-[0.2em] leading-relaxed text-brand-steel/80 uppercase max-w-2xl border-l border-brand-teal/30 pl-8">
                  {loc.desc}
               </p>
            </div>
-           
-           <div className="flex flex-col space-y-6">
-              <div className="bg-white/5 border-l-4 border-brand-teal p-8 backdrop-blur-md">
-                 <p className="font-display font-black text-white text-xl tracking-widest mb-4 uppercase">Direct Command Line</p>
-                 <a href="tel:9185203823" className="font-mono text-2xl text-brand-teal font-bold tracking-widest hover:text-white transition-colors">918.520.3823</a>
-                 <p className="font-mono text-[9px] text-brand-steel mt-2 uppercase tracking-widest">Available 24/7 for Emergency Deployment</p>
+
+           <div className="lg:col-span-4 flex flex-col space-y-6">
+              <div className="bg-white/5 border border-white/10 p-8 backdrop-blur-3xl relative group overflow-hidden">
+                 <div className="absolute top-0 right-0 w-24 h-24 bg-brand-teal/10 -mr-12 -mt-12 rounded-full blur-2xl group-hover:bg-brand-teal/20 transition-colors" />
+                 <p className="font-display font-bold text-lg text-white tracking-widest uppercase mb-2">Operational Hub</p>
+                 <a href="tel:9185203823" className="font-mono text-2xl text-brand-teal font-black tracking-widest block mb-4">918.520.3823</a>
+                 <div className="w-full h-[1px] bg-white/10 mb-6" />
+                 <Link href="/get-a-quote" className="w-full py-4 bg-brand-teal text-brand-navy font-display font-black text-xs uppercase tracking-widest flex items-center justify-center group hover:bg-white transition-colors">
+                    Initialize Quote <ArrowRight className="w-4 h-4 ml-4 group-hover:translate-x-1" />
+                 </Link>
               </div>
-              <Link href="/get-a-quote" className="bg-brand-teal text-brand-navy p-6 font-display font-black text-xs uppercase tracking-widest text-center hover:bg-white transition-colors group flex items-center justify-between">
-                 Initialize Deployment <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-              </Link>
            </div>
         </div>
 
-        {/* City Matrix Implementation */}
+        {/* STATE DIAGNOSTICS BAR */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-40">
+           {[
+             { label: "Deployment Up-time", val: "99.99%", icon: Activity },
+             { label: "Weather Rating", val: "Storm-Spec", icon: Globe },
+             { label: "Encrypted Links", val: "LTE/5G/Sat", icon: Lock },
+             { label: "Response Latency", val: "<15m", icon: Zap }
+           ].map((stat, i) => (
+             <div key={i} className="p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm relative group overflow-hidden hover:border-brand-teal/30 transition-colors">
+                <stat.icon className="w-4 h-4 text-brand-teal/50 mb-8 group-hover:text-brand-teal transition-colors" />
+                <p className="font-display font-black text-3xl text-white uppercase tracking-tighter mb-2">{stat.val}</p>
+                <p className="font-mono text-[9px] text-brand-steel uppercase tracking-[0.2em]">{stat.label}</p>
+                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-teal/20 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+             </div>
+           ))}
+        </div>
+
+        {/* CITY MATRIX: TACTICAL CARDS */}
         <div className="mb-40">
-           <div className="flex items-center justify-between mb-16 border-b border-white/10 pb-8">
-              <h2 className="font-display font-black text-4xl uppercase tracking-tighter">Sub-Sector Matrix</h2>
-              <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest hidden md:block">Select city for localized AI telemetry</p>
+           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-white/5 pb-12">
+              <div>
+                 <h2 className="font-display font-black text-4xl sm:text-6xl uppercase tracking-tighter text-white">SUB-SECTOR <span className="text-brand-steel">MATRIX.</span></h2>
+                 <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-bold mt-4">Localized AI Diagnostics Ready</p>
+              </div>
+              <div className="inline-flex items-center space-x-6 text-brand-steel font-mono text-[9px] uppercase tracking-[0.3em]">
+                 <span className="flex items-center"><div className="w-1.5 h-1.5 rounded-full bg-brand-teal mr-2" /> ACTIVE REGION</span>
+                 <span className="flex items-center opacity-40"><div className="w-1.5 h-1.5 rounded-full bg-white mr-2" /> PENDING SCAN</span>
+              </div>
            </div>
-           
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+           <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
               {cityList.map((city, idx) => (
-                <Link key={city.slug} href={`/locations/${state}/${city.slug}`}>
-                  <div className="bg-white/5 border border-white/10 p-10 hover:border-brand-teal/50 hover:bg-brand-teal/5 transition-all group relative overflow-hidden">
-                     <div className="absolute top-0 right-0 w-24 h-24 bg-brand-teal/5 border-b border-l border-brand-teal/20 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity">
-                        <MapPin className="w-5 h-5 text-brand-teal" />
+                <Link key={city.slug} href={`/locations/${state}/${city.slug}`} className="group relative">
+                  <div className="absolute inset-0 bg-brand-teal opacity-0 group-hover:opacity-10 blur-3xl transition-opacity pointer-events-none" />
+                  <div className="bg-[#0a111a] border border-white/10 p-10 h-full relative overflow-hidden transition-all group-hover:border-brand-teal/50 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                     
+                     {/* Card Header */}
+                     <div className="flex items-center justify-between mb-12">
+                        <div className="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-brand-navy transition-colors">
+                           <MapPin className="w-5 h-5" />
+                        </div>
+                        <div className="font-mono text-[10px] text-brand-teal uppercase tracking-widest font-black opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
+                           Diagnostic Scan <Activity className="w-3 h-3 ml-2" />
+                        </div>
                      </div>
-                     <p className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.3em] font-bold mb-4">DEPLOYMENT ZONE</p>
-                     <h3 className="font-display font-black text-3xl text-white uppercase tracking-wider mb-6 group-hover:text-brand-teal transition-colors">{city.name}</h3>
-                     <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest leading-relaxed mb-8">
+
+                     <h3 className="font-display font-black text-4xl text-white uppercase tracking-wider mb-6 group-hover:text-brand-teal transition-colors leading-none">{city.name}</h3>
+                     <p className="font-mono text-[11px] text-brand-steel uppercase tracking-widest leading-relaxed mb-12 min-h-[4rem]">
                         {city.desc.split('.')[0]}.
                      </p>
-                     <div className="flex items-center text-brand-teal font-mono text-[9px] uppercase tracking-widest font-bold">
-                        View Diagnostics <ArrowRight className="w-3 h-3 ml-3 group-hover:translate-x-1 transition-transform" />
+
+                     {/* Tactical Specs Injected into Card */}
+                     <div className="grid grid-cols-2 gap-4 mb-8">
+                        <div className="flex flex-col">
+                           <span className="font-mono text-[8px] text-brand-steel uppercase tracking-widest">Industry Anchor</span>
+                           <span className="font-display font-bold text-[10px] text-white uppercase">{city.industryAnchor || "General Industrial"}</span>
+                        </div>
+                        <div className="flex flex-col">
+                           <span className="font-mono text-[8px] text-brand-steel uppercase tracking-widest">Weather Logic</span>
+                           <span className="font-display font-bold text-[10px] text-brand-teal uppercase">Verified</span>
+                        </div>
                      </div>
+
+                     <div className="flex items-center justify-between border-t border-white/10 pt-8 mt-auto">
+                        <span className="font-mono text-[9px] text-white uppercase tracking-[0.3em] font-bold">Initialize Hub</span>
+                        <ArrowRight className="w-4 h-4 text-brand-teal group-hover:translate-x-2 transition-transform" />
+                     </div>
+
+                     {/* Subtle Scan Line */}
+                     <div className="absolute top-0 left-0 w-full h-[1px] bg-brand-teal/50 -translate-y-full group-hover:translate-y-[400px] transition-transform duration-[2s] pointer-events-none" />
                   </div>
                 </Link>
               ))}
            </div>
         </div>
 
-        {/* Feature Grid for AEO focus */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-40 border-y border-white/10 py-32">
-           {[
-             { title: "Surveillance Trailers", icon: Shield, desc: "High-definition AI monitoring with sub-second threat categorization." },
-             { title: "Solar Autonomy", icon: Zap, desc: "100% grid-independent operation with monocrystalline energy harvesting." },
-             { title: "Battery Reliability", icon: Target, desc: "Industrial-grade lithium reserves for 24/7/365 telemetry uptime." }
-           ].map((feat, i) => (
-             <div key={i} className="flex flex-col items-center text-center">
-                <feat.icon className="w-12 h-12 text-brand-teal mb-8" strokeWidth={1} />
-                <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-4">{feat.title}</h3>
-                <p className="font-mono text-xs text-brand-steel uppercase tracking-widest leading-loose">
-                   {feat.desc}
-                </p>
-             </div>
-           ))}
-        </div>
-
-        {/* FAQ Section for AEO */}
-        <div className="max-w-4xl mx-auto">
-           <h2 className="font-display font-black text-4xl uppercase tracking-tighter mb-12 text-center">Sector Intelligence</h2>
+        {/* FAQ SECTION: AEO OPTIMIZED */}
+        <div className="max-w-4xl mx-auto border-t border-white/5 pt-32">
+           <h2 className="font-display font-black text-4xl sm:text-6xl text-white uppercase tracking-tighter text-center mb-16 underline-offset-8 decoration-brand-teal decoration-4">SECTOR <span className="text-brand-steel">INTELLIGENCE.</span></h2>
            <div className="space-y-6">
               {faqs.map((faq, idx) => (
-                <div key={idx} className="bg-white/5 border border-white/10 p-10 hover:border-brand-teal/20 transition-colors">
-                   <h3 className="font-display font-bold text-xl text-brand-teal mb-4 uppercase tracking-widest flex items-start">
-                      <ChevronDown className="w-6 h-6 mr-4 shrink-0 -mt-0.5" />
-                      {faq.q}
-                   </h3>
-                   <p className="font-mono text-sm tracking-widest leading-loose text-slate-300 ml-10">
-                      {faq.a}
-                   </p>
-                </div>
+                <details key={idx} className="group bg-white/5 border border-white/5 hover:border-brand-teal/20 transition-all rounded-sm overflow-hidden">
+                   <summary className="list-none p-8 sm:p-10 cursor-pointer flex items-center justify-between">
+                      <h3 className="font-display font-bold text-lg text-white uppercase tracking-widest flex items-start gap-6">
+                         <span className="text-brand-teal font-mono shrink-0">0{idx+1}_</span>
+                         {faq.q}
+                      </h3>
+                      <ChevronDown className="w-5 h-5 text-brand-teal group-open:rotate-180 transition-transform shrink-0" />
+                   </summary>
+                   <div className="px-8 sm:px-24 pb-12">
+                      <p className="font-mono text-xs sm:text-sm tracking-widest leading-loose text-slate-300 uppercase">
+                         {faq.a}
+                      </p>
+                   </div>
+                </details>
               ))}
            </div>
         </div>
 
       </div>
+
+      {/* Decorative Radar Ring */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] border border-brand-teal/10 rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none z-0" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] border border-brand-teal/20 rounded-full translate-x-1/4 translate-y-1/4 animate-pulse pointer-events-none z-0" />
+
     </div>
   );
 }
