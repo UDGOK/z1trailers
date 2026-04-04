@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Cpu, Battery, Sun, Waves, Wind, ThermometerSnowflake, ThermometerSun } from "lucide-react";
+import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Cpu, Battery, Sun, Waves, Wind, ThermometerSnowflake, ThermometerSun, Radio, Power } from "lucide-react";
 import { Metadata } from 'next';
 import { locationDb } from "@/lib/locationData";
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!stateData || !cityData) return {};
   
   return {
-    title: `Surveillance, Solar & Battery Trailers in ${cityData.name}, ${stateData.name} | Z1 Trailers`,
+    title: `Surveillance, Solar & LiFePO4 Battery Trailers in ${cityData.name}, ${stateData.name} | Z1 Trailers`,
     description: cityData.desc,
   };
 }
@@ -41,16 +41,16 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
 
   const faqs = [
     {
-      q: `Are surveillance trailers available for immediate deployment in ${cityName}?`,
-      a: `Yes, Z1 maintains a dedicated fleet of AI-equipped surveillance trailers for the ${cityName} sector. Deployment typically takes under 24 hours.`
+      q: `What is the benefit of LiFePO4 batteries in ${cityName}?`,
+      a: `Z1 exclusively utilizes LiFePO4 (Lithium Iron Phosphate) for the ${cityName} sector. Unlike traditional lead-acid or standard lithium, LiFePO4 offers 10+ years of lifespan, superior thermal stability in ${stateName}'s climate, and zero maintenance for mission-critical surveillance.`
     },
     {
-      q: `Do your solar trailers require any external power in ${stateName}?`,
-      a: `No. Our units are 100% self-sufficient. They utilize monocrystalline arrays specifically tuned for ${stateName}'s solar metadata, storing energy in lithium cores for continuous 24/7/365 uptime.`
+      q: `Can I use the security trailer as a supplemental power source in ${cityName}?`,
+      a: `Yes. Our units in ${cityName} are equipped with high-output LiFePO4 packs and industrial inverters, providing supplemental power for site offices, field networking, or critical tool charging without grid access.`
     },
     {
-      q: `How do the battery-backed surveillance trailers perform in extreme weather?`,
-      a: `Z1 battery trailers are industrial-grade. In ${cityName}, they are rated for ${stateData.weatherContext || 'extreme industrial conditions'}, featuring thermal management and redundant failovers.`
+      q: `How long do your surveillance trailers run without sunlight in ${stateName}?`,
+      a: `Thanks to the high energy density of our LiFePO4 cores, our trailers typically provide 10-20 days of continuous AI-monitored surveillance in ${cityName} even with zero solar harvest.`
     }
   ];
 
@@ -94,7 +94,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10 pt-32 lg:pt-48">
         
         {/* BREADCRUMB HUD */}
-        <div className="flex items-center space-x-4 mb-20">
+        <div className="flex items-center space-x-4 mb-20 md:mb-32">
            <Link href={`/locations/${state}`} className="font-mono text-[10px] text-brand-teal hover:text-white uppercase tracking-[0.3em] font-bold transition-colors">
               &lt; Sector: {stateName}
            </Link>
@@ -118,11 +118,11 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
               </p>
 
               {/* TACTICAL HARDWARE MATRIX GRID */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                  {[
                    { label: "Surveillance Trailers", icon: Shield, val: "ACTIVE", detail: cityData.threatFocus || "Sector Defense" },
                    { label: "Solar Trailers", icon: Sun, val: "READY", detail: cityData.climateLogic || "Autonomous" },
-                   { label: "Battery Trailers", icon: Battery, val: "STANDBY", detail: "Lithium Core" }
+                   { label: "LiFePO4 Core", icon: Battery, val: "SUPPLEMENTAL", detail: cityData.powerSpec || "LiFePO4 Active" }
                  ].map((t, i) => (
                    <div key={i} className="bg-white/[0.03] border border-white/10 p-8 hover:border-brand-teal transition-all group relative overflow-hidden backdrop-blur-md">
                       <t.icon className="w-8 h-8 text-brand-teal mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform" strokeWidth={1} />
@@ -148,8 +148,8 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
                        <span className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-black">Scanning Sector...</span>
                     </div>
                     <div className="hidden md:flex items-center space-x-3 bg-brand-navy/90 border border-brand-teal/30 px-4 py-2">
-                       <Globe className="w-4 h-4 text-brand-teal" />
-                       <span className="font-mono text-[10px] text-white uppercase tracking-[0.4em]">LAT/LONG: VERIFIED</span>
+                       <Radio className="w-4 h-4 text-brand-teal" />
+                       <span className="font-mono text-[10px] text-white uppercase tracking-[0.4em]">LiFePO4 PAYLOAD ACTIVE</span>
                     </div>
                  </div>
 
@@ -196,35 +196,50 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
            </div>
         </div>
 
-        {/* SECTION: INTELLIGENT DEFENSE (AEO-FOCUSED) */}
-        <section className="py-48 border-y border-white/5 mb-48 text-center">
-           <h2 className="font-display font-black text-5xl md:text-8xl uppercase tracking-tighter mb-12 leading-[0.85]">
-             OFF-GRID <br /><span className="text-brand-steel opacity-50">INTELLIGENCE MATRIX.</span>
-           </h2>
-           <p className="font-mono text-sm tracking-[0.4em] text-brand-teal uppercase font-black mb-24">Tactical Primacy in {cityName}</p>
-
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 overflow-hidden">
-              {[
-                { title: "AI Surveillance", icon: Shield, desc: "Autonomous threat categorization." },
-                { title: "Solar Autonomy", icon: Sun, icon2: Zap, desc: "Monocrystalline energy harvesting." },
-                { title: "Thermal Vector", icon: Activity, desc: "Night-vision heat signature tracking." },
-                { title: "5G Telemetry", icon: Network, desc: "Zero-latency remote monitoring." }
-              ].map((ind, i) => (
-                <div key={i} className="flex flex-col items-center text-center p-12 bg-white/[0.01] border border-white/5 hover:border-brand-teal/50 hover:bg-brand-teal/5 transition-all group overflow-hidden">
-                   <div className="relative mb-12">
-                      <ind.icon className="w-16 h-16 text-brand-teal group-hover:scale-110 transition-transform" strokeWidth={0.5} />
-                      <div className="absolute inset-0 bg-brand-teal/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+        {/* SECTION: LiFePO4 POWER VERTEX (NEW HIGH-END UX SECTION) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-48 border-y border-white/5 py-48 px-8 items-center bg-brand-teal/[0.02] relative overflow-hidden">
+           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(27,154,170,0.05),transparent_50%)]" />
+           
+           <div>
+              <div className="inline-flex items-center space-x-3 mb-8 bg-brand-teal/10 border border-brand-teal/30 px-3 py-1">
+                 <Power className="w-4 h-4 text-brand-teal" />
+                 <span className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] font-black">LiFePO4 SUPPLEMENTAL POWER HUB</span>
+              </div>
+              <h2 className="font-display font-black text-5xl md:text-7xl uppercase tracking-tighter mb-8 leading-[0.85]">
+                Powering More Than <br /><span className="text-brand-teal">Just Cameras.</span>
+              </h2>
+              <p className="font-mono text-sm tracking-[0.15em] leading-loose text-brand-steel uppercase max-w-xl mb-12">
+                 Z1 Trailers in {cityName} are equipped with high-density Lithium Iron Phosphate (LiFePO4) battery cores. Beyond 24/7 surveillance, these units act as tactical power hubs for site offices, field-networking, and emergency equipment.
+              </p>
+              <div className="flex flex-col space-y-6">
+                 {[
+                   { t: "Industrial Inverters", d: "Pure sine wave power for sensitive site electronics." },
+                   { t: "10-Year Lifespan", d: "Zero-maintenance cycle performance for project long-hauls." },
+                   { t: "Thermal Stability", d: "Rated for mission-critical operation in the ${stateName} climate." }
+                 ].map((p, i) => (
+                   <div key={i} className="flex items-start space-x-6 border-l border-brand-teal/30 pl-8 group">
+                      <Zap className="w-5 h-5 text-brand-teal mt-1 group-hover:scale-125 transition-transform" />
+                      <div>
+                         <p className="font-display font-bold text-lg text-white uppercase tracking-widest mb-1">{p.t}</p>
+                         <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest">{p.d}</p>
+                      </div>
                    </div>
-                   <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-6 leading-none">{ind.title}</h3>
-                   <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest leading-loose">
-                      {ind.desc}
-                   </p>
-                   {/* Scanning Animation */}
-                   <div className="absolute bottom-0 left-0 w-full h-[1px] bg-brand-teal/50 opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 transition-all duration-700" />
-                </div>
-              ))}
+                 ))}
+              </div>
            </div>
-        </section>
+
+           <div className="relative">
+              <div className="bg-[#0a111a] border border-white/10 p-12 relative group rounded-sm overflow-hidden">
+                 <div className="absolute inset-0 bg-brand-teal opacity-0 group-hover:opacity-5 transition-opacity pointer-events-none" />
+                 <Battery className="w-full h-80 text-brand-teal opacity-20 group-hover:scale-105 transition-transform duration-1000" strokeWidth={0.5} />
+                 <div className="absolute bottom-12 right-12 text-right">
+                    <p className="font-mono text-[9px] text-brand-teal tracking-[0.4em] uppercase font-black">Voltage Master Grid</p>
+                    <p className="font-display font-black text-6xl text-white uppercase tracking-tighter">12.8V</p>
+                    <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest">Nominal Core Stability</p>
+                 </div>
+              </div>
+           </div>
+        </div>
 
         {/* SECTION: LOCAL FAQ TELEMETRY */}
         <div className="max-w-4xl mx-auto mb-48">
@@ -263,7 +278,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
               
               <div className="flex flex-col md:flex-row items-center justify-center gap-8">
                  <Link href="/get-a-quote" className="w-full md:w-auto px-20 py-6 bg-brand-teal text-brand-navy font-display font-black text-sm uppercase tracking-[0.3em] hover:bg-white transition-all group flex items-center justify-center">
-                    Initialize Deployment <ArrowRight className="w-5 h-5 ml-6 group-hover:translate-x-2 transition-transform" />
+                    Request Deployment <ArrowRight className="w-5 h-5 ml-6 group-hover:translate-x-2 transition-transform" />
                  </Link>
                  <a href="tel:9185203823" className="w-full md:w-auto px-20 py-6 bg-transparent border border-white/20 text-white font-mono text-xs uppercase tracking-[0.4em] hover:bg-white/5 transition-all text-center">
                     Direct Hub: 918.520.3823

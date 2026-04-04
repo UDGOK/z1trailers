@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Cpu } from "lucide-react";
+import { ArrowLeft, ArrowRight, Route, ShieldCheck, MapPin, ChevronDown, Zap, Shield, Target, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Cpu, Power } from "lucide-react";
 import { Metadata } from 'next';
 import { locationDb } from "@/lib/locationData";
 
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!loc) return {};
   
   return {
-    title: `Mobile Security & Solar Surveillance Trailers in ${loc.name} | Z1 Trailers`,
+    title: `Mobile Security & Solar LiFePO4 Trailers in ${loc.name} | Z1 Trailers`,
     description: loc.desc,
   };
 }
@@ -33,16 +33,16 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
 
   const faqs = [
     {
+      q: `What is the benefit of LiFePO4 batteries in ${loc.name}?`,
+      a: `Z1 exclusively utilizes LiFePO4 (Lithium Iron Phosphate) for the ${loc.name} sector. Unlike traditional lead-acid, LiFePO4 offers 10+ years of lifespan, superior thermal stability in ${loc.name}'s climate, and zero maintenance for mission-critical surveillance.`
+    },
+    {
+      q: `Can I use the security trailer as a supplemental power source in ${loc.name}?`,
+      a: `Yes. Our units in the ${loc.name} division are equipped with industrial inverters and LiFePO4 cores, providing supplemental power for site offices, field-networking, or tool charging.`
+    },
+    {
       q: `How long does it take to deploy a security trailer in ${loc.name}?`,
-      a: `In ${loc.name}, Z1 Trailers maintains a rapid-response logistics chain. We can typically deploy a solar-powered surveillance unit to your site in under 24-48 hours, with set-up taking less than 15 minutes.`
-    },
-    {
-      q: `What is the solar efficiency rating for ${loc.name}?`,
-      a: `Our monocrystalline solar arrays are optimized for ${loc.name}'s specific metadata. Even in low-light conditions, Z1 units harvest maximum energy for 24/7/365 operational uptime.`
-    },
-    {
-      q: `Are the units wind-rated for the ${loc.name} sector?`,
-      a: `Yes. All units deployed in the ${loc.name} division feature high-tensile pneumatic masts and anti-tamper security logic, rated for sustained high-velocity conditions.`
+      a: `In ${loc.name}, Z1 Trailers maintains a rapid-response logistics chain. We can typically deploy a solar-powered surveillance unit to your site in under 24-48 hours.`
     }
   ];
 
@@ -104,7 +104,7 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
                  <a href="tel:9185203823" className="font-mono text-2xl text-brand-teal font-black tracking-widest block mb-4">918.520.3823</a>
                  <div className="w-full h-[1px] bg-white/10 mb-6" />
                  <Link href="/get-a-quote" className="w-full py-4 bg-brand-teal text-brand-navy font-display font-black text-xs uppercase tracking-widest flex items-center justify-center group hover:bg-white transition-colors">
-                    Initialize Quote <ArrowRight className="w-4 h-4 ml-4 group-hover:translate-x-1" />
+                    Request Deployment <ArrowRight className="w-4 h-4 ml-4 group-hover:translate-x-1" />
                  </Link>
               </div>
            </div>
@@ -114,7 +114,7 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-40">
            {[
              { label: "Deployment Up-time", val: "99.99%", icon: Activity },
-             { label: "Weather Rating", val: "Storm-Spec", icon: Globe },
+             { label: "LiFePO4 Battery", val: "Standard", icon: Power },
              { label: "Encrypted Links", val: "LTE/5G/Sat", icon: Lock },
              { label: "Response Latency", val: "<15m", icon: Zap }
            ].map((stat, i) => (
@@ -132,7 +132,7 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
            <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-white/5 pb-12">
               <div>
                  <h2 className="font-display font-black text-4xl sm:text-6xl uppercase tracking-tighter text-white">SUB-SECTOR <span className="text-brand-steel">MATRIX.</span></h2>
-                 <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-bold mt-4">Localized AI Diagnostics Ready</p>
+                 <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-bold mt-4">LiFePO4 Tactical Power Hubs Online</p>
               </div>
               <div className="inline-flex items-center space-x-6 text-brand-steel font-mono text-[9px] uppercase tracking-[0.3em]">
                  <span className="flex items-center"><div className="w-1.5 h-1.5 rounded-full bg-brand-teal mr-2" /> ACTIVE REGION</span>
@@ -152,7 +152,7 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
                            <MapPin className="w-5 h-5" />
                         </div>
                         <div className="font-mono text-[10px] text-brand-teal uppercase tracking-widest font-black opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
-                           Diagnostic Scan <Activity className="w-3 h-3 ml-2" />
+                           Power Terminal <Activity className="w-3 h-3 ml-2" />
                         </div>
                      </div>
 
@@ -168,8 +168,8 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
                            <span className="font-display font-bold text-[10px] text-white uppercase">{city.industryAnchor || "General Industrial"}</span>
                         </div>
                         <div className="flex flex-col">
-                           <span className="font-mono text-[8px] text-brand-steel uppercase tracking-widest">Weather Logic</span>
-                           <span className="font-display font-bold text-[10px] text-brand-teal uppercase">Verified</span>
+                           <span className="font-mono text-[8px] text-brand-steel uppercase tracking-widest">LiFePO4 Core</span>
+                           <span className="font-display font-bold text-[10px] text-brand-teal uppercase">Tactical Deployment</span>
                         </div>
                      </div>
 
