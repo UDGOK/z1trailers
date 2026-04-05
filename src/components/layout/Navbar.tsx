@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Shield, Sun, MapPin, ArrowRight, Crosshair, CreditCard, Banknote, Menu, X } from "lucide-react";
+import { ChevronRight, Settings, Maximize, FileText, ArrowRight, Video, Target, Camera, Database, Shield, Zap, Crosshair, ChevronDown, Menu, X, Activity, Sun, MapPin, CreditCard, Banknote } from "lucide-react";
+import Image from "next/image";
+import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 import { cn } from "@/lib/utils";
 
 // --- Sub-component for Trillion-Dollar Products Dropdown ---
@@ -455,6 +457,14 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-[100] pointer-events-none">
+      
+      {/* Top Banner Menu Area */}
+      <div className="pointer-events-auto bg-[#05080c] w-full py-2 border-b border-white/5 flex justify-center items-center">
+         <ConfiguratorTrigger className="text-slate-400 hover:text-brand-teal text-[9px] md:text-[10px] uppercase font-mono tracking-[0.2em] font-bold transition-colors animate-pulse">
+            [ Calculate Specifications & Build Custom Trailer ]
+         </ConfiguratorTrigger>
+      </div>
+
       <div className="pointer-events-auto h-20 lg:h-24 w-full bg-white/95 backdrop-blur-xl border-b border-brand-mist/80 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 shadow-sm relative z-50">
         
         <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group shrink-0">
@@ -519,7 +529,7 @@ export default function Navbar() {
         </nav>
 
         {/* Actions Container */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 md:space-x-4">
 
           <Link 
             href="/get-a-quote" 

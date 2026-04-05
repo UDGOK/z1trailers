@@ -109,8 +109,8 @@ export default function TrailerConfigurator({
     setCameras(cameras.filter(c => c.id !== id));
   };
 
-  const handleFocusOut = (e: any) => {
-    if (e.target.id === 'modal-backdrop') onClose();
+  const handleFocusOut = (e: React.MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).id === 'modal-backdrop') onClose();
   }
 
   const submitConfig = async () => {
@@ -279,8 +279,25 @@ export default function TrailerConfigurator({
                      {/* STEP 1: CAMERAS */}
                      {step === 1 && (
                         <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                           <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-2">Step 1: Surveillance Rig</h3>
-                           <p className="font-mono text-[11px] text-[#b0b0b0] mb-8">Select up to 4 cameras for your mast array.</p>
+                           <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-2">Step 1: Base & Optics</h3>
+                           
+                           {/* Base Platform Selector */}
+                           <div className="mb-6">
+                              <p className="font-mono text-[10px] text-[#b0b0b0] uppercase mb-2">Select Base Platform</p>
+                              <div className="flex gap-2">
+                                 {(["Z1 Scout", "Z1 Guardian", "Z1 Apex"] as const).map(t => (
+                                    <button 
+                                      key={t}
+                                      onClick={() => setModel(t)}
+                                      className={`flex-1 p-3 border font-display text-sm tracking-wider uppercase transition-all whitespace-nowrap overflow-hidden text-ellipsis ${model === t ? 'bg-brand-teal/20 border-brand-teal text-white' : 'bg-[#1a1a1a] border-[#333] text-[#666] hover:border-brand-teal/50'}`}
+                                    >
+                                       {t.replace("Z1 ", "")}
+                                    </button>
+                                 ))}
+                              </div>
+                           </div>
+                           
+                           <p className="font-mono text-[11px] text-[#b0b0b0] mb-4">Select up to 4 cameras for your mast array.</p>
 
                            <div className="grid grid-cols-2 gap-4 mb-6">
                               {(["PTZ", "Bullet", "Dome", "Fisheye"] as CameraType[]).map(type => (
@@ -342,12 +359,14 @@ export default function TrailerConfigurator({
                      {step === 3 && (
                         <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                            <h3 className="font-display font-black text-2xl text-white uppercase tracking-wider mb-2">Step 3: Energy Grid</h3>
-                           <p className="font-mono text-[11px] text-[#b0b0b0] mb-8">Z1 units ship with autonomous dual solar panels.</p>
+                           <p className="font-mono text-[11px] text-[#b0b0b0] mb-8">Z1 units ship with autonomous solar power systems.</p>
                            
-                           <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded opacity-70 mb-4 flex items-center justify-between">
+                           <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded opacity-70 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                               <div>
-                                 <p className="font-display font-bold text-white">Default Matrix</p>
-                                 <p className="font-mono text-[10px] text-[#b0b0b0]">2x 395W Solar + 2x 24V 100Ah Batteries</p>
+                                 <p className="font-display font-bold text-white">Base Solar Matrix (Auto-Matched)</p>
+                                 <p className="font-mono text-[10px] text-[#b0b0b0]">
+                                   {model === "Z1 Scout" ? "1x 395W Solar + 1x 24V 100Ah Battery" : "2x 395W Solar + 2x 24V 100Ah Batteries"}
+                                 </p>
                               </div>
                               <Check className="w-5 h-5 text-[#00ff88]" />
                            </div>

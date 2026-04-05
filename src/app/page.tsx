@@ -10,6 +10,8 @@ import FAQ from "@/components/home/FAQ";
 import CTA from "@/components/home/CTA";
 import AIDetectionsGrid from "@/components/shared/AIDetectionsGrid";
 import AnimatedTelemetry from "@/components/home/AnimatedTelemetry";
+import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
+
 export default function Home() {
   return (
     <>
@@ -46,9 +48,12 @@ export default function Home() {
                 <div className="absolute bottom-0 right-0 w-3 h-3 bg-white/20 z-10" />
               </Link>
               
-              <Link href="/security-trailers" className="font-mono text-[10px] font-bold leading-6 text-brand-navy uppercase tracking-widest flex items-center hover:text-brand-teal transition-colors px-4">
-                [ Calculate Specifications ]
-              </Link>
+              <ConfiguratorTrigger 
+                 modelName="Scout"
+                 className="font-mono text-[10px] font-bold leading-6 text-brand-teal uppercase tracking-widest flex items-center hover:text-brand-navy transition-colors px-4 animate-pulse bg-brand-teal/10 py-2 border border-brand-teal/30"
+              >
+                 [ Calculate Specifications ]
+              </ConfiguratorTrigger>
             </div>
           </div>
           

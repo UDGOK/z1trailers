@@ -4,7 +4,17 @@ import { useState } from "react";
 import TrailerConfigurator from "./TrailerConfigurator";
 import { Settings } from "lucide-react";
 
-export default function ConfiguratorTrigger({ modelName }: { modelName: string }) {
+import { ReactNode } from "react";
+
+export default function ConfiguratorTrigger({ 
+  modelName = "Scout",
+  className,
+  children
+}: { 
+  modelName?: string;
+  className?: string;
+  children?: ReactNode;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Map product name to configurator exact string if necessary
@@ -15,11 +25,15 @@ export default function ConfiguratorTrigger({ modelName }: { modelName: string }
   return (
     <>
       <button 
-        onClick={() => setIsOpen(true)}
-        className="flex-1 md:flex-none px-8 py-4 bg-transparent border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-display font-black text-xs uppercase tracking-[0.2em] transition-colors text-center inline-flex justify-center items-center group"
+        onClick={(e) => { e.preventDefault(); setIsOpen(true); }}
+        className={className || "flex-1 md:flex-none px-8 py-4 bg-transparent border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-display font-black text-xs uppercase tracking-[0.2em] transition-colors text-center inline-flex justify-center items-center group"}
       >
-        <Settings className="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-500" />
-        Configure Build
+        {children || (
+          <>
+            <Settings className="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-500" />
+            Configure Build
+          </>
+        )}
       </button>
 
       <TrailerConfigurator 
