@@ -70,9 +70,9 @@ function ProductsDropdown() {
 // --- Sub-component for Trillion-Dollar Industries Dropdown ---
 function IndustriesDropdown() {
   const industries = [
-    { name: "Construction Sites", href: "/industries/construction-sites", img: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&q=80&w=600" },
-    { name: "Parking Management", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&q=80&w=600" },
-    { name: "Event Security", href: "/industries/events", img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=600" },
+    { name: "Construction Sites", href: "/industries/construction-sites", img: "/images/industries/construction.png" },
+    { name: "Parking Management", href: "/industries/parking-lots", img: "/images/industries/parking.png" },
+    { name: "Event Security", href: "/industries/events", img: "/images/industries/events.png" },
     { name: "Oil & Gas Logistics", href: "/industries/oil-gas", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600" },
     { name: "Law Enforcement", href: "/industries/law-enforcement", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" },
     { name: "Retail & ORC", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
@@ -520,9 +520,7 @@ export default function Navbar() {
 
         {/* Actions Container */}
         <div className="flex items-center space-x-4">
-          <a href="tel:9185203823" className="hidden xl:flex items-center space-x-2 text-brand-navy hover:text-brand-teal transition-colors font-display font-black text-sm tracking-widest mr-4">
-            <span>(918) 520-3823</span>
-          </a>
+
           <Link 
             href="/get-a-quote" 
             className="hidden lg:flex relative group overflow-hidden bg-brand-gold h-14 px-10 items-center justify-center pointer-events-auto transition-transform hover:scale-[1.02] active:scale-[0.98]"

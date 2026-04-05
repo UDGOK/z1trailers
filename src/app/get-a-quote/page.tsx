@@ -94,9 +94,54 @@ export default function QuotePage() {
   const [customizing, setCustomizing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Form field state
+  const [contactName, setContactName] = useState('');
+  const [organization, setOrganization] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactPhone, setContactPhone] = useState('');
+  const [customHardware, setCustomHardware] = useState('');
+  const [siteAddress, setSiteAddress] = useState('');
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 5) as Step);
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1) as Step);
+
+  const handleSubmitQuote = async () => {
+    if (!contactName.trim() || !contactEmail.trim()) {
+      setSubmitError('Name and Email are required to generate your briefing.');
+      return;
+    }
+    setSubmitError(null);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sector,
+          mode,
+          product,
+          customizing,
+          customHardware: customHardware.trim() || null,
+          name: contactName.trim(),
+          organization: organization.trim() || null,
+          email: contactEmail.trim(),
+          phone: contactPhone.trim() || null,
+          siteAddress: siteAddress.trim() || null,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send briefing');
+      }
+      setIsSubmitting(false);
+      nextStep();
+    } catch (err: any) {
+      setIsSubmitting(false);
+      setSubmitError(err.message || 'Transmission failed. Please try again.');
+    }
+  };
 
   if (isSuccess) {
     return (
@@ -346,22 +391,22 @@ export default function QuotePage() {
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div className="flex flex-col">
                        <label className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] mb-2">Command Officer</label>
-                       <input type="text" className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="NAME // RANK" />
+                        <input type="text" value={contactName} onChange={(e) => setContactName(e.target.value)} className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="NAME // RANK" />
                      </div>
                      <div className="flex flex-col">
                        <label className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] mb-2">Organization</label>
-                       <input type="text" className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="ENTITY" />
+                        <input type="text" value={organization} onChange={(e) => setOrganization(e.target.value)} className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="ENTITY" />
                      </div>
                    </div>
 
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div className="flex flex-col">
                        <label className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] mb-2">Contact Point (Email)</label>
-                       <input type="email" className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="UPLINK@ORG.COM" />
+                        <input type="email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="UPLINK@ORG.COM" />
                      </div>
                      <div className="flex flex-col">
                        <label className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] mb-2">Tactical Comms (Phone)</label>
-                       <input type="tel" className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="DIRECT LINE" />
+                        <input type="tel" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="DIRECT LINE" />
                      </div>
                    </div>
 
@@ -370,26 +415,31 @@ export default function QuotePage() {
                         <label className="font-mono text-[9px] text-brand-gold uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
                            <Cpu className="w-3 h-3" /> Custom Hardware Requirements
                         </label>
-                        <textarea rows={3} className="bg-white border border-brand-gold text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none resize-none placeholder:text-brand-gold/40" placeholder="OPTICS, STORAGE, COMMS..."></textarea>
+                         <textarea rows={3} value={customHardware} onChange={(e) => setCustomHardware(e.target.value)} className="bg-white border border-brand-gold text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none resize-none placeholder:text-brand-gold/40" placeholder="OPTICS, STORAGE, COMMS..."></textarea>
                      </div>
                    )}
 
                    <div className="flex flex-col">
                       <label className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] mb-2">Target Perimeter / Site Address</label>
-                      <input type="text" className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="LAT/LONG OR ADDRESS" />
+                       <input type="text" value={siteAddress} onChange={(e) => setSiteAddress(e.target.value)} className="bg-zinc-50 border border-brand-navy/10 text-brand-navy font-mono text-sm px-4 py-3 focus:outline-none focus:border-brand-teal transition-colors" placeholder="LAT/LONG OR ADDRESS" />
                    </div>
 
                    <div className="flex gap-4">
                       <button onClick={prevStep} className="flex-1 border border-brand-navy text-brand-navy font-display font-black uppercase tracking-[0.2em] text-[10px] py-4 hover:bg-brand-navy hover:text-white transition-all">
                         BACK
                       </button>
-                      <button 
-                        onClick={() => { setIsSubmitting(true); setTimeout(() => { setIsSubmitting(false); nextStep(); }, 2000); }}
-                        className="flex-[2] bg-brand-navy text-white font-display font-black uppercase tracking-[0.25em] text-[10px] py-4 hover:bg-brand-teal transition-colors flex items-center justify-center"
-                        disabled={isSubmitting}
-                      >
-                         {isSubmitting ? <Activity className="w-4 h-4 animate-spin text-white" /> : "GENERATE BRIEFING"}
-                      </button>
+                       <button 
+                         onClick={handleSubmitQuote}
+                         className="flex-[2] bg-brand-navy text-white font-display font-black uppercase tracking-[0.25em] text-[10px] py-4 hover:bg-brand-teal transition-colors flex items-center justify-center"
+                         disabled={isSubmitting}
+                       >
+                          {isSubmitting ? <Activity className="w-4 h-4 animate-spin text-white" /> : "GENERATE BRIEFING"}
+                       </button>
+                       {submitError && (
+                         <p className="col-span-full mt-4 text-center font-mono text-[10px] text-red-500 uppercase tracking-widest bg-red-50 border border-red-200 p-3">
+                           ⚠ {submitError}
+                         </p>
+                       )}
                    </div>
                 </div>
               </motion.div>
@@ -431,9 +481,9 @@ export default function QuotePage() {
                        <button onClick={prevStep} className="flex-1 border border-brand-navy text-brand-navy font-display font-black uppercase tracking-[0.2em] text-[10px] py-4 hover:bg-brand-navy hover:text-white transition-all">
                           EDIT BRIEFING
                        </button>
-                       <button 
-                          onClick={() => setIsSuccess(true)}
-                          className="flex-[2] bg-brand-navy text-white font-display font-black uppercase tracking-[0.25em] text-[10px] py-4 hover:bg-brand-teal transition-colors"
+                        <button 
+                           onClick={() => { setIsSuccess(true); }}
+                           className="flex-[2] bg-brand-navy text-white font-display font-black uppercase tracking-[0.25em] text-[10px] py-4 hover:bg-brand-teal transition-colors"
                        >
                           INITIALIZE PROTOCOL ALPHA
                        </button>
