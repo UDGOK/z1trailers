@@ -182,8 +182,22 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": ind.faqs.map((faq: { q: string, a: string }) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+
   return (
     <main className="bg-brand-navy min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <SectorHero 
         name={ind.name}
         desc={ind.desc}

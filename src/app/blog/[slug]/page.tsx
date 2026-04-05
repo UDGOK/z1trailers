@@ -35,8 +35,30 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound()
   }
 
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.mainImage ? ["https://z1trailers.com/images/LogoHR.png"] : [], 
+    "datePublished": post.publishedAt || new Date().toISOString(),
+    "author": {
+      "@type": "Organization",
+      "name": "Z1 Trailers"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Z1 Trailers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://z1trailers.com/images/LogoHR.png"
+      }
+    }
+  };
+
   return (
     <div className="relative min-h-screen pt-32 pb-24 selection:bg-brand-teal selection:text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <BatteryBackground />
       <BlogPostUI post={post} />
     </div>
