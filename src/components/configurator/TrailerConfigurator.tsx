@@ -69,7 +69,7 @@ const BATTERY_OPTIONS = [
 const MODEL_SPECS = {
   "Z1 Scout": {
     power: "2x 395W Bifacial Solar, 50W Victron MPPT",
-    battery: "2x 24V 100Ah Self-Heated (Default)",
+    battery: "2x 24V 100Ah LiFePO4 w/ BMS",
     lights: "1 Red Strobe, 2 Blue Flashers",
     mast: "18ft Telescopic Mast",
     mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 18' | Weight: 1200 ~ 1900 Lbs.",
@@ -78,7 +78,7 @@ const MODEL_SPECS = {
   },
   "Z1 Guardian": {
     power: "3x 395W Solar, Victron 100W MPPT + Inverter",
-    battery: "3x 24V 100Ah Self-Heated (Default)",
+    battery: "3x 24V 100Ah LiFePO4 w/ BMS",
     lights: "1 Red Strobe, 2 Blue Flashers",
     mast: "24ft Telescopic Mast",
     mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
@@ -87,7 +87,7 @@ const MODEL_SPECS = {
   },
   "Z1 Apex": {
     power: "3x 395W Solar, Victron 100W MPPT + Inverter",
-    battery: "3x 24V 200Ah Self-Heated (Default)",
+    battery: "4x 24V 100Ah LiFePO4 w/ BMS",
     lights: "1 Red Strobe, 2 Blue Flashers",
     mast: "24ft Telescopic Mast",
     mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
@@ -184,7 +184,7 @@ export default function TrailerConfigurator({
     // Battery Engineering Math
     let baseWh = 4800; // Z1 Scout baseline 2x 100Ah 24v = 4800wh
     if (model === "Z1 Guardian") baseWh = 7200; // 3x 100Ah 24v = 7200wh
-    if (model === "Z1 Apex") baseWh = 14400; // 3x 200Ah 24v = 14400wh
+    if (model === "Z1 Apex") baseWh = 9600; // 4x 100Ah 24v = 9600wh
 
     let upgradeWh = 0;
     if (selectedBattery) {
