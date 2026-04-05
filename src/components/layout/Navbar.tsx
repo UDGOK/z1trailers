@@ -468,14 +468,7 @@ export default function Navbar() {
       <div className="pointer-events-auto h-20 lg:h-24 w-full bg-white/95 backdrop-blur-xl border-b border-brand-mist/80 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 shadow-sm relative z-50">
         
         <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group shrink-0">
-          <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-brand-navy flex items-center justify-center overflow-hidden">
-            <span className="relative z-10 font-display font-black text-white text-xl lg:text-2xl tracking-tighter">Z1</span>
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-teal/50 to-transparent h-[200%]"
-              animate={{ y: ["-100%", "50%"] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-            />
-          </div>
+          <img src="/logo.png" alt="Z1 Trailers" className="h-10 lg:h-12 object-contain" />
           <div className="flex flex-col">
             <span className="font-display font-black text-xl lg:text-2xl text-brand-navy uppercase tracking-[0.25em] leading-none group-hover:text-brand-teal transition-colors">
               Trailers

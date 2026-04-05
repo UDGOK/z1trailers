@@ -1,8 +1,11 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
-import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check, Info } from "lucide-react";
+import { useState, useMemo, useRef } from "react";
+import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check, Info, Download } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { SpecSheetTemplate } from "./SpecSheetPDF";
 
 type CameraBrand = "Uniview" | "Hanwha" | "Axis";
 type CameraType = "PTZ" | "Fisheye" | "Multisensor" | "Dome" | "Bullet";
@@ -79,6 +82,8 @@ export default function TrailerConfigurator({
   const [userData, setUserData] = useState({ name: "", email: "", phone: "", company: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const pdfRef = useRef<HTMLDivElement>(null);
 
   // Derived calculations
   const { totalPurchase, estMonthly, powerDraw } = useMemo(() => {
@@ -146,6 +151,35 @@ export default function TrailerConfigurator({
       alert("Failed to send config. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleDownloadPDF = async () => {
+    if (!pdfRef.current) return;
+    setIsGeneratingPDF(true);
+    try {
+      // Temporarily make it visible but vastly off-screen
+      pdfRef.current.style.display = 'block';
+      const canvas = await html2canvas(pdfRef.current, { scale: 2, useCORS: true });
+      const imgData = canvas.toDataURL('image/jpeg', 1.0);
+      pdfRef.current.style.display = 'none';
+
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4" // 210 x 297 mm
+      });
+      // A4 dimensions
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`Z1_Trailers_SpecSheet_${model.replace(' ', '_')}.pdf`);
+    } catch (e) {
+      console.error(e);
+      alert("Failed to generate PDF snapshot.");
+    } finally {
+      setIsGeneratingPDF(false);
     }
   };
 
@@ -509,17 +543,42 @@ export default function TrailerConfigurator({
                         Next Step <ChevronRight className="w-4 h-4 ml-1" />
                      </button>
                   ) : (
-                     <button 
-                       onClick={submitConfig} 
-                       disabled={isSubmitting || !userData.email || !userData.name}
-                       className="bg-[#ff6b00] text-white hover:bg-white hover:text-brand-navy font-display font-black text-sm uppercase px-8 py-3 transition-colors flex items-center disabled:opacity-50"
-                     >
-                        {isSubmitting ? "Sending..." : "Request Build"} <Send className="w-4 h-4 ml-2" />
-                     </button>
+                     <div className="flex gap-4">
+                       <button 
+                         onClick={handleDownloadPDF} 
+                         disabled={isGeneratingPDF}
+                         className="border-2 border-[#333] text-[#b0b0b0] hover:border-brand-teal hover:text-white font-display font-black text-xs uppercase px-6 py-3 transition-colors flex items-center disabled:opacity-50"
+                       >
+                          {isGeneratingPDF ? "Building..." : "Save PDF Specs"} <Download className="w-4 h-4 ml-2" />
+                       </button>
+                       <button 
+                         onClick={submitConfig} 
+                         disabled={isSubmitting || !userData.email || !userData.name}
+                         className="bg-[#ff6b00] text-white hover:bg-white hover:text-brand-navy font-display font-black text-sm uppercase px-8 py-3 transition-colors flex items-center disabled:opacity-50"
+                       >
+                          {isSubmitting ? "Sending..." : "Request Build"} <Send className="w-4 h-4 ml-2" />
+                       </button>
+                     </div>
                   )}
                </div>
              </>
            )}
+        </div>
+
+        {/* HIDDEN PDF TEMPLATE */}
+        <div style={{ display: 'none', position: 'fixed', top: '-10000px', left: '-10000px' }}>
+          <SpecSheetTemplate 
+            ref={pdfRef}
+            model={model}
+            cameras={cameras}
+            audio={audio}
+            lpr={lpr}
+            storage={storage}
+            selectedBattery={selectedBattery}
+            powerDraw={powerDraw}
+            totalPurchase={totalPurchase}
+            estMonthly={estMonthly}
+          />
         </div>
 
       </motion.div>

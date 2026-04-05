@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-brand-teal text-brand-navy flex items-center justify-center font-display font-black text-xl">Z1</div>
+                <img src="/logo.png" alt="Z1 Trailers" className="h-10 object-contain brightness-0 invert" />
                 <span className="font-display font-black text-xl text-white uppercase tracking-[0.2em]">Trailers</span>
               </div>
             </Link>
