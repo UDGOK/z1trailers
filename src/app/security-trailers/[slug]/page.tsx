@@ -16,9 +16,10 @@ const hardwareDb: Record<string, any> = {
     specs: {
        autonomy: "5 Days",
        optics: "Dual 4MP AI",
-       mast: "30ft Pneumatic",
+       mast: "18ft Telescopic",
        comms: "4G LTE",
     },
+    mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 18' | Weight: 1200 ~ 1900 Lbs.",
     features: [
       { title: "Targeted Analytics", desc: "Edge-computed human & vehicle categorization.", icon: Cpu },
       { title: "Grid Independence", desc: "100% solar autonomous with rapid-recharge arrays.", icon: Sun },
@@ -43,9 +44,10 @@ const hardwareDb: Record<string, any> = {
     specs: {
        autonomy: "10 Days",
        optics: "Quad 4MP AI",
-       mast: "30ft Reinforced",
+       mast: "24ft Telescopic",
        comms: "Dual-SIM 5G/LTE",
     },
+    mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
     features: [
       { title: "Active Deterrence", desc: "120dB directional loudspeaker and ultra-bright strobes.", icon: Crosshair },
       { title: "360° Field of View", desc: "Complete perimeter coverage leaving zero blind spots.", icon: Shield },
@@ -70,9 +72,10 @@ const hardwareDb: Record<string, any> = {
     specs: {
        autonomy: "15 Days",
        optics: "Thermal + LPR",
-       mast: "30ft Mil-Spec",
+       mast: "24ft Mil-Spec",
        comms: "5G & StarLink Opt.",
     },
+    mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
     features: [
       { title: "Heat Signature Tracking", desc: "Identify targets through dense fog, smoke, and total darkness.", icon: Target },
       { title: "Automated LPR", desc: "Log, capture, and identify license plates up to 90mph.", icon: Cpu },
@@ -413,6 +416,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                      </div>
                   </div>
                </div>
+
+               {product.mechanical && (
+                 <div className="mt-6 border-t border-brand-teal/20 pt-6">
+                    <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.2em] mb-2 border-b border-white/5 pb-1 inline-block">Mechanical Architecture</p>
+                    <p className="font-mono text-xs text-slate-400 tracking-widest leading-loose">
+                      {product.mechanical}
+                    </p>
+                 </div>
+               )}
 
                <Link href="/hardware-deep-dive" className="mt-12 inline-flex items-center space-x-4 bg-white/5 border border-white/10 px-8 py-4 font-display font-black text-xs uppercase tracking-[0.25em] text-white hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all group">
                   <span>[ INITIALIZE HARDWARE DEEP-DIVE ]</span>

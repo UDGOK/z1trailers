@@ -63,6 +63,36 @@ const getCameraPrice = (type: CameraType, brand: CameraBrand) => {
   return Math.round(base * multiplier);
 };
 
+const MODEL_SPECS = {
+  "Z1 Scout": {
+    power: "2x 395W Bifacial Solar, 50W Victron MPPT",
+    battery: "2x 24V 100Ah Self-Heated (Default)",
+    lights: "1 Red Strobe, 2 Blue Flashers",
+    mast: "18ft Telescopic Mast",
+    mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 18' | Weight: 1200 ~ 1900 Lbs.",
+    extras: "16/4 Stranded & CAT5e Bundled Cable, 4 Leveling Jacks",
+    baseDraw: 35,
+  },
+  "Z1 Guardian": {
+    power: "3x 395W Solar, Victron 100W MPPT + Inverter",
+    battery: "3x 24V 100Ah Self-Heated (Default)",
+    lights: "1 Red Strobe, 2 Blue Flashers",
+    mast: "24ft Telescopic Mast",
+    mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
+    extras: "16/4 Stranded & CAT5e Bundled Cable, 4 Leveling Jacks",
+    baseDraw: 45,
+  },
+  "Z1 Apex": {
+    power: "3x 395W Solar, Victron 100W MPPT + Inverter",
+    battery: "3x 24V 200Ah Self-Heated (Default)",
+    lights: "1 Red Strobe, 2 Blue Flashers",
+    mast: "24ft Telescopic Mast",
+    mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
+    extras: "16/4 Stranded & CAT5e Bundled Cable, 4 Leveling Jacks",
+    baseDraw: 50,
+  }
+};
+
 export default function TrailerConfigurator({ 
   isOpen, 
   onClose, 
@@ -77,6 +107,7 @@ export default function TrailerConfigurator({
   const [cameras, setCameras] = useState<CameraSelection[]>([]);
   const [audio, setAudio] = useState(false);
   const [lpr, setLpr] = useState(false);
+  const [comm, setComm] = useState<"Teltonika 4G LTE" | "Starlink Satellite">("Teltonika 4G LTE");
   const [storage, setStorage] = useState<"0" | "30" | "60">("0");
   const [selectedBattery, setSelectedBattery] = useState<string>("");
   const [showBatteryInfo, setShowBatteryInfo] = useState(false);
@@ -99,6 +130,7 @@ export default function TrailerConfigurator({
         setCameras([]);
         setAudio(false);
         setLpr(false);
+        setComm("Teltonika 4G LTE");
         setStorage("0");
         setSelectedBattery("");
         setLedFlood(true);
@@ -115,7 +147,7 @@ export default function TrailerConfigurator({
   // Derived calculations
   const { totalPurchase, estMonthly, powerDraw } = useMemo(() => {
     let total = PRICING.models[model];
-    let draw = 50; // Base system draw
+    let draw = MODEL_SPECS[model].baseDraw;
 
     cameras.forEach(c => {
       total += c.price;
@@ -126,6 +158,13 @@ export default function TrailerConfigurator({
     if (lpr) { total += PRICING.addons.lpr; draw += 25; }
     if (storage === "30") total += PRICING.addons.storage30;
     if (storage === "60") total += PRICING.addons.storage60;
+
+    if (comm === "Starlink Satellite") {
+       total += 600; // Hardware overhead for Starlink
+       draw += 45;
+    } else {
+       draw += 5; // Teltonika draw
+    }
     
     if (selectedBattery) {
        const batt = BATTERY_OPTIONS.find(b => b.id === selectedBattery);
@@ -165,7 +204,7 @@ export default function TrailerConfigurator({
         company: userData.company,
         email: userData.email,
         phone: userData.phone,
-        message: `CONFIGURATOR BUILD: \nModel: ${model}\nCameras: ${cameras.map(c => `${c.brand} ${c.type}`).join(', ')}\nAudio: ${audio}\nLPR: ${lpr}\nStorage: ${storage} days\nBattery Upgrade: ${selectedBattery || 'Standard'}\nEst Purchase: $${totalPurchase}\nEst Monthly: $${estMonthly}`,
+        message: `CONFIGURATOR BUILD: \nModel: ${model}\nCameras: ${cameras.map(c => `${c.brand} ${c.type}`).join(', ')}\nAudio: ${audio}\nLPR: ${lpr}\nComm: ${comm}\nStorage: ${storage} days\nBattery Upgrade: ${selectedBattery || 'Standard'}\nEst Purchase: $${totalPurchase}\nEst Monthly: $${estMonthly}`,
         requirements: [],
       };
       await fetch('/api/quote', {
@@ -293,6 +332,22 @@ export default function TrailerConfigurator({
                        <p className="font-bold text-sm text-white">Insight LPR System</p>
                      </motion.div>
                    )}
+                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-brand-navy border border-brand-teal/30 flex items-center space-x-3 rounded">
+                      <Zap className="w-4 h-4 text-brand-teal" />
+                      <div>
+                         <p className="font-bold text-[11px] text-white">Communications Layer: {comm}</p>
+                      </div>
+                   </motion.div>
+                   
+                   {/* Mechanical Specs & Included Features mapped dynamically */}
+                   <div className="mt-4 p-3 bg-[#020406] border border-brand-teal/10 rounded space-y-2">
+                      <p className="font-mono text-[9px] text-brand-teal uppercase tracking-widest mb-2 border-b border-brand-teal/20 pb-1">Included Base Specs</p>
+                      <p className="font-mono text-[9px] text-slate-300"><strong className="text-white">Power:</strong> {MODEL_SPECS[model].power}</p>
+                      <p className="font-mono text-[9px] text-slate-300"><strong className="text-white">Storage:</strong> {MODEL_SPECS[model].battery}</p>
+                      <p className="font-mono text-[9px] text-slate-300"><strong className="text-white">Mast:</strong> {MODEL_SPECS[model].mast}</p>
+                      <p className="font-mono text-[9px] text-slate-300"><strong className="text-white">Deterrents:</strong> {MODEL_SPECS[model].lights}</p>
+                      <p className="font-mono text-[9px] text-slate-400 mt-2 pt-2 border-t border-brand-teal/5"><strong className="text-slate-300">Mechanical:</strong> {MODEL_SPECS[model].mechanical}</p>
+                   </div>
                </div>
 
               {/* Power Draw Gauge */}
@@ -427,6 +482,14 @@ export default function TrailerConfigurator({
                                     <p className="font-mono text-[10px] text-[#666] mt-1">Dedicated license plate recognition software.</p>
                                  </div>
                               </label>
+
+                              <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded mb-4">
+                                 <p className="font-display font-bold text-white mb-2">Communications Uplink</p>
+                                 <select value={comm} onChange={e => setComm(e.target.value as "Teltonika 4G LTE" | "Starlink Satellite")} className="w-full bg-[#0a0a0a] border border-[#333] text-white p-2 font-mono text-xs focus:border-brand-teal outline-none">
+                                    <option value="Teltonika 4G LTE">Teltonika 4G LTE (Standard Included)</option>
+                                    <option value="Starlink Satellite">Starlink Satellite Upgrade (+$600 / +45W Draw)</option>
+                                 </select>
+                              </div>
 
                               <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded mb-4">
                                  <p className="font-display font-bold text-white mb-2">Local Edge Storage</p>
