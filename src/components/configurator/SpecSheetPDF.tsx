@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef } from "react";
+
 
 export interface SpecSheetProps {
   model: string;
@@ -15,15 +15,14 @@ export interface SpecSheetProps {
   estMonthly: number;
 }
 
-export const SpecSheetTemplate = forwardRef<HTMLDivElement, SpecSheetProps>(({
+export function SpecSheetTemplate({
   model, cameras, audio, lpr, storage, ledFlood, selectedBattery, powerDraw, totalPurchase, estMonthly
-}, ref) => {
+}: SpecSheetProps) {
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const buildId = `Z1-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
 
   return (
     <div 
-      ref={ref} 
       className="bg-white text-[#0a1628] font-sans relative overflow-hidden" 
       style={{ width: '800px', minHeight: '1131px', padding: '60px' }}
     >
@@ -150,6 +149,4 @@ export const SpecSheetTemplate = forwardRef<HTMLDivElement, SpecSheetProps>(({
       </div>
     </div>
   );
-});
-
-SpecSheetTemplate.displayName = "SpecSheetTemplate";
+}

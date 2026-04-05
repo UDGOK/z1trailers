@@ -177,12 +177,14 @@ export default function TrailerConfigurator({
     if (!pdfRef.current) return;
     setIsGeneratingPDF(true);
     try {
-      // PDF is now rendered off-screen (absolute opacity-0) instead of display:none to fix html2canvas bug
+      // PDF is now rendered precisely at origin but completely invisible and behind the modal.
       const canvas = await html2canvas(pdfRef.current, { 
         scale: 2, 
         useCORS: true,
-        logging: false,
-        backgroundColor: "#ffffff"
+        logging: true,
+        backgroundColor: "#ffffff",
+        windowWidth: 1200,
+        windowHeight: 1600
       });
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
 
@@ -611,10 +613,9 @@ export default function TrailerConfigurator({
            )}
         </div>
 
-        {/* HIDDEN PDF TEMPLATE (Fix html2canvas error by putting it physically in DOM but off-screen and invisible) */}
-        <div className="absolute top-[200vh] left-[-200vw] pointer-events-none opacity-0">
+        {/* HIDDEN PDF TEMPLATE (Strict DOM placement to prevent html2canvas canvas bounds failure) */}
+        <div ref={pdfRef} className="fixed top-0 left-0 z-[-50] opacity-0 pointer-events-none w-[800px] h-[1131px]">
           <SpecSheetTemplate 
-            ref={pdfRef}
             model={model}
             cameras={cameras}
             audio={audio}
