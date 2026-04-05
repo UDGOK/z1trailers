@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useMemo, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check, Info, Download } from "lucide-react";
 import { toJpeg } from "html-to-image";
 import jsPDF from "jspdf";
@@ -84,11 +85,14 @@ export default function TrailerConfigurator({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pdfRef = useRef<HTMLDivElement>(null);
 
-  // Reset state on close
+  // Reset state on close & manage portal mounting
   useEffect(() => {
+    setMounted(true);
     if (!isOpen) {
+      document.body.style.overflow = "";
       setTimeout(() => {
         setStep(1);
         setModel(initialModel);
@@ -101,7 +105,11 @@ export default function TrailerConfigurator({
         setUserData({ name: "", email: "", phone: "", company: "" });
         setSubmitted(false);
       }, 300);
+    } else {
+      document.body.style.overflow = "hidden";
     }
+
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen, initialModel]);
 
   // Derived calculations
@@ -204,9 +212,9 @@ export default function TrailerConfigurator({
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div 
       id="modal-backdrop" 
       onClick={handleFocusOut}
@@ -633,6 +641,7 @@ export default function TrailerConfigurator({
         </div>
 
       </motion.div>
-    </div>
+    </div>,
+    document.body
   );
 }
