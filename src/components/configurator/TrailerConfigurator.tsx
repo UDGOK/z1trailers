@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check, Info, Download } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -79,11 +79,30 @@ export default function TrailerConfigurator({
   const [storage, setStorage] = useState<"0" | "30" | "60">("0");
   const [selectedBattery, setSelectedBattery] = useState<string>("");
   const [showBatteryInfo, setShowBatteryInfo] = useState(false);
+  const [ledFlood, setLedFlood] = useState(true);
   const [userData, setUserData] = useState({ name: "", email: "", phone: "", company: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const pdfRef = useRef<HTMLDivElement>(null);
+
+  // Reset state on close
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setStep(1);
+        setModel(initialModel);
+        setCameras([]);
+        setAudio(false);
+        setLpr(false);
+        setStorage("0");
+        setSelectedBattery("");
+        setLedFlood(true);
+        setUserData({ name: "", email: "", phone: "", company: "" });
+        setSubmitted(false);
+      }, 300);
+    }
+  }, [isOpen, initialModel]);
 
   // Derived calculations
   const { totalPurchase, estMonthly, powerDraw } = useMemo(() => {
@@ -158,11 +177,14 @@ export default function TrailerConfigurator({
     if (!pdfRef.current) return;
     setIsGeneratingPDF(true);
     try {
-      // Temporarily make it visible but vastly off-screen
-      pdfRef.current.style.display = 'block';
-      const canvas = await html2canvas(pdfRef.current, { scale: 2, useCORS: true });
+      // PDF is now rendered off-screen (absolute opacity-0) instead of display:none to fix html2canvas bug
+      const canvas = await html2canvas(pdfRef.current, { 
+        scale: 2, 
+        useCORS: true,
+        logging: false,
+        backgroundColor: "#ffffff"
+      });
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
-      pdfRef.current.style.display = 'none';
 
       const pdf = new jsPDF({
         orientation: "portrait",
@@ -246,6 +268,12 @@ export default function TrailerConfigurator({
                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-[#252525] border border-[#333] flex items-center space-x-3 rounded">
                       <Speaker className="w-4 h-4 text-[#ff6b00]" />
                       <p className="font-display font-bold text-sm text-white">30W IP Horn Speaker</p>
+                   </motion.div>
+                 )}
+                 {ledFlood && (
+                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-[#252525] border border-[#333] flex items-center space-x-3 rounded">
+                      <Zap className="w-4 h-4 text-[#ff6b00]" />
+                      <p className="font-display font-bold text-sm text-white">Motion LED Flood</p>
                    </motion.div>
                  )}
                  {lpr && (
@@ -389,7 +417,7 @@ export default function TrailerConfigurator({
                                  </div>
                               </label>
 
-                              <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded">
+                              <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded mb-4">
                                  <p className="font-display font-bold text-white mb-2">Local Edge Storage</p>
                                  <select value={storage} onChange={e => setStorage(e.target.value as "0"|"30"|"60")} className="w-full bg-[#0a0a0a] border border-[#333] text-white p-2 font-mono text-xs focus:border-brand-teal outline-none">
                                     <option value="0">Standard Edge Storage (Included)</option>
@@ -397,6 +425,17 @@ export default function TrailerConfigurator({
                                     <option value="60">60 Days Enterprise Retention (+$1250)</option>
                                  </select>
                               </div>
+
+                              <label className="flex items-start space-x-4 p-4 bg-[#1a1a1a] border border-brand-teal/50 rounded cursor-pointer transition-all">
+                                 <input type="checkbox" checked={ledFlood} onChange={e => setLedFlood(e.target.checked)} className="mt-1 accent-[#ff6b00]" />
+                                 <div>
+                                    <p className="font-display font-bold text-white flex items-center space-x-2">
+                                      <span>LED Illuminator / Flood</span> 
+                                      <span className="text-brand-teal text-xs border border-brand-teal px-1">INCLUDED (FREE)</span>
+                                    </p>
+                                    <p className="font-mono text-[10px] text-[#b0b0b0] mt-1">High-output active motion deterrence lighting. Only activates on verified human/vehicle perimeter breach.</p>
+                                 </div>
+                              </label>
                            </div>
                         </motion.div>
                      )}
@@ -532,11 +571,18 @@ export default function TrailerConfigurator({
 
                {/* Footer Navigation */}
                <div className="p-6 border-t border-[#333] flex justify-between items-center bg-[#111]">
-                  {step > 1 ? (
-                     <button onClick={() => setStep(step - 1)} className="text-[#b0b0b0] hover:text-white font-mono text-xs uppercase tracking-wider flex items-center">
-                        <ChevronLeft className="w-4 h-4 mr-1" /> Back
+                  <div className="flex gap-4">
+                     {step > 1 ? (
+                        <button onClick={() => setStep(step - 1)} className="text-[#b0b0b0] hover:text-white font-mono text-xs uppercase tracking-wider flex items-center bg-[#222] px-4 py-2 rounded">
+                           <ChevronLeft className="w-4 h-4 mr-1" /> Back
+                        </button>
+                     ) : (
+                        <div />
+                     )}
+                     <button onClick={() => { setStep(1); setCameras([]); setAudio(false); setLpr(false); setSelectedBattery(""); setLedFlood(true); }} className="text-red-400 hover:text-red-300 font-mono text-xs uppercase tracking-wider flex items-center">
+                        <X className="w-3 h-3 mr-1" /> Start Over
                      </button>
-                  ) : <div />}
+                  </div>
                   
                   {step < 4 ? (
                      <button onClick={() => setStep(step + 1)} className="bg-brand-teal text-brand-navy hover:bg-white font-display font-black text-sm uppercase px-8 py-3 transition-colors flex items-center">
@@ -565,8 +611,8 @@ export default function TrailerConfigurator({
            )}
         </div>
 
-        {/* HIDDEN PDF TEMPLATE */}
-        <div style={{ display: 'none', position: 'fixed', top: '-10000px', left: '-10000px' }}>
+        {/* HIDDEN PDF TEMPLATE (Fix html2canvas error by putting it physically in DOM but off-screen and invisible) */}
+        <div className="absolute top-[200vh] left-[-200vw] pointer-events-none opacity-0">
           <SpecSheetTemplate 
             ref={pdfRef}
             model={model}
@@ -574,6 +620,7 @@ export default function TrailerConfigurator({
             audio={audio}
             lpr={lpr}
             storage={storage}
+            ledFlood={ledFlood}
             selectedBattery={selectedBattery}
             powerDraw={powerDraw}
             totalPurchase={totalPurchase}

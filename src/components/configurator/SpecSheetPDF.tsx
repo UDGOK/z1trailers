@@ -8,6 +8,7 @@ export interface SpecSheetProps {
   audio: boolean;
   lpr: boolean;
   storage: string;
+  ledFlood: boolean;
   selectedBattery: string;
   powerDraw: number;
   totalPurchase: number;
@@ -15,7 +16,7 @@ export interface SpecSheetProps {
 }
 
 export const SpecSheetTemplate = forwardRef<HTMLDivElement, SpecSheetProps>(({
-  model, cameras, audio, lpr, storage, selectedBattery, powerDraw, totalPurchase, estMonthly
+  model, cameras, audio, lpr, storage, ledFlood, selectedBattery, powerDraw, totalPurchase, estMonthly
 }, ref) => {
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const buildId = `Z1-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
@@ -39,7 +40,7 @@ export const SpecSheetTemplate = forwardRef<HTMLDivElement, SpecSheetProps>(({
         {/* HEADER SECTION */}
         <div className="flex justify-between items-start border-b-2 border-[#0a1628] pb-6 mb-8">
            <div className="flex items-center gap-4">
-              <img src="/logo.png" alt="Z1 Trailers" className="h-16 object-contain" />
+              <img src="/Logo.png" alt="Z1 Trailers" className="h-16 object-contain" />
               <div className="h-12 w-[2px] bg-[#0a1628]/20" />
               <div>
                  <h1 className="font-bold text-3xl tracking-tighter uppercase leading-none">Tactical Payload</h1>
@@ -93,7 +94,11 @@ export const SpecSheetTemplate = forwardRef<HTMLDivElement, SpecSheetProps>(({
              </tr>
              <tr className="border-b border-gray-100 bg-gray-50">
                <td className="py-4 px-2 font-mono text-[11px] text-gray-500 uppercase tracking-wider">Active Deterrence</td>
-               <td className="py-4 px-2 font-bold">{audio ? '30W IP Horn Speaker (Enabled)' : 'Omitted'}</td>
+               <td className="py-4 px-2 font-bold">
+                 {audio && <div>30W IP Horn Speaker (Enabled)</div>}
+                 {ledFlood && <div>Motion LED Flood (Included)</div>}
+                 {!audio && !ledFlood && <div>Omitted</div>}
+               </td>
              </tr>
              <tr className="border-b border-gray-100">
                <td className="py-4 font-mono text-[11px] text-gray-500 uppercase tracking-wider">Edge Analytics</td>

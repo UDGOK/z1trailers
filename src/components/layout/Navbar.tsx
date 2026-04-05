@@ -468,7 +468,7 @@ export default function Navbar() {
       <div className="pointer-events-auto h-20 lg:h-24 w-full bg-white/95 backdrop-blur-xl border-b border-brand-mist/80 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 shadow-sm relative z-50">
         
         <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group shrink-0">
-          <img src="/logo.png" alt="Z1 Trailers" className="h-10 lg:h-12 object-contain" />
+          <img src="/Logo.png" alt="Z1 Trailers" className="h-10 lg:h-12 object-contain" />
           <div className="flex flex-col">
             <span className="font-display font-black text-xl lg:text-2xl text-brand-navy uppercase tracking-[0.25em] leading-none group-hover:text-brand-teal transition-colors">
               Trailers
