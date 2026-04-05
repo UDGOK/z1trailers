@@ -210,16 +210,16 @@ export default function TrailerConfigurator({
     <div 
       id="modal-backdrop" 
       onClick={handleFocusOut}
-      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
+      className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
     >
       <motion.div 
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 50, scale: 0.95 }}
-        className="w-full max-w-6xl h-[90vh] md:h-[80vh] flex flex-col md:flex-row bg-[#0a0a0a] border border-[#333] rounded-2xl shadow-2xl overflow-hidden"
+        className="w-full max-w-[1100px] h-[90vh] md:h-[85vh] flex flex-col md:flex-row bg-[#05080c] border border-brand-teal/30 rounded-2xl shadow-[0_0_50px_rgba(27,154,170,0.15)] overflow-hidden"
       >
         {/* LEFT PANE - Visual & Summary */}
-        <div className="w-full md:w-5/12 bg-[#1a1a1a] border-r border-[#333] flex flex-col relative overflow-hidden">
+        <div className="w-full md:w-5/12 bg-brand-navy border-r border-brand-teal/20 flex flex-col relative overflow-hidden">
            {/* Abstract Z1 Rendering */}
            <div className="absolute inset-0 z-0 opacity-30">
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
@@ -227,38 +227,40 @@ export default function TrailerConfigurator({
            </div>
 
            <div className="relative z-10 p-8 flex-1 flex flex-col">
-              <div className="flex justify-between items-start mb-8">
-                <div>
-                   <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.2em] mb-1">Live Configuration</p>
-                   <h2 className="font-display font-black text-3xl text-white uppercase">{model}</h2>
-                </div>
-                <div className="px-3 py-1 bg-black/50 border border-[#333] rounded">
-                   <p className="font-mono text-[9px] text-[#b0b0b0] uppercase">Cameras</p>
-                   <p className="font-display font-bold text-white">{cameras.length} / 4</p>
-                </div>
-              </div>
+               <div className="flex justify-between items-start mb-8">
+                 <div>
+                    <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.2em] mb-1">Live Configuration</p>
+                    <h2 className="font-display font-black text-3xl text-white uppercase">{model}</h2>
+                 </div>
+                 <div className="px-3 py-1 bg-black/40 border border-brand-teal/30 rounded">
+                    <p className="font-mono text-[9px] text-brand-teal/80 uppercase">Cameras</p>
+                    <p className="font-display font-bold text-white">{cameras.length} / 4</p>
+                 </div>
+               </div>
 
               {/* Real-time Hardware Stack */}
               <div className="flex-1 space-y-3 overflow-y-auto pr-2 custom-scrollbar">
-                 <AnimatePresence>
+                  <AnimatePresence>
                    {cameras.map((c, i) => (
                      <motion.div 
                        key={c.id}
                        initial={{ opacity: 0, x: -20 }}
                        animate={{ opacity: 1, x: 0 }}
                        exit={{ opacity: 0, scale: 0.9 }}
-                       className="p-3 bg-[#252525] border border-[#333] flex justify-between items-center rounded"
+                       className="p-3 bg-brand-navy border border-brand-teal/30 flex justify-between items-center rounded"
                      >
-                        <div className="flex items-center space-x-3">
-                           <Camera className="w-4 h-4 text-brand-teal" />
-                           <div>
-                              <p className="font-display font-bold text-sm text-white">{c.brand} {c.type}</p>
-                              <p className="font-mono text-[9px] text-[#666]">+${(c.price / 12).toFixed(0)}/mo</p>
-                           </div>
-                        </div>
-                        <button onClick={() => removeCamera(c.id)} className="text-[#666] hover:text-red-500">
-                          <X className="w-3 h-3" />
-                        </button>
+                       <div className="flex items-center space-x-3">
+                         <div className="w-8 h-8 rounded bg-brand-teal/10 flex items-center justify-center">
+                            <Camera className="w-4 h-4 text-brand-teal" />
+                         </div>
+                         <div>
+                            <p className="font-bold text-sm text-white">{c.brand}</p>
+                            <p className="font-mono text-[9px] text-brand-teal">{c.type}</p>
+                         </div>
+                       </div>
+                       <button onClick={() => removeCamera(c.id)} className="text-[#ff3333] hover:text-white p-2">
+                          <X className="w-4 h-4" />
+                       </button>
                      </motion.div>
                    ))}
                  </AnimatePresence>
@@ -269,31 +271,33 @@ export default function TrailerConfigurator({
                       <p className="font-display font-bold text-sm text-white">30W IP Horn Speaker</p>
                    </motion.div>
                  )}
-                 {ledFlood && (
-                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-[#252525] border border-[#333] flex items-center space-x-3 rounded">
-                      <Zap className="w-4 h-4 text-[#ff6b00]" />
-                      <p className="font-display font-bold text-sm text-white">Motion LED Flood</p>
-                   </motion.div>
+                   {ledFlood && (
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-3 bg-brand-navy border border-brand-teal/30 flex justify-between items-center rounded">
+                       <div className="flex items-center space-x-3">
+                          <Target className="w-4 h-4 text-brand-teal" />
+                          <p className="font-bold text-sm text-white">Motion LED Flood (Included)</p>
+                       </div>
+                     </motion.div>
                  )}
-                 {lpr && (
-                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-[#252525] border border-[#333] flex items-center space-x-3 rounded">
-                      <Target className="w-4 h-4 text-[#ff6b00]" />
-                      <p className="font-display font-bold text-sm text-white">Insight LPR System</p>
-                   </motion.div>
-                 )}
-              </div>
+                   {lpr && (
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-brand-navy border border-brand-teal/30 flex items-center space-x-3 rounded">
+                       <Target className="w-4 h-4 text-brand-teal" />
+                       <p className="font-bold text-sm text-white">Insight LPR System</p>
+                     </motion.div>
+                   )}
+               </div>
 
               {/* Power Draw Gauge */}
-              <div className="mt-6 p-4 bg-black/40 border border-[#333] rounded">
-                 <div className="flex justify-between items-center mb-2">
-                    <p className="font-mono text-[10px] text-[#b0b0b0]">Est. Power Draw (Load)</p>
-                    <p className="font-mono text-[10px] font-bold text-white">{powerDraw}W</p>
+               <div className="mt-4 pt-4 border-t border-brand-teal/20 space-y-2">
+                 <div className="flex justify-between items-end">
+                    <p className="font-mono text-[10px] text-brand-teal uppercase">Energy Draw</p>
+                    <p className="font-mono text-sm tracking-widest text-[#ffffff] font-bold">{powerDraw}W <span className="text-brand-teal/50">/ 180W limit</span></p>
                  </div>
-                 <div className="w-full h-1.5 bg-[#333] rounded-full overflow-hidden">
-                    <motion.div 
-                      className={`h-full ${powerDraw > 120 ? 'bg-[#ff3333]' : powerDraw > 80 ? 'bg-[#ffa500]' : 'bg-[#00ff88]'}`}
-                      initial={{ width: 0 }}
-                      animate={{ width: `${Math.min((powerDraw / 180) * 100, 100)}%` }}
+                 
+                 <div className="w-full h-1.5 bg-brand-navy rounded-full overflow-hidden border border-brand-teal/20">
+                    <div 
+                      className={`h-full transition-all duration-500 ${powerDraw > 120 ? 'bg-[#ff3333]' : 'bg-[#00ff88] shadow-[0_0_10px_#00ff88]'}`} 
+                      style={{ width: `${Math.min((powerDraw / 180) * 100, 100)}%` }}
                     />
                  </div>
                  {powerDraw > 120 && !selectedBattery && (
@@ -301,16 +305,16 @@ export default function TrailerConfigurator({
                       <AlertTriangle className="w-3 h-3 mr-1" /> High draw detected. Recommend battery upgrade.
                     </p>
                  )}
-              </div>
+               </div>
 
               {/* Pricing Ticker */}
-              <div className="mt-4 pt-4 border-t border-[#333]">
-                 <p className="font-mono text-[10px] text-[#b0b0b0] uppercase tracking-widest mb-1">Estimated Purchase</p>
+              <div className="mt-4 pt-4 border-t border-brand-teal/20">
+                 <p className="font-mono text-[10px] text-brand-teal uppercase tracking-widest mb-1">Estimated Purchase</p>
                  <motion.p 
                     key={totalPurchase}
                     initial={{ scale: 1.1, color: "#1B9AAA" }}
                     animate={{ scale: 1, color: "#ffffff" }}
-                    className="font-display font-black text-2xl"
+                    className="font-display font-black text-2xl drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
                  >
                     ${totalPurchase.toLocaleString()}
                  </motion.p>
@@ -322,7 +326,7 @@ export default function TrailerConfigurator({
         </div>
 
         {/* RIGHT PANE - Wizard Form */}
-        <div className="w-full md:w-7/12 flex flex-col bg-[#0a0a0a] relative">
+        <div className="w-full md:w-7/12 flex flex-col bg-[#05080c] relative">
            <button onClick={onClose} className="absolute top-6 right-6 text-[#b0b0b0] hover:text-white z-50">
              <X className="w-6 h-6" />
            </button>
