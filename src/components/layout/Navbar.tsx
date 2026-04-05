@@ -70,7 +70,7 @@ function ProductsDropdown() {
 // --- Sub-component for Trillion-Dollar Industries Dropdown ---
 function IndustriesDropdown() {
   const industries = [
-    { name: "Construction", href: "/industries/construction-sites", img: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&q=80&w=600" },
+    { name: "Construction Sites", href: "/industries/construction-sites", img: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&q=80&w=600" },
     { name: "Parking Management", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&q=80&w=600" },
     { name: "Event Security", href: "/industries/events", img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=600" },
     { name: "Oil & Gas Logistics", href: "/industries/oil-gas", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600" },
@@ -318,12 +318,11 @@ const navItems = [
     href: "/industries",
     component: <IndustriesDropdown />,
     mobileLinks: [
-      { name: "Construction", href: "/industries/construction-sites" },
-      { name: "Parking Lots", href: "/industries/parking-lots" },
-      { name: "Events", href: "/industries/events" },
-      { name: "Oil & Gas", href: "/industries/oil-gas" },
-      { name: "Auto Dealers", href: "/industries/car-dealerships" },
-      { name: "Schools", href: "/industries/school-campuses" },
+      { name: "Construction Sites", href: "/industries/construction-sites" },
+      { name: "Parking Management", href: "/industries/parking-lots" },
+      { name: "Event Security", href: "/industries/events" },
+      { name: "Oil & Gas Logistics", href: "/industries/oil-gas" },
+      { name: "Law Enforcement", href: "/industries/law-enforcement" },
     ]
   },
   {

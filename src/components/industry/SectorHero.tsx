@@ -48,7 +48,7 @@ export default function SectorHero({ name, desc, img, threatLevel, stats }: Sect
               <div className="font-mono text-[10px] text-brand-steel tracking-widest uppercase">GPS: [ 32.7767° N, 96.7970° W ]</div>
             </div>
             
-            <h1 className="font-display font-black text-6xl md:text-8xl text-white uppercase tracking-tighter leading-[0.85] mb-8">
+            <h1 className="font-display font-black text-4xl md:text-8xl text-white uppercase tracking-tighter leading-[0.85] mb-8">
               {name} <br/><span className="text-white/20">Defense Grid.</span>
             </h1>
             <p className="max-w-xl font-mono text-xs md:text-sm tracking-widest leading-loose text-white/70 uppercase">

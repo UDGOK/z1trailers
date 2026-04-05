@@ -30,7 +30,7 @@ export default function LVTAlternative() {
             <Activity className="w-4 h-4 text-brand-teal" />
             <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.4em] font-black">Competitive Overmatch Matrix v2.0</p>
           </motion.div>
-          <h1 className="font-display font-black text-6xl md:text-8xl lg:text-9xl text-white uppercase tracking-tighter leading-[0.85] mb-12">
+          <h1 className="font-display font-black text-4xl md:text-8xl lg:text-9xl text-white uppercase tracking-tighter leading-[0.85] mb-12">
             BEYOND <br/><span className="text-brand-steel/50">LVT.</span>
           </h1>
           <p className="font-mono text-sm tracking-[0.4em] leading-[2] text-brand-steel uppercase border-l-4 border-brand-teal pl-8 max-w-2xl">
@@ -44,7 +44,7 @@ export default function LVTAlternative() {
            <motion.div 
              initial={{ opacity: 0, x: -20 }}
              animate={{ opacity: 1, x: 0 }}
-             className="p-16 bg-[#0a111a] border-r border-white/5"
+              className="p-8 md:p-16 bg-[#0a111a] border-r border-white/5"
            >
               <h2 className="font-display font-black text-4xl text-brand-teal uppercase tracking-tighter mb-12 flex items-center">
                  <Shield className="w-8 h-8 mr-4" /> THE Z1 STANDARD
@@ -90,7 +90,7 @@ export default function LVTAlternative() {
            <motion.div 
              initial={{ opacity: 0, x: 20 }}
              animate={{ opacity: 1, x: 0 }}
-             className="p-16 bg-[#05080c]"
+              className="p-8 md:p-16 bg-[#05080c]"
            >
               <h2 className="font-display font-black text-4xl text-white/20 uppercase tracking-tighter mb-12">LEGACY OPS</h2>
               <div className="space-y-12 opacity-40">
@@ -157,11 +157,11 @@ export default function LVTAlternative() {
         {/* ANALYST CONSULTATION LINE - "GOOGLE CEO" STYLE AUTHORITY */}
         <div className="max-w-4xl mx-auto">
            <div className="relative p-1 bg-brand-teal/20 group">
-              <div className="p-16 border border-brand-teal/50 bg-[#0a111a] text-center shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
+              <div className="p-8 md:p-16 border border-brand-teal/50 bg-[#0a111a] text-center shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
                  <div className="inline-flex p-4 bg-brand-teal/10 border border-brand-teal/20 mb-8">
                     <Activity className="w-10 h-10 text-brand-teal animate-pulse" />
                  </div>
-                 <h2 className="font-display font-black text-5xl md:text-6xl text-white uppercase tracking-tighter mb-8 leading-tight">
+                 <h2 className="font-display font-black text-3xl md:text-6xl text-white uppercase tracking-tighter mb-8 leading-tight">
                     DIRECT HQ ANALYST<br/><span className="text-brand-steel/50">ENGAGEMENT.</span>
                  </h2>
                  <p className="font-mono text-xs tracking-[0.3em] leading-relaxed text-brand-steel uppercase mb-12 max-w-2xl mx-auto font-bold underline underline-offset-8">

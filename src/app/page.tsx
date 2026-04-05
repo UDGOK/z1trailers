@@ -20,7 +20,7 @@ export default function Home() {
         {/* Abstract glow */}
         <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-brand-teal/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-10 w-full relative z-10 flex flex-col lg:flex-row items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10 flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-[55%] flex flex-col items-start pr-8">
             <div className="inline-flex items-center space-x-3 mb-10 border border-brand-teal/30 bg-brand-teal/5 px-4 py-2">
               <span className="w-2 h-2 bg-brand-teal animate-pulse" />
@@ -32,7 +32,7 @@ export default function Home() {
               <span className="text-brand-teal">By Design.</span>
             </h1>
             
-            <p className="font-mono text-sm tracking-widest leading-loose text-slate-300 uppercase max-w-xl mb-12 font-medium">
+            <p className="font-mono text-sm tracking-widest leading-loose text-brand-steel uppercase max-w-xl mb-12 font-medium">
               We deploy solar-powered, AI-equipped surveillance trailers across the Mid-South in under 15 minutes. Pure tactical advantage.
             </p>
             

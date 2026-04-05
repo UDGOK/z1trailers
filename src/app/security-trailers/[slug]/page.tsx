@@ -412,6 +412,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                      </div>
                   </div>
                </div>
+
+               <Link href="/hardware-deep-dive" className="mt-12 inline-flex items-center space-x-4 bg-white/5 border border-white/10 px-8 py-4 font-display font-black text-xs uppercase tracking-[0.25em] text-white hover:bg-brand-teal hover:text-brand-navy hover:border-brand-teal transition-all group">
+                  <span>[ INITIALIZE HARDWARE DEEP-DIVE ]</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+               </Link>
             </div>
 
             {/* Abstract Battery Graphic */}

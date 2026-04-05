@@ -27,19 +27,30 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">Hardware</h4>
+            <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">Products</h4>
             <ul className="space-y-4">
-              {['Z1 Scout', 'Z1 Guardian', 'Z1 Apex', 'Z1 Command', 'Compare Models'].map((item) => (
-                <li key={item}><Link href="#" className="font-mono text-[10px] uppercase text-white/60 hover:text-brand-teal tracking-widest transition-colors">{item}</Link></li>
+              {[
+                { name: 'Z1 Scout', href: '/security-trailers/z1-scout' },
+                { name: 'Z1 Guardian', href: '/security-trailers/z1-guardian' },
+                { name: 'Z1 Apex', href: '/security-trailers/z1-apex' },
+                { name: 'Z1 Command', href: '/security-trailers/z1-command' }
+              ].map((item) => (
+                <li key={item.name}><Link href={item.href} className="font-mono text-[10px] uppercase text-white/60 hover:text-brand-teal tracking-widest transition-colors">{item.name}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">Solutions</h4>
+            <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">Industries</h4>
             <ul className="space-y-4">
-              {['Construction Sites', 'Parking Management', 'Event Security', 'Oil & Gas Logistics', 'Law Enforcement'].map((item) => (
-                <li key={item}><Link href="#" className="font-mono text-[10px] uppercase text-white/60 hover:text-brand-teal tracking-widest transition-colors">{item}</Link></li>
+              {[
+                { name: 'Construction Sites', href: '/industries/construction-sites' },
+                { name: 'Parking Management', href: '/industries/parking-lots' },
+                { name: 'Event Security', href: '/industries/events' },
+                { name: 'Oil & Gas Logistics', href: '/industries/oil-gas' },
+                { name: 'Law Enforcement', href: '/industries/law-enforcement' }
+              ].map((item) => (
+                <li key={item.name}><Link href={item.href} className="font-mono text-[10px] uppercase text-white/60 hover:text-brand-teal tracking-widest transition-colors">{item.name}</Link></li>
               ))}
             </ul>
           </div>
