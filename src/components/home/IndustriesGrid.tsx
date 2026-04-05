@@ -8,6 +8,7 @@ export default function IndustriesGrid() {
   const industries = [
     { 
       title: "Construction & Development", 
+      slug: "construction-sites",
       desc: "Protecting high-value materials and heavy machinery from organized theft and material extraction.", 
       img: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-2 lg:col-span-2", 
@@ -15,36 +16,41 @@ export default function IndustriesGrid() {
     },
     { 
       title: "Auto Dealerships", 
+      slug: "car-dealerships",
       desc: "Perimeter lockdown preventing catalytic converter and high-inventory theft.", 
-      img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop", 
+      img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
       rowSpan: "md:row-span-1 lg:row-span-1" 
     },
     { 
       title: "Law Enforcement", 
+      slug: "law-enforcement",
       desc: "Force-multiplying municipal surveillance for active high-crime sector coverage.", 
-      img: "https://images.unsplash.com/photo-1588165171080-c89acfa5ee83?q=80&w=1000&auto=format&fit=crop", 
+      img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
       rowSpan: "md:row-span-1 lg:row-span-1" 
     },
     { 
       title: "Oil, Gas & Energy", 
+      slug: "oil-gas",
       desc: "Securing remote, completely off-grid critical infrastructure sites natively.", 
-      img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop", 
+      img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
       rowSpan: "md:row-span-1 lg:row-span-1" 
     },
     { 
-      title: "Retail & Commercial", 
-      desc: "Proactive deterrence for parking lot perimeters and storefront security.", 
-      img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1000&auto=format&fit=crop", 
+      title: "Parking Management", 
+      slug: "parking-lots",
+      desc: "Proactive deterrence for parking lot perimeters and complex structures.", 
+      img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-2", 
       rowSpan: "md:row-span-1 lg:row-span-1" 
     },
     { 
       title: "Events & Festivals", 
+      slug: "events",
       desc: "Rapid deployment overwatch for crowd telemetry and ticketing access gates.", 
-      img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1000&auto=format&fit=crop", 
+      img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
       rowSpan: "md:row-span-1 lg:row-span-1" 
     },
@@ -87,6 +93,11 @@ export default function IndustriesGrid() {
                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                className={`group relative overflow-hidden bg-[#0a1628] rounded-xl shadow-xl ${ind.colSpan} ${ind.rowSpan} cursor-pointer`}
              >
+                {/* Interactive Anchor Wrapping */}
+                <Link href={`/industries/${ind.slug}`} className="absolute inset-0 z-30">
+                  <span className="sr-only">View {ind.title} Security</span>
+                </Link>
+                
                 {/* Image & Gradient Overlay */}
                 <div className="absolute inset-0 z-0">
                   <img 
@@ -98,7 +109,7 @@ export default function IndustriesGrid() {
                 </div>
                 
                 {/* Content Overlay */}
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 z-10 flex flex-col justify-end h-full">
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 z-10 flex flex-col justify-end h-full pointer-events-none">
                    <div className="self-end opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 mb-auto">
                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-teal shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                         <ArrowUpRight className="w-6 h-6" strokeWidth={2.5}/>
