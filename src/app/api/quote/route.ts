@@ -14,9 +14,11 @@ export async function POST(request: NextRequest) {
       customHardware,
       name,
       organization,
+      company, // Map from Configurator
       email,
       phone,
       siteAddress,
+      message, // Map from Configurator
     } = body;
 
     // Validate required fields
@@ -79,10 +81,10 @@ export async function POST(request: NextRequest) {
             <p style="color: #0a1628; font-size: 20px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; margin: 0;">
               ${productName}${customizing ? ' (+CUSTOM CONFIG)' : ''}
             </p>
-            ${customHardware ? `
+            ${(customHardware || message) ? `
               <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 3px solid #d97706;">
-                <p style="color: #92400e; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 8px; font-weight: bold;">CUSTOM HARDWARE REQUIREMENTS:</p>
-                <p style="color: #78350f; font-size: 13px; margin: 0; line-height: 1.6;">${customHardware}</p>
+                <p style="color: #92400e; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 8px; font-weight: bold;">CUSTOM HARDWARE/CONFIG SPECS:</p>
+                <p style="color: #78350f; font-size: 13px; margin: 0; line-height: 1.6; white-space: pre-wrap;">${customHardware || message}</p>
               </div>
             ` : ''}
           </div>
@@ -97,7 +99,7 @@ export async function POST(request: NextRequest) {
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">Organization:</td>
-                <td style="padding: 8px 0; color: #0a1628; font-size: 14px; font-weight: bold;">${organization || 'Not Provided'}</td>
+                <td style="padding: 8px 0; color: #0a1628; font-size: 14px; font-weight: bold;">${organization || company || 'Not Provided'}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">Email:</td>

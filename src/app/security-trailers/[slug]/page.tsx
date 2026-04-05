@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import BatteryCharge from "@/components/ui/BatteryCharge";
 import AIDetectionsGrid from "@/components/shared/AIDetectionsGrid";
-import { ArrowRight, Crosshair, Sun, Shield, MapPin, Zap, FileText, Battery, ChevronDown, Cpu, Wifi, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Target, Check } from "lucide-react";
+import { ArrowRight, Crosshair, Sun, Shield, MapPin, Zap, FileText, Battery, ChevronDown, Cpu, Wifi, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Target, Check, Settings } from "lucide-react";
+import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 import { Metadata } from 'next';
 
 const hardwareDb: Record<string, any> = {
@@ -607,6 +608,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                <span className="font-mono text-[10px] uppercase text-brand-navy font-bold tracking-[0.2em]">Deployments starting at ${product.price}/mo</span>
             </div>
             <div className="flex items-center gap-4 w-full md:w-auto">
+               <ConfiguratorTrigger modelName={product.name} />
                <Link href="/get-a-quote" className="flex-1 md:flex-none px-10 py-4 bg-brand-navy hover:bg-white text-white hover:text-brand-navy font-display font-black text-xs uppercase tracking-[0.2em] transition-colors text-center inline-flex justify-center items-center group shadow-2xl">
                  Request Deployment <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1" />
                </Link>
