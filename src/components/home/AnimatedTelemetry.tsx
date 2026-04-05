@@ -86,19 +86,38 @@ export default function AnimatedTelemetry() {
               </div>
               
               {isArmed ? (
-                <motion.div 
-                  className="absolute inset-0 z-0 pointer-events-none mix-blend-color-burn"
-                  animate={{ 
-                    backgroundColor: [
-                      "rgba(255, 0, 0, 0.15)", // Red
-                      "rgba(255, 0, 0, 0)",
-                      "rgba(0, 100, 255, 0.15)", // Blue
-                      "rgba(0, 100, 255, 0)",
-                      "rgba(255, 0, 0, 0.15)"
-                    ] 
-                  }}
-                  transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
-                />
+                <>
+                  {/* High level background strobe */}
+                  <motion.div 
+                    className="absolute inset-0 z-0 pointer-events-none mix-blend-color-dodge"
+                    animate={{ 
+                      backgroundColor: [
+                        "rgba(220, 38, 38, 0)",     // Off
+                        "rgba(220, 38, 38, 0.25)",  // Red Flash
+                        "rgba(220, 38, 38, 0)",     // Off
+                        "rgba(220, 38, 38, 0)",     // Pause
+                        "rgba(37, 99, 235, 0)",     // Off
+                        "rgba(37, 99, 235, 0.25)",  // Blue Flash
+                        "rgba(37, 99, 235, 0)",     // Off
+                        "rgba(37, 99, 235, 0)"      // Pause
+                      ] 
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, times: [0, 0.1, 0.2, 0.5, 0.5, 0.6, 0.7, 1] }}
+                  />
+                  {/* Physical LED strobe analog */}
+                  <div className="absolute top-0 inset-x-0 h-1 flex">
+                     <motion.div 
+                       className="w-1/2 h-full bg-red-500 shadow-[0_0_20px_rgba(220,38,38,0.8)]"
+                       animate={{ opacity: [0, 1, 0, 0, 0, 0, 0, 0] }}
+                       transition={{ duration: 2, repeat: Infinity, times: [0, 0.1, 0.2, 0.5, 0.5, 0.6, 0.7, 1] }}
+                     />
+                     <motion.div 
+                       className="w-1/2 h-full bg-blue-500 shadow-[0_0_20px_rgba(37,99,235,0.8)]"
+                       animate={{ opacity: [0, 0, 0, 0, 0, 1, 0, 0] }}
+                       transition={{ duration: 2, repeat: Infinity, times: [0, 0.1, 0.2, 0.5, 0.5, 0.6, 0.7, 1] }}
+                     />
+                  </div>
+                </>
               ) : (
                 <motion.div 
                   className="absolute inset-0 bg-brand-teal/5 pointer-events-none z-0" 
