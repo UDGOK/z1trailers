@@ -15,9 +15,35 @@ interface CameraSelection {
   id: string;
   type: CameraType;
   brand: CameraBrand;
+  name: string;
   draw: number; // Watts
   price: number;
 }
+
+const CAMERA_CATALOG: Record<CameraType, { brand: CameraBrand; name: string; price: number; draw: number }[]> = {
+  "PTZ": [
+    { brand: "Uniview", name: "Uniview Dual PTZ 22x", price: 650, draw: 25 },
+    { brand: "Axis", name: "Axis PTZ 30x", price: 1850, draw: 35 }
+  ],
+  "Bullet": [
+    { brand: "Uniview", name: "Uniview 4MP", price: 225, draw: 8 },
+    { brand: "Hanwha", name: "Hanwha 4MP", price: 325, draw: 8 },
+    { brand: "Axis", name: "Axis 4MP", price: 425, draw: 12 }
+  ],
+  "Dome": [
+    { brand: "Uniview", name: "Uniview 4MP", price: 149, draw: 6 },
+    { brand: "Hanwha", name: "Hanwha 4MP", price: 349, draw: 8 },
+    { brand: "Axis", name: "Axis 4MP", price: 349, draw: 10 }
+  ],
+  "Fisheye": [
+    { brand: "Uniview", name: "Uniview", price: 850, draw: 15 },
+    { brand: "Hanwha", name: "Hanwha", price: 800, draw: 15 }
+  ],
+  "Multisensor": [
+    { brand: "Uniview", name: "Uniview Multisensor", price: 2000, draw: 40 },
+    { brand: "Hanwha", name: "Hanwha Multisensor", price: 5500, draw: 55 }
+  ]
+};
 
 const PRICING = {
   models: {
@@ -25,43 +51,20 @@ const PRICING = {
     "Z1 Guardian": 12500,
     "Z1 Apex": 16500,
   },
-  cameras: {
-    "PTZ": { base: 650, draw: 30 },
-    "Fisheye": { base: 850, draw: 15 },
-    "Multisensor": { base: 2750, draw: 40 },
-    "Dome": { base: 149, draw: 10 },
-    "Bullet": { 
-      Uniview: 225, 
-      Hanwha: 389, 
-      Axis: 595,
-      draw: 8
-    }
-  },
   addons: {
     audio: 299, // 30W Horn
     lpr: 3500,  // Insight LPR
     storage30: 850,
     storage60: 1250,
+    starlink: 600,
   }
 };
 
 const BATTERY_OPTIONS = [
-  { id: '12V_100AH', name: '12V 100AH Self Heating', price: 425 },
-  { id: '12V_200AH', name: '12V 200AH Self Heating', price: 650 },
-  { id: '24V_100AH', name: '24V 100AH Self Heating', price: 495 },
-  { id: '24V_200AH', name: '24V 200AH Self Heating', price: 875 },
-  { id: '48V_200AH', name: '48V 200AH Battery', price: 1575 }
+  { id: '24V_100AH', name: '24V 100AH Add-On (2,400Wh)', capacityWh: 2400, price: 495 },
+  { id: '24V_200AH', name: '24V 200AH Add-On (4,800Wh)', capacityWh: 4800, price: 875 },
+  { id: '24V_300AH', name: '24V 300AH Add-On (7,200Wh)', capacityWh: 7200, price: 1350 }
 ] as const;
-
-const getCameraPrice = (type: CameraType, brand: CameraBrand) => {
-  if (type === "Bullet") {
-    return PRICING.cameras.Bullet[brand];
-  }
-  // For others, base price + brand premium simulation
-  const base = PRICING.cameras[type].base;
-  const multiplier = brand === "Axis" ? 1.5 : brand === "Hanwha" ? 1.2 : 1.0;
-  return Math.round(base * multiplier);
-};
 
 const MODEL_SPECS = {
   "Z1 Scout": {
@@ -144,8 +147,7 @@ export default function TrailerConfigurator({
     return () => { document.body.style.overflow = ""; };
   }, [isOpen, initialModel]);
 
-  // Derived calculations
-  const { totalPurchase, estMonthly, powerDraw } = useMemo(() => {
+  const { totalPurchase, estMonthly, powerDraw, autonomyDays } = useMemo(() => {
     let total = PRICING.models[model];
     let draw = MODEL_SPECS[model].baseDraw;
 
@@ -154,7 +156,12 @@ export default function TrailerConfigurator({
       draw += c.draw;
     });
 
-    if (audio) { total += PRICING.addons.audio; draw += 15; }
+    // Component Load calculations
+    if (audio) { total += PRICING.addons.audio; draw += 30; } // 30W IP Horn
+    
+    // Constant Deterrence Load
+    draw += 3; // 1 Red Strobe, 2 Blue Flashers (1W each = 3W continuous)
+    if (ledFlood) draw += 2; // Motion LED Flood standby/average overhead
     if (lpr) { total += PRICING.addons.lpr; draw += 25; }
     if (storage === "30") total += PRICING.addons.storage30;
     if (storage === "60") total += PRICING.addons.storage60;
@@ -174,17 +181,38 @@ export default function TrailerConfigurator({
     // Rental calculation proxy (approx 1/12th hardware + $600 base overhead)
     const monthly = Math.round((total / 12) + 400);
 
-    return { totalPurchase: total, estMonthly: monthly, powerDraw: draw };
-  }, [model, cameras, audio, lpr, storage, selectedBattery]);
+    // Battery Engineering Math
+    let baseWh = 4800; // Z1 Scout baseline 2x 100Ah 24v = 4800wh
+    if (model === "Z1 Guardian") baseWh = 7200; // 3x 100Ah 24v = 7200wh
+    if (model === "Z1 Apex") baseWh = 14400; // 3x 200Ah 24v = 14400wh
 
-  const addCamera = (type: CameraType, brand: CameraBrand) => {
-    if (cameras.length >= 4) return;
+    let upgradeWh = 0;
+    if (selectedBattery) {
+       const batt = BATTERY_OPTIONS.find(b => b.id === selectedBattery);
+       if (batt) upgradeWh = batt.capacityWh;
+    }
+
+    const totalUsableWh = (baseWh + upgradeWh) * 0.90; // 90% DoD for Lithium LifePO4 limitation
+    const dailyDrawWh = draw * 24; 
+    const autonomyDays = totalUsableWh / dailyDrawWh;
+
+    return { totalPurchase: total, estMonthly: monthly, powerDraw: draw, autonomyDays };
+  }, [model, cameras, audio, lpr, storage, selectedBattery, comm]);
+
+  const maxCameras = model === "Z1 Scout" ? 4 : 5;
+
+  const addCamera = (cam: { type: CameraType, brand: CameraBrand | string, name: string, price: number, draw: number }) => {
+    if (cameras.length >= maxCameras) {
+      alert(`Maximum of ${maxCameras} cameras reached for ${model}.`);
+      return;
+    }
     setCameras([...cameras, { 
       id: Math.random().toString(), 
-      type, 
-      brand, 
-      price: getCameraPrice(type, brand),
-      draw: PRICING.cameras[type].draw || 15 
+      type: cam.type, 
+      brand: cam.brand as CameraBrand, 
+      name: cam.name,
+      price: cam.price,
+      draw: cam.draw 
     }]);
   };
 
@@ -350,10 +378,10 @@ export default function TrailerConfigurator({
                    </div>
                </div>
 
-              {/* Power Draw Gauge */}
+              {/* Power Draw & Reserve Autonomy HUD */}
                <div className="mt-4 pt-4 border-t border-brand-teal/20 space-y-2">
-                 <div className="flex justify-between items-end">
-                    <p className="font-mono text-[10px] text-brand-teal uppercase">Energy Draw</p>
+                 <div className="flex justify-between items-end mb-1">
+                    <p className="font-mono text-[10px] text-brand-teal uppercase">Continuous Load</p>
                     <p className="font-mono text-sm tracking-widest text-[#ffffff] font-bold">{powerDraw}W <span className="text-brand-teal/50">/ 180W limit</span></p>
                  </div>
                  
@@ -363,11 +391,22 @@ export default function TrailerConfigurator({
                       style={{ width: `${Math.min((powerDraw / 180) * 100, 100)}%` }}
                     />
                  </div>
-                 {powerDraw > 120 && !selectedBattery && (
-                    <p className="font-mono text-[9px] text-[#ff3333] mt-2 flex items-center">
-                      <AlertTriangle className="w-3 h-3 mr-1" /> High draw detected. Recommend battery upgrade.
-                    </p>
-                 )}
+
+                 {/* Phd Autonomy Tracker */}
+                 <div className="mt-4 p-3 bg-[#0a0a0a] border border-[#333] rounded">
+                    <div className="flex justify-between items-center mb-1">
+                      <p className="font-mono text-[10px] text-brand-teal uppercase tracking-widest">Reserve Autonomy</p>
+                      <p className={`font-mono text-sm font-bold ${autonomyDays < 4 ? 'text-[#ff3333]' : 'text-white'}`}>
+                        {autonomyDays.toFixed(1)} Days
+                      </p>
+                    </div>
+                    {autonomyDays < 4 && (
+                       <p className="font-mono text-[9px] text-[#ff3333] mt-2 flex items-start">
+                         <AlertTriangle className="w-3 h-3 mr-1 flex-shrink-0 mt-0.5" /> 
+                         Critical reserve limit. Add supplemental 24V battery capacity in Step 3 or reduce optical payload limits.
+                       </p>
+                    )}
+                 </div>
                </div>
 
               {/* Pricing Ticker */}
@@ -437,25 +476,39 @@ export default function TrailerConfigurator({
                               </div>
                            </div>
                            
-                           <p className="font-mono text-[11px] text-[#b0b0b0] mb-4">Select up to 4 cameras for your mast array.</p>
+                           <p className="font-mono text-[11px] text-[#b0b0b0] mb-4">Select up to {maxCameras} cameras for your mast array.</p>
 
-                           <div className="grid grid-cols-2 gap-4 mb-6">
-                              {(["PTZ", "Bullet", "Dome", "Fisheye"] as CameraType[]).map(type => (
-                                 <button 
-                                   key={type}
-                                   onClick={() => addCamera(type, "Hanwha")} // Default to Hanwha for quick add, real UI would have a sub-menu
-                                   disabled={cameras.length >= 4}
-                                   className="p-4 bg-[#1a1a1a] border border-[#333] hover:border-brand-teal rounded text-left group disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                                 >
-                                    <p className="font-display font-bold text-white group-hover:text-brand-teal flex justify-between">
-                                      {type} <span className="text-[#666]">+</span>
-                                    </p>
-                                    <p className="font-mono text-[9px] text-[#666] mt-1">Starts at ${(PRICING.cameras[type] as any).base || 225}</p>
-                                 </button>
+                           <div className="space-y-6 mb-6">
+                              {(Object.entries(CAMERA_CATALOG)).map(([type, options]) => (
+                                 <div key={type}>
+                                     <p className="font-display font-bold text-brand-teal mb-2 pb-1 border-b border-brand-teal/20 tracking-wider flex justify-between">
+                                        {type}
+                                     </p>
+                                     <div className="flex flex-col gap-2">
+                                       {options.map((opt) => (
+                                          <button 
+                                            key={opt.name}
+                                            onClick={() => addCamera({ type: type as CameraType, ...opt })}
+                                            disabled={cameras.length >= maxCameras}
+                                            className="flex justify-between items-center p-3 bg-[#1a1a1a] border border-[#333] hover:border-brand-teal rounded group disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                                          >
+                                             <div className="text-left">
+                                                <p className="font-display font-bold text-white group-hover:text-brand-teal text-sm flex items-center">
+                                                   <span>{opt.name}</span> <span className="text-[#666] ml-2">+</span>
+                                                </p>
+                                                <p className="font-mono text-[9px] text-[#888] mt-1">Continuous Draw: {opt.draw}W</p>
+                                             </div>
+                                             <div className="text-right">
+                                                <p className="font-mono text-[#00ff88] text-xs font-bold">${opt.price}</p>
+                                             </div>
+                                          </button>
+                                       ))}
+                                     </div>
+                                 </div>
                               ))}
                            </div>
                            <p className="font-mono text-[9px] text-brand-teal p-3 bg-brand-teal/10 rounded border border-brand-teal/20">
-                             Brands (Axis, Hanwha, Uniview) will be finalized during onboarding. Default estimates applied.
+                             Camera brands and advanced optics allocations will be finalized during deployment onboarding based on your regional infrastructure parameters.
                            </p>
                         </motion.div>
                      )}
