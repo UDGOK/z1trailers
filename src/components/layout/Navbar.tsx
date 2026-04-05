@@ -459,10 +459,16 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-[100] pointer-events-none">
       
       {/* Top Banner Menu Area */}
-      <div className="pointer-events-auto bg-[#05080c] w-full py-2 border-b border-white/5 flex justify-center items-center">
-         <ConfiguratorTrigger className="text-slate-400 hover:text-brand-teal text-[9px] md:text-[10px] uppercase font-mono tracking-[0.2em] font-bold transition-colors animate-pulse">
-            [ Calculate Specifications & Build Custom Trailer ]
-         </ConfiguratorTrigger>
+      <div className="pointer-events-auto bg-[#05080c] w-full py-2 border-b border-white/5 flex justify-center items-center relative overflow-hidden">
+         <div 
+           className="absolute inset-0 z-0 opacity-20"
+           style={{ backgroundImage: 'radial-gradient(#1b9aaa 1px, transparent 1px)', backgroundSize: '12px 12px' }}
+         />
+         <div className="relative z-10">
+           <ConfiguratorTrigger className="text-white hover:text-brand-teal text-[10px] md:text-[11px] uppercase font-mono tracking-[0.2em] font-black transition-colors animate-pulse [text-shadow:0_0_10px_rgba(27,154,170,0.5)]">
+              [ Calculate Specifications & Build Custom Trailer ]
+           </ConfiguratorTrigger>
+         </div>
       </div>
 
       <div className="pointer-events-auto h-20 lg:h-24 w-full bg-white/95 backdrop-blur-xl border-b border-brand-mist/80 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 shadow-sm relative z-50">
