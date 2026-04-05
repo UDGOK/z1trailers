@@ -77,10 +77,10 @@ export default function AnimatedTelemetry() {
               onClick={() => setIsArmed(!isArmed)}
               className="bg-brand-ice/50 border border-brand-mist/50 p-4 flex flex-col justify-between relative overflow-hidden cursor-pointer group/defense"
            >
-              <Shield className={`w-5 h-5 mb-4 relative z-10 transition-colors duration-300 ${isArmed ? 'text-red-500' : 'text-brand-teal'}`}/>
+              <Shield className={`w-5 h-5 mb-4 relative z-10 transition-colors duration-300 ${isArmed ? 'text-red-500' : 'text-green-500'}`}/>
               <div className="relative z-10">
                 <p className="font-mono text-[8px] text-brand-steel uppercase tracking-widest mb-1">Defense Array</p>
-                <p className={`font-display font-black text-xl tracking-tight transition-colors duration-300 ${isArmed ? 'text-red-600' : 'text-brand-navy'}`}>
+                <p className={`font-display font-black text-xl tracking-tight transition-colors duration-300 ${isArmed ? 'text-red-600' : 'text-green-500'}`}>
                   {isArmed ? 'ARMED' : 'DISARMED'}
                 </p>
               </div>
@@ -120,9 +120,9 @@ export default function AnimatedTelemetry() {
                 </>
               ) : (
                 <motion.div 
-                  className="absolute inset-0 bg-brand-teal/5 pointer-events-none z-0" 
-                  animate={{ opacity: [0.3, 0.8, 0.3] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute inset-0 bg-green-500/20 pointer-events-none z-0 mix-blend-screen" 
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
               )}
            </div>
