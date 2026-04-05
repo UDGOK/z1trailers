@@ -1,8 +1,12 @@
 "use client";
 
-import { User, Car, Package, Thermometer, Leaf, ScanEye } from "lucide-react";
+import { User, Car, Package, Thermometer, Leaf, ScanEye, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import TargetClassificationsModal from "../home/TargetClassificationsModal";
 
 export default function AIDetectionsGrid() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const detections = [
     {
        name: "Human Signatures",
@@ -50,10 +54,20 @@ export default function AIDetectionsGrid() {
           <h2 className="font-display font-black text-4xl md:text-5xl text-white uppercase tracking-wider mb-4">
             30+ Target <span className="text-brand-teal">Classifications.</span>
           </h2>
-          <p className="font-mono text-xs md:text-sm text-slate-300 uppercase tracking-widest leading-loose max-w-2xl mx-auto">
+          <p className="font-mono text-xs md:text-sm text-slate-300 uppercase tracking-widest leading-loose max-w-2xl mx-auto mb-8">
             Z1 neural analytics process telemetry natively to aggressively eliminate false alarms. 
             We filter environmental noise so our UL-listed monitoring partners only act on verified threats.
           </p>
+
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="group relative inline-flex items-center justify-center bg-[#05080c] border border-brand-teal/50 hover:bg-brand-teal/10 px-8 py-3 overflow-hidden transition-all duration-300"
+          >
+             <div className="absolute inset-x-0 bottom-0 h-[1px] bg-brand-teal w-0 group-hover:w-full transition-all duration-500 ease-in-out mx-auto" />
+             <span className="font-mono text-[10px] md:text-xs text-white uppercase tracking-[0.2em] font-bold group-hover:text-brand-teal transition-colors flex items-center">
+               [ Access Full Target Matrix (30+ Classes) ] <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+             </span>
+          </button>
        </div>
 
        <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -107,6 +121,11 @@ export default function AIDetectionsGrid() {
             );
           })}
        </div>
+
+       <TargetClassificationsModal 
+         isOpen={isModalOpen} 
+         onClose={() => setIsModalOpen(false)} 
+       />
     </section>
   );
 }
