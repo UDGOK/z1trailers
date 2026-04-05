@@ -1,6 +1,6 @@
 "use client";
 
-
+import { useState, useEffect } from "react";
 
 export interface SpecSheetProps {
   model: string;
@@ -21,6 +21,22 @@ export function SpecSheetTemplate({
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const buildId = `Z1-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
 
+  const [logoBase64, setLogoBase64] = useState<string>("/Logo.png");
+
+  // Bypass HTML2Canvas CORS tainting by fetching the asset directly into memory
+  useEffect(() => {
+    fetch("/Logo.png")
+      .then(res => res.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setLogoBase64(reader.result as string);
+        };
+        reader.readAsDataURL(blob);
+      })
+      .catch(err => console.error("Logo fetch error for PDF:", err));
+  }, []);
+
   return (
     <div 
       className="bg-white text-[#0a1628] font-sans relative overflow-hidden" 
@@ -39,7 +55,7 @@ export function SpecSheetTemplate({
         {/* HEADER SECTION */}
         <div className="flex justify-between items-start border-b-2 border-[#0a1628] pb-6 mb-8">
            <div className="flex items-center gap-4">
-              <img src="/Logo.png" alt="Z1 Trailers" className="h-16 object-contain" />
+              <img src={logoBase64} alt="Z1 Trailers" className="h-16 object-contain" />
               <div className="h-12 w-[2px] bg-[#0a1628]/20" />
               <div>
                  <h1 className="font-bold text-3xl tracking-tighter uppercase leading-none">Tactical Payload</h1>

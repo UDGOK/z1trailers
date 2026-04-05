@@ -177,14 +177,12 @@ export default function TrailerConfigurator({
     if (!pdfRef.current) return;
     setIsGeneratingPDF(true);
     try {
-      // PDF is now rendered precisely at origin but completely invisible and behind the modal.
       const canvas = await html2canvas(pdfRef.current, { 
         scale: 2, 
         useCORS: true,
+        allowTaint: true,
         logging: true,
-        backgroundColor: "#ffffff",
-        windowWidth: 1200,
-        windowHeight: 1600
+        backgroundColor: "#ffffff"
       });
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
 
@@ -193,15 +191,15 @@ export default function TrailerConfigurator({
         unit: "mm",
         format: "a4" // 210 x 297 mm
       });
-      // A4 dimensions
+      
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       
       pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`Z1_Trailers_SpecSheet_${model.replace(' ', '_')}.pdf`);
-    } catch (e) {
+      pdf.save(`Z1_Trailers_SpecSheet_${model.replace(/ /g, '_')}.pdf`);
+    } catch (e: any) {
       console.error(e);
-      alert("Failed to generate PDF snapshot.");
+      alert("Failed to render PDF Engine: " + (e.message || String(e)));
     } finally {
       setIsGeneratingPDF(false);
     }
@@ -613,20 +611,22 @@ export default function TrailerConfigurator({
            )}
         </div>
 
-        {/* HIDDEN PDF TEMPLATE (Strict DOM placement to prevent html2canvas canvas bounds failure) */}
-        <div ref={pdfRef} className="fixed top-0 left-0 z-[-50] opacity-0 pointer-events-none w-[800px] h-[1131px]">
-          <SpecSheetTemplate 
-            model={model}
-            cameras={cameras}
-            audio={audio}
-            lpr={lpr}
-            storage={storage}
-            ledFlood={ledFlood}
-            selectedBattery={selectedBattery}
-            powerDraw={powerDraw}
-            totalPurchase={totalPurchase}
-            estMonthly={estMonthly}
-          />
+        {/* HIDDEN PDF TEMPLATE: Moved extremely far off-screen to avoid visibility tampering that breaks html2canvas bounding boxes */}
+        <div style={{ position: 'fixed', top: '-10000px', left: '-10000px' }}>
+          <div ref={pdfRef} style={{ width: '800px', minHeight: '1131px', backgroundColor: '#ffffff' }}>
+            <SpecSheetTemplate 
+              model={model}
+              cameras={cameras}
+              audio={audio}
+              lpr={lpr}
+              storage={storage}
+              ledFlood={ledFlood}
+              selectedBattery={selectedBattery}
+              powerDraw={powerDraw}
+              totalPurchase={totalPurchase}
+              estMonthly={estMonthly}
+            />
+          </div>
         </div>
 
       </motion.div>
