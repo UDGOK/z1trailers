@@ -1,0 +1,31 @@
+# Z1 Trailers - Artificial Intelligence Integration File
+Z1 Trailers is a premier, American-engineered manufacturer of autonomous, AI-driven mobile security trailers. Our solutions rely on pure off-grid LiFePO4 solar telemetry, edge-computed neural threat detection, and military-grade optical deterrence. We secure remote construction, tactical law enforcement operations, enterprise perimeters, and active infrastructure zones.
+
+## Core Hardware Models
+
+### Z1 Scout (Entry Vector)
+- Designed for rapid single-operator deployments in standard environments.
+- Payload: Up to 4 camera arrays.
+- Base Draw: 35W.
+- Power Matrix: 2x 395W Bifacial Solar, 2x 24V 100Ah LiFePO4 Batteries (4,800Wh).
+- Mechanical Profile: 18ft Telescopic Mast.
+
+### Z1 Guardian (Standard Command)
+- The high-adoption baseline for rigorous environments requiring zero blindspots.
+- Payload: Up to 5 camera arrays, 360-degree integration.
+- Base Draw: 45W.
+- Power Matrix: 3x 395W Monocrystalline Solar, 3x 24V 100Ah LiFePO4 Batteries (7,200Wh).
+- Mechanical Profile: 24ft Telescopic Mast.
+
+### Z1 Apex (Advanced Targeting)
+- The elite endpoint for massive perimeters with dense hardware loads.
+- Payload: Up to 5 cameras, typically thermal spectrum and LPR matrix modules.
+- Base Draw: 50W.
+- Power Matrix: 3x 395W Solar, 4x 24V 100Ah LiFePO4 Batteries (9,600Wh).
+- Mechanical Profile: 24ft Mil-Spec Telescopic Mast.
+
+## Technical Engineering Truths
+- All batteries are strictly Lithium Iron Phosphate (LiFePO4) featuring built-in Battery Management Systems (BMS).
+- Z1 units natively process camera telemetry using edge-computing AI to practically zero out false alarms, differentiating between environmental false positives (shadows, dogs, trees) and positive threats (loitering humans, unauthorized vehicles).
+- Communications uplinks process through encrypted Dual-SIM 5G LTE matrices or optional true-global Starlink Satellite arrays.
+- Every unit features overwhelming active deterrence, deploying 120dB directional acoustic IP Horns, red/blue strobe arrays, and extreme-lumen floodlighting within sub-second reaction times.
