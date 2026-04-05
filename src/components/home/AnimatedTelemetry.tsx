@@ -8,6 +8,7 @@ export default function AnimatedTelemetry() {
   const [power, setPower] = useState(8.4);
   const [targets, setTargets] = useState([{ id: 1, x: 20, y: 30 }, { id: 2, x: 70, y: 60 }]);
   const [logs, setLogs] = useState(["SYSTEM ARMED", "THERMAL ONLINE"]);
+  const [isArmed, setIsArmed] = useState(true);
 
   // Simulate changing power output
   useEffect(() => {
@@ -72,17 +73,39 @@ export default function AnimatedTelemetry() {
 
         <div className="grid grid-cols-2 gap-4 mb-6 relative">
            {/* Defense Status */}
-           <div className="bg-brand-ice/50 border border-brand-mist/50 p-4 flex flex-col justify-between relative overflow-hidden group/defense">
-              <Shield className="w-5 h-5 text-brand-teal mb-4 relative z-10"/>
+           <div 
+              onClick={() => setIsArmed(!isArmed)}
+              className="bg-brand-ice/50 border border-brand-mist/50 p-4 flex flex-col justify-between relative overflow-hidden cursor-pointer group/defense"
+           >
+              <Shield className={`w-5 h-5 mb-4 relative z-10 transition-colors duration-300 ${isArmed ? 'text-red-500' : 'text-brand-teal'}`}/>
               <div className="relative z-10">
                 <p className="font-mono text-[8px] text-brand-steel uppercase tracking-widest mb-1">Defense Array</p>
-                <p className="font-display font-black text-xl text-brand-navy tracking-tight">ARMED</p>
+                <p className={`font-display font-black text-xl tracking-tight transition-colors duration-300 ${isArmed ? 'text-red-600' : 'text-brand-navy'}`}>
+                  {isArmed ? 'ARMED' : 'DISARMED'}
+                </p>
               </div>
-              <motion.div 
-                className="absolute inset-0 bg-brand-teal/5 pointer-events-none" 
-                animate={{ opacity: [0.3, 0.8, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              
+              {isArmed ? (
+                <motion.div 
+                  className="absolute inset-0 z-0 pointer-events-none mix-blend-color-burn"
+                  animate={{ 
+                    backgroundColor: [
+                      "rgba(255, 0, 0, 0.15)", // Red
+                      "rgba(255, 0, 0, 0)",
+                      "rgba(0, 100, 255, 0.15)", // Blue
+                      "rgba(0, 100, 255, 0)",
+                      "rgba(255, 0, 0, 0.15)"
+                    ] 
+                  }}
+                  transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
+                />
+              ) : (
+                <motion.div 
+                  className="absolute inset-0 bg-brand-teal/5 pointer-events-none z-0" 
+                  animate={{ opacity: [0.3, 0.8, 0.3] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              )}
            </div>
 
            {/* Solar / Battery Status */}
