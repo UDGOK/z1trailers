@@ -57,10 +57,16 @@ export default function Footer() {
 
           <div>
              <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">HQ Operations</h4>
-             <p className="font-mono text-[10px] text-white/60 uppercase tracking-widest mb-4 leading-relaxed">
-               1000 SECURITY PLAZA<br/>OKLAHOMA CITY, OK 73102<br/>UNITED STATES
+             <p className="font-mono text-[10px] text-white/60 uppercase tracking-widest leading-relaxed mb-4">
+               1518 Paloma St<br/>Los Angeles, CA 90021<br/>UNITED STATES
              </p>
-             <a href="tel:9185203823" className="block font-display font-black text-white hover:text-brand-teal transition-colors tracking-widest mb-4">
+             <p className="font-mono text-[9px] text-brand-teal uppercase tracking-widest mb-6 border-l-2 border-brand-teal pl-3">
+               + Branch: TULSA, OKLAHOMA<br/>+ Branch: HOUSTON, TEXAS
+             </p>
+             <a href="tel:9492489748" className="block font-display font-black text-white hover:text-brand-teal transition-colors tracking-widest mb-2">
+               (949) 248-9748
+             </a>
+             <a href="tel:9185203823" className="block font-display font-black text-white hover:text-brand-teal transition-colors tracking-widest mb-6">
                (918) 520-3823
              </a>
              <Link href="/get-a-quote" className="inline-flex items-center space-x-2 text-brand-teal font-display font-black text-xs uppercase tracking-[0.2em] group mt-2">

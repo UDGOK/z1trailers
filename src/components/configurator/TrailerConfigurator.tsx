@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useMemo } from "react";
-import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check, Info } from "lucide-react";
 
 type CameraBrand = "Uniview" | "Hanwha" | "Axis";
 type CameraType = "PTZ" | "Fisheye" | "Multisensor" | "Dome" | "Bullet";
@@ -38,9 +38,16 @@ const PRICING = {
     lpr: 3500,  // Insight LPR
     storage30: 850,
     storage60: 1250,
-    batteryUpgrade: 1500, // 24V 200Ah
   }
 };
+
+const BATTERY_OPTIONS = [
+  { id: '12V_100AH', name: '12V 100AH Self Heating', price: 425 },
+  { id: '12V_200AH', name: '12V 200AH Self Heating', price: 650 },
+  { id: '24V_100AH', name: '24V 100AH Self Heating', price: 495 },
+  { id: '24V_200AH', name: '24V 200AH Self Heating', price: 875 },
+  { id: '48V_200AH', name: '48V 200AH Battery', price: 1575 }
+] as const;
 
 const getCameraPrice = (type: CameraType, brand: CameraBrand) => {
   if (type === "Bullet") {
@@ -67,7 +74,8 @@ export default function TrailerConfigurator({
   const [audio, setAudio] = useState(false);
   const [lpr, setLpr] = useState(false);
   const [storage, setStorage] = useState<"0" | "30" | "60">("0");
-  const [batteryUpgrade, setBatteryUpgrade] = useState(false);
+  const [selectedBattery, setSelectedBattery] = useState<string>("");
+  const [showBatteryInfo, setShowBatteryInfo] = useState(false);
   const [userData, setUserData] = useState({ name: "", email: "", phone: "", company: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -86,13 +94,17 @@ export default function TrailerConfigurator({
     if (lpr) { total += PRICING.addons.lpr; draw += 25; }
     if (storage === "30") total += PRICING.addons.storage30;
     if (storage === "60") total += PRICING.addons.storage60;
-    if (batteryUpgrade) total += PRICING.addons.batteryUpgrade;
+    
+    if (selectedBattery) {
+       const batt = BATTERY_OPTIONS.find(b => b.id === selectedBattery);
+       if (batt) total += batt.price;
+    }
 
     // Rental calculation proxy (approx 1/12th hardware + $600 base overhead)
     const monthly = Math.round((total / 12) + 400);
 
     return { totalPurchase: total, estMonthly: monthly, powerDraw: draw };
-  }, [model, cameras, audio, lpr, storage, batteryUpgrade]);
+  }, [model, cameras, audio, lpr, storage, selectedBattery]);
 
   const addCamera = (type: CameraType, brand: CameraBrand) => {
     if (cameras.length >= 4) return;
@@ -121,7 +133,7 @@ export default function TrailerConfigurator({
         company: userData.company,
         email: userData.email,
         phone: userData.phone,
-        message: `CONFIGURATOR BUILD: \nModel: ${model}\nCameras: ${cameras.map(c => `${c.brand} ${c.type}`).join(', ')}\nAudio: ${audio}\nLPR: ${lpr}\nStorage: ${storage} days\nBattery Upgrade: ${batteryUpgrade}\nEst Purchase: $${totalPurchase}\nEst Monthly: $${estMonthly}`,
+        message: `CONFIGURATOR BUILD: \nModel: ${model}\nCameras: ${cameras.map(c => `${c.brand} ${c.type}`).join(', ')}\nAudio: ${audio}\nLPR: ${lpr}\nStorage: ${storage} days\nBattery Upgrade: ${selectedBattery || 'Standard'}\nEst Purchase: $${totalPurchase}\nEst Monthly: $${estMonthly}`,
         requirements: [],
       };
       await fetch('/api/quote', {
@@ -223,7 +235,7 @@ export default function TrailerConfigurator({
                       animate={{ width: `${Math.min((powerDraw / 180) * 100, 100)}%` }}
                     />
                  </div>
-                 {powerDraw > 120 && !batteryUpgrade && (
+                 {powerDraw > 120 && !selectedBattery && (
                     <p className="font-mono text-[9px] text-[#ff3333] mt-2 flex items-center">
                       <AlertTriangle className="w-3 h-3 mr-1" /> High draw detected. Recommend battery upgrade.
                     </p>
@@ -371,16 +383,80 @@ export default function TrailerConfigurator({
                               <Check className="w-5 h-5 text-[#00ff88]" />
                            </div>
 
-                           <label className={`flex items-start space-x-4 p-4 bg-[#1a1a1a] border ${powerDraw > 120 ? 'border-[#ff3333]' : 'border-[#333]'} rounded cursor-pointer hover:border-brand-teal/50 transition-colors`}>
-                              <input type="checkbox" checked={batteryUpgrade} onChange={e => setBatteryUpgrade(e.target.checked)} className="mt-1 accent-[#ff6b00]" />
-                              <div>
-                                 <p className="font-display font-bold text-white flex items-center space-x-2">
-                                    <span>24V 200Ah High-Cap Upgrde</span> 
-                                    <span className="text-[#ff6b00] text-xs">+$1500</span>
-                                 </p>
-                                 <p className="font-mono text-[10px] text-[#666] mt-1">Double the reserve capacity. Recommended for setups utilizing LPR or 3+ PTZ units.</p>
+                           <div className="space-y-2 mt-4 relative">
+                              <div className="flex items-center justify-between mb-3 text-[#b0b0b0] border-b border-[#333] pb-2">
+                                <p className="font-mono text-[10px] uppercase">Z1 Power LiFePO4 Upgrades</p>
+                                <button 
+                                  onMouseEnter={() => setShowBatteryInfo(true)}
+                                  onMouseLeave={() => setShowBatteryInfo(false)}
+                                  className="text-brand-teal hover:text-white flex items-center gap-1 font-mono text-[10px] uppercase"
+                                >
+                                  <Info className="w-3 h-3" /> Tech Specs
+                                </button>
                               </div>
-                           </label>
+
+                              <button
+                                onClick={() => setSelectedBattery("")}
+                                className={`w-full flex items-center justify-between p-4 border rounded cursor-pointer transition-colors ${selectedBattery === "" ? 'bg-brand-teal/10 border-brand-teal' : 'bg-[#1a1a1a] border-[#333] hover:border-brand-teal/50'}`}
+                              >
+                                <div className="flex items-center space-x-3">
+                                  <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${selectedBattery === "" ? 'border-brand-teal' : 'border-[#666]'}`}>
+                                     {selectedBattery === "" && <div className="w-2 h-2 rounded-full bg-brand-teal" />}
+                                  </div>
+                                  <p className={`font-display font-bold text-sm ${selectedBattery === "" ? 'text-white' : 'text-[#b0b0b0]'}`}>Included Base Matrix <span className="font-mono text-[10px] ml-2 text-brand-teal">(+0.00)</span></p>
+                                </div>
+                              </button>
+
+                              {BATTERY_OPTIONS.map(batt => (
+                                <button
+                                  key={batt.id}
+                                  onClick={() => setSelectedBattery(batt.id)}
+                                  className={`w-full flex items-center justify-between p-4 border rounded cursor-pointer transition-colors ${selectedBattery === batt.id ? 'bg-[#ff6b00]/10 border-[#ff6b00]' : 'bg-[#1a1a1a] border-[#333] hover:border-[#ff6b00]/50'}`}
+                                >
+                                  <div className="flex items-center space-x-3">
+                                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${selectedBattery === batt.id ? 'border-[#ff6b00]' : 'border-[#666]'}`}>
+                                      {selectedBattery === batt.id && <div className="w-2 h-2 rounded-full bg-[#ff6b00]" />}
+                                    </div>
+                                    <p className={`font-display font-bold text-sm ${selectedBattery === batt.id ? 'text-white' : 'text-[#b0b0b0]'}`}>{batt.name}</p>
+                                  </div>
+                                  <p className="font-mono text-[11px] text-[#ff6b00]">${batt.price.toLocaleString()}</p>
+                                </button>
+                              ))}
+
+                              {/* Spec Sheet Modal overlay inside Step 3 */}
+                              <AnimatePresence>
+                                {showBatteryInfo && (
+                                   <motion.div
+                                     initial={{ opacity: 0, y: 10 }}
+                                     animate={{ opacity: 1, y: 0 }}
+                                     exit={{ opacity: 0, y: 10 }}
+                                     className="absolute top-0 right-0 w-80 p-6 bg-[#0a1628] border border-brand-teal/40 rounded shadow-2xl z-50 pointer-events-none"
+                                   >
+                                      <h4 className="font-display font-black text-xl text-white uppercase tracking-wider mb-2">Z1 Power LiFePO4</h4>
+                                      <p className="font-mono text-[10px] text-brand-teal uppercase tracking-widest mb-4">Mil-Spec Energy Storage</p>
+                                      
+                                      <ul className="space-y-3 font-mono text-[9px] text-[#b0b0b0] uppercase tracking-wider">
+                                        <li className="flex items-start gap-2">
+                                          <Zap className="w-3 h-3 text-brand-teal shrink-0 mt-0.5" />
+                                          <span>Arctic Self-Heating (Operates & Charges to -4°F / -20°C)</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                          <ShieldCheck className="w-3 h-3 text-brand-teal shrink-0 mt-0.5" />
+                                          <span>Advanced BMS limits Over-Draw & Short Circuits</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                          <Check className="w-3 h-3 text-brand-teal shrink-0 mt-0.5" />
+                                          <span>5,000+ Deep Cycles at 80% DOD</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                          <Check className="w-3 h-3 text-brand-teal shrink-0 mt-0.5" />
+                                          <span>Bluetooth & Local SOC Monitoring</span>
+                                        </li>
+                                      </ul>
+                                   </motion.div>
+                                )}
+                              </AnimatePresence>
+                           </div>
                         </motion.div>
                      )}
 

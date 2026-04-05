@@ -28,7 +28,10 @@ export default function CTA() {
         </div>
         
         <p className="font-mono text-xs text-brand-navy/60 font-bold uppercase tracking-widest mt-6">
-          Or Call Core Command: <a href="tel:9185203823" className="text-brand-navy hover:text-white transition-colors underline decoration-brand-navy/30 underline-offset-4 ml-2">(918) 520-3823</a>
+          Or Call Core Command: 
+          <a href="tel:9492489748" className="text-brand-navy hover:text-white transition-colors underline decoration-brand-navy/30 underline-offset-4 ml-2">(949) 248-9748</a>
+          <span className="mx-2">/</span>
+          <a href="tel:9185203823" className="text-brand-navy hover:text-white transition-colors underline decoration-brand-navy/30 underline-offset-4">(918) 520-3823</a>
         </p>
       </div>
     </section>
