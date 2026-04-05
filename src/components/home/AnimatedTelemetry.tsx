@@ -129,19 +129,29 @@ export default function AnimatedTelemetry() {
 
            {/* Solar / Battery Status */}
            <div className="bg-brand-ice/50 border border-brand-mist/50 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div className="flex justify-between items-start relative z-10 mb-4">
-                 <Zap className="w-5 h-5 text-brand-gold"/>
-                 {/* Simulated charging particles */}
-                 <div className="flex space-x-1">
-                    {[0,1,2].map((i) => (
-                      <motion.div 
-                        key={i}
-                        className="w-1 h-3 bg-brand-gold"
-                        animate={{ opacity: [0.1, 1, 0.1], scaleY: [0.5, 1, 0.5] }}
-                        transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                      />
-                    ))}
+              <div className="flex justify-between items-start relative z-10 mb-5">
+                 {/* Custom Battery Graphic with animated charging ions */}
+                 <div className="flex items-center">
+                    <div className="w-10 h-[18px] border-[1.5px] border-brand-gold rounded-[3px] p-[2px] flex space-x-[2px] bg-black/40">
+                       {[0, 1, 2, 3].map((i) => (
+                         <motion.div 
+                           key={i}
+                           className="flex-1 h-full bg-brand-gold shadow-[0_0_8px_rgba(250,204,21,0.6)]"
+                           animate={{ opacity: [0.1, 1, 0.1] }}
+                           transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.25 }}
+                         />
+                       ))}
+                    </div>
+                    {/* Battery Nub */}
+                    <div className="w-[2px] h-[8px] bg-brand-gold rounded-r-[2px]" />
                  </div>
+                 
+                 {/* Solar Pulse */}
+                 <motion.div 
+                    className="w-2 h-2 rounded-full border border-brand-gold bg-brand-gold/20"
+                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                 />
               </div>
               <div className="relative z-10">
                 <p className="font-mono text-[8px] text-brand-steel uppercase tracking-widest mb-1">Solar Output</p>
