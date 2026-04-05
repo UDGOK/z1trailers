@@ -291,10 +291,15 @@ export default function TrailerConfigurator({
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 50, scale: 0.95 }}
-        className="w-full max-w-[1100px] h-[90vh] md:h-[85vh] flex flex-col md:flex-row bg-[#05080c] border border-brand-teal/30 rounded-2xl shadow-[0_0_50px_rgba(27,154,170,0.15)] overflow-hidden"
+        className="relative w-full max-w-[1100px] h-[90vh] md:h-[85vh] flex flex-col md:flex-row bg-[#05080c] border border-brand-teal/30 rounded-2xl shadow-[0_0_50px_rgba(27,154,170,0.15)] overflow-y-auto md:overflow-hidden"
       >
+        {/* GLOBAL CLOSE BUTTON */}
+        <button onClick={onClose} className="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white z-[60] bg-black/50 p-2 rounded-full md:bg-transparent md:p-0">
+          <X className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+
         {/* LEFT PANE - Visual & Summary */}
-        <div className="w-full md:w-5/12 bg-brand-navy border-r border-brand-teal/20 flex flex-col relative overflow-hidden">
+        <div className="w-full md:w-5/12 bg-brand-navy border-b md:border-b-0 md:border-r border-brand-teal/20 flex flex-col relative flex-shrink-0 min-h-[75vh] md:min-h-0 overflow-hidden">
            {/* Abstract Z1 Rendering */}
            <div className="absolute inset-0 z-0 opacity-30">
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
@@ -428,10 +433,7 @@ export default function TrailerConfigurator({
         </div>
 
         {/* RIGHT PANE - Wizard Form */}
-        <div className="w-full md:w-7/12 flex flex-col bg-[#05080c] relative">
-           <button onClick={onClose} className="absolute top-6 right-6 text-[#b0b0b0] hover:text-white z-50">
-             <X className="w-6 h-6" />
-           </button>
+        <div className="w-full md:w-7/12 flex flex-col bg-[#05080c] relative flex-shrink-0 min-h-[75vh] md:min-h-0">
 
            {submitted ? (
              <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
