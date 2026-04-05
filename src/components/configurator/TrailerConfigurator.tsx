@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useMemo, useRef, useEffect } from "react";
 import { X, ChevronRight, ChevronLeft, Camera, Speaker, HardDrive, Zap, ShieldCheck, Mail, AlertTriangle, Send, Target, Check, Info, Download } from "lucide-react";
-import html2canvas from "html2canvas";
+import { toJpeg } from "html-to-image";
 import jsPDF from "jspdf";
 import { SpecSheetTemplate } from "./SpecSheetPDF";
 
@@ -177,14 +177,12 @@ export default function TrailerConfigurator({
     if (!pdfRef.current) return;
     setIsGeneratingPDF(true);
     try {
-      const canvas = await html2canvas(pdfRef.current, { 
-        scale: 2, 
-        useCORS: true,
-        allowTaint: true,
-        logging: true,
-        backgroundColor: "#ffffff"
+      // Use html-to-image which natively relies on browser SVG engine rather than manual CSS pixel parsers
+      const imgData = await toJpeg(pdfRef.current, { 
+        quality: 1.0,
+        backgroundColor: "#ffffff",
+        pixelRatio: 2
       });
-      const imgData = canvas.toDataURL('image/jpeg', 1.0);
 
       const pdf = new jsPDF({
         orientation: "portrait",
@@ -193,7 +191,8 @@ export default function TrailerConfigurator({
       });
       
       const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      // Calculate height dynamically maintaining aspect ratio (usually 800 x 1131 equates to 1:1.414)
+      const pdfHeight = (1131 * pdfWidth) / 800;
       
       pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(`Z1_Trailers_SpecSheet_${model.replace(/ /g, '_')}.pdf`);
