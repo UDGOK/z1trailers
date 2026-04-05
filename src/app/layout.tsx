@@ -19,11 +19,18 @@ export const metadata: Metadata = {
     title: "Z1 Trailers | Mobile Security Surveillance",
     description: "Autonomous solar-powered, AI-equipped tactical surveillance endpoints.",
     siteName: "Z1 Trailers",
+    images: [{
+      url: "https://z1trailers.com/Logo.png",
+      width: 1200,
+      height: 630,
+      alt: "Z1 Trailers - Tactical Mobile Security",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Z1 Trailers",
     description: "Tactical Mobile Surveillance Endpoints.",
+    images: ["https://z1trailers.com/Logo.png"],
   }
 };
 
@@ -37,10 +44,10 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Z1 Trailers",
     "url": "https://z1trailers.com",
-    "logo": "https://z1trailers.com/logo.png",
+    "logo": "https://z1trailers.com/Logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-800-555-0100",
+      "telephone": "+1-949-248-9748",
       "contactType": "sales",
       "areaServed": "US",
       "availableLanguage": "en"
