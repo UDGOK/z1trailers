@@ -433,8 +433,8 @@ const MobileAccordionItem = ({ item, closeMenu }: { item: any, closeMenu: () => 
         className="flex justify-between items-center w-full py-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Link href={item.href} onClick={closeMenu} className="font-display font-black text-2xl uppercase tracking-widest text-white flex-1">{item.name}</Link>
-        <button className="w-12 h-12 flex items-center justify-end text-brand-teal">
+        <span className="font-display font-black text-2xl uppercase tracking-widest text-white flex-1">{item.name}</span>
+        <button className="w-12 h-12 flex items-center justify-end text-brand-teal pointer-events-none">
           <ChevronDown className={cn("w-6 h-6 transition-transform duration-300", isOpen && "rotate-180")} />
         </button>
       </div>
