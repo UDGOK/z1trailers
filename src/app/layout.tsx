@@ -47,7 +47,7 @@ export default function RootLayout({
     "logo": "https://z1trailers.com/Logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-949-248-9748",
+      "telephone": "+1-918-520-3823",
       "contactType": "sales",
       "areaServed": "US",
       "availableLanguage": "en"
