@@ -7,6 +7,15 @@ import { ArrowLeft, Calendar, User, Tag } from 'lucide-react'
 import { urlForImage } from '@/sanity/lib/image'
 import { CustomPortableText } from './PortableText'
 import CopperTheftContent from './CopperTheftContent'
+import DataCenterContent from './DataCenterContent'
+import EventSecurityContent from './EventSecurityContent'
+import HardwareArchitectureContent from './HardwareArchitectureContent'
+import EnterpriseDashboardContent from './EnterpriseDashboardContent'
+import LiabilityShieldsContent from './LiabilityShieldsContent'
+import HumanVsAIContent from './HumanVsAIContent'
+import RetailORCContent from './RetailORCContent'
+import LiFePO4Content from './LiFePO4Content'
+import RenewableSecurityContent from './RenewableSecurityContent'
 
 export default function BlogPostUI({ post }: { post: any }) {
   const { scrollYProgress } = useScroll()
@@ -114,6 +123,24 @@ export default function BlogPostUI({ post }: { post: any }) {
         >
           {post.title?.toLowerCase().includes("copper") ? (
              <CopperTheftContent />
+          ) : post.title?.toLowerCase().includes("data center") ? (
+             <DataCenterContent />
+          ) : post.title?.toLowerCase().includes("event security") ? (
+             <EventSecurityContent />
+          ) : post.title?.toLowerCase().includes("hardware") || post.title?.toLowerCase().includes("npu") ? (
+             <HardwareArchitectureContent />
+          ) : post.title?.toLowerCase().includes("enterprise") || post.title?.toLowerCase().includes("dashboard") ? (
+             <EnterpriseDashboardContent />
+          ) : post.title?.toLowerCase().includes("liability") || post.title?.toLowerCase().includes("litigation") ? (
+             <LiabilityShieldsContent />
+          ) : post.title?.toLowerCase().includes("human error") || post.title?.toLowerCase().includes("guard") ? (
+             <HumanVsAIContent />
+          ) : post.title?.toLowerCase().includes("retail") || post.title?.toLowerCase().includes("orc") ? (
+             <RetailORCContent />
+          ) : post.title?.toLowerCase().includes("lifepo4") || post.title?.toLowerCase().includes("stability") ? (
+             <LiFePO4Content />
+          ) : post.title?.toLowerCase().includes("renewable") || post.title?.toLowerCase().includes("overcast") ? (
+             <RenewableSecurityContent />
           ) : post.body ? (
             <CustomPortableText value={post.body} />
           ) : (
