@@ -121,25 +121,25 @@ export default function BlogPostUI({ post }: { post: any }) {
            className="prose prose-invert prose-lg max-w-none text-gray-300 font-inter 
                       prose-headings:text-white prose-a:text-brand-teal prose-strong:text-white"
         >
-          {post.title?.toLowerCase().includes("copper") ? (
+          {post.slug?.current?.includes("copper") ? (
              <CopperTheftContent />
-          ) : post.title?.toLowerCase().includes("data center") ? (
+          ) : post.slug?.current?.includes("data-center") ? (
              <DataCenterContent />
-          ) : post.title?.toLowerCase().includes("event security") ? (
+          ) : post.slug?.current?.includes("event-security") ? (
              <EventSecurityContent />
-          ) : post.title?.toLowerCase().includes("hardware") || post.title?.toLowerCase().includes("npu") ? (
+          ) : post.slug?.current?.includes("hardware") || post.slug?.current?.includes("npu") ? (
              <HardwareArchitectureContent />
-          ) : post.title?.toLowerCase().includes("enterprise") || post.title?.toLowerCase().includes("dashboard") ? (
+          ) : post.slug?.current?.includes("enterprise") || post.slug?.current?.includes("dashboard") ? (
              <EnterpriseDashboardContent />
-          ) : post.title?.toLowerCase().includes("liability") || post.title?.toLowerCase().includes("litigation") ? (
+          ) : post.slug?.current?.includes("liability") || post.slug?.current?.includes("litigation") ? (
              <LiabilityShieldsContent />
-          ) : post.title?.toLowerCase().includes("human error") || post.title?.toLowerCase().includes("guard") ? (
+          ) : post.slug?.current?.includes("human-error") || post.slug?.current?.includes("human") ? (
              <HumanVsAIContent />
-          ) : post.title?.toLowerCase().includes("retail") || post.title?.toLowerCase().includes("orc") ? (
+          ) : post.slug?.current?.includes("retail") || post.slug?.current?.includes("orc") ? (
              <RetailORCContent />
-          ) : post.title?.toLowerCase().includes("lifepo4") || post.title?.toLowerCase().includes("stability") ? (
+          ) : post.slug?.current?.includes("lifepo4") || post.slug?.current?.includes("lithium") ? (
              <LiFePO4Content />
-          ) : post.title?.toLowerCase().includes("renewable") || post.title?.toLowerCase().includes("overcast") ? (
+          ) : post.slug?.current?.includes("renewable") || post.slug?.current?.includes("solar") ? (
              <RenewableSecurityContent />
           ) : post.body ? (
             <CustomPortableText value={post.body} />
