@@ -12,7 +12,7 @@ export default function ProductsPreview() {
        desc: "Compact, rapid-deployment endpoint designed for temporary sites. Features a 5-day battery reserve and fundamental 24/7 AI-monitored optics.",
        price: "$999/mo",
        icon: Crosshair,
-       img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
+       img: "/images/products/z1-scout.png",
        href: "/security-trailers/z1-scout"
     },
     {
@@ -21,7 +21,7 @@ export default function ProductsPreview() {
        desc: "Our high-adoption standard. 10-day autonomy via expanded solar array, upgraded dual-lens optics, and bi-directional audio deterrence.",
        price: "$1,750/mo",
        icon: Sun,
-       img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+       img: "/images/products/z1-guardian.png",
        href: "/security-trailers/z1-guardian"
     },
     {
@@ -30,7 +30,7 @@ export default function ProductsPreview() {
        desc: "Military-grade optical payload featuring Thermal Imaging and integrated License Plate Recognition (LPR) for mission-critical borders.",
        price: "$2,800/mo",
        icon: Shield,
-       img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=800",
+       img: "/images/products/z1-apex.png",
        href: "/security-trailers/z1-apex"
     },
   ];

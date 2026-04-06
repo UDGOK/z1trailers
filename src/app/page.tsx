@@ -13,8 +13,51 @@ import AnimatedTelemetry from "@/components/home/AnimatedTelemetry";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 
 export default function Home() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How fast can a unit be deployed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our tactical teams can deliver, position, and initialize a Z1 trailer on your site in under 15 minutes. It connects to our central AI network immediately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do these require external power or internet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All models are 100% autonomous. They run on vast solar arrays with high-capacity battery reserves (5 to 20+ days) and transmit data via 4G/5G or StarLink satellite."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I rent a trailer, or do I have to buy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer both Capital Expenditure (CapEx) purchase plans and OpEx monthly rental agreements engineered to fit the operational cycles of your specific project."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who monitors the cameras?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our trailers use edge-AI computing to filter false alarms. When a legitimate threat occurs, it triggers our elite UL-listed monitoring partners to initiate real-time visual verification, active deterrence, and dispatch authorities if necessary."
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="relative isolate overflow-hidden bg-brand-ice pt-32 pb-16 lg:pt-48 lg:pb-32 flex flex-col items-center">
         {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(13,27,42,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(13,27,42,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none -z-10" />

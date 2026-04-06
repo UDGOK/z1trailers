@@ -12,9 +12,10 @@ import { cn } from "@/lib/utils";
 // --- Sub-component for Trillion-Dollar Products Dropdown ---
 function ProductsDropdown() {
   const products = [
-    { name: "Z1 Scout", desc: "ENTRY // 5 DAY BATTERY", icon: Crosshair, href: "/security-trailers/z1-scout", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" },
-    { name: "Z1 Guardian", desc: "MID // 10 DAY BATTERY", icon: Sun, href: "/security-trailers/z1-guardian", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" },
-    { name: "Z1 Apex", desc: "ADV // THERMAL + LPR", icon: Shield, href: "/security-trailers/z1-apex", img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=600" },
+    { name: "Z1 Scout", desc: "ENTRY // 5 DAY BATTERY", icon: Crosshair, href: "/security-trailers/z1-scout", img: "/images/products/z1-scout.png" },
+    { name: "Z1 Guardian", desc: "MID // 10 DAY BATTERY", icon: Sun, href: "/security-trailers/z1-guardian", img: "/images/products/z1-guardian.png" },
+    { name: "Z1 Apex", desc: "ADV // THERMAL + LPR", icon: Shield, href: "/security-trailers/z1-apex", img: "/images/products/z1-apex.png" },
+
 
   ];
 
@@ -345,7 +346,7 @@ const navItems = [
       { name: "Z1 Scout", href: "/security-trailers/z1-scout" },
       { name: "Z1 Guardian", href: "/security-trailers/z1-guardian" },
       { name: "Z1 Apex", href: "/security-trailers/z1-apex" },
-      { name: "Z1 Command", href: "/security-trailers/z1-command" },
+      { name: "Z1 Command OS", href: "/z1-command-os" },
     ]
   },
   {

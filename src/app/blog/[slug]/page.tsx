@@ -35,6 +35,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound()
   }
 
+  const authors = ["Zack H.", "Daniel K.", "Ryan Y."];
+  const charSum = slug.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const derivedAuthor = authors[charSum % authors.length];
+
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -47,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "datePublished": post.publishedAt || new Date().toISOString(),
     "author": {
       "@type": "Person",
-      "name": post.authorName || "Sector Analyst HQ",
+      "name": post.authorName || derivedAuthor,
       "url": post.authorLinkedin || "https://z1trailers.com"
     },
     "publisher": {

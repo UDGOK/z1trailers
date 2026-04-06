@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ArrowLeft, Calendar, User, Tag } from 'lucide-react'
 import { urlForImage } from '@/sanity/lib/image'
 import { CustomPortableText } from './PortableText'
+import CopperTheftContent from './CopperTheftContent'
 
 export default function BlogPostUI({ post }: { post: any }) {
   const { scrollYProgress } = useScroll()
@@ -64,10 +65,10 @@ export default function BlogPostUI({ post }: { post: any }) {
                   )}
                   {post.authorLinkedin ? (
                     <a href={post.authorLinkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-brand-teal transition-colors">
-                      <span className="uppercase tracking-wider text-gray-300 font-bold">{post.authorName || 'Zack H.'}</span>
+                      <span className="uppercase tracking-wider text-gray-300 font-bold">{post.authorName || ['Zack H.', 'Daniel K.', 'Ryan Y.'][post?.title?.length % 3 || 0]}</span>
                     </a>
                   ) : (
-                    <span className="uppercase tracking-wider text-gray-300 font-bold">{post.authorName || 'Zack H.'}</span>
+                    <span className="uppercase tracking-wider text-gray-300 font-bold">{post.authorName || ['Zack H.', 'Daniel K.', 'Ryan Y.'][post?.title?.length % 3 || 0]}</span>
                   )}
                   {post.authorRole && (
                     <span className="text-gray-500 uppercase text-[10px] ml-2">// {post.authorRole}</span>
@@ -111,7 +112,9 @@ export default function BlogPostUI({ post }: { post: any }) {
            className="prose prose-invert prose-lg max-w-none text-gray-300 font-inter 
                       prose-headings:text-white prose-a:text-brand-teal prose-strong:text-white"
         >
-          {post.body ? (
+          {post.title?.toLowerCase().includes("copper") ? (
+             <CopperTheftContent />
+          ) : post.body ? (
             <CustomPortableText value={post.body} />
           ) : (
             <p className="text-gray-500 italic">Incoming transmission... Content is currently encrypted or unavailable.</p>
