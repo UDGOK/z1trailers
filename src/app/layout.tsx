@@ -42,16 +42,143 @@ export default function RootLayout({
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://www.z1trailers.com/#organization",
     "name": "Z1 Trailers",
-    "url": "https://z1trailers.com",
-    "logo": "https://z1trailers.com/Logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-918-520-3823",
-      "contactType": "sales",
-      "areaServed": "US",
-      "availableLanguage": "en"
-    }
+    "description": "Z1 Trailers provides solar-powered, AI-equipped mobile security surveillance trailers for rent and purchase nationwide. Serving construction sites, parking lots, oil and gas sites, auto dealerships, and municipalities across all 50 US states. Deployable in under 15 minutes with no infrastructure required.",
+    "url": "https://www.z1trailers.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.z1trailers.com/Logo.png",
+      "width": 300,
+      "height": 100
+    },
+    "image": "https://www.z1trailers.com/Logo.png",
+    "telephone": ["+19492489748", "+19185203823"],
+    "email": "contact@z1trailers.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1518 Paloma St",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "postalCode": "90021",
+      "addressCountry": "US"
+    },
+    "location": [
+      {
+        "@type": "Place",
+        "name": "Z1 Trailers — Tulsa Branch",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tulsa",
+          "addressRegion": "OK",
+          "addressCountry": "US"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Z1 Trailers — Houston Branch",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Houston",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        }
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "serviceArea": [
+      {"@type": "State", "name": "Oklahoma"},
+      {"@type": "State", "name": "Texas"},
+      {"@type": "State", "name": "Louisiana"},
+      {"@type": "State", "name": "Arkansas"},
+      {"@type": "State", "name": "Kansas"},
+      {"@type": "State", "name": "Alabama"}
+    ],
+    "foundingDate": "2026",
+    "slogan": "Autonomy By Design",
+    "knowsAbout": [
+      "Mobile Security Surveillance Trailers",
+      "Solar-Powered Surveillance Systems",
+      "AI-Powered Video Analytics",
+      "Construction Site Security",
+      "License Plate Recognition",
+      "Edge Computing Surveillance",
+      "Thermal Imaging Security"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Z1 Trailers Security Surveillance Units",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Z1 Scout",
+            "description": "Entry-level mobile security surveillance trailer with dual 4MP AI cameras, 18ft telescopic mast, 5-day battery autonomy, and 4G LTE connectivity."
+          },
+          "price": "999",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "999",
+            "priceCurrency": "USD",
+            "unitText": "month"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Z1 Guardian",
+            "description": "Standard mobile security surveillance trailer with quad 4MP AI cameras, bi-directional loudspeaker and strobe, and 10-day battery autonomy."
+          },
+          "price": "1750",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "1750",
+            "priceCurrency": "USD",
+            "unitText": "month"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Z1 Apex",
+            "description": "Advanced mobile security surveillance trailer with thermal imaging, license plate recognition, radar detection, and 15-day battery autonomy."
+          },
+          "price": "2800",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "2800",
+            "priceCurrency": "USD",
+            "unitText": "month"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Z1 Command",
+            "description": "Elite mobile security surveillance trailer with StarLink satellite, pan-tilt-zoom cameras, seismic sensors, and 20+ day battery autonomy."
+          },
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Custom pricing — contact for quote"
+        }
+      ]
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/z1trailers",
+      "https://www.facebook.com/z1trailers",
+      "https://www.youtube.com/@z1trailers",
+      "https://www.instagram.com/z1trailers"
+    ]
   };
 
   return (
