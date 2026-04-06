@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!stateData || !cityData) return {};
   
   return {
-    title: `Surveillance, Solar & LiFePO4 Battery Trailers in ${cityData.name}, ${stateData.name} | Z1 Trailers`,
+    title: `Mobile Security Trailers in ${cityData.name}, ${stateData.name} | Z1 Trailers`,
     description: cityData.desc,
   };
 }

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!loc) return {};
   
   return {
-    title: `Mobile Security & Solar LiFePO4 Trailers in ${loc.name} | Z1 Trailers`,
+    title: `Mobile Security Trailers in ${loc.name} | Z1 Trailers`,
     description: loc.desc,
   };
 }
