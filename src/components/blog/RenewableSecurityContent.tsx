@@ -64,6 +64,60 @@ export default function RenewableSecurityContent() {
       <p className="mb-6">
          Eliminating the logistical horror of dispatching personnel to constantly refuel humming, exhaust-spewing diesel generators saves thousands in OpEx. The Z1 converts the pure kinetic heat of a star into an unassailable tactical digital barrier forever.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <Activity className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can a solar security trailer survive a 10-day Pacific overcast?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes, if engineered correctly. The Z1 pairs an over-sized 1200W array with a deep LiFePO4 storage vault. Even during massive storm events generating only 15% sunlight strength, the enlarged massive panels scavenge enough ambient UV to easily outpace the neural processor's power draw.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How does MPPT controller logic prevent energy waste?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Standard PWM controllers burn off vast amounts of gathered solar energy as pure heat mismatch. An advanced MPPT (Maximum Power Point Tracking) processor physically algorithmically sweeps the panels 100 times per second, translating 99.8% of the sun's raw voltage perfectly into the battery core.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Will the Z1 trailer perform active load-shedding to stay alive?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. In ultra-rare scenarios where the LiFePO4 batteries reach critically low thresholds, the Z1 OS intelligently sheds non-vital subsystems like flashing deterrent strobes to exclusively reserve all remaining atomic power for the 24/7 video processing and recording matrices.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can a solar security trailer survive a 10-day Pacific overcast?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, if engineered correctly. The Z1 pairs an over-sized 1200W array with a deep LiFePO4 storage vault. Even during massive storm events generating only 15% sunlight strength, the enlarged massive panels scavenge enough ambient UV to easily outpace the neural processor's power draw."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does MPPT controller logic prevent energy waste?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Standard PWM controllers burn off vast amounts of gathered solar energy as pure heat mismatch. An advanced MPPT (Maximum Power Point Tracking) processor physically algorithmically sweeps the panels 100 times per second, translating 99.8% of the sun's raw voltage perfectly into the battery core."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will the Z1 trailer perform active load-shedding to stay alive?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. In ultra-rare scenarios where the LiFePO4 batteries reach critically low thresholds, the Z1 OS intelligently sheds non-vital subsystems like flashing deterrent strobes to exclusively reserve all remaining atomic power for the 24/7 video processing and recording matrices."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

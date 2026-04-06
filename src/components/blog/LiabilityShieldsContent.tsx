@@ -38,7 +38,7 @@ export default function LiabilityShieldsContent() {
          <Lock className="w-8 h-8" /> Tamper-Proof Cryptography
       </h2>
       <p className="mb-6">
-         To hold up against aggressive legal discovery, the video payload cannot just be clear—it must be pristine, timestamped, and mathematically un-editable.
+         Owning the tape means owning the narrative. By standardizing physical layer security across your portfolio, you actively force malicious actors, phantom injury syndicates, and hostile third parties to negotiate against an unyielding mathematical timeline of reality. You are fully shielded.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -64,6 +64,60 @@ export default function LiabilityShieldsContent() {
       <p className="mb-6">
          A $1,500 monthly lease for a Z1 trailer isn't a security cost—it is aggressive legal insurance. It permanently immunizes your general contracting license, premium insurance tier, and massive corporate treasury from targeted legal syndicates looking for an easy payout.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <ScaleJustice className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can 4K security footage definitively prevent slip-and-fall lawsuits?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. In commercial liability cases, the burden of proof rests on the plaintiff. Supplying defense counsel with uncompressed 4K timestamped footage of the specific incident completely eliminates "he-said-she-said" litigation, resulting in rapid dismissals against fraudulent injury claims.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Why is encrypted SSD storage required for legal discovery?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Any video footage presented in court must possess a verifiable chain of custody. The Z1 utilizes highly encrypted onboard solid-state memory, mathematically proving that the video files have not been manipulated or deep-faked prior to submission.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Are general contractors physically liable for trespassing injuries?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Often, yes. If an unauthorized trespasser is injured on your site lacking active hazard deterrence, it can be deemed an "attractive nuisance". Triggering 120-decibel sirens and strobes the instant a perimeter is breached fundamentally proves you executed rigorous proactive deterrence.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can 4K security footage definitively prevent slip-and-fall lawsuits?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. In commercial liability cases, the burden of proof rests on the plaintiff. Supplying defense counsel with uncompressed 4K timestamped footage of the specific incident completely eliminates \"he-said-she-said\" litigation, resulting in rapid dismissals against fraudulent injury claims."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is encrypted SSD storage required for legal discovery?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Any video footage presented in court must possess a verifiable chain of custody. The Z1 utilizes highly encrypted onboard solid-state memory, mathematically proving that the video files have not been manipulated or deep-faked prior to submission."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are general contractors physically liable for trespassing injuries?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Often, yes. If an unauthorized trespasser is injured on your site lacking active hazard deterrence, it can be deemed an \"attractive nuisance\". Triggering 120-decibel sirens and strobes the instant a perimeter is breached fundamentally proves you executed rigorous proactive deterrence."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

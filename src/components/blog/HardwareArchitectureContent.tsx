@@ -38,7 +38,7 @@ export default function HardwareArchitectureContent() {
          <ThermometerSun className="w-8 h-8" /> Thermodynamics & Armor
       </h2>
       <p className="mb-6">
-         A machine processing deep-learning vectors locally generates significant thermal output. We isolate this utilizing highly aggressive engineering tolerances.
+         This localized physical processing supremacy ensures your liability is covered precisely when the grid fails, when the connection drops, and when the threat is at the gates.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -64,6 +64,60 @@ export default function HardwareArchitectureContent() {
       <p className="mb-6">
          Because the Z1 handles inference locally, the latency loop from raw lens intake to full Law-Enforcement strobe activation is a mathematically terrifying 0.2 seconds. This isn't just a camera. It is a fully autonomous tactical robot permanently calculating its perimeter matrix in real-time.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <Cpu className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Why is edge-computed NPU architecture superior to cloud processing?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Cloud-based processing requires streaming massive 4K raw video data across cellular networks, creating fatal latency and dropping frames during peak incidents. Edge computation parses the optical feed locally right on the trailer mast, destroying latency and triggering zero-day responses instantly.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can a security trailer survive 110°F desert heat without fans?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. The Z1 Guardian uses a rigorous passive heat-sink convection array rather than mechanical fans. This eliminates physical moving parts that fail in intense dust, allowing the core Neural Processing Unit to sustain 14+ days of direct UV assault without thermal throttling.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">What is the exact latency of Z1 threat detection?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Because the threat footprint is filtered and verified physically on the localized rig using the onboard NPU, the Z1 command hierarchy triggers active acoustics and law enforcement lighting protocols in under 0.4 seconds of geofence breach.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why is edge-computed NPU architecture superior to cloud processing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cloud-based processing requires streaming massive 4K raw video data across cellular networks, creating fatal latency and dropping frames during peak incidents. Edge computation parses the optical feed locally right on the trailer mast, destroying latency and triggering zero-day responses instantly."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can a security trailer survive 110°F desert heat without fans?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The Z1 Guardian uses a rigorous passive heat-sink convection array rather than mechanical fans. This eliminates physical moving parts that fail in intense dust, allowing the core Neural Processing Unit to sustain 14+ days of direct UV assault without thermal throttling."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the exact latency of Z1 threat detection?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Because the threat footprint is filtered and verified physically on the localized rig using the onboard NPU, the Z1 command hierarchy triggers active acoustics and law enforcement lighting protocols in under 0.4 seconds of geofence breach."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

@@ -64,6 +64,60 @@ export default function HumanVsAIContent() {
       <p className="mb-6">
          A standard security guard costs an organization upwards of $80,000 annually. A fully autonomous, thermally equipped, 20-foot tall robotic platform costs a mere fraction of that—delivering vastly superior, objectively provable deterrence without the associated HR liabilities or biological weaknesses.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <UserX className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">What is the biological failure rate of a night security guard?</h4>
+              <p className="text-brand-steel mt-2 text-sm">During low-stimulus observation periods between 01:00 and 05:00, human physiological alertness drops precipitously. Fatigue, cold weather, and smartphone distractions result in an unacceptably high rate of unauthorized breaches completely bypassing physical guards.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can thermal imaging outperform a human flashlight?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Exponentially. A high-lumen flashlight penetrates perhaps 40 to 60 feet into heavy fog or dense foliage. A Z1 Trailer equipped with uncooled VOx Thermal imaging instantly detects human radioactive heat signatures from hundreds of feet away in absolute, pitch-black darkness.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">What is the capital difference between AI security and human patrols?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Contracting an unarmed human guard 24/7 averages $7,000 to $10,000 per month and carries heavy liability and worker's compensation risks. A Z1 solar-powered autonomous security platform operates continually for a drastically reduced monthly rate with zero HR overhead.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the biological failure rate of a night security guard?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "During low-stimulus observation periods between 01:00 and 05:00, human physiological alertness drops precipitously. Fatigue, cold weather, and smartphone distractions result in an unacceptably high rate of unauthorized breaches completely bypassing physical guards."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can thermal imaging outperform a human flashlight?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Exponentially. A high-lumen flashlight penetrates perhaps 40 to 60 feet into heavy fog or dense foliage. A Z1 Trailer equipped with uncooled VOx Thermal imaging instantly detects human radioactive heat signatures from hundreds of feet away in absolute, pitch-black darkness."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the capital difference between AI security and human patrols?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Contracting an unarmed human guard 24/7 averages $7,000 to $10,000 per month and carries heavy liability and worker's compensation risks. A Z1 solar-powered autonomous security platform operates continually for a drastically reduced monthly rate with zero HR overhead."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

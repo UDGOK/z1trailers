@@ -64,6 +64,60 @@ export default function LiFePO4Content() {
       <p className="mb-6">
          By eliminating catastrophic fire liabilities and fundamentally removing battery replacement costs from the financial equation, the Z1 Trailer achieves true operational independence. You are investing in superior physical science, not just optics.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <Zap className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Why does standard lithium-ion cause thermal runaway fires?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Standard NMC lithium-ion chemistry becomes highly volatile under extreme heat or physical puncture. If the battery casing is compromised, it releases internal oxygen, fueling a violent, self-sustaining thermal runaway explosion entirely immune to standard fire extinguishers.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How many charge cycles does a LiFePO4 solar battery yield?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Unlike lead-acid which fails after 300 cycles, military-grade LiFePO4 (Lithium Iron Phosphate) delivers upward of 3,500 to 5,000 deep discharge cycles. This calculates to roughly 10 years of consistent daily draining on a construction site with zero degradation.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Why are flooded lead-acid batteries obsolete for security trailers?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Lead-acid batteries are extremely heavy and suffer permanent capacity damage if discharged beneath 50%. The corrosive internals also fail violently during deep winter freezing, forcing constant, expensive manual replacements.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why does standard lithium-ion cause thermal runaway fires?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Standard NMC lithium-ion chemistry becomes highly volatile under extreme heat or physical puncture. If the battery casing is compromised, it releases internal oxygen, fueling a violent, self-sustaining thermal runaway explosion entirely immune to standard fire extinguishers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many charge cycles does a LiFePO4 solar battery yield?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Unlike lead-acid which fails after 300 cycles, military-grade LiFePO4 (Lithium Iron Phosphate) delivers upward of 3,500 to 5,000 deep discharge cycles. This calculates to roughly 10 years of consistent daily draining on a construction site with zero degradation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why are flooded lead-acid batteries obsolete for security trailers?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lead-acid batteries are extremely heavy and suffer permanent capacity damage if discharged beneath 50%. The corrosive internals also fail violently during deep winter freezing, forcing constant, expensive manual replacements."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

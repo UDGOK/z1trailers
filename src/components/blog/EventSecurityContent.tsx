@@ -64,6 +64,60 @@ export default function EventSecurityContent() {
       <p className="mb-6">
          Deploying military-grade, solar-powered hardware adorned with high-visibility law enforcement strobes creates an immediate psychological perimeter. The simple physical presence of a Z1 Trailer eradicates 90% of opportunistic theft, fencing jumpers, and localized vandalism before a single camera is actuated.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <ShieldAlert className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How does aerial PTZ prevent crowd crushing?</h4>
+              <p className="text-brand-steel mt-2 text-sm">A 20-foot elevated Pan-Tilt-Zoom optic provides central command with a God's-eye view of massive human density clusters at bottlenecks. Operators can instantly identify congestion pressure points and utilize the mounted audio arrays to safely redirect crowd velocity.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can mobile security operate during festival cellular collapse?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. Under 50,000+ attendee loads, standard LTE/5G bandwidth completely implodes. The Z1 utilizes redundant onboard industrial solid-state caching accompanied by direct satellite link matrices to maintain unbroken transmission stability.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How fast can a Z1 Guardian network be deployed at a tailgate?</h4>
+              <p className="text-brand-steel mt-2 text-sm">A standard deployment grid of 12 Z1 units at a sprawling championship complex can be entirely dropped, geofenced, mapped, and optically activated in under three hours without laying a single power cord.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does aerial PTZ prevent crowd crushing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A 20-foot elevated Pan-Tilt-Zoom optic provides central command with a God's-eye view of massive human density clusters at bottlenecks. Operators can instantly identify congestion pressure points and utilize the mounted audio arrays to safely redirect crowd velocity."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can mobile security operate during festival cellular collapse?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Under 50,000+ attendee loads, standard LTE/5G bandwidth completely implodes. The Z1 utilizes redundant onboard industrial solid-state caching accompanied by direct satellite link matrices to maintain unbroken transmission stability."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How fast can a Z1 Guardian network be deployed at a tailgate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A standard deployment grid of 12 Z1 units at a sprawling championship complex can be entirely dropped, geofenced, mapped, and optically activated in under three hours without laying a single power cord."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

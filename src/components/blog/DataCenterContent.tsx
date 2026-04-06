@@ -38,7 +38,7 @@ export default function DataCenterContent() {
          <Radar className="w-8 h-8" /> Multi-Spectral Perimeter Overmatch
       </h2>
       <p className="mb-6">
-         Total endpoint security requires an overwhelming network of sensory data. Z1 Trailers saturate the site with non-intrusive surveillance architecture.
+         Waiting for human confirmation creates a 60-second window—more than enough time for a thermal lance to breach a data line. Edge NPU processing drops response time to sub-second certainty.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -67,6 +67,60 @@ export default function DataCenterContent() {
       <p className="mb-6">
          By eliminating blind spots and maintaining independent, off-grid power streams via deep-cycle LiFePO4 solar autonomy, your physical layer security matches the exact robustness of the digital encryption protocols inside the bunker.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <ShieldCheck className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">What perimeter zones are hyperscale data centers most vulnerable at?</h4>
+              <p className="text-brand-steel mt-2 text-sm">While the concrete server bunkers are highly secure, the vulnerability lies in the massive, exposed exterior infrastructure: the sprawling cooling chiller pipelines, generator fuel tanks, and primary fiber ingress trenches.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How does thermal imaging secure HVAC chiller arrays?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Uncooled VOx thermal sensors detect human body heat radiation in total darkness and dense fog, instantly alarming the system before an intruder can lay hands on the liquid cooling valves required to sustain server uptime.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Do Z1 Trailers meet Tier-IV server compliance?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. The fully autonomous, off-grid nature of the Z1 platform provides the exact hyper-redundant physical perimeter overmatch required by strict Uptime Institute Tier-IV service level agreements.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What perimeter zones are hyperscale data centers most vulnerable at?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "While the concrete server bunkers are highly secure, the vulnerability lies in the massive, exposed exterior infrastructure: the sprawling cooling chiller pipelines, generator fuel tanks, and primary fiber ingress trenches."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does thermal imaging secure HVAC chiller arrays?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Uncooled VOx thermal sensors detect human body heat radiation in total darkness and dense fog, instantly alarming the system before an intruder can lay hands on the liquid cooling valves required to sustain server uptime."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do Z1 Trailers meet Tier-IV server compliance?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The fully autonomous, off-grid nature of the Z1 platform provides the exact hyper-redundant physical perimeter overmatch required by strict Uptime Institute Tier-IV service level agreements."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

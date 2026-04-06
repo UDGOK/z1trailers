@@ -74,6 +74,60 @@ export default function CopperTheftContent() {
       <p className="mb-6">
          They will map your site. They will see the 360-degree PTZ turrets. They will see the solar telemetry arrays. They will attack the site down the street that operates off chainlink alone.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <ShieldAlert className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How fast can a copper theft crew operate?</h4>
+              <p className="text-brand-steel mt-2 text-sm">A highly coordinated heavy-metal extraction team can breach a chainlink perimeter, spool up to $40,000 worth of raw 4/0 industrial copper wiring, load it into an unmarked transit vehicle, and successfully vanish in exactly 6 to 9 minutes.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Why do chainlink fences fail to stop ORC theft?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Chainlink geometry combined with a standard padlock is a purely passive obstacle. Unopposed by active-acoustic sirens or flashing deterrence, a $30 angle grinder or hydraulic bolt shears will utterly defeat a commercial-grade steel-mesh padlock within 15 seconds.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can LPR definitively track stolen wire transports?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. The edge-hosted LPR (License Plate Recognition) matrices embedded inside our mobile arrays instantly isolate the plates of unregistered vans entering the staging access gate, creating an immutable encrypted audit trail that traces the payload completely back to local salvage recyclers.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How fast can a copper theft crew operate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A highly coordinated heavy-metal extraction team can breach a chainlink perimeter, spool up to $40,000 worth of raw 4/0 industrial copper wiring, load it into an unmarked transit vehicle, and successfully vanish in exactly 6 to 9 minutes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why do chainlink fences fail to stop ORC theft?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Chainlink geometry combined with a standard padlock is a purely passive obstacle. Unopposed by active-acoustic sirens or flashing deterrence, a $30 angle grinder or hydraulic bolt shears will utterly defeat a commercial-grade steel-mesh padlock within 15 seconds."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can LPR definitively track stolen wire transports?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The edge-hosted LPR (License Plate Recognition) matrices embedded inside our mobile arrays instantly isolate the plates of unregistered vans entering the staging access gate, creating an immutable encrypted audit trail that traces the payload completely back to local salvage recyclers."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

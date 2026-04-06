@@ -64,6 +64,60 @@ export default function RetailORCContent() {
       <p className="mb-6">
          The visual deterrence of a 20-foot law enforcement strobe tower actively tracking vehicles in a retail lot fundamentally breaks the confidence matrix of an ORC gang. They rely heavily on the assumption that parking lots are dead zones for security. The Z1 weaponizes the parking lot against them.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <ShoppingCart className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">At what perimeter point should Organized Retail Crime be intercepted?</h4>
+              <p className="text-brand-steel mt-2 text-sm">ORC syndicates must be tracked and flagged at the absolute edge of the asphalt parking lot as they arrive. Once an active flash-mob breaches the retail vestibule doors, the sheer speed and violence of the extraction make it impossible to deter safely.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How does License Plate Recognition (LPR) stop smash-and-grabs?</h4>
+              <p className="text-brand-steel mt-2 text-sm">The Z1 Trailer scans and cross-references incoming vehicle plates against national stolen vehicle databases instantly. If a stolen gateway vehicle breaches the property line, security teams receive priority alerts before the perpetrators even park.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can retailers share NCIC blacklist data?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. The Z1 Command OS allows regional retailers to manually blacklist known, repeat hostile vehicles. This data synchronizes across the network, meaning a vehicle flagged at one branch will instantly trigger alarms if it approaches a separate branch.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "At what perimeter point should Organized Retail Crime be intercepted?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ORC syndicates must be tracked and flagged at the absolute edge of the asphalt parking lot as they arrive. Once an active flash-mob breaches the retail vestibule doors, the sheer speed and violence of the extraction make it impossible to deter safely."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does License Plate Recognition (LPR) stop smash-and-grabs?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Z1 Trailer scans and cross-references incoming vehicle plates against national stolen vehicle databases instantly. If a stolen gateway vehicle breaches the property line, security teams receive priority alerts before the perpetrators even park."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can retailers share NCIC blacklist data?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The Z1 Command OS allows regional retailers to manually blacklist known, repeat hostile vehicles. This data synchronizes across the network, meaning a vehicle flagged at one branch will instantly trigger alarms if it approaches a separate branch."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }

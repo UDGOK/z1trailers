@@ -38,7 +38,7 @@ export default function EnterpriseDashboardContent() {
          <Activity className="w-8 h-8" /> Bi-Directional Overmatch 
       </h2>
       <p className="mb-6">
-         The enterprise dashboard is not merely an observational tool. It provides violent, bi-directional intervention architecture.
+         Because the intelligence runs natively through our private cloud node, you can instantly revoke user access, generate incident insurance claims, or broadcast live video links to local PD from a single screen. This is operational sovereignty.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -64,6 +64,60 @@ export default function EnterpriseDashboardContent() {
       <p className="mb-6">
          At the enterprise tier, compartmentalized access is mandatory. The OS enables hierarchical identity partitioning. Grant local project managers view-only access to their specific yards, while giving national operations absolute administrative override across the entire fleet architecture.
       </p>
+
+      {/* Semantic FAQ & Schema Injection */}
+      <div className="mt-20 pt-12 border-t border-white/10">
+        <h3 className="font-display font-black text-2xl text-white uppercase tracking-widest mb-8 flex items-center gap-3">
+           <Layers className="w-6 h-6 text-brand-teal" /> Core Intelligence Briefing
+        </h3>
+        <div className="space-y-8">
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">How do I manage multiple Z1 trailers across different states?</h4>
+              <p className="text-brand-steel mt-2 text-sm">The Z1 Command OS automatically geo-maps your entire fleet onto a centralized national console. An operator in Chicago can view the solar telemetry and live thermal feeds of a unit deployed in Dallas within seconds on the same interface.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Does the Z1 Command OS allow remote siren detonation?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Yes. In addition to the autonomous AI-triggered threat response, authorized personnel can utilize the Z1 Command OS out-of-band communication link to manually trigger the 120-decibel sirens and Law Enforcement strobe arrays from any smartphone instantly.</p>
+           </div>
+           <div>
+              <h4 className="font-bold text-white text-base font-inter">Can project managers have restricted view-only access?</h4>
+              <p className="text-brand-steel mt-2 text-sm">Absolutely. The OS utilizes enterprise-grade Role-Based Access Control (RBAC). You can assign a superintendent read-only viewing access to their specific local job site without granting them permission to alter AI parameters or access global fleet data.</p>
+           </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I manage multiple Z1 trailers across different states?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Z1 Command OS automatically geo-maps your entire fleet onto a centralized national console. An operator in Chicago can view the solar telemetry and live thermal feeds of a unit deployed in Dallas within seconds on the same interface."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the Z1 Command OS allow remote siren detonation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. In addition to the autonomous AI-triggered threat response, authorized personnel can utilize the Z1 Command OS out-of-band communication link to manually trigger the 120-decibel sirens and Law Enforcement strobe arrays from any smartphone instantly."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can project managers have restricted view-only access?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. The OS utilizes enterprise-grade Role-Based Access Control (RBAC). You can assign a superintendent read-only viewing access to their specific local job site without granting them permission to alter AI parameters or access global fleet data."
+              }
+            }
+          ]
+        }) }}
+      />
     </article>
   );
 }
