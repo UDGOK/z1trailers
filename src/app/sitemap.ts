@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // 2. Dynamic Hardware Vectors (Priority 0.9)
-  const hardwareSlugs = ['z1-scout', 'z1-guardian', 'z1-apex', 'z1-command'];
+  const hardwareSlugs = ['z1-scout', 'z1-guardian', 'z1-apex'];
   const hardwareRoutes = hardwareSlugs.map(slug => ({
     url: `${baseUrl}/security-trailers/${slug}`,
     lastModified: new Date(),

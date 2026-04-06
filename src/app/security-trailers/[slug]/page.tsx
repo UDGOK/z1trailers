@@ -91,33 +91,7 @@ const hardwareDb: Record<string, any> = {
     img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=2000",
     video: "https://www.youtube.com/embed/zpOULjyy-n8?autoplay=1&mute=1&loop=1&controls=0",
   },
-  "z1-command": {
-    name: "Z1 Command",
-    badge: "ELITE ENDPOINT",
-    desc: "The pinnacle of off-grid intelligence. Sat-linked via StarLink for operations in remote, extreme-weather sectors without cellular coverage.",
-    price: 4500,
-    buyPrice: 65000,
-    specs: [
-      { label: "Core Autonomy", value: "20+ Days", sub: "Infinite Self-Sustaining Array" },
-      { label: "Weaponized Optics", value: "Thermal Matrix", sub: "Absolute Threat Classification" },
-      { label: "Mast Altitude", value: "40ft Extreme Deploy", sub: "Seismic Ground Sync Array" },
-      { label: "Satellite System", value: "StarLink Standard", sub: "100% Global Off-Grid Capability" }
-    ],
-    features: [
-      { title: "Global Sat-Link", desc: "Operates perfectly anywhere on Earth via StarLink.", icon: Wifi },
-      { title: "Seismic Sensors", desc: "Detect heavy vehicular or foot traffic via ground vibrations.", icon: Zap },
-      { title: "Anti-Tamper AI", desc: "Immediate evasive lockdown and alert generation if compromised.", icon: Shield },
-    ],
-    faqs: [
-      { q: "Where can the Z1 Command trailer be deployed?", a: "Thanks to its integrated StarLink global footprint, the Z1 Command can be deployed literally anywhere on Earth. If there is a view of the sky, the Command unit will successfully uplink its telemetry." },
-      { q: "What optics are equipped on the Command unit?", a: "It features an ultra-heavy payload combining a synchronized 360° optical matrix, extreme-range PTZ (Pan-Tilt-Zoom), and military thermal targeting tracking up to a 40-foot vertical elevation." },
-      { q: "How do the seismic sensors operate?", a: "Advanced ground-array inputs detect vibrational frequencies of heavy vehicle movement or foot traffic on unpaved terrain before visual line of sight is acquired, alerting the Neural Engine to track specific vectors." },
-      { q: "Is the Z1 Command capable of autonomous threat lockdown?", a: "Yes. During suspected tampering or localized breach, its Anti-Tamper AI triggers an evasive lockdown, securing computational hardware and executing overwhelming visual and acoustic defensive logic." }
-    ],
-    icon: MapPin,
-    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
-    video: "https://www.youtube.com/embed/zpOULjyy-n8?autoplay=1&mute=1&loop=1&controls=0",
-  }
+
 };
 
 export function generateStaticParams() {

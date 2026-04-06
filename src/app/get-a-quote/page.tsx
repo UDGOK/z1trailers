@@ -40,8 +40,7 @@ const SECTORS = [
 const PRODUCTS = [
   { id: 'z1-scout', name: 'Z1 Scout', badge: 'ENTRY', desc: '5-Day Battery // Dual AI Optics' },
   { id: 'z1-guardian', name: 'Z1 Guardian', badge: 'MID', desc: '10-Day Battery // 360° Field of View' },
-  { id: 'z1-apex', name: 'Z1 Apex', badge: 'ADV', desc: 'Thermal + LPR Matrix // 15-Day Battery' },
-  { id: 'z1-command', name: 'Z1 Command', badge: 'ELITE', desc: 'StarLink Satellite // PTZ Payload' },
+  { id: 'z1-apex', name: 'Z1 Apex', badge: 'ADVANCED', desc: 'Thermal Tracking // LPR Cameras' }
 ] as const;
 
 // --- Sub-components ---

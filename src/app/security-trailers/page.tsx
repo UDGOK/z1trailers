@@ -32,15 +32,6 @@ export default function HardwarePage() {
       icon: Shield,
       bg: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1200",
       href: "/security-trailers/z1-apex"
-    },
-    {
-      name: "Z1 Command",
-      badge: "ELITE ENDPOINT",
-      desc: "The pinnacle of off-grid intelligence. Sat-linked via StarLink for operations in remote sectors.",
-      specs: ["StarLink Connectivity", "Pan-Tilt-Zoom (PTZ)", "20+ Day MegaBattery", "Seismic Sensors"],
-      icon: MapPin,
-      bg: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
-      href: "/security-trailers/z1-command"
     }
   ];
 

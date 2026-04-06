@@ -8,8 +8,7 @@ export default function RentPage() {
   const data = [
     { name: "Z1 Scout", price: "$999", period: "/ MO", desc: "ENTRY TIER" },
     { name: "Z1 Guardian", price: "$1,750", period: "/ MO", desc: "STANDARD COMMAND", highlight: true },
-    { name: "Z1 Apex", price: "$2,800", period: "/ MO", desc: "ADVANCED TARGETING" },
-    { name: "Z1 Command", price: "CUSTOM", period: "QUOTE", desc: "ELITE ENDPOINT" },
+    { name: "Z1 Apex", price: "$2,800", period: "/mo", desc: "THERMAL + LPR" }
   ];
 
   return (

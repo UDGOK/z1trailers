@@ -134,7 +134,7 @@ export default function PricingPage() {
               <div>
                  <h4 className="font-display font-black text-2xl md:text-3xl uppercase tracking-widest text-white mb-4">Enterprise Fleet Procurements</h4>
                  <p className="font-mono text-xs text-slate-300 tracking-widest uppercase leading-loose mb-6">
-                   Deploying hardware across multiple geographic sectors? Z1 Command requires custom configuration for massive operations and StarLink logic implementations.
+                   Deploying hardware across multiple geographic sectors? The Z1 Command OS requires custom configuration for massive fleet operations, global dashboard unified links, and API integrations.
                  </p>
                  <div className="flex flex-col sm:flex-row items-center gap-6">
                     <ConfiguratorTrigger className="border border-white/20 hover:border-brand-teal px-8 py-3 font-mono text-xs text-white uppercase tracking-[0.3em] transition-colors shadow-none bg-transparent hover:bg-transparent">

@@ -8,8 +8,7 @@ export default function BuyPage() {
   const data = [
     { name: "Z1 Scout", price: "$16.5K", period: "USD", desc: "ENTRY TIER" },
     { name: "Z1 Guardian", price: "$28.0K", period: "USD", desc: "STANDARD COMMAND" },
-    { name: "Z1 Apex", price: "$42.0K", period: "USD", desc: "ADVANCED TARGETING", highlight: true },
-    { name: "Z1 Command", price: "CUSTOM", period: "QUOTE", desc: "ELITE ENDPOINT" },
+    { name: "Z1 Apex", price: "$42.0K", period: "USD", desc: "ADVANCED TARGETING", highlight: true }
   ];
 
   return (

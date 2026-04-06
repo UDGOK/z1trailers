@@ -89,7 +89,7 @@ const industriesDb: Record<string, any> = {
     ],
     faqs: [
       { q: "Does the system work in the Texas heat?", a: "Our units are engineered for 115°F+ environments using thermal-stabilized LiFePO4 battery arrays." },
-      { q: "How do you get internet to remote wellheads?", a: "Z1 Command units utilize StarLink for low-latency, satellite-based video uplinks in zero-cell zones." }
+      { q: "How do you get internet to remote wellheads?", a: "Z1 Trailers utilize StarLink options for low-latency, satellite-based video uplinks in zero-cell zones." }
     ]
   },
   "law-enforcement": {

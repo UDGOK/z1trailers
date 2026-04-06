@@ -59,7 +59,7 @@ export default function TermsPage() {
                    Z1 Endpoints are engineered for grid-independent operations powered via dense lithium-ion (and subsequent sodium-ion) battery architecture sustained by solar arrays.
                 </p>
                 <p className="pl-7 text-white/70">
-                   Z1 does not guarantee 100% telemetry uptime in the event of extreme, catastrophic meteorological anomalies (e.g., continuous weeks of zero-light blizzards, tornadic disruption of arrays, EMP, or cellular grid exhaustion). Clients must immediately notify Z1 Command in the event of local cellular blackout protocols to enable StarLink failovers where contracted.
+                   Z1 does not guarantee 100% telemetry uptime in the event of extreme, catastrophic meteorological anomalies (e.g., continuous weeks of zero-light blizzards, tornadic disruption of arrays, EMP, or cellular grid exhaustion). Clients must immediately notify the Z1 Command OS networks in the event of local cellular blackout protocols to enable StarLink failovers where contracted.
                 </p>
              </section>
 

@@ -27,13 +27,13 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">Products</h4>
+            <h4 className="font-display font-black text-white text-xs uppercase tracking-[0.2em] mb-6">Hardware & OS</h4>
             <ul className="space-y-4">
               {[
-                { name: 'Z1 Scout', href: '/security-trailers/z1-scout' },
-                { name: 'Z1 Guardian', href: '/security-trailers/z1-guardian' },
-                { name: 'Z1 Apex', href: '/security-trailers/z1-apex' },
-                { name: 'Z1 Command', href: '/security-trailers/z1-command' }
+                { name: 'Z1 Scout Trailer', href: '/security-trailers/z1-scout' },
+                { name: 'Z1 Guardian Trailer', href: '/security-trailers/z1-guardian' },
+                { name: 'Z1 Apex Payload', href: '/security-trailers/z1-apex' },
+                { name: 'Z1 Command OS', href: '/#ai' }
               ].map((item) => (
                 <li key={item.name}><Link href={item.href} className="font-mono text-[10px] uppercase text-white/60 hover:text-brand-teal tracking-widest transition-colors">{item.name}</Link></li>
               ))}

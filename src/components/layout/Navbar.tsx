@@ -15,7 +15,7 @@ function ProductsDropdown() {
     { name: "Z1 Scout", desc: "ENTRY // 5 DAY BATTERY", icon: Crosshair, href: "/security-trailers/z1-scout", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" },
     { name: "Z1 Guardian", desc: "MID // 10 DAY BATTERY", icon: Sun, href: "/security-trailers/z1-guardian", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" },
     { name: "Z1 Apex", desc: "ADV // THERMAL + LPR", icon: Shield, href: "/security-trailers/z1-apex", img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=600" },
-    { name: "Z1 Command", desc: "ELITE // STARLINK", icon: MapPin, href: "/security-trailers/z1-command", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600" },
+
   ];
 
   const sublinks = [
@@ -27,7 +27,7 @@ function ProductsDropdown() {
   ];
 
   return (
-    <div className="p-8 grid grid-cols-2 gap-6 w-[850px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-[0_30px_60px_-15px_rgba(27,154,170,0.15)] relative">
+    <div className="p-6 grid grid-cols-3 gap-4 w-[1100px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-[0_30px_60px_-15px_rgba(27,154,170,0.15)] relative">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
       {products.map((item) => (
         <div key={item.name} className="group relative flex flex-col p-8 border border-white/5 bg-black/20 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-brand-teal/10 min-h-[220px]">
