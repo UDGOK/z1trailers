@@ -84,7 +84,7 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
   ];
 
   return (
-    <div className="bg-[#05080c] min-h-screen text-white font-sans selection:bg-brand-teal selection:text-white pb-24 overflow-hidden relative">
+    <main className="bg-[#05080c] min-h-screen text-white font-sans selection:bg-brand-teal selection:text-white pb-24 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* TACTICAL BACKGROUND ANIMATION GRID */}
@@ -93,7 +93,7 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05080c_120%)]" />
       </div>
 
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10 pt-32 lg:pt-48">
+      <article className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10 pt-32 lg:pt-48">
         
         <Link href="/locations" className="inline-flex items-center space-x-2 text-brand-teal hover:text-white font-mono text-[9px] uppercase tracking-[0.4em] mb-16 transition-all group">
            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1" /> <span>Back to Global Grid</span>
@@ -226,12 +226,12 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
            </div>
         </div>
 
-      </div>
+      </article>
 
       {/* Decorative Radar Ring */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] border border-brand-teal/10 rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none z-0" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] border border-brand-teal/20 rounded-full translate-x-1/4 translate-y-1/4 animate-pulse pointer-events-none z-0" />
 
-    </div>
+    </main>
   );
 }

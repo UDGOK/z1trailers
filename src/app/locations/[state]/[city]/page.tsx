@@ -110,7 +110,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
   ];
 
   return (
-    <div className="bg-[#05080c] min-h-screen text-white pb-24 overflow-hidden relative">
+    <main className="bg-[#05080c] min-h-screen text-white pb-24 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* TACTICAL OVERLAY INTERFACE */}
@@ -119,7 +119,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
          System Online // Terminal Link: {state.toUpperCase()}_{city.toUpperCase()}
       </div>
 
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10 pt-32 lg:pt-48">
+      <article className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10 pt-32 lg:pt-48">
         
         {/* BREADCRUMB HUD */}
         <div className="flex items-center space-x-4 mb-20 md:mb-32">
@@ -315,12 +315,12 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
            </div>
         </div>
 
-      </div>
+      </article>
 
       {/* Decorative Cartography Overlay */}
       <div className="fixed bottom-0 left-0 w-96 h-96 border-l border-b border-brand-teal/10 -translate-x-1/2 translate-y-1/2 pointer-events-none z-0" />
       <div className="fixed top-0 right-0 w-96 h-96 border-t border-r border-brand-teal/10 translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
 
-    </div>
+    </main>
   );
 }
