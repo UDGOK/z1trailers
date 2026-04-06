@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${post.title} | Z1 Trailers Blog`,
+    title: `${post.seoTitle || post.title} | Z1 Trailers Blog`,
     description: post.excerpt,
   }
 }
@@ -43,8 +43,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "image": post.mainImage ? ["https://z1trailers.com/images/LogoHR.png"] : [], 
     "datePublished": post.publishedAt || new Date().toISOString(),
     "author": {
-      "@type": "Organization",
-      "name": "Z1 Trailers"
+      "@type": "Person",
+      "name": post.authorName || "Sector Analyst HQ",
+      "url": post.authorLinkedin || "https://z1trailers.com"
     },
     "publisher": {
       "@type": "Organization",

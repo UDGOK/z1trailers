@@ -62,7 +62,16 @@ export default function BlogPostUI({ post }: { post: any }) {
                   ) : (
                     <User className="w-4 h-4" />
                   )}
-                  <span className="uppercase tracking-wider text-gray-300">{post.authorName || 'HQ Command'}</span>
+                  {post.authorLinkedin ? (
+                    <a href={post.authorLinkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-brand-teal transition-colors">
+                      <span className="uppercase tracking-wider text-gray-300 font-bold">{post.authorName || 'Zack H.'}</span>
+                    </a>
+                  ) : (
+                    <span className="uppercase tracking-wider text-gray-300 font-bold">{post.authorName || 'Zack H.'}</span>
+                  )}
+                  {post.authorRole && (
+                    <span className="text-gray-500 uppercase text-[10px] ml-2">// {post.authorRole}</span>
+                  )}
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-brand-teal" />

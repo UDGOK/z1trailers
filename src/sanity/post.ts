@@ -7,8 +7,14 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Title (H1 UI Header)',
       type: 'string',
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title (Meta Header)',
+      type: 'string',
+      description: 'Used for the actual <title> tag on Google. Keep it keyword rich.',
     }),
     defineField({
       name: 'slug',

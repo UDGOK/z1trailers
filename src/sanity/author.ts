@@ -11,6 +11,17 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'role',
+      title: 'Role',
+      type: 'string',
+      description: 'e.g., Founder, Intelligence Analyst',
+    }),
+    defineField({
+      name: 'linkedinUrl',
+      title: 'LinkedIn API URL',
+      type: 'url',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
