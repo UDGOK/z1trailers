@@ -221,7 +221,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
                  {[
                    { t: "Industrial Inverters", d: "Pure sine wave power for sensitive site electronics." },
                    { t: "10-Year Lifespan", d: "Zero-maintenance cycle performance for project long-hauls." },
-                   { t: "Thermal Stability", d: "Rated for mission-critical operation in the ${stateName} climate." }
+                   { t: "Thermal Stability", d: `Rated for mission-critical operation in the ${stateName} climate.` }
                  ].map((p, i) => (
                    <div key={i} className="flex items-start space-x-6 border-l border-brand-teal/30 pl-8 group">
                       <Zap className="w-5 h-5 text-brand-teal mt-1 group-hover:scale-125 transition-transform" />
