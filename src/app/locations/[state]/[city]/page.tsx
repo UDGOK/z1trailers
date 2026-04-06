@@ -39,20 +39,42 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
   const cityName = cityData.name;
   const stateName = stateData.name;
 
-  const faqs = [
-    {
+  const faqs = [];
+  
+  if (cityData.industryAnchor) {
+    faqs.push({
+      q: `Does Z1 Trailers provide security for the ${cityData.industryAnchor} sector in ${cityName}?`,
+      a: `Yes. We actively deploy high-authority surveillance units to secure ${cityData.industryAnchor} operations across the ${cityName} area, delivering tailored 24/7 AI-monitored perimeter defense.`
+    });
+  }
+
+  if (cityData.threatFocus) {
+    faqs.push({
+      q: `How do your trailers handle ${cityData.threatFocus} in ${cityName}?`,
+      a: `Our automated Z1 units utilize thermal imaging and proactive acoustic deterrents to neutralize threats like ${cityData.threatFocus} before they breach your property line in ${cityName}.`
+    });
+  }
+
+  if (cityData.climateLogic || stateData.weatherContext) {
+    const climateText = cityData.climateLogic || stateData.weatherContext;
+    faqs.push({
+      q: `Are Z1 solar trailers equipped for the specific weather and climate in ${cityName}?`,
+      a: `Absolutely. For the ${stateName} climate, our units feature ${climateText?.toLowerCase() || 'advanced weather-resistant engineering'} to guarantee zero downtime during extreme local weather events.`
+    });
+  }
+  
+  if (faqs.length < 3) {
+    faqs.push({
       q: `What is the benefit of LiFePO4 batteries in ${cityName}?`,
       a: `Z1 exclusively utilizes LiFePO4 (Lithium Iron Phosphate) for the ${cityName} sector. Unlike traditional lead-acid or standard lithium, LiFePO4 offers 10+ years of lifespan, superior thermal stability in ${stateName}'s climate, and zero maintenance for mission-critical surveillance.`
-    },
-    {
+    });
+  }
+  if (faqs.length < 3) {
+    faqs.push({
       q: `Can I use the security trailer as a supplemental power source in ${cityName}?`,
       a: `Yes. Our units in ${cityName} are equipped with high-output LiFePO4 packs and industrial inverters, providing supplemental power for site offices, field networking, or critical tool charging without grid access.`
-    },
-    {
-      q: `How long do your surveillance trailers run without sunlight in ${stateName}?`,
-      a: `Thanks to the high energy density of our LiFePO4 cores, our trailers typically provide 10-20 days of continuous AI-monitored surveillance in ${cityName} even with zero solar harvest.`
-    }
-  ];
+    });
+  }
 
   const jsonLd = [
     {

@@ -31,20 +31,31 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
 
   const cityList = Object.values(loc.cities);
 
-  const faqs = [
-    {
-      q: `What is the benefit of LiFePO4 batteries in ${loc.name}?`,
-      a: `Z1 exclusively utilizes LiFePO4 (Lithium Iron Phosphate) for the ${loc.name} sector. Unlike traditional lead-acid, LiFePO4 offers 10+ years of lifespan, superior thermal stability in ${loc.name}'s climate, and zero maintenance for mission-critical surveillance.`
-    },
-    {
+  const faqs = [];
+
+  if (loc.weatherContext) {
+    faqs.push({
+      q: `Are your security trailers engineered for the extreme weather in ${loc.name}?`,
+      a: `Yes. Our deployments in ${loc.name} are specifically equipped with ${loc.weatherContext.toLowerCase()} to ensure 100% operational uptime regardless of local weather challenges.`
+    });
+  }
+
+  faqs.push({
+    q: `How rapidly can you deploy a security trailer in ${loc.name}?`,
+    a: `Through our ${loc.subtitle || 'regional'} logistics network, Z1 Trailers can typically deploy a solar-powered surveillance unit to your site in ${loc.name} within 24-48 hours of authorization.`
+  });
+
+  faqs.push({
+    q: `What is the tactical advantage of LiFePO4 batteries for deployments in ${loc.name}?`,
+    a: `Z1 exclusively utilizes LiFePO4 for the ${loc.name} sector. Unlike traditional lead-acid, LiFePO4 offers 10+ years of lifespan, superior thermal resilience across ${loc.name}'s environments, and zero maintenance.`
+  });
+
+  if (faqs.length < 3) {
+    faqs.push({
       q: `Can I use the security trailer as a supplemental power source in ${loc.name}?`,
-      a: `Yes. Our units in the ${loc.name} division are equipped with industrial inverters and LiFePO4 cores, providing supplemental power for site offices, field-networking, or tool charging.`
-    },
-    {
-      q: `How long does it take to deploy a security trailer in ${loc.name}?`,
-      a: `In ${loc.name}, Z1 Trailers maintains a rapid-response logistics chain. We can typically deploy a solar-powered surveillance unit to your site in under 24-48 hours.`
-    }
-  ];
+      a: `Yes. Our units in the ${loc.name} division are equipped with industrial inverters and deep-cycle LiFePO4 cores, providing reliable supplemental power for site offices or field-networking.`
+    });
+  }
 
   const jsonLd = [
     {
