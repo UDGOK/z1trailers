@@ -12,7 +12,8 @@ export default function IndustriesGrid() {
       desc: "Protecting high-value materials and heavy machinery from organized theft and material extraction.", 
       img: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-2 lg:col-span-2", 
-      rowSpan: "md:row-span-2 lg:row-span-2" 
+      rowSpan: "md:row-span-2 lg:row-span-2",
+      alt: "Z1 Scout mobile security surveillance trailer deployed at a high-value construction and development site protecting machinery"
     },
     { 
       title: "Auto Dealerships", 
@@ -20,7 +21,8 @@ export default function IndustriesGrid() {
       desc: "Perimeter lockdown preventing catalytic converter and high-inventory theft.", 
       img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
-      rowSpan: "md:row-span-1 lg:row-span-1" 
+      rowSpan: "md:row-span-1 lg:row-span-1",
+      alt: "Z1 Guardian mobile security camera trailer actively monitoring a commercial auto dealership parking lot inventory"
     },
     { 
       title: "Law Enforcement", 
@@ -28,7 +30,8 @@ export default function IndustriesGrid() {
       desc: "Force-multiplying municipal surveillance for active high-crime sector coverage.", 
       img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
-      rowSpan: "md:row-span-1 lg:row-span-1" 
+      rowSpan: "md:row-span-1 lg:row-span-1",
+      alt: "Tactical law enforcement mobile surveillance trailer equipped with blue and red active strobe deterrence arrays"
     },
     { 
       title: "Oil, Gas & Energy", 
@@ -36,7 +39,8 @@ export default function IndustriesGrid() {
       desc: "Securing remote, completely off-grid critical infrastructure sites natively.", 
       img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
-      rowSpan: "md:row-span-1 lg:row-span-1" 
+      rowSpan: "md:row-span-1 lg:row-span-1",
+      alt: "Z1 Apex off-grid solar security camera trailer with Starlink deployed at remote oil and gas pipeline facility"
     },
     { 
       title: "Parking Management", 
@@ -44,7 +48,8 @@ export default function IndustriesGrid() {
       desc: "Proactive deterrence for parking lot perimeters and complex structures.", 
       img: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-2", 
-      rowSpan: "md:row-span-1 lg:row-span-1" 
+      rowSpan: "md:row-span-1 lg:row-span-1",
+      alt: "Solar powered portable security camera trailer monitoring a sprawling commercial parking lot from a 24ft mast"
     },
     { 
       title: "Events & Festivals", 
@@ -52,7 +57,8 @@ export default function IndustriesGrid() {
       desc: "Rapid deployment overwatch for crowd telemetry and ticketing access gates.", 
       img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop", 
       colSpan: "md:col-span-1 lg:col-span-1", 
-      rowSpan: "md:row-span-1 lg:row-span-1" 
+      rowSpan: "md:row-span-1 lg:row-span-1",
+      alt: "Mobile surveillance trailer with thermal cameras deployed for temporary crowd control at a large outdoor music festival"
     },
   ];
 
@@ -102,7 +108,7 @@ export default function IndustriesGrid() {
                 <div className="absolute inset-0 z-0">
                   <img 
                     src={ind.img} 
-                    alt={ind.title} 
+                    alt={ind.alt} 
                     className="w-full h-full object-cover scale-[1.03] group-hover:scale-110 transition-transform duration-[2s] ease-out opacity-80 group-hover:opacity-60 mix-blend-luminosity group-hover:mix-blend-normal" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/60 to-transparent group-hover:from-brand-teal/90 group-hover:to-[#0a1628]/40 transition-colors duration-500" />

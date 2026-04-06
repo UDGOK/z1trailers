@@ -339,6 +339,7 @@ const navItems = [
   {
     name: "Deployments",
     href: "/locations",
+    ariaLabel: "Security Trailer Deployments and Service Locations",
     dropdown: (
       <div className="p-8 w-[380px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-2xl relative overflow-hidden">
         <div className="absolute -top-32 -right-32 w-64 h-64 bg-brand-teal/10 blur-[80px] pointer-events-none" />
@@ -374,6 +375,7 @@ const navItems = [
   {
     name: "Intel",
     href: "/blog",
+    ariaLabel: "Security Camera Trailer Blog and Intelligence",
   },
 ];
 
@@ -385,6 +387,8 @@ const MobileAccordionItem = ({ item, closeMenu }: { item: any, closeMenu: () => 
       <Link 
         href={item.href} 
         onClick={closeMenu}
+        aria-label={item.ariaLabel || `${item.name} Page`}
+        title={item.ariaLabel || `${item.name} Page`}
         className="font-display font-black text-2xl uppercase tracking-widest text-white py-4 block border-b border-white/5"
       >
         {item.name}
@@ -495,6 +499,8 @@ export default function Navbar() {
                   "relative z-10 px-8 h-full flex items-center font-display uppercase tracking-[0.2em] text-sm font-black transition-all duration-300 border-x border-transparent hover:bg-brand-mist/30",
                   activeDropdown === item.name ? "text-brand-teal border-brand-mist/50 bg-brand-mist/30" : "text-brand-navy"
                 )}
+                aria-label={item.ariaLabel || `${item.name} Page`}
+                title={item.ariaLabel || `${item.name} Page`}
               >
                 {item.name}
                 {(item.dropdown || item.component) && (
@@ -533,6 +539,8 @@ export default function Navbar() {
           <Link 
             href="/get-a-quote" 
             className="hidden lg:flex relative group overflow-hidden bg-brand-gold h-14 px-10 items-center justify-center pointer-events-auto transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            aria-label="Get a Security Trailer Quote and Deploy Now"
+            title="Get a Security Trailer Quote and Deploy Now"
           >
             <div className="absolute inset-0 w-0 bg-brand-navy transition-all duration-500 ease-out group-hover:w-full" />
             <span className="relative text-sm font-display font-black text-white uppercase tracking-[0.25em]">Deploy Now</span>

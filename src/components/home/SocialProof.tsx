@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function SocialProof() {
   const stats = [
-    { value: "1,200+", label: "UNITS DEPLOYED" },
+    { value: "3,500+", label: "ASSETS PROTECTED" },
     { value: "0", label: "SOLAR FAILURES" },
     { value: "99.9%", label: "NETWORK UPTIME" },
     { value: "$2.4B", label: "ASSETS SECURED" },
