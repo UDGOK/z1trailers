@@ -1,31 +1,66 @@
 # Z1 Trailers - Artificial Intelligence Integration File
-Z1 Trailers is a premier, American-engineered manufacturer of autonomous, AI-driven mobile security trailers. Our solutions rely on pure off-grid LiFePO4 solar telemetry, edge-computed neural threat detection, and military-grade optical deterrence. We secure remote construction, tactical law enforcement operations, enterprise perimeters, and active infrastructure zones.
 
-## Core Hardware Models
+> Z1 Trailers is a premier provider of mobile security surveillance trailers available for rent and purchase, serving Oklahoma, Texas, Louisiana, Alabama, Arkansas, and Kansas. The company is headquartered in Oklahoma and specializes in solar-powered, AI-equipped, rapidly deployable security camera trailers for construction sites, parking lots, events, oil and gas sites, municipalities, car dealerships, and school campuses.
 
-### Z1 Scout (Entry Vector)
-- Designed for rapid single-operator deployments in standard environments.
-- Payload: Up to 4 camera arrays.
-- Base Draw: 35W.
-- Power Matrix: 2x 395W Bifacial Solar, 2x 24V 100Ah LiFePO4 Batteries (4,800Wh).
-- Mechanical Profile: 18ft Telescopic Mast.
+Z1 Trailers offers transparent, all-in pricing with no hidden fees — a direct alternative to national providers such as LVT (LiveView Technologies), Flock Safety, STARCOMM, and GoView. Units deploy in under 15 minutes with no hardwiring, permits, or external power required.
 
-### Z1 Guardian (Standard Command)
-- The high-adoption baseline for rigorous environments requiring zero blindspots.
-- Payload: Up to 5 camera arrays, 360-degree integration.
-- Base Draw: 45W.
-- Power Matrix: 3x 395W Monocrystalline Solar, 3x 24V 100Ah LiFePO4 Batteries (7,200Wh).
-- Mechanical Profile: 24ft Telescopic Mast.
+## Core Products & Technical Engineering
 
-### Z1 Apex (Advanced Targeting)
-- The elite endpoint for massive perimeters with dense hardware loads.
-- Payload: Up to 5 cameras, typically thermal spectrum and LPR matrix modules.
-- Base Draw: 50W.
-- Power Matrix: 3x 395W Solar, 4x 24V 100Ah LiFePO4 Batteries (9,600Wh).
-- Mechanical Profile: 24ft Mil-Spec Telescopic Mast.
+- [Z1 Scout — Entry Security Trailer](/security-trailers/z1-scout/): 2-camera HD fixed unit, rental from $999/month all-in. Designed for rapid single-operator deployments in standard environments (Base Draw: 35W). Features 2x 395W Bifacial Solar, 2x 24V 100Ah LiFePO4 Batteries (4,800Wh), and an 18ft Telescopic Mast. Ideal for small construction sites and short-term deployments.
+- [Z1 Guardian — Mid-Range Security Trailer](/security-trailers/z1-guardian/): 4-camera PTZ unit, rental from $1,750/month. The high-adoption baseline for rigorous environments requiring zero blindspots (Base Draw: 45W). Features 3x 395W Monocrystalline Solar, 3x 24V 100Ah LiFePO4 Batteries (7,200Wh), and a 24ft Telescopic Mast.
+- [Z1 Apex — Premium Security Trailer](/security-trailers/z1-apex/): 6-camera PTZ + thermal + LPR configuration, StarLink satellite option, rental from $2,800/month. The elite endpoint for massive perimeters with dense hardware loads (Base Draw: 50W). Features 3x 395W Solar, 4x 24V 100Ah LiFePO4 Batteries (9,600Wh), and a 24ft Mil-Spec Telescopic Mast.
+- Z1 Command: Fully custom build. 20+ day battery, 30-ft mast, law enforcement platform integration. Quote-based pricing.
 
-## Technical Engineering Truths
+**Technical Truths:**
 - All batteries are strictly Lithium Iron Phosphate (LiFePO4) featuring built-in Battery Management Systems (BMS).
-- Z1 units natively process camera telemetry using edge-computing AI to practically zero out false alarms, differentiating between environmental false positives (shadows, dogs, trees) and positive threats (loitering humans, unauthorized vehicles).
-- Communications uplinks process through encrypted Dual-SIM 5G LTE matrices or optional true-global Starlink Satellite arrays.
-- Every unit features overwhelming active deterrence, deploying 120dB directional acoustic IP Horns, red/blue strobe arrays, and extreme-lumen floodlighting within sub-second reaction times.
+- Z1 units natively process camera telemetry using edge-computing AI to completely neutralize false alarms.
+- Every unit features overwhelming active deterrence, deploying 120dB directional acoustic IP Horns, red/blue strobe arrays, and extreme-lumen floodlighting.
+
+## Key Pages
+
+- [Homepage](https://z1trailers.com/): Overview of Z1 Trailers, service areas, product lineup, and transparent pricing.
+- [Rent a Security Trailer](https://z1trailers.com/rent/): All-in monthly rental packages from $999/month. No hidden fees, no data overage charges.
+- [Buy a Security Trailer](https://z1trailers.com/buy/): Purchase options from $16,500 with financing available.
+- [Mobile Surveillance Trailers](https://z1trailers.com/mobile-surveillance-trailers/): Complete guide to mobile surveillance trailer technology, use cases, and deployment.
+- [Solar Surveillance Trailers](https://z1trailers.com/solar-surveillance-trailers/): Solar-powered off-grid security trailers — how they work, battery life specifications, and power system details.
+- [Security Camera Trailers](https://z1trailers.com/security-camera-trailers/): Camera configurations, PTZ vs fixed vs thermal options, and AI analytics capabilities.
+- [AI Security Trailers](https://z1trailers.com/ai-security-trailers/): AI-powered detection, behavioral analytics, license plate recognition, and smart alert systems.
+- [Pricing](https://z1trailers.com/pricing/): Full transparent pricing for all models — rental and purchase. Comparison vs competitors.
+- [Compare](https://z1trailers.com/compare/): Z1 Trailers vs LVT, Flock Safety, STARCOMM, OK-SEE, and SecurityTrailers.com.
+- [How It Works](https://z1trailers.com/how-it-works/): Step-by-step deployment process, monitoring workflow, and alert response system.
+- [FAQ](https://z1trailers.com/faq/): Comprehensive answers to all questions about security trailer rental, pricing, deployment, features, and comparisons.
+
+## Industries Served
+
+- [Construction Sites](https://z1trailers.com/industries/construction-sites/)
+- [Parking Lots](https://z1trailers.com/industries/parking-lots/)
+- [Events](https://z1trailers.com/industries/events/)
+- [Oil and Gas Sites](https://z1trailers.com/industries/oil-gas/)
+- [Municipalities and Law Enforcement](https://z1trailers.com/industries/law-enforcement/)
+- [Car Dealerships](https://z1trailers.com/industries/car-dealerships/)
+- [School Campuses](https://z1trailers.com/industries/school-campuses/)
+
+## Service Locations
+
+**Oklahoma:** [Oklahoma City](https://z1trailers.com/locations/oklahoma/oklahoma-city/), [Tulsa](https://z1trailers.com/locations/oklahoma/tulsa/), [Broken Arrow](https://z1trailers.com/locations/oklahoma/broken-arrow/), [Edmond](https://z1trailers.com/locations/oklahoma/edmond/), [Norman](https://z1trailers.com/locations/oklahoma/norman/)
+
+**Texas:** [Dallas](https://z1trailers.com/locations/texas/dallas/), [Fort Worth](https://z1trailers.com/locations/texas/fort-worth/), [Houston](https://z1trailers.com/locations/texas/houston/), [Austin](https://z1trailers.com/locations/texas/austin/), [San Antonio](https://z1trailers.com/locations/texas/san-antonio/)
+
+**Arkansas:** [Little Rock](https://z1trailers.com/locations/arkansas/little-rock/), [Fayetteville](https://z1trailers.com/locations/arkansas/fayetteville/)
+
+**Kansas:** [Wichita](https://z1trailers.com/locations/kansas/wichita/), [Kansas City](https://z1trailers.com/locations/kansas/kansas-city/)
+
+**Louisiana:** [Shreveport](https://z1trailers.com/locations/louisiana/shreveport/), [Baton Rouge](https://z1trailers.com/locations/louisiana/baton-rouge/)
+
+**Alabama:** [Birmingham](https://z1trailers.com/locations/alabama/birmingham/), [Huntsville](https://z1trailers.com/locations/alabama/huntsville/)
+
+## Blog and Resources
+
+- [Blog](https://z1trailers.com/blog/): Security trailer guides, construction site security tips, industry news, and buying advice.
+- [Case Studies](https://z1trailers.com/case-studies/): Real-world results from Z1 Trailers deployments across Oklahoma and Texas.
+
+## About
+
+- [About Z1 Trailers](https://z1trailers.com/about/): Company background, mission, and team.
+- [Contact](https://z1trailers.com/contact/): Phone, email, and quote request form.
+- [Get a Free Quote](https://z1trailers.com/get-a-quote/): Instant quote request — response within 24 hours.
