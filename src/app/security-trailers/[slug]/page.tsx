@@ -13,12 +13,12 @@ const hardwareDb: Record<string, any> = {
     desc: "Compact, rapid-deployment endpoint designed for temporary sites. Features a 5-day battery reserve and fundamental 24/7 AI-monitored optics.",
     price: 999,
     buyPrice: 16500,
-    specs: {
-       autonomy: "5 Days",
-       optics: "Dual 4MP AI",
-       mast: "18ft Telescopic",
-       comms: "4G LTE",
-    },
+    specs: [
+      { label: "Core Autonomy", value: "5 Days Base", sub: "Scalable up to 7,200Wh Expansion" },
+      { label: "Optical Payload", value: "Dual 4MP AI", sub: "Modular 4-Camera Array System" },
+      { label: "Mast Altitude", value: "18ft Telescopic", sub: "Single-Operator Rapid Deploy" },
+      { label: "Telemetry Uplink", value: "4G LTE Base", sub: "StarLink Satellite Upgradeable" }
+    ],
     mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 18' | Weight: 1200 ~ 1900 Lbs.",
     features: [
       { title: "Targeted Analytics", desc: "Edge-computed human & vehicle categorization.", icon: Cpu },
@@ -41,12 +41,12 @@ const hardwareDb: Record<string, any> = {
     desc: "Our high-adoption standard. 10-day autonomy via expanded solar array, upgraded dual-lens optics, and bi-directional audio deterrence.",
     price: 1750,
     buyPrice: 28000,
-    specs: {
-       autonomy: "10 Days",
-       optics: "Quad 4MP AI",
-       mast: "24ft Telescopic",
-       comms: "Dual-SIM 5G/LTE",
-    },
+    specs: [
+      { label: "Core Autonomy", value: "10 Days Base", sub: "Scalable up to 9,600Wh Expansion" },
+      { label: "Optical Payload", value: "Quad 4MP AI", sub: "Accepts 5x PTZ + AI Radar" },
+      { label: "Mast Altitude", value: "24ft Heavy Duty", sub: "120dB Active Acoustic Horn" },
+      { label: "Telemetry Network", value: "Dual-SIM 5G", sub: "StarLink Satellite Upgradeable" }
+    ],
     mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
     features: [
       { title: "Active Deterrence", desc: "120dB directional loudspeaker and ultra-bright strobes.", icon: Crosshair },
@@ -69,12 +69,12 @@ const hardwareDb: Record<string, any> = {
     desc: "Military-grade optical payload featuring Thermal Imaging and integrated License Plate Recognition (LPR) for mission-critical borders.",
     price: 2800,
     buyPrice: 42000,
-    specs: {
-       autonomy: "15 Days",
-       optics: "Thermal + LPR",
-       mast: "24ft Mil-Spec",
-       comms: "5G & StarLink Opt.",
-    },
+    specs: [
+      { label: "Core Autonomy", value: "15 Days Base", sub: "Scalable up to 12,000Wh Expansion" },
+      { label: "Targeting Matrix", value: "Thermal + LPR", sub: "Military-Grade Heat Signatures" },
+      { label: "Mast Altitude", value: "24ft Mil-Spec", sub: "Radar Sweep Initialization" },
+      { label: "Telemetry Link", value: "5G & Satellite", sub: "Absolute Redundant Failover" }
+    ],
     mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
     features: [
       { title: "Heat Signature Tracking", desc: "Identify targets through dense fog, smoke, and total darkness.", icon: Target },
@@ -97,12 +97,12 @@ const hardwareDb: Record<string, any> = {
     desc: "The pinnacle of off-grid intelligence. Sat-linked via StarLink for operations in remote, extreme-weather sectors without cellular coverage.",
     price: 4500,
     buyPrice: 65000,
-    specs: {
-       autonomy: "20+ Days",
-       optics: "PTZ + Thermal Matrix",
-       mast: "40ft Heavy Duty",
-       comms: "StarLink Satellite",
-    },
+    specs: [
+      { label: "Core Autonomy", value: "20+ Days", sub: "Infinite Self-Sustaining Array" },
+      { label: "Weaponized Optics", value: "Thermal Matrix", sub: "Absolute Threat Classification" },
+      { label: "Mast Altitude", value: "40ft Extreme Deploy", sub: "Seismic Ground Sync Array" },
+      { label: "Satellite System", value: "StarLink Standard", sub: "100% Global Off-Grid Capability" }
+    ],
     features: [
       { title: "Global Sat-Link", desc: "Operates perfectly anywhere on Earth via StarLink.", icon: Wifi },
       { title: "Seismic Sensors", desc: "Detect heavy vehicular or foot traffic via ground vibrations.", icon: Zap },
@@ -248,10 +248,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       */}
       <div className="bg-brand-navy border-y border-brand-teal/30 sticky top-24 z-40 shadow-[0_20px_40px_rgba(0,0,0,0.5)] backdrop-blur-3xl">
          <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 grid grid-cols-2 lg:grid-cols-4 gap-4 divide-x divide-white/5">
-            {Object.entries(product.specs).map(([key, val]) => (
-              <div key={key} className="flex flex-col items-center text-center px-4 group">
-                 <span className="font-mono text-[9px] text-brand-steel uppercase tracking-[0.2em] font-bold mb-1 group-hover:text-brand-teal transition-colors">{key}</span>
-                 <span className="font-display font-black text-xl text-white uppercase tracking-wider">{val as string}</span>
+            {product.specs.map((spec: any, idx: number) => (
+              <div key={idx} className="flex flex-col items-center justify-center text-center px-2 group">
+                 <span className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] font-bold mb-1 opacity-80">{spec.label}</span>
+                 <span className="font-display font-black text-lg md:text-xl text-white uppercase tracking-wider mb-1 group-hover:text-brand-teal transition-colors leading-none">{spec.value}</span>
+                 <span className="font-mono text-[8px] text-brand-steel uppercase tracking-widest leading-tight">{spec.sub}</span>
               </div>
             ))}
          </div>
