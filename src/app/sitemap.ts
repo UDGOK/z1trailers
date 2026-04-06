@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 1. Tactical Static Routes (Priority 1.0 - 0.8)
   const staticRoutes = [
     '',
+    '/z1-command-os',
     '/get-a-quote',
     '/security-trailers',
     '/rent-security-trailer',

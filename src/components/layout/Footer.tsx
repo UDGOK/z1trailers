@@ -33,7 +33,7 @@ export default function Footer() {
                 { name: 'Z1 Scout Trailer', href: '/security-trailers/z1-scout' },
                 { name: 'Z1 Guardian Trailer', href: '/security-trailers/z1-guardian' },
                 { name: 'Z1 Apex Payload', href: '/security-trailers/z1-apex' },
-                { name: 'Z1 Command OS', href: '/#ai' }
+                { name: 'Z1 Command OS', href: '/z1-command-os' }
               ].map((item) => (
                 <li key={item.name}><Link href={item.href} className="font-mono text-[10px] uppercase text-white/60 hover:text-brand-teal tracking-widest transition-colors">{item.name}</Link></li>
               ))}
