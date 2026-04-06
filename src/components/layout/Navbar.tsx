@@ -373,6 +373,11 @@ const navItems = [
     ]
   },
   {
+    name: "Pricing",
+    href: "/pricing",
+    ariaLabel: "Security Camera Trailer Pricing and Specs",
+  },
+  {
     name: "Intel",
     href: "/blog",
     ariaLabel: "Security Camera Trailer Blog and Intelligence",
