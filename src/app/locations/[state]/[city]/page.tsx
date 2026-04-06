@@ -68,11 +68,17 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
         "addressCountry": "US"
       },
       "url": `https://z1trailers.com/locations/${state}/${city}`,
-      "telephone": "(918) 520-3823"
+      "telephone": "(918) 520-3823",
+      "isPartOf": {
+        "@id": "https://www.z1trailers.com/#organization"
+      }
     },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "isPartOf": {
+        "@id": "https://www.z1trailers.com/#organization"
+      },
       "mainEntity": faqs.map(faq => ({
         "@type": "Question",
         "name": faq.q,

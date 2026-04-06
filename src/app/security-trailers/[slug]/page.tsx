@@ -157,6 +157,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       "name": "Z1 Trailers"
     },
     "category": "Security Trailer",
+    "isPartOf": {
+      "@id": "https://www.z1trailers.com/#organization"
+    },
     "offers": [
       {
         "@type": "Offer",
@@ -193,6 +196,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "isPartOf": {
+      "@id": "https://www.z1trailers.com/#organization"
+    },
     "mainEntity": product.faqs.map((faq: { q: string; a: string }) => ({
       "@type": "Question",
       "name": faq.q,

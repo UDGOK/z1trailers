@@ -54,10 +54,16 @@ export default async function StateLocationPage({ params }: { params: Promise<{ 
       "provider": { "@type": "Organization", "name": "Z1 Trailers" },
       "areaServed": { "@type": "State", "name": loc.name },
       "description": loc.desc,
+      "isPartOf": {
+        "@id": "https://www.z1trailers.com/#organization"
+      }
     },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "isPartOf": {
+        "@id": "https://www.z1trailers.com/#organization"
+      },
       "mainEntity": faqs.map(faq => ({
         "@type": "Question",
         "name": faq.q,

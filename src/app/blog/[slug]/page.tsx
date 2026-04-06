@@ -40,6 +40,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
+    "isPartOf": {
+      "@id": "https://www.z1trailers.com/#organization"
+    },
     "image": post.mainImage ? ["https://z1trailers.com/images/LogoHR.png"] : [], 
     "datePublished": post.publishedAt || new Date().toISOString(),
     "author": {

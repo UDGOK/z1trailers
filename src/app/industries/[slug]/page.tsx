@@ -185,6 +185,9 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "isPartOf": {
+      "@id": "https://www.z1trailers.com/#organization"
+    },
     "mainEntity": ind.faqs.map((faq: { q: string, a: string }) => ({
       "@type": "Question",
       "name": faq.q,
