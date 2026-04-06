@@ -601,7 +601,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-brand-navy/95 backdrop-blur-2xl pointer-events-auto lg:hidden flex flex-col pt-24 pb-8 px-6 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-brand-navy/95 backdrop-blur-2xl pointer-events-auto lg:hidden flex flex-col pt-36 pb-8 px-6 overflow-y-auto"
           >
             {/* Ambient Background Glow */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/10 blur-[100px] pointer-events-none" />
