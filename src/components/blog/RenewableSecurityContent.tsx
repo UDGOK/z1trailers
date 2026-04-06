@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { CloudRain, Sun, CloudLightning, BatteryCharging, Power, Activity } from 'lucide-react';
 
 export default function RenewableSecurityContent() {
@@ -16,7 +17,7 @@ export default function RenewableSecurityContent() {
          The standard flaw in the solar surveillance industry is the systemic under-sizing of photovoltaic (PV) arrays by low-end vendors seeking to minimize production costs. A standard trailer deploying one or two 100W panels will reliably charge their batteries in Arizona in June. However, when deployed to the Pacific Northwest during a 2-week continuous atmospheric river event where solar irradiance drops to 15%, these under-equipped arrays mathematically fail to output enough wattage to outpace the draw of their own cameras.
       </p>
       <p className="mb-6">
-         Z1 limits this failure point through deliberate extreme over-engineering. Our Z1 Guardian and Apex models integrate a massive 1200W+ expandable monocrystalline solar wing system. This over-sized intake ensures that even at a catastrophic 15% irradiance efficiency due to heavy storm clouds, the panels are physically large enough to scavenge enough ambient photons to sustain the 24/7 Neural Processing Unit. 
+         Z1 limits this failure point through deliberate extreme over-engineering. Our <Link href="/security-trailers/z1-guardian" className="text-brand-teal hover:underline underline-offset-4">Z1 Guardian</Link> and <Link href="/security-trailers/z1-apex" className="text-brand-teal hover:underline underline-offset-4">Apex models</Link> integrate a massive 1200W+ expandable monocrystalline solar wing system. This over-sized intake ensures that even at a catastrophic 15% irradiance efficiency due to heavy storm clouds, the panels are physically large enough to scavenge enough ambient photons to sustain the 24/7 Neural Processing Unit. 
       </p>
 
       <div className="my-16 bg-black/40 border border-white/10 p-8 md:p-12 relative overflow-hidden group hover:border-brand-teal transition-all">
@@ -52,7 +53,7 @@ export default function RenewableSecurityContent() {
             <Power className="w-10 h-10 text-brand-teal mb-6 group-hover:scale-110 transition-transform" />
             <h4 className="font-display font-black text-lg text-white uppercase tracking-widest mb-4">Load-Shedding Autonomy</h4>
             <p className="text-brand-steel text-xs leading-loose">
-               In the mathematically rare scenario that solar reserves approach absolute zero, the Z1 OS natively executes intelligent load-shedding. It will temporarily disable non-vital strobe systems and auxiliary communications, prioritizing all remaining atomic energy perfectly to sustain the crucial recording and Neural inference loops—keeping you legally covered.
+               In the mathematically rare scenario that solar reserves approach absolute zero, the <Link href="/z1-command-os" className="text-brand-teal hover:underline underline-offset-4">Z1 OS</Link> natively executes intelligent load-shedding. It will temporarily disable non-vital strobe systems and auxiliary communications, prioritizing all remaining atomic energy perfectly to sustain the crucial recording and Neural inference loops—keeping you legally covered.
             </p>
          </div>
       </div>

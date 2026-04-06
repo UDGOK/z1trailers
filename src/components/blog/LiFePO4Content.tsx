@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Battery, Flame, Zap, ShieldCheck, Activity, Maximize } from 'lucide-react';
 
 export default function LiFePO4Content() {
@@ -24,12 +25,12 @@ export default function LiFePO4Content() {
            <Flame className="w-32 h-32" />
         </div>
         <h3 className="font-display font-black text-xl text-white uppercase tracking-widest mb-6 border-b border-brand-teal/30 pb-4 relative z-10">Live Use Case: The Thermal Mitigation Test</h3>
-        <p className="text-brand-steel mb-4 relative z-10">
+         <p className="text-brand-steel mb-4 relative z-10">
            <strong>Location:</strong> Tier-1 Solar Farm Facility, Mojave Desert <br/>
            <strong>Incident:</strong> Preventing explosive chassis rupture during an unprecedented 122°F atmospheric phenomena.
         </p>
         <p className="relative z-10">
-           During the extreme peak parameters of desert operations in August, surface temperatures on the raw black steel and asphalt of a solar construction nexus reached levels capable of literally melting plastic casing. A competitor's NMC lithium deployment suffered a critical thermal runaway event following an over-voltage failure from their shoddy solar controller—causing the unit to violently catch fire and destroy $75,000 worth of adjacent staging materials. The GC purged the contractor and deployed our Z1 models utilizing dense LiFePO4 atomic structures. LiFePO4 chemistry inherently resists oxygen release at high temperatures, making it physically impossible to catch fire even when directly punctured or chronically overheated. The units effortlessly consumed 122°F daytime highs while simultaneously powering heavy-duty thermal optics without a single microvolt of thermal failure.
+           During the extreme peak parameters of desert operations in August, surface temperatures on the raw black steel and asphalt of a <Link href="/industries/construction-sites" className="text-brand-teal hover:underline underline-offset-4">solar construction nexus</Link> reached levels capable of literally melting plastic casing. A competitor's NMC lithium deployment suffered a critical thermal runaway event following an over-voltage failure from their shoddy solar controller—causing the unit to violently catch fire and destroy $75,000 worth of adjacent staging materials. The GC purged the contractor and deployed our <Link href="/security-trailers/z1-guardian" className="text-brand-teal hover:underline underline-offset-4">Z1 Guardian models</Link> utilizing dense LiFePO4 atomic structures. LiFePO4 chemistry inherently resists oxygen release at high temperatures, making it physically impossible to catch fire even when directly punctured or chronically overheated. The units effortlessly consumed 122°F daytime highs while simultaneously powering heavy-duty thermal optics without a single microvolt of thermal failure.
         </p>
       </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { UserX, Cpu, Eye, Clock, ShieldAlert, Crosshair } from 'lucide-react';
 
 export default function HumanVsAIContent() {
@@ -13,7 +14,7 @@ export default function HumanVsAIContent() {
          <UserX className="w-8 h-8" /> The Biological Liability
       </h2>
       <p className="mb-6">
-         The traditional deployment model for a high-value commercial construction site or sprawling auto dealership involves contracting an unarmed night guard for $20 to $30 an hour. They are tasked with maintaining unbroken visual awareness over a massive 15-acre perimeter entirely in the pitch black between the hours of 18:00 and 06:00. This is biologically impossible.
+         The traditional deployment model for a high-value commercial construction site or sprawling <Link href="/industries/parking-lots" className="text-brand-teal hover:underline underline-offset-4">auto dealership</Link> involves contracting an unarmed night guard for $20 to $30 an hour. They are tasked with maintaining unbroken visual awareness over a massive 15-acre perimeter entirely in the pitch black between the hours of 18:00 and 06:00. This is biologically impossible.
       </p>
       <p className="mb-6">
          Statistics indicate that human attention spans during low-stimulus observation drastically collapse after just 20 minutes. Compounded by plunging midnight temperatures, smartphone distractions, and simple physical exhaustion, the vast majority of physical security guards retreat to their vehicles and inevitably sleep during peak threat hours.
@@ -29,7 +30,7 @@ export default function HumanVsAIContent() {
            <strong>Incident:</strong> Orchestrated multi-vehicle extraction bypassing human enforcement.
         </p>
         <p className="relative z-10">
-           An auto group leasing a secondary overflow lot was losing inventory despite employing a $6,000/month human security patrol. The thieves routinely accessed the western chainlink fence at 03:00. A forensic audit later revealed the human guard was not just sleeping—he was actively compromised, accepting micro-bribes to park on the eastern perimeter and turn his vehicle's radio up to ignore the angle grinders breaching the gate. The auto group terminated the human contract immediately and deployed two Z1 Apex Trailers for 60% less capital expenditure. The Z1 requires no bribes, features infinite peripheral vision across dual PTZ cameras, and mathematically cannot experience fatigue. On week two, the same syndicate attempted a breach and was met instantly with a 120-decibel autonomous siren blast directly to their faces, forcing an immediate, panicked retreat.
+           An auto group leasing a secondary overflow lot was losing inventory despite employing a $6,000/month human security patrol. The thieves routinely accessed the western chainlink fence at 03:00. A forensic audit later revealed the human guard was not just sleeping—he was actively compromised, accepting micro-bribes to park on the eastern perimeter and turn his vehicle's radio up to ignore the angle grinders breaching the gate. The auto group terminated the human contract immediately and deployed two <Link href="/security-trailers/z1-apex" className="text-brand-teal hover:underline underline-offset-4">Z1 Apex Trailers</Link> for 60% less capital expenditure. The Z1 requires no bribes, features infinite peripheral vision across dual PTZ cameras, and mathematically cannot experience fatigue. On week two, the same syndicate attempted a breach and was met instantly with a 120-decibel autonomous siren blast directly to their faces, forcing an immediate, panicked retreat.
         </p>
       </div>
 

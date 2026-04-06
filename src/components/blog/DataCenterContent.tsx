@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Server, Crosshair, Radar, AlertTriangle, ShieldCheck, Database } from 'lucide-react';
 
 export default function DataCenterContent() {
@@ -29,7 +30,7 @@ export default function DataCenterContent() {
            <strong>Incident:</strong> Unauthorized access attempt to exterior coolant piping.
         </p>
         <p className="relative z-10">
-           At 02:14 EST, a localized intrusion team attempted to map and physically tamper with the liquid cooling distribution lines situated entirely outside the concrete data bunker. A Z1 Apex Trailer equipped with License Plate Recognition (LPR) instantly logged the unmarked cargo van entering the perimeter. Before a single fence line was breached, the Z1 thermal array detected abnormal human heat signatures approaching the chiller farm. The Z1 autonomous matrix immediately initiated an ear-shattering 120dB active-acoustic deterrent while blinding the saboteurs with strobe protocols. The threat was mathematically neutralized and forced to abandon the payload 4.2 seconds after initial detection.
+           At 02:14 EST, a localized intrusion team attempted to map and physically tamper with the liquid cooling distribution lines situated entirely outside the concrete data bunker. A <Link href="/security-trailers/z1-apex" className="text-brand-teal hover:underline underline-offset-4">Z1 Apex Trailer</Link> equipped with License Plate Recognition (LPR) instantly logged the unmarked cargo van entering the perimeter. Before a single fence line was breached, the Z1 thermal array detected abnormal human heat signatures approaching the chiller farm. The <Link href="/z1-command-os" className="text-brand-teal hover:underline underline-offset-4">Z1 autonomous matrix</Link> immediately initiated an ear-shattering 120dB active-acoustic deterrent while blinding the saboteurs with strobe protocols. The threat was mathematically neutralized and forced to abandon the payload 4.2 seconds after initial detection.
         </p>
       </div>
 

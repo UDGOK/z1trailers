@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Smartphone, Globe, Activity, Eye, Shield, Layers } from 'lucide-react';
 
 export default function EnterpriseDashboardContent() {
@@ -16,7 +17,7 @@ export default function EnterpriseDashboardContent() {
          The standard security industry model forces logistics managers to log into disparate legacy VMS (Video Management System) software protocols, requiring unique static IP parsing or clunky VPN authentication just to check if a camera is functioning.
       </p>
       <p className="mb-6">
-         We engineered the Z1 Command OS to obliterate friction. Whether you have two Scout trailers flanking an auto dealership in Dallas, or a fleet of fifty Apex units guarding pipelines down the Midwest corridor, every single solar parameter, battery cell charge rate, and raw AI-filtered optic feed pipes securely into a centralized cloud HUD.
+         We engineered the <Link href="/z1-command-os" className="text-brand-teal hover:underline underline-offset-4">Z1 Command OS</Link> to obliterate friction. Whether you have two <Link href="/security-trailers/z1-scout" className="text-brand-teal hover:underline underline-offset-4">Scout trailers</Link> flanking an auto dealership in Dallas, or a fleet of fifty <Link href="/security-trailers/z1-apex" className="text-brand-teal hover:underline underline-offset-4">Apex units</Link> guarding pipelines down the Midwest corridor, every single solar parameter, battery cell charge rate, and raw AI-filtered optic feed pipes securely into a centralized cloud HUD.
       </p>
 
       <div className="my-16 bg-black/40 border border-white/10 p-8 md:p-12 relative overflow-hidden group hover:border-brand-teal transition-all">

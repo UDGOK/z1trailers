@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Shield, Target, Zap, Activity, ShieldAlert, Cpu } from 'lucide-react';
 
 export default function CopperTheftContent() {
@@ -6,7 +7,7 @@ export default function CopperTheftContent() {
     <article className="prose prose-invert prose-brand max-w-none font-mono text-xs md:text-sm text-brand-steel tracking-wide leading-relaxed">
       
       <p className="text-xl md:text-2xl font-display font-black text-white uppercase tracking-widest leading-loose mb-12 border-l-4 border-brand-teal pl-6">
-         The escalation of Organized Retail Crime (ORC) networks has synthesized with industrial metal theft, making raw copper spooling the most liquid, untraceable black-market commodity on modern commercial job sites.
+         The escalation of Organized Retail Crime (ORC) networks has synthesized with industrial metal theft, making raw copper spooling the most liquid, untraceable black-market commodity on modern commercial <Link href="/industries/construction-sites" className="text-brand-teal hover:underline underline-offset-4">construction sites</Link>.
       </p>
 
       <h2 className="font-display font-black text-3xl uppercase tracking-widest text-brand-teal mt-16 mb-8 flex items-center gap-4">
@@ -44,7 +45,7 @@ export default function CopperTheftContent() {
          Passive recording is useless. Identifying an individual wearing a black balaclava via a grainy 1080p camera feed 14 hours after the extraction yields a 0% recovery rate. Your security posture must shift from <strong>Forensic Validation</strong> to <strong>Active Deterrence</strong>.
       </p>
       <p className="mb-12">
-         Z1 Trailers utilize an edge-computed intelligence matrix explicitly engineered for zero-latency perimeter enforcement. When an unauthorized vector crosses an invisible geofence line around your staging yards, the Z1 command hierarchy triggers within 0.4 seconds.
+         <Link href="/security-trailers" className="text-brand-teal hover:underline underline-offset-4">Z1 Trailers</Link> utilize an edge-computed intelligence matrix explicitly engineered for zero-latency perimeter enforcement. When an unauthorized vector crosses an invisible geofence line around your staging yards, the Z1 command hierarchy triggers within 0.4 seconds.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">

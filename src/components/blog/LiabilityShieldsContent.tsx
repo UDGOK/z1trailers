@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Scale, Lock, ShieldCheck, Database, Camera, Scale as ScaleJustice } from 'lucide-react';
 
 export default function LiabilityShieldsContent() {
@@ -13,7 +14,7 @@ export default function LiabilityShieldsContent() {
          <Scale className="w-8 h-8" /> The Litigation Extinction Threat
       </h2>
       <p className="mb-6">
-         In modern commercial real estate development and civil construction, the insurance premiums associated with high-risk sites are astronomical. When a subcontractor or civilian claims a catastrophic injury due to an unsafe site condition, the burden of overwhelming proof falls incredibly hard on the general contractor or property owner.
+         In modern commercial real estate development and <Link href="/industries/construction-sites" className="text-brand-teal hover:underline underline-offset-4">civil construction</Link>, the insurance premiums associated with high-risk sites are astronomical. When a subcontractor or civilian claims a catastrophic injury due to an unsafe site condition, the burden of overwhelming proof falls incredibly hard on the general contractor or property owner.
       </p>
       <p className="mb-6">
          If there is no tape, you write the check. Plaintiff attorneys systematically target high-yield enterprise organizations knowing that blurry, choppy 720p footage from an outdated wall camera is inadmissible and easily discredited. This requires a transition to military-grade, encrypted 4K optical surveillance data architectures. 
@@ -29,7 +30,7 @@ export default function LiabilityShieldsContent() {
            <strong>Incident:</strong> Fraudulent claim of massive equipment mis-handling resulting in phantom spinal trauma.
         </p>
         <p className="relative z-10">
-           At approximately 17:30 hours on a Saturday, long after the general crew departed, a minor subcontractor claimed a horrific fall caused by a negligently parked heavy excavator near the staging trenches. The plaintiff immediately engaged a massive personal injury corporation suing for $2.4 Million in damages and loss of life function. The GC pulled the onboard SSD storage array from their deployed Z1 Guardian. Because the massive 20-foot mast had an unobstructed 360-degree pan-tilt-zoom visual arc, they captured the entire incident in flawless, uncompressed 4K resolution. The footage decisively proved the subcontractor physically scaled the geofenced perimeter, actively jumped into the dirt, and staged the injury. When the legal team presented the timestamped, encrypted raw footage, the lawsuit was completely vaporized into a dismissal with prejudice within forty-eight hours.
+           At approximately 17:30 hours on a Saturday, long after the general crew departed, a minor subcontractor claimed a horrific fall caused by a negligently parked heavy excavator near the staging trenches. The plaintiff immediately engaged a massive personal injury corporation suing for $2.4 Million in damages and loss of life function. The GC pulled the onboard SSD storage array from their deployed <Link href="/security-trailers/z1-guardian" className="text-brand-teal hover:underline underline-offset-4">Z1 Guardian</Link>. Because the massive 20-foot mast had an unobstructed 360-degree pan-tilt-zoom visual arc, they captured the entire incident in flawless, uncompressed 4K resolution. The footage decisively proved the subcontractor physically scaled the geofenced perimeter, actively jumped into the dirt, and staged the injury. When the legal team presented the timestamped, encrypted raw footage, the lawsuit was completely vaporized into a dismissal with prejudice within forty-eight hours.
         </p>
       </div>
 

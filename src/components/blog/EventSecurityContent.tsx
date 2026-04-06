@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Users, Activity, ScanLine, Satellite, ShieldAlert, Navigation } from 'lucide-react';
 
 export default function EventSecurityContent() {
@@ -29,7 +30,7 @@ export default function EventSecurityContent() {
            <strong>Incident:</strong> Emergency egress management during severe microburst weather anomaly.
         </p>
         <p className="relative z-10">
-           With 18 Z1 Guardian units deployed in a massive ring around the sprawling 200-acre event complex, operators mapped the site in 3 hours. On day two, an unexpected severe microburst weather cell approached the venue, requiring immediate, orchestrated complex evacuation. Security Command utilized the 20-foot elevated PTZ (Pan-Tilt-Zoom) optics across the Z1 grid to identify major congestion pockets at the northern gates. Using the integrated edge loudspeakers mounted on the masts, operators deployed localized, booming crowd direction audio arrays, splitting the crowd pressure across secondary egress vectors. The entire density was diffused in under 12 minutes without a single pedestrian crush incident.
+           With 18 <Link href="/security-trailers/z1-guardian" className="text-brand-teal hover:underline underline-offset-4">Z1 Guardian units</Link> deployed in a massive ring around the sprawling 200-acre <Link href="/industries/events" className="text-brand-teal hover:underline underline-offset-4">event complex</Link>, operators mapped the site in 3 hours. On day two, an unexpected severe microburst weather cell approached the venue, requiring immediate, orchestrated complex evacuation. Security Command utilized the 20-foot elevated PTZ (Pan-Tilt-Zoom) optics across the Z1 grid to identify major congestion pockets at the northern gates. Using the integrated edge loudspeakers mounted on the masts, operators deployed localized, booming crowd direction audio arrays, splitting the crowd pressure across secondary egress vectors. The entire density was diffused in under 12 minutes without a single pedestrian crush incident.
         </p>
       </div>
 

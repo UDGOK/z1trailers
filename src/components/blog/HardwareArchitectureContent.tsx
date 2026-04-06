@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Cpu, ThermometerSun, ShieldCheck, Zap, Microchip, Flame } from 'lucide-react';
 
 export default function HardwareArchitectureContent() {
@@ -16,7 +17,7 @@ export default function HardwareArchitectureContent() {
          Traditional "cloud-based" security systems transmit a continuous feed of massive 4K raw video data across cellular lines to a remote server. The server then attempts to parse the footage to find human shapes. This introduces devastating lag latency and permanently chokes your cellular bandwidth allocation, resulting in frame-dropping just when an incident occurs.
       </p>
       <p className="mb-6">
-         To completely crush latency, the Z1 Guardian computes at the absolute edge. Embedded at the base of the mast is an elite, industrial-grade Neural Processing Unit. The algorithm ingests and analyzes the high-voltage 4K optic feed locally, destroying standard server dependency. It filters stray cats, trees blowing in high winds, and headlight glare purely locally. It only transmits verified zero-day threat metadata. 
+         To completely crush latency, the <Link href="/security-trailers/z1-guardian" className="text-brand-teal hover:underline underline-offset-4">Z1 Guardian</Link> computes at the absolute edge. Embedded at the base of the mast is an elite, industrial-grade Neural Processing Unit. The algorithm ingests and analyzes the high-voltage 4K optic feed locally, destroying standard server dependency. It filters stray cats, trees blowing in high winds, and headlight glare purely locally. It only transmits verified zero-day threat metadata. 
       </p>
 
       <div className="my-16 bg-black/40 border border-white/10 p-8 md:p-12 relative overflow-hidden group hover:border-brand-teal transition-all">
@@ -29,7 +30,7 @@ export default function HardwareArchitectureContent() {
            <strong>Incident:</strong> Preventing extreme heat-induced CPU throttling during critical daytime monitoring.
         </p>
         <p className="relative z-10">
-           During the devastating heat waves of August, ambient temperatures surrounding a remote West Texas oil rig exceeded 110°F, creating internal chassis temperatures capable of destroying standard logic boards within hours. Multiple competitor solar trailers flatlined as their plastic enclosures trapped heat, forcing thermal throttling that shut down their cameras mid-day. The Z1 Guardian utilized its passive heat-sink convection chassis matrix. The core NPU successfully maintained edge-processing for 14 uninterrupted days under direct UV assault. During this extreme heat event, the Z1 processed over 14,000 algorithmic cycles without dropping a single frame, actively identifying an unauthorized fuel siphon team at high noon while the competitor cameras sat melted.
+           During the devastating heat waves of August, ambient temperatures surrounding a remote West Texas oil rig exceeded 110°F, creating internal chassis temperatures capable of destroying standard logic boards within hours. Multiple competitor solar trailers flatlined as their plastic enclosures trapped heat, forcing thermal throttling that shut down their cameras mid-day. The <Link href="/security-trailers/z1-guardian" className="text-brand-teal hover:underline underline-offset-4">Z1 Guardian</Link> utilized its passive heat-sink convection chassis matrix. The core NPU successfully maintained edge-processing for 14 uninterrupted days under direct UV assault. During this extreme heat event, the Z1 processed over 14,000 algorithmic cycles without dropping a single frame, actively identifying an unauthorized fuel siphon team at high noon while the competitor cameras sat melted.
         </p>
       </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { ShoppingCart, Scan, AlertTriangle, Crosshair, MapPin, Database } from 'lucide-react';
 
 export default function RetailORCContent() {
@@ -29,7 +30,7 @@ export default function RetailORCContent() {
            <strong>Incident:</strong> Repeat ORC targeting high-end Apple displays utilizing stolen gateway vehicles.
         </p>
         <p className="relative z-10">
-           A major electronics retailer was bleeding over $150,000 monthly due to highly aggressive ORC cells repeatedly smashing the main glass and looting high-ticket laptops. The syndicate always utilized stolen sedans without local plates. The retailer deployed a Z1 Apex Trailer directly at the solitary choke-point entrance of the massive mall parking lot. Because the Z1 Apex natively supports high-speed LPR (License Plate Recognition), the system instantly scanned a stolen Hyundai Elantra crossing the property line at 40 MPH. The NPU cross-referenced the plate payload against the national NCIC stolen vehicle database in real-time. A silent, priority-one alert was fired to local law enforcement and the store manager locked down the automated vestibule doors entirely before the operators could even park the car. Denied entry, the syndicate fled and was apprehended two miles down the highway.
+           A major electronics retailer was bleeding over $150,000 monthly due to highly aggressive ORC cells repeatedly smashing the main glass and looting high-ticket laptops. The syndicate always utilized stolen sedans without local plates. The retailer deployed a <Link href="/security-trailers/z1-apex" className="text-brand-teal hover:underline underline-offset-4">Z1 Apex Trailer</Link> directly at the solitary choke-point entrance of the massive mall parking lot. Because the Z1 Apex natively supports high-speed LPR (License Plate Recognition), the system instantly scanned a stolen Hyundai Elantra crossing the property line at 40 MPH. The NPU cross-referenced the plate payload against the national NCIC stolen vehicle database in real-time. A silent, priority-one alert was fired to local law enforcement and the store manager locked down the automated vestibule doors entirely before the operators could even park the car. Denied entry, the syndicate fled and was apprehended two miles down the highway.
         </p>
       </div>
 
@@ -45,7 +46,7 @@ export default function RetailORCContent() {
             <Database className="w-10 h-10 text-brand-teal mb-6 group-hover:scale-110 transition-transform" />
             <h4 className="font-display font-black text-lg text-white uppercase tracking-widest mb-4">Known-Threat Blacklisting</h4>
             <p className="text-brand-steel text-xs leading-loose">
-               Retailers can manually flag repeat offenders, aggressive trespassers, or recently fired hostile employees into the Z1 OS. If that specific vehicle ever maps onto your asphalt again, the system generates an absolute red-alert directly to your mobile command center instantly.
+               Retailers can manually flag repeat offenders, aggressive trespassers, or recently fired hostile employees into the <Link href="/z1-command-os" className="text-brand-teal hover:underline underline-offset-4">Z1 OS</Link>. If that specific vehicle ever maps onto your asphalt again, the system generates an absolute red-alert directly to your mobile command center instantly.
             </p>
          </div>
          <div className="bg-[#0a111a] border border-brand-teal/20 p-8 hover:border-brand-teal transition-colors group">
