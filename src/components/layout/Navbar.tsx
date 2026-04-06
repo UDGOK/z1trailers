@@ -27,16 +27,11 @@ function ProductsDropdown() {
   ];
 
   return (
-    <div className="flex w-[1250px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-[0_30px_60px_-15px_rgba(27,154,170,0.15)] relative overflow-hidden">
+    <div className="p-8 grid grid-cols-2 gap-6 w-[850px] bg-brand-navy backdrop-blur-3xl border border-brand-teal/30 shadow-[0_30px_60px_-15px_rgba(27,154,170,0.15)] relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
       
-      {/* HARDWARE MATRICES */}
-      <div className="p-6 grid grid-cols-3 gap-4 flex-1 border-r border-white/5 relative z-10">
-        <div className="col-span-3 mb-2 flex items-center space-x-3 px-2">
-           <div className="w-1.5 h-1.5 bg-brand-teal rounded-full animate-pulse" />
-           <h4 className="font-display font-black text-xs text-white uppercase tracking-[0.3em] opacity-80">Physical Endpoints</h4>
-        </div>
-        {products.map((item) => (
+      {/* --- HARDWARE QUADRANTS --- */}
+      {products.map((item) => (
         <div key={item.name} className="group relative flex flex-col p-8 border border-white/5 bg-black/20 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-brand-teal/10 min-h-[220px]">
           <div className="absolute inset-0 z-0 overflow-hidden bg-black">
             <div className="absolute inset-0 bg-brand-navy/90 group-hover:bg-brand-navy/50 transition-colors duration-700 z-10 mix-blend-multiply pointer-events-none" />
@@ -72,30 +67,37 @@ function ProductsDropdown() {
           <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-brand-teal opacity-0 group-hover:opacity-100 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-out z-10 m-3 pointer-events-none" />
         </div>
       ))}
-      </div>
 
-      {/* SOFTWARE OS BOUNDARY */}
-      <div className="w-[400px] shrink-0 p-6 flex flex-col relative z-10 bg-black/40">
-        <div className="mb-6 flex items-center space-x-3 px-2 mt-2">
-           <div className="w-1.5 h-1.5 bg-brand-teal rounded-full animate-pulse" />
-           <h4 className="font-display font-black text-xs text-white uppercase tracking-[0.3em] opacity-80">Software Architecture</h4>
-        </div>
-        <Link href="/z1-command-os" className="group relative flex-1 border border-white/5 bg-brand-navy overflow-hidden hover:border-brand-teal transition-all p-8 flex flex-col justify-end">
-           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800')] opacity-30 group-hover:scale-105 transition-transform duration-700 mix-blend-luminosity grayscale" />
-           <div className="absolute inset-0 bg-gradient-to-t from-[#05080c] via-transparent to-transparent pointer-events-none" />
-           <div className="absolute inset-0 bg-brand-teal/5 group-hover:bg-brand-teal/10 transition-colors pointer-events-none" />
-           
-           <div className="relative z-10">
-              <Cpu className="w-10 h-10 text-brand-teal mb-6" />
-              <h3 className="font-display font-black text-4xl uppercase text-white tracking-widest leading-none mb-3 group-hover:text-brand-teal transition-colors">Z1 Command OS</h3>
-              <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest leading-relaxed mb-6">Complete Threat Sovereignty. 100% False Positive Elimination. Zero Latency Intervention Matrix.</p>
-              
-              <div className="w-full flex items-center justify-between text-brand-teal font-mono text-[9px] uppercase tracking-widest border-t border-brand-teal/20 pt-4">
-                 <span>Initialize Core Dashboard</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-           </div>
-        </Link>
-      </div>
+      {/* --- SOFTWARE OS QUADRANT (Replaces the empty 4th grid slot) --- */}
+      <Link href="/z1-command-os" className="group relative flex flex-col p-8 border border-brand-teal/50 bg-[#0a111a] hover:bg-brand-navy overflow-hidden transition-all duration-500 hover:shadow-2xl min-h-[220px]">
+         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800')] opacity-10 group-hover:scale-105 transition-transform duration-700 mix-blend-luminosity grayscale" />
+         <div className="absolute inset-0 bg-gradient-to-t from-brand-teal/10 to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity" />
+         
+         <div className="relative z-10 flex items-start justify-between transform group-hover:-translate-y-2 transition-transform duration-500 ease-out mb-6">
+            <div className="flex items-center space-x-4">
+               <div className="w-12 h-12 shrink-0 flex items-center justify-center bg-brand-teal/10 border border-brand-teal text-brand-teal transition-all shadow-[0_0_15px_rgba(27,154,170,0.3)] group-hover:shadow-[0_0_25px_rgba(27,154,170,0.6)]">
+                 <Cpu className="w-5 h-5 animate-pulse" strokeWidth={1.5} />
+               </div>
+               <div>
+                 <p className="font-display font-black uppercase tracking-[0.2em] text-white transition-colors duration-500 text-xl leading-none mb-2">Z1 Command OS</p>
+                 <p className="font-mono text-[9px] uppercase tracking-widest text-brand-teal font-bold flex items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-teal mr-2 animate-pulse" /> A.I. SOFTWARE ENGINE
+                 </p>
+               </div>
+            </div>
+            <div className="w-10 h-10 border border-brand-teal flex items-center justify-center bg-brand-teal/10 transition-all duration-300 text-brand-teal">
+               <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+         </div>
+
+         <div className="relative z-20 mt-auto">
+            <p className="font-mono text-[10px] text-brand-steel uppercase tracking-widest leading-loose group-hover:text-slate-300 transition-colors">
+               Universal fleet management. 100% False-Positive Elimination. Absolute Zero-Latency Active Deterrence matrices natively bridged.
+            </p>
+         </div>
+
+         <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-brand-teal opacity-0 group-hover:opacity-100 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-out z-10 m-3 pointer-events-none" />
+      </Link>
     </div>
   );
 }
