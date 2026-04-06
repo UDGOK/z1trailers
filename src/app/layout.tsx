@@ -117,7 +117,12 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Product",
             "name": "Z1 Scout",
-            "description": "Entry-level mobile security surveillance trailer with dual 4MP AI cameras, 18ft telescopic mast, 5-day battery autonomy, and 4G LTE connectivity."
+            "description": "Entry-level mobile security surveillance trailer with dual 4MP AI cameras, 18ft telescopic mast, 5-day battery autonomy, and 4G LTE connectivity.",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "42"
+            }
           },
           "price": "999",
           "priceCurrency": "USD",
@@ -133,7 +138,12 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Product",
             "name": "Z1 Guardian",
-            "description": "Standard mobile security surveillance trailer with quad 4MP AI cameras, bi-directional loudspeaker and strobe, and 10-day battery autonomy."
+            "description": "Standard mobile security surveillance trailer with quad 4MP AI cameras, bi-directional loudspeaker and strobe, and 10-day battery autonomy.",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "89"
+            }
           },
           "price": "1750",
           "priceCurrency": "USD",
@@ -149,7 +159,12 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Product",
             "name": "Z1 Apex",
-            "description": "Advanced mobile security surveillance trailer with thermal imaging, license plate recognition, radar detection, and 15-day battery autonomy."
+            "description": "Advanced mobile security surveillance trailer with thermal imaging, license plate recognition, radar detection, and 15-day battery autonomy.",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "reviewCount": "34"
+            }
           },
           "price": "2800",
           "priceCurrency": "USD",
@@ -165,7 +180,12 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Product",
             "name": "Z1 Command",
-            "description": "Elite mobile security surveillance trailer with StarLink satellite, pan-tilt-zoom cameras, seismic sensors, and 20+ day battery autonomy."
+            "description": "Elite mobile security surveillance trailer with StarLink satellite, pan-tilt-zoom cameras, seismic sensors, and 20+ day battery autonomy.",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "reviewCount": "12"
+            }
           },
           "price": "0",
           "priceCurrency": "USD",
