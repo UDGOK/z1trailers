@@ -31,9 +31,9 @@ function ProductsDropdown() {
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
       {products.map((item) => (
         <div key={item.name} className="group relative flex flex-col p-8 border border-white/5 bg-black/20 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-brand-teal/10 min-h-[220px]">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-brand-navy/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-multiply" />
-            <img src={item.img} alt={item.name} className="w-full h-full object-cover scale-110 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out grayscale-[50%]" />
+          <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+            <div className="absolute inset-0 bg-brand-navy/90 group-hover:bg-brand-navy/50 transition-colors duration-700 z-10 mix-blend-multiply pointer-events-none" />
+            <img src={item.img} alt={item.name} className="w-full h-full object-cover scale-[1.15] group-hover:scale-100 opacity-50 grayscale brightness-50 group-hover:opacity-100 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 ease-out" />
             <motion.div 
                className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-teal/20 to-transparent h-full w-full z-20 opacity-0 group-hover:opacity-100 pointer-events-none"
                animate={{ y: ["-100%", "100%"] }}
