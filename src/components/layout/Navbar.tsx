@@ -327,15 +327,7 @@ const navItems = [
       { name: "Law Enforcement", href: "/industries/law-enforcement" },
     ]
   },
-  {
-    name: "Rent / Buy",
-    href: "/rent-security-trailer",
-    component: <ProcurementHub />,
-    mobileLinks: [
-      { name: "Rental Options", href: "/rent-security-trailer" },
-      { name: "Purchase Options", href: "/buy-security-trailer" },
-    ]
-  },
+
   {
     name: "Deployments",
     href: "/locations",
@@ -468,13 +460,17 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-[100] pointer-events-none">
       
       {/* Top Banner Menu Area */}
-      <div className="pointer-events-auto bg-[#05080c] w-full py-2 border-b border-white/5 flex justify-center items-center relative overflow-hidden">
+      <div className="pointer-events-auto bg-[#05080c] w-full py-2 border-b border-white/5 flex justify-center items-center relative overflow-hidden px-4 md:px-10">
          <div 
            className="absolute inset-0 z-0 opacity-20"
            style={{ backgroundImage: 'radial-gradient(#1b9aaa 1px, transparent 1px)', backgroundSize: '12px 12px' }}
          />
-         <div className="relative z-10">
-           <ConfiguratorTrigger className="text-white hover:text-brand-teal text-[10px] md:text-[11px] uppercase font-mono tracking-[0.2em] font-black transition-colors animate-pulse [text-shadow:0_0_10px_rgba(27,154,170,0.5)]">
+         <div className="relative z-10 flex flex-wrap gap-4 items-center justify-center">
+           <Link href="/pricing" className="text-[#05080c] bg-white hover:bg-brand-teal hover:text-white transition-all text-[9px] md:text-[10px] uppercase font-mono tracking-[0.2em] font-black px-4 py-1.5 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+              Rent or Buy Hardware
+           </Link>
+           <div className="hidden sm:block w-px h-4 bg-white/20 mx-2" />
+           <ConfiguratorTrigger className="text-brand-teal hover:text-white text-[10px] md:text-[11px] uppercase font-mono tracking-[0.2em] font-black transition-colors animate-pulse [text-shadow:0_0_10px_rgba(27,154,170,0.5)]">
               [ Calculate Specifications & Build Custom Trailer ]
            </ConfiguratorTrigger>
          </div>
