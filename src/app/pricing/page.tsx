@@ -25,6 +25,7 @@ export default function PricingPage() {
       badge: "ENTRY VECTOR",
       desc: "Compact rapid-deployment baseline for standard physical deterioration zones.",
       icon: Crosshair,
+      href: "/security-trailers/z1-scout",
       specs: ["5-Day LiFePO4 Autonomy", "Dual 4MP AI Optics", "18ft Telescopic Mast", "Standard 4G LTE Uplink"],
       color: "border-white/10"
     },
@@ -33,6 +34,7 @@ export default function PricingPage() {
       badge: "SECTOR STANDARD",
       desc: "Our high-adoption autonomous anchor with bi-directional acoustic deterrence.",
       icon: Target,
+      href: "/security-trailers/z1-guardian",
       specs: ["10-Day LiFePO4 Autonomy", "Quad 4MP (360° FOV)", "24ft Heavy-Duty Mast", "Active 120dB Talkdown"],
       color: "border-brand-teal shadow-[0_0_50px_rgba(27,154,170,0.15)]",
       popular: true
@@ -42,6 +44,7 @@ export default function PricingPage() {
       badge: "ADVANCED TARGETING",
       desc: "Military-grade optical payload featuring absolute Thermal and LPR integrations.",
       icon: Shield,
+      href: "/security-trailers/z1-apex",
       specs: ["15-Day LiFePO4 Autonomy", "Thermal Tracking Matrix", "Automated License Plate Rec", "5G & Radar Integrations"],
       color: "border-white/10"
     }
@@ -91,7 +94,11 @@ export default function PricingPage() {
                    <span className="font-mono text-[10px] text-brand-teal uppercase tracking-widest">{tier.badge}</span>
                 </div>
 
-                <h3 className="font-display font-black text-4xl uppercase tracking-widest text-white mb-4">{tier.name}</h3>
+                <Link href={tier.href} className="group/title inline-block">
+                  <h3 className="font-display font-black text-4xl uppercase tracking-widest text-white mb-4 group-hover/title:text-brand-teal transition-colors flex items-center">
+                    {tier.name} <ChevronRight className="w-6 h-6 ml-2 opacity-0 group-hover/title:opacity-100 group-hover/title:translate-x-2 transition-all" />
+                  </h3>
+                </Link>
                 <p className="font-mono text-[10px] text-slate-400 uppercase tracking-widest leading-loose mb-10 min-h-[3rem]">
                    {tier.desc}
                 </p>
