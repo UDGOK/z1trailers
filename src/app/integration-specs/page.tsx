@@ -1,6 +1,7 @@
 import { Check, Shield, Camera, Server, Network, Video, Download } from "lucide-react";
 import Image from "next/image";
 import { Metadata } from 'next';
+import PrintButton from "@/components/shared/PrintButton";
 
 export const metadata: Metadata = {
   title: 'Hardware & System Integrations | Z1 Trailers',
@@ -34,13 +35,7 @@ export default function IntegrationSpecSheet() {
            <Network className="w-5 h-5 text-brand-teal" />
            <span className="font-display font-medium text-white tracking-widest uppercase text-sm">Z1 Command OS Integrations</span>
          </div>
-         <button 
-           onClick={() => { if(typeof window !== 'undefined') window.print(); }}
-           className="bg-brand-teal hover:bg-white text-[#0a1628] px-6 py-2 flex items-center gap-2 font-black uppercase text-xs tracking-widest transition-colors"
-         >
-           <Download className="w-4 h-4" />
-           Save to PDF / Print
-         </button>
+         <PrintButton />
       </div>
 
       {/* A4 Document Area */}
