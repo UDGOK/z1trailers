@@ -127,7 +127,7 @@ export default function TrailerConfigurator({
   const [cameras, setCameras] = useState<CameraSelection[]>(getInitialCameras(initialModel));
   const [audio, setAudio] = useState(initialModel === "Z1 Apex");
   const [lpr, setLpr] = useState(false);
-  const [comm, setComm] = useState<"Teltonika 4G LTE" | "Starlink Satellite">("Teltonika 4G LTE");
+  const [comm, setComm] = useState<"Dual-SIM Teltonika LTE" | "Starlink Satellite">("Dual-SIM Teltonika LTE");
   const [storage, setStorage] = useState<"0" | "30" | "60">("0");
   const [selectedBattery, setSelectedBattery] = useState<string>("");
   const [showBatteryInfo, setShowBatteryInfo] = useState(false);
@@ -150,7 +150,7 @@ export default function TrailerConfigurator({
         setCameras(getInitialCameras(initialModel));
         setAudio(initialModel === "Z1 Apex");
         setLpr(false);
-        setComm("Teltonika 4G LTE");
+        setComm("Dual-SIM Teltonika LTE");
         setStorage("0");
         setSelectedBattery("");
         setLedFlood(true);
@@ -557,8 +557,8 @@ export default function TrailerConfigurator({
 
                               <div className="p-4 bg-[#1a1a1a] border border-[#333] rounded mb-4">
                                  <p className="font-display font-bold text-white mb-2">Communications Uplink</p>
-                                 <select value={comm} onChange={e => setComm(e.target.value as "Teltonika 4G LTE" | "Starlink Satellite")} className="w-full bg-[#0a0a0a] border border-[#333] text-white p-2 font-mono text-xs focus:border-brand-teal outline-none">
-                                    <option value="Teltonika 4G LTE">Teltonika 4G LTE (Standard Included)</option>
+                                 <select value={comm} onChange={e => setComm(e.target.value as "Dual-SIM Teltonika LTE" | "Starlink Satellite")} className="w-full bg-[#0a0a0a] border border-[#333] text-white p-2 font-mono text-xs focus:border-brand-teal outline-none">
+                                    <option value="Dual-SIM Teltonika LTE">Dual-SIM Teltonika LTE (Standard Included)</option>
                                     <option value="Starlink Satellite">Starlink Satellite Upgrade (+$600 / +45W Draw)</option>
                                  </select>
                               </div>

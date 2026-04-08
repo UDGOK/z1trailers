@@ -11,7 +11,7 @@ export default function HardwarePage() {
       name: "Z1 Scout",
       badge: "ENTRY VECTOR",
       desc: "Compact, rapid-deployment endpoint for immediate event containment and short-term lot surveillance.",
-      specs: ["5-Day Solar Autonomy", "Dual 4MP AI Optics", "30ft Mast Extent", "Grid Independent"],
+      specs: ["5-Day Solar Autonomy", "Quad AI Array", "18ft Mast Extent", "Dual-SIM Teltonika LTE"],
       icon: Crosshair,
       bg: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
       href: "/security-trailers/z1-scout"
@@ -20,7 +20,7 @@ export default function HardwarePage() {
       name: "Z1 Guardian",
       badge: "STANDARD COMMAND",
       desc: "Our high-adoption standard. 10-day autonomy via expanded array and bi-directional deterrence arrays.",
-      specs: ["10-Day Solar Autonomy", "Quad 4MP AI Optics", "Loudspeaker & Strobe", "LTE Grid Link"],
+      specs: ["10-Day Solar Autonomy", "Quad 4MP AI Optics", "Loudspeaker & Strobe", "Dual-SIM Teltonika LTE"],
       icon: Sun,
       bg: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200",
       href: "/security-trailers/z1-guardian"
@@ -29,7 +29,7 @@ export default function HardwarePage() {
       name: "Z1 Apex",
       badge: "ADVANCED TARGETING",
       desc: "Military-grade optical payload featuring Thermal Imaging and integrated LPR for vital infrastructure.",
-      specs: ["Thermal Vision", "License Plate Tracking", "15-Day Battery Array", "Radar Detection"],
+      specs: ["Thermal Vision", "License Plate Tracking", "15-Day Battery Array", "Dual-SIM Teltonika LTE"],
       icon: Shield,
       bg: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1200",
       href: "/security-trailers/z1-apex"

@@ -17,9 +17,9 @@ const hardwareDb: Record<string, any> = {
     buyPrice: 16500,
     specs: [
       { label: "Core Autonomy", value: "5 Days Base", sub: "Scalable up to 7,200Wh Expansion" },
-      { label: "Optical Payload", value: "Dual 4MP AI", sub: "Modular 4-Camera Array System" },
+      { label: "Optical Payload", value: "Quad AI Array", sub: "PTZ, Fisheye, Bullet Configuration" },
       { label: "Mast Altitude", value: "18ft Telescopic", sub: "Single-Operator Rapid Deploy" },
-      { label: "Telemetry Uplink", value: "4G LTE Base", sub: "StarLink Satellite Upgradeable" }
+      { label: "Telemetry Uplink", value: "Dual-SIM Router", sub: "Teltonika LTE Integrated" }
     ],
     mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 18' | Weight: 1200 ~ 1900 Lbs.",
     features: [
@@ -47,7 +47,7 @@ const hardwareDb: Record<string, any> = {
       { label: "Core Autonomy", value: "10 Days Base", sub: "Scalable up to 9,600Wh Expansion" },
       { label: "Optical Payload", value: "Quad 4MP AI", sub: "Accepts 5x PTZ + AI Radar" },
       { label: "Mast Altitude", value: "24ft Heavy Duty", sub: "120dB Active Acoustic Horn" },
-      { label: "Telemetry Network", value: "Dual-SIM 5G", sub: "StarLink Satellite Upgradeable" }
+      { label: "Telemetry Network", value: "Dual-SIM Router", sub: "Teltonika LTE Integrated" }
     ],
     mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
     features: [
@@ -75,7 +75,7 @@ const hardwareDb: Record<string, any> = {
       { label: "Core Autonomy", value: "15 Days Base", sub: "Scalable up to 12,000Wh Expansion" },
       { label: "Targeting Matrix", value: "Thermal + LPR", sub: "Military-Grade Heat Signatures" },
       { label: "Mast Altitude", value: "24ft Mil-Spec", sub: "Radar Sweep Initialization" },
-      { label: "Telemetry Link", value: "5G & Satellite", sub: "Absolute Redundant Failover" }
+      { label: "Telemetry Link", value: "Dual-SIM Router", sub: "Teltonika 5G/LTE Intercept" }
     ],
     mechanical: "Tow ball: 2\" | Tongue: Removable | Width: 79.5\" | Length: 93\" | Height: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
     features: [
