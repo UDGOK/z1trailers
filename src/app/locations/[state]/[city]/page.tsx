@@ -24,6 +24,9 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   return {
     title: `Mobile Security Trailers in ${cityData.name}, ${stateData.name} | Z1 Trailers`,
     description: cityData.desc,
+    alternates: {
+      canonical: `/locations/${state}/${city}`
+    }
   };
 }
 

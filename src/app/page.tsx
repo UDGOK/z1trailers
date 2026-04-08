@@ -12,6 +12,12 @@ import AIDetectionsGrid from "@/components/shared/AIDetectionsGrid";
 import AnimatedTelemetry from "@/components/home/AnimatedTelemetry";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 
+export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
+
 export default function Home() {
   const faqSchema = {
     "@context": "https://schema.org",

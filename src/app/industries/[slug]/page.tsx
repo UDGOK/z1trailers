@@ -171,6 +171,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${ind.name} Surveillance Operations // Tactical Briefing`,
     description: ind.desc,
+    alternates: {
+      canonical: `/industries/${slug}`
+    }
   };
 }
 

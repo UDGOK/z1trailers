@@ -10,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://z1trailers.com'),
+  metadataBase: new URL('https://www.z1trailers.com'),
   title: "Mobile Security Surveillance Trailers — Rent or Buy | Z1 Trailers",
   description: "Deploy solar-powered, AI-equipped tactical surveillance trailers across the Mid-South in under 15 minutes. Pure tactical advantage.",
   openGraph: {

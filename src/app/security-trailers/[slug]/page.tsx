@@ -108,6 +108,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${product.name} | Mobile Security Surveillance Trailer`,
     description: product.desc,
+    alternates: {
+      canonical: `/security-trailers/${slug}`
+    }
   };
 }
 

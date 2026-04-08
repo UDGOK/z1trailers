@@ -8,6 +8,9 @@ export const revalidate = 60 // Revalidate every minute
 export const metadata = {
   title: 'Field Reports | Z1 Trailers',
   description: 'Tactical insights, deployment strategies, and security innovations from the field.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export default async function BlogIndexPage() {
