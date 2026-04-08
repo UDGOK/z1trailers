@@ -464,11 +464,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                      <p className="font-mono text-[9px] uppercase text-brand-teal font-bold tracking-widest mt-1">Encrypted WebRTC Stream</p>
                   </div>
                   <Image 
-                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" 
+                     src="/images/z1_command_os_dashboard.png" 
                      fill
                      sizes="(max-width: 768px) 100vw, 50vw"
-                     className="object-cover opacity-40 grayscale-[80%] contrast-125 mix-blend-screen group-hover:scale-105 group-hover:grayscale-[50%] transition-all duration-1000"
-                     alt="Dashboard UI Diagram"
+                     className="object-cover opacity-80 contrast-125 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000"
+                     alt="Z1 OS Command Center Dashboard"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#05080c] via-transparent to-transparent z-10" />
                   
