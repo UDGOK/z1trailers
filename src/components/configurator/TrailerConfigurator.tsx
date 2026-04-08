@@ -47,9 +47,10 @@ const CAMERA_CATALOG: Record<CameraType, { brand: CameraBrand; name: string; pri
 
 const PRICING = {
   models: {
-    "Z1 Scout": 8500,
-    "Z1 Guardian": 12500,
-    "Z1 Apex": 16500,
+    // Math logic: (base / 12) + 400 ~ Monthly Lease Base Target
+    "Z1 Scout": 17400, // Yields $1850 base
+    "Z1 Guardian": 22200, // Yields $2250 base
+    "Z1 Apex": 0, // Call for pricing
   },
   addons: {
     audio: 299, // 30W Horn
@@ -73,7 +74,7 @@ const MODEL_SPECS = {
     lights: "1 Red Strobe, 2 Blue Flashers",
     mast: "18ft Telescopic Mast",
     mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 18' | Weight: 1200 ~ 1900 Lbs.",
-    extras: "16/4 Stranded & CAT5e Bundled Cable, 4 Leveling Jacks",
+    extras: "Uniview 4 channel NVR with 4TB storage. Leasing includes monitoring station.",
     baseDraw: 35,
   },
   "Z1 Guardian": {
@@ -82,16 +83,16 @@ const MODEL_SPECS = {
     lights: "1 Red Strobe, 2 Blue Flashers",
     mast: "24ft Telescopic Mast",
     mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
-    extras: "16/4 Stranded & CAT5e Bundled Cable, 4 Leveling Jacks",
+    extras: "Uniview 8 channel NVR with 8TB storage. Leasing includes monitoring station.",
     baseDraw: 45,
   },
   "Z1 Apex": {
     power: "3x 395W Solar, Victron 100W MPPT + Inverter",
-    battery: "4x 24V 100Ah LiFePO4 w/ BMS",
+    battery: "3x 24V 100Ah LiFePO4 w/ BMS",
     lights: "1 Red Strobe, 2 Blue Flashers",
     mast: "24ft Telescopic Mast",
     mechanical: "Tow ball: 2\" | Tongue: Removable | W: 79.5\" | L: 93\" | H: 9'3\" - 24' | Weight: 1900 ~ 2900 Lbs.",
-    extras: "16/4 Stranded & CAT5e Bundled Cable, 4 Leveling Jacks",
+    extras: "Uniview 8 channel NVR with 8TB storage. Leasing includes monitoring station.",
     baseDraw: 50,
   }
 };
@@ -105,10 +106,26 @@ export default function TrailerConfigurator({
   onClose: () => void;
   initialModel?: "Z1 Scout" | "Z1 Guardian" | "Z1 Apex";
 }) {
+  const getInitialCameras = (mod: string): CameraSelection[] => {
+    const list: CameraSelection[] = [];
+    if (mod === "Z1 Scout") {
+      list.push({ id: '1', type: 'Bullet', brand: 'Uniview', name: 'Uniview 4MP', price: 225, draw: 8 });
+      list.push({ id: '2', type: 'Bullet', brand: 'Uniview', name: 'Uniview 4MP', price: 225, draw: 8 });
+      list.push({ id: '3', type: 'Fisheye', brand: 'Uniview', name: 'Uniview', price: 850, draw: 15 });
+      list.push({ id: '4', type: 'PTZ', brand: 'Uniview', name: 'Uniview Dual PTZ 22x', price: 650, draw: 25 });
+    } else if (mod === "Z1 Apex") {
+      list.push({ id: '1', type: 'PTZ', brand: 'Uniview', name: 'Uniview Dual PTZ 22x', price: 650, draw: 25 });
+      list.push({ id: '2', type: 'PTZ', brand: 'Uniview', name: 'Uniview Dual PTZ 22x', price: 650, draw: 25 });
+      list.push({ id: '3', type: 'PTZ', brand: 'Uniview', name: 'Uniview Dual PTZ 22x', price: 650, draw: 25 });
+      list.push({ id: '4', type: 'Fisheye', brand: 'Uniview', name: 'Uniview', price: 850, draw: 15 });
+    }
+    return list;
+  };
+
   const [step, setStep] = useState(1);
   const [model, setModel] = useState<"Z1 Scout" | "Z1 Guardian" | "Z1 Apex">(initialModel);
-  const [cameras, setCameras] = useState<CameraSelection[]>([]);
-  const [audio, setAudio] = useState(false);
+  const [cameras, setCameras] = useState<CameraSelection[]>(getInitialCameras(initialModel));
+  const [audio, setAudio] = useState(initialModel === "Z1 Apex");
   const [lpr, setLpr] = useState(false);
   const [comm, setComm] = useState<"Teltonika 4G LTE" | "Starlink Satellite">("Teltonika 4G LTE");
   const [storage, setStorage] = useState<"0" | "30" | "60">("0");
@@ -130,8 +147,8 @@ export default function TrailerConfigurator({
       setTimeout(() => {
         setStep(1);
         setModel(initialModel);
-        setCameras([]);
-        setAudio(false);
+        setCameras(getInitialCameras(initialModel));
+        setAudio(initialModel === "Z1 Apex");
         setLpr(false);
         setComm("Teltonika 4G LTE");
         setStorage("0");

@@ -6,9 +6,9 @@ import { ArrowRight, Compass } from "lucide-react";
 
 export default function RentPage() {
   const data = [
-    { name: "Z1 Scout", price: "$999", period: "/ MO", desc: "ENTRY TIER" },
-    { name: "Z1 Guardian", price: "$1,750", period: "/ MO", desc: "STANDARD COMMAND", highlight: true },
-    { name: "Z1 Apex", price: "$2,800", period: "/mo", desc: "THERMAL + LPR" }
+    { name: "Z1 Scout", price: "$1,850", period: "/ MO", desc: "ENTRY TIER", weekly: "$575", daily: "$95" },
+    { name: "Z1 Guardian", price: "$2,250", period: "/ MO", desc: "STANDARD COMMAND", highlight: true, weekly: "$650", daily: "$125" },
+    { name: "Z1 Apex", price: "CUSTOM", period: "", desc: "THERMAL + LPR", callForPricing: true }
   ];
 
   return (
@@ -45,17 +45,23 @@ export default function RentPage() {
 
                 <div className="mt-auto">
                    <p className="font-mono text-[10px] uppercase text-brand-steel/50 tracking-widest mb-1 border-t border-brand-mist pt-4">MONTHLY RATE</p>
-                   {tier.price === "CUSTOM" ? (
-                      <p className="font-display font-black text-3xl text-brand-gold tracking-tight">{tier.price}</p>
+                   {tier.callForPricing ? (
+                      <p className="font-display font-black text-3xl text-red-500 tracking-tight">CALL FOR PRICING</p>
                    ) : (
-                      <div className="flex items-baseline">
-                        <span className="font-display font-black text-4xl tracking-tighter text-brand-navy">{tier.price}</span>
-                        <span className="font-mono text-[10px] ml-1 text-brand-steel tracking-widest">{tier.period}</span>
-                      </div>
+                      <>
+                        <div className="flex items-baseline mb-3">
+                          <span className="font-display font-black text-4xl tracking-tighter text-red-500 drop-shadow-sm">{tier.price}</span>
+                          <span className="font-mono text-[10px] ml-1 text-brand-steel tracking-widest">{tier.period}</span>
+                        </div>
+                        <div className="flex justify-between font-mono text-[9px] tracking-widest uppercase border-t border-brand-mist/50 pt-2 mb-2">
+                           <span className="text-brand-steel">Weekly: <span className="text-brand-navy font-bold">{tier.weekly}</span></span>
+                           <span className="text-brand-steel">Daily: <span className="text-brand-navy font-bold">{tier.daily}</span></span>
+                        </div>
+                      </>
                    )}
                 </div>
 
-                <Link href="/get-a-quote" className={`mt-8 w-full py-4 text-center font-display font-black text-[10px] uppercase tracking-[0.2em] transition-colors ${tier.highlight ? 'bg-brand-teal text-white hover:bg-brand-navy' : 'bg-brand-navy text-white hover:bg-brand-teal'}`}>
+                <Link href={tier.callForPricing ? "/contact" : "/get-a-quote"} className={`mt-6 w-full py-4 text-center font-display font-black text-[10px] uppercase tracking-[0.2em] transition-colors ${tier.highlight ? 'bg-brand-teal text-white hover:bg-brand-navy' : 'bg-brand-navy text-white hover:bg-brand-teal'}`}>
                    Deploy Now
                 </Link>
              </motion.div>

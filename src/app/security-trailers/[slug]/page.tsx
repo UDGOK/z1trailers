@@ -13,7 +13,7 @@ const hardwareDb: Record<string, any> = {
     name: "Z1 Scout",
     badge: "ENTRY VECTOR",
     desc: "Compact, rapid-deployment endpoint designed for temporary sites. Features a 5-day battery reserve and fundamental 24/7 AI-monitored optics.",
-    price: 999,
+    price: 1850,
     buyPrice: 16500,
     specs: [
       { label: "Core Autonomy", value: "5 Days Base", sub: "Scalable up to 7,200Wh Expansion" },
@@ -41,7 +41,7 @@ const hardwareDb: Record<string, any> = {
     name: "Z1 Guardian",
     badge: "STANDARD COMMAND",
     desc: "Our high-adoption standard. 10-day autonomy via expanded solar array, upgraded dual-lens optics, and bi-directional audio deterrence.",
-    price: 1750,
+    price: 2250,
     buyPrice: 28000,
     specs: [
       { label: "Core Autonomy", value: "10 Days Base", sub: "Scalable up to 9,600Wh Expansion" },
@@ -69,8 +69,8 @@ const hardwareDb: Record<string, any> = {
     name: "Z1 Apex",
     badge: "ADVANCED TARGETING",
     desc: "Military-grade optical payload featuring Thermal Imaging and integrated License Plate Recognition (LPR) for mission-critical borders.",
-    price: 2800,
-    buyPrice: 42000,
+    price: 0,
+    buyPrice: 0,
     specs: [
       { label: "Core Autonomy", value: "15 Days Base", sub: "Scalable up to 12,000Wh Expansion" },
       { label: "Targeting Matrix", value: "Thermal + LPR", sub: "Military-Grade Heat Signatures" },

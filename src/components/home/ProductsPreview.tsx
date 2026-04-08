@@ -11,7 +11,8 @@ export default function ProductsPreview() {
        name: "Z1 Scout",
        role: "ENTRY TIER",
        desc: "Compact, rapid-deployment endpoint designed for temporary sites. Features a 5-day battery reserve and fundamental 24/7 AI-monitored optics.",
-       price: "$999/mo",
+       price: "$1,850",
+       period: "/MO",
        icon: Crosshair,
        img: "/images/products/z1-scout.png",
        href: "/security-trailers/z1-scout"
@@ -20,7 +21,8 @@ export default function ProductsPreview() {
        name: "Z1 Guardian",
        role: "STANDARD COMPUTE",
        desc: "Our high-adoption standard. 10-day autonomy via expanded solar array, upgraded dual-lens optics, and bi-directional audio deterrence.",
-       price: "$1,750/mo",
+       price: "$2,250",
+       period: "/MO",
        icon: Sun,
        img: "/images/products/z1-guardian.png",
        href: "/security-trailers/z1-guardian"
@@ -29,7 +31,8 @@ export default function ProductsPreview() {
        name: "Z1 Apex",
        role: "ADVANCED TIER",
        desc: "Military-grade optical payload featuring Thermal Imaging and integrated License Plate Recognition (LPR) for mission-critical borders.",
-       price: "$2,800/mo",
+       price: "CALL",
+       period: "FOR PRICING",
        icon: Shield,
        img: "/images/products/z1-apex.png",
        href: "/security-trailers/z1-apex"
@@ -123,7 +126,10 @@ export default function ProductsPreview() {
 
                  {/* Corner Reticles */}
                  <div className="absolute top-4 right-4 z-20 w-3 h-3 border-t border-r border-brand-teal opacity-50 group-hover:opacity-100 transition-opacity" />
-                 <div className="absolute bottom-4 left-4 z-20 w-3 h-3 border-b border-l border-brand-teal opacity-50 group-hover:opacity-100 transition-opacity" />
+                 <div className="absolute top-4 right-4 z-20 text-right">
+                  <div className="font-display font-black text-2xl text-red-500 tracking-tight drop-shadow-md">{model.price}</div>
+                  <div className="font-mono text-[8px] text-white/70 tracking-widest">{model.period}</div>
+                </div>
               </div>
 
               {/* Data payload */}
