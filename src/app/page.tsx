@@ -6,13 +6,13 @@ import AnimatedTelemetry from "@/components/home/AnimatedTelemetry";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 import dynamic from "next/dynamic";
 
-const SocialProof = dynamic(() => import("@/components/home/SocialProof"));
-const ProductsPreview = dynamic(() => import("@/components/home/ProductsPreview"));
-const HowItWorks = dynamic(() => import("@/components/home/HowItWorks"));
-const IndustriesGrid = dynamic(() => import("@/components/home/IndustriesGrid"));
-const FAQ = dynamic(() => import("@/components/home/FAQ"));
-const CTA = dynamic(() => import("@/components/home/CTA"));
-const AIDetectionsGrid = dynamic(() => import("@/components/shared/AIDetectionsGrid"));
+const SocialProof = dynamic(() => import("@/components/home/SocialProof"), { ssr: false });
+const ProductsPreview = dynamic(() => import("@/components/home/ProductsPreview"), { ssr: false });
+const HowItWorks = dynamic(() => import("@/components/home/HowItWorks"), { ssr: false });
+const IndustriesGrid = dynamic(() => import("@/components/home/IndustriesGrid"), { ssr: false });
+const FAQ = dynamic(() => import("@/components/home/FAQ"), { ssr: false });
+const CTA = dynamic(() => import("@/components/home/CTA"), { ssr: false });
+const AIDetectionsGrid = dynamic(() => import("@/components/shared/AIDetectionsGrid"), { ssr: false });
 
 export const metadata = {
   alternates: {
