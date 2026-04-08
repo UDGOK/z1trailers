@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function IndustriesPage() {
   const industries = [
@@ -46,7 +47,7 @@ export default function IndustriesPage() {
                   {/* Image Header */}
                   <div className="h-48 relative overflow-hidden bg-black">
                      <div className="absolute inset-0 bg-brand-navy/50 group-hover:bg-brand-teal/20 mix-blend-multiply transition-colors duration-500 z-10" />
-                     <img src={ind.img} alt={ind.name} className="w-full h-full object-cover grayscale-[40%] scale-105 group-hover:scale-100 transition-transform duration-[1s]" />
+                     <Image src={ind.img} alt={ind.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover grayscale-[40%] scale-105 group-hover:scale-100 transition-transform duration-[1s]" />
                   </div>
                   
                   {/* Data Body */}

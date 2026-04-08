@@ -5,6 +5,7 @@ import AIDetectionsGrid from "@/components/shared/AIDetectionsGrid";
 import { ArrowRight, Crosshair, Sun, Shield, MapPin, Zap, FileText, Battery, ChevronDown, Cpu, Wifi, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Target, Check, Settings } from "lucide-react";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 const hardwareDb: Record<string, any> = {
   "z1-scout": {
@@ -196,7 +197,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       */}
       <section id="overview" className="relative h-[90vh] md:h-screen w-full flex flex-col justify-end overflow-hidden pb-10 px-6 md:px-10 border-b border-brand-teal/20">
          <div className="absolute inset-0 z-0">
-           <img src={product.img} alt={product.name} className="w-full h-full object-cover grayscale-[30%] opacity-40 scale-105" />
+           <Image 
+             src={product.img} 
+             alt={product.name} 
+             fill
+             priority
+             sizes="100vw"
+             className="object-cover grayscale-[30%] opacity-40 scale-105" 
+           />
            <div className="absolute inset-0 bg-gradient-to-t from-[#05080c] via-[#05080c]/50 to-transparent" />
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05080c_120%)]" />
          </div>
@@ -454,9 +462,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                      <p className="font-display font-bold uppercase tracking-widest text-sm text-white">Live Telemetry Feed</p>
                      <p className="font-mono text-[9px] uppercase text-brand-teal font-bold tracking-widest mt-1">Encrypted WebRTC Stream</p>
                   </div>
-                  <img 
+                  <Image 
                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" 
-                     className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale-[80%] contrast-125 mix-blend-screen group-hover:scale-105 group-hover:grayscale-[50%] transition-all duration-1000"
+                     fill
+                     sizes="(max-width: 768px) 100vw, 50vw"
+                     className="object-cover opacity-40 grayscale-[80%] contrast-125 mix-blend-screen group-hover:scale-105 group-hover:grayscale-[50%] transition-all duration-1000"
                      alt="Dashboard UI Diagram"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#05080c] via-transparent to-transparent z-10" />

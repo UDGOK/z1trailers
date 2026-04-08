@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Crosshair, Sun, Shield, MapPin, Check } from "lucide-react";
+import Image from "next/image";
 
 export default function HardwarePage() {
   const hardware = [
@@ -65,7 +66,7 @@ export default function HardwarePage() {
              {/* Left side: Cinematic Render */}
              <div className="w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden bg-black">
                 <div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply z-10 group-hover:opacity-10 transition-opacity duration-700" />
-                <img src={item.bg} className="w-full h-full object-cover grayscale-[40%] scale-105 group-hover:scale-100 transition-transform duration-[1s]" />
+                <Image src={item.bg} alt={item.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover grayscale-[40%] scale-105 group-hover:scale-100 transition-transform duration-[1s]" />
                 <div className="absolute top-4 left-4 z-20 font-mono text-[9px] bg-black/60 backdrop-blur-md border border-brand-teal/30 text-brand-teal px-3 py-1.5 uppercase tracking-widest">
                   {item.badge}
                 </div>

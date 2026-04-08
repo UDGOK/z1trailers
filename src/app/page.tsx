@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { Shield, Zap, Clock } from "lucide-react";
-import SocialProof from "@/components/home/SocialProof";
-import ProductsPreview from "@/components/home/ProductsPreview";
-import HowItWorks from "@/components/home/HowItWorks";
-import IndustriesGrid from "@/components/home/IndustriesGrid";
-import FAQ from "@/components/home/FAQ";
-import CTA from "@/components/home/CTA";
-import AIDetectionsGrid from "@/components/shared/AIDetectionsGrid";
 import AnimatedTelemetry from "@/components/home/AnimatedTelemetry";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
+import dynamic from "next/dynamic";
+
+const SocialProof = dynamic(() => import("@/components/home/SocialProof"));
+const ProductsPreview = dynamic(() => import("@/components/home/ProductsPreview"));
+const HowItWorks = dynamic(() => import("@/components/home/HowItWorks"));
+const IndustriesGrid = dynamic(() => import("@/components/home/IndustriesGrid"));
+const FAQ = dynamic(() => import("@/components/home/FAQ"));
+const CTA = dynamic(() => import("@/components/home/CTA"));
+const AIDetectionsGrid = dynamic(() => import("@/components/shared/AIDetectionsGrid"));
 
 export const metadata = {
   alternates: {

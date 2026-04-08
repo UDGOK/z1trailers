@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Crosshair, ShieldAlert, Target, Activity, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface SectorHeroProps {
   name: string;
@@ -19,7 +20,14 @@ export default function SectorHero({ name, desc, img, threatLevel, stats }: Sect
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brand-navy/60 z-10 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/20 to-transparent z-10" />
-        <img src={img} alt={name} className="w-full h-full object-cover scale-105 contrast-125 grayscale-[30%]" />
+        <Image 
+          src={img} 
+          alt={name} 
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover scale-105 contrast-125 grayscale-[30%]" 
+        />
         
         {/* Animated Scan Line */}
         <motion.div 

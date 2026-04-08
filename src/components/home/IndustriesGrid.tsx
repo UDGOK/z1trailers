@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function IndustriesGrid() {
   const industries = [
@@ -106,10 +107,12 @@ export default function IndustriesGrid() {
                 
                 {/* Image & Gradient Overlay */}
                 <div className="absolute inset-0 z-0">
-                  <img 
+                  <Image 
                     src={ind.img} 
                     alt={ind.alt} 
-                    className="w-full h-full object-cover scale-[1.03] group-hover:scale-110 transition-transform duration-[2s] ease-out opacity-80 group-hover:opacity-60 mix-blend-luminosity group-hover:mix-blend-normal" 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover scale-[1.03] group-hover:scale-110 transition-transform duration-[2s] ease-out opacity-80 group-hover:opacity-60 mix-blend-luminosity group-hover:mix-blend-normal" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/60 to-transparent group-hover:from-brand-teal/90 group-hover:to-[#0a1628]/40 transition-colors duration-500" />
                 </div>

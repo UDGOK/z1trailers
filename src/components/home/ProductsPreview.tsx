@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Crosshair, Sun, Shield, MapPin, Zap } from "lucide-react";
+import Image from "next/image";
 
 export default function ProductsPreview() {
   const models = [
@@ -113,7 +114,7 @@ export default function ProductsPreview() {
               {/* Cinematic Image Container */}
               <div className="relative h-64 overflow-hidden bg-black">
                  <div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply z-10 transition-opacity group-hover:opacity-10 duration-700" />
-                 <img src={model.img} alt={model.name} className="w-full h-full object-cover grayscale-[60%] scale-105 group-hover:scale-100 group-hover:grayscale-[20%] transition-all duration-1000 ease-out" />
+                 <Image src={model.img} alt={model.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover grayscale-[60%] scale-105 group-hover:scale-100 group-hover:grayscale-[20%] transition-all duration-1000 ease-out" />
                  
                  {/* Targeting UI */}
                  <div className="absolute top-4 left-4 z-20 font-mono text-[9px] bg-black/60 backdrop-blur-md border border-brand-teal/30 text-brand-teal px-3 py-1.5 uppercase tracking-widest shadow-[0_0_10px_rgba(27,154,170,0.2)]">
