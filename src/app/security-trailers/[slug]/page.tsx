@@ -314,38 +314,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
                   {/* CENTRAL TRAILER HUB */}
                   <div className="flex flex-col items-center relative w-full md:w-2/4 z-20">
-                     <div className="relative w-40 h-40">
-                        {/* Red/Blue Strobe Container */}
-                        <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-                           {/* Alternating Strobe Animation using custom Tailwind keyframes/classes */}
-                           <div className="w-12 h-6 bg-black rounded-t-lg border-x border-t border-white/20 flex overflow-hidden">
-                              <div className="w-1/2 h-full bg-red-600 animate-[flash-red_0.4s_ease-in-out_infinite]" />
-                              <div className="w-1/2 h-full bg-blue-600 animate-[flash-blue_0.4s_ease-in-out_infinite_0.2s]" />
-                           </div>
-                           {/* Glows */}
-                           <div className="absolute top-0 left-0 w-6 h-10 bg-red-500/50 blur-xl animate-[flash-red_0.4s_ease-in-out_infinite] z-30" />
-                           <div className="absolute top-0 right-0 w-6 h-10 bg-blue-500/50 blur-xl animate-[flash-blue_0.4s_ease-in-out_infinite_0.2s] z-30" />
+                     <div className="relative w-64 h-64 md:w-80 md:h-80 group">
+                        {/* Dynamic Radiating Strobe Glows (Behind Physical Head) */}
+                        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-0">
+                           <div className="absolute top-0 -left-4 w-12 h-12 bg-red-600/40 blur-xl animate-[flash-red_0.4s_ease-in-out_infinite]" />
+                           <div className="absolute top-0 left-4 w-12 h-12 bg-blue-600/40 blur-xl animate-[flash-blue_0.4s_ease-in-out_infinite_0.2s]" />
                         </div>
 
-                        {/* Trailer Graphic Mockup */}
-                        <div className="w-full h-full bg-[#0a111a] border border-white/20 shadow-2xl rounded-sm flex flex-col items-center justify-center relative shadow-[0_0_50px_rgba(27,154,170,0.15)] z-20 overflow-hidden">
-                           <div className="absolute inset-0 bg-brand-teal/5 mix-blend-color z-10 pointer-events-none opacity-20" />
-                           <Shield className="w-12 h-12 text-brand-teal mb-2 relative z-20" strokeWidth={1} />
-                           <p className="font-mono text-[8px] text-brand-teal uppercase tracking-[0.3em] font-bold relative z-20">Edge Verify</p>
-                           
-                           {/* Acoustic wave simulation (Left side) */}
-                           <div className="absolute left-4 top-1/2 -translate-y-1/2 flex space-x-1 z-20">
-                              <span className="w-1 h-3 bg-yellow-500/80 rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                              <span className="w-1 h-6 bg-yellow-500/80 rounded-full animate-[pulse_1s_ease-in-out_infinite_0.2s]" />
-                              <span className="w-1 h-2 bg-yellow-500/80 rounded-full animate-[pulse_1s_ease-in-out_infinite_0.4s]" />
-                           </div>
-                           
-                           {/* Acoustic wave simulation (Right side) */}
-                           <div className="absolute right-4 top-1/2 -translate-y-1/2 flex space-x-1 z-20">
-                              <span className="w-1 h-2 bg-yellow-500/80 rounded-full animate-[pulse_1s_ease-in-out_infinite_0.4s]" />
-                              <span className="w-1 h-6 bg-yellow-500/80 rounded-full animate-[pulse_1s_ease-in-out_infinite_0.2s]" />
-                              <span className="w-1 h-3 bg-yellow-500/80 rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                           </div>
+                        {/* High-Definition Camera Payload Graphic */}
+                        <Image 
+                           src={slug === 'z1-apex' || slug === 'z1-guardian' ? '/images/hardware/payload-apex.png' : '/images/hardware/payload-scout.png'}
+                           alt="Hardware Optical Payload"
+                           fill
+                           className="object-contain relative z-20 drop-shadow-[0_30px_60px_rgba(27,154,170,0.2)] transition-transform duration-[2s] ease-out group-hover:-translate-y-4 group-hover:scale-105"
+                           sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+
+                        {/* Technical overlay graphic */}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full flex items-center space-x-2">
+                           <Shield className="w-4 h-4 text-brand-teal" />
+                           <span className="font-mono text-[9px] text-brand-teal uppercase tracking-[0.2em] font-bold">Hardware Active</span>
                         </div>
                      </div>
                      <div className="text-center mt-8 px-4">
