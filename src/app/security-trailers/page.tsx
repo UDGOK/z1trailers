@@ -31,7 +31,7 @@ export default function HardwarePage() {
       desc: "Military-grade optical payload featuring Thermal Imaging and integrated LPR for vital infrastructure.",
       specs: ["Thermal Vision", "License Plate Tracking", "15-Day Battery Array", "Dual-SIM Teltonika LTE"],
       icon: Shield,
-      bg: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1200",
+      bg: "/images/products/z1-apex/frame-4.png",
       href: "/security-trailers/z1-apex"
     }
   ];
@@ -64,9 +64,10 @@ export default function HardwarePage() {
              className="bg-black/40 border border-white/10 flex flex-col md:flex-row shadow-2xl group hover:border-brand-teal transition-colors"
            >
              {/* Left side: Cinematic Render */}
-             <div className="w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden bg-black">
-                <div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply z-10 group-hover:opacity-10 transition-opacity duration-700" />
-                <Image src={item.bg} alt={item.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover grayscale-[40%] scale-105 group-hover:scale-100 transition-transform duration-[1s]" />
+             <div className="w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden bg-black flex items-center justify-center p-8">
+                <div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply z-10 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(27,154,170,0.15)_0%,transparent_70%)] pointer-events-none" />
+                <Image src={item.bg} alt={item.name} fill sizes="(max-width: 768px) 100vw, 50vw" className={item.bg.includes('unsplash') ? "object-cover grayscale-[40%] scale-105 group-hover:scale-100 transition-transform duration-[1s]" : "object-contain p-6 hover:scale-105 transition-transform duration-[1s] drop-shadow-[0_20px_30px_rgba(27,154,170,0.2)]"} />
                 <div className="absolute top-4 left-4 z-20 font-mono text-[9px] bg-black/60 backdrop-blur-md border border-brand-teal/30 text-brand-teal px-3 py-1.5 uppercase tracking-widest">
                   {item.badge}
                 </div>

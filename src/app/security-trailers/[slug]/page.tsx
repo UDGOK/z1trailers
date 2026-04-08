@@ -6,6 +6,7 @@ import { Shield, Zap, Target, Lock, Crosshair, ChevronRight, CheckCircle2, Chevr
 import Image from "next/image";
 import IntegrationTrigger from "@/components/home/IntegrationTrigger";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
+import InteractiveHardwareViewer from "@/components/ui/InteractiveHardwareViewer";
 import { Metadata } from 'next';
 
 const hardwareDb: Record<string, any> = {
@@ -196,21 +197,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {/* 
         SECTION 1: OVERVIEW & MASSIVE CINEMATIC HERO 
       */}
-      <section id="overview" className="relative h-[90vh] md:h-screen w-full flex flex-col justify-end overflow-hidden pb-10 px-6 md:px-10 border-b border-brand-teal/20">
-         <div className="absolute inset-0 z-0">
-           <Image 
-             src={product.img} 
-             alt={product.name} 
-             fill
-             priority
-             sizes="100vw"
-             className="object-cover grayscale-[30%] opacity-40 scale-105" 
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-[#05080c] via-[#05080c]/50 to-transparent" />
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05080c_120%)]" />
-         </div>
+      <section id="overview" className="relative h-auto min-h-[90vh] md:min-h-screen w-full flex flex-col justify-between overflow-hidden pb-10 pt-32 md:pt-40 px-6 md:px-10 border-b border-brand-teal/20 bg-[#05080c]">
+         
+         {/* Render either Static Background OR custom grid for the 3D Viewer */}
+         {slug !== 'z1-apex' && (
+           <div className="absolute inset-0 z-0 pointer-events-none">
+             <Image 
+               src={product.img} 
+               alt={product.name} 
+               fill
+               priority
+               sizes="100vw"
+               className="object-cover grayscale-[30%] opacity-40 scale-105" 
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-[#05080c] via-[#05080c]/50 to-transparent" />
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05080c_120%)]" />
+           </div>
+         )}
 
-         <div className="relative z-10 flex flex-col items-center text-center mt-20 mb-auto md:mb-12">
+         {/* Header Block */}
+         <div className="relative z-30 flex flex-col items-center text-center">
             <p className="font-mono text-[10px] md:text-xs text-brand-teal uppercase tracking-[0.4em] font-bold mb-6 flex items-center">
                <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse mr-3 shadow-[0_0_10px_#1B9AAA]" />
                {product.badge}
@@ -223,7 +229,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </p>
          </div>
 
-         <div className="relative z-10 flex flex-col items-center pb-12">
+         {/* Hero Middle Content: Interactive Hardware Viewer OR Spacer */}
+         <div className="relative z-20 flex-grow flex items-center justify-center -mt-10 md:-mt-20">
+            {slug === 'z1-apex' ? (
+              <InteractiveHardwareViewer frames={[
+                "/images/products/z1-apex/frame-1.png",
+                "/images/products/z1-apex/frame-2.png",
+                "/images/products/z1-apex/frame-3.png",
+                "/images/products/z1-apex/frame-4.png"
+              ]} />
+            ) : (
+              <div className="h-[30vh] w-full" />
+            )}
+         </div>
+
+         {/* Scroll Indicator */}
+         <div className="relative z-30 flex flex-col items-center pb-12 mt-auto">
             <div className="w-px h-16 md:h-24 bg-gradient-to-b from-brand-teal to-transparent mb-4 animate-[pulse_2s_ease-in-out_infinite]" />
             <p className="font-mono text-[9px] text-brand-steel uppercase tracking-[0.3em]">Initialize Architecture</p>
          </div>

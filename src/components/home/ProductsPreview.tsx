@@ -34,7 +34,7 @@ export default function ProductsPreview() {
        price: "CALL",
        period: "FOR PRICING",
        icon: Shield,
-       img: "/images/products/z1-apex.png",
+       img: "/images/products/z1-apex/frame-4.png",
        href: "/security-trailers/z1-apex"
     },
   ];
