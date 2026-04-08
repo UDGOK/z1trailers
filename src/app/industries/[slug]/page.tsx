@@ -154,6 +154,27 @@ const industriesDb: Record<string, any> = {
       { q: "Can we use this for sports events?", a: "Yes, Z1 units are mobile and can be relocated from dorm parking to stadium gates for game-day surges." },
       { q: "Is the video data stored on-site?", a: "Data is processed at the edge but redundantly stored in the cloud for secure retrieval by law enforcement." }
     ]
+  },
+  "retail-orc": {
+    name: "Retail & ORC",
+    desc: "Organized Retail Crime (ORC) spans far beyond simple shoplifting. Z1 provides high-intensity perimeter deterrence to stop large-scale thefts before criminals reach the doors.",
+    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200",
+    threatLevel: "CRITICAL",
+    telemetryStats: [
+      { label: "ANNUAL_ORC_LOSS", value: "$112B" },
+      { label: "STORE_CLOSURE_RATE", value: "ELEVATED" },
+      { label: "ASSAULT_INCIDENTS", value: "+24%" }
+    ],
+    tacticalStats: [
+      { title: "Financial Impact", value: "$112B", desc: "Estimated annual retail sink attributed directly to Organized Retail Crime syndicates.", icon: "AlertTriangle", color: "red" },
+      { title: "Employee Risk", value: "HIGH", desc: "Increase in violent encounters and assaults during massive smash-and-grab events.", icon: "ShieldAlert", color: "red" },
+      { title: "Deterrence", value: "ACTIVE", desc: "Visual deterrents like strobe lights and audio warnings significantly reduce target viability.", icon: "Zap", color: "teal" },
+      { title: "Evidence", value: "4K", desc: "High-definition footage captures license plates and facial identification for prosecution.", icon: "Target", color: "teal" }
+    ],
+    faqs: [
+      { q: "Can the system be placed in shopping center parking lots?", a: "Yes, Z1 Trailers are deployed directly into retail parking environments with specialized anti-theft base systems." },
+      { q: "Does the system scan license plates of getaway vehicles?", a: "Z1 units equipped with LPR can capture all vehicles exiting the retail perimeter, immediately cross-referencing law enforcement hotlists." }
+    ]
   }
 };
 

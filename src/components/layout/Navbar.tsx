@@ -111,7 +111,7 @@ function IndustriesDropdown() {
     { name: "Event Security", href: "/industries/events", img: "/images/industries/events.png" },
     { name: "Oil & Gas Logistics", href: "/industries/oil-gas", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600" },
     { name: "Law Enforcement", href: "/industries/law-enforcement", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" },
-    { name: "Retail & ORC", href: "/industries/parking-lots", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
+    { name: "Retail & ORC", href: "/industries/retail-orc", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600" },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState(0);
