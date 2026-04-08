@@ -6,7 +6,7 @@ const cspHeader = `
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https://images.unsplash.com https://cdn.sanity.io https://www.google-analytics.com https://www.transparenttextures.com;
     font-src 'self' data: https://fonts.gstatic.com;
-    frame-src 'self' https://www.youtube.com https://player.vimeo.com https://fast.wistia.net;
+    frame-src 'self' https://www.youtube.com https://player.vimeo.com https://fast.wistia.net https://www.google.com;
     connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
 `;
 
