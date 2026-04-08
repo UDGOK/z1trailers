@@ -22,7 +22,7 @@ export default function HardwarePage() {
       desc: "Our high-adoption standard. 10-day autonomy via expanded array and bi-directional deterrence arrays.",
       specs: ["10-Day Solar Autonomy", "Quad 4MP AI Optics", "Loudspeaker & Strobe", "Dual-SIM Teltonika LTE"],
       icon: Sun,
-      bg: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200",
+      bg: "/images/products/z1-apex/frame-4.png",
       href: "/security-trailers/z1-guardian"
     },
     {

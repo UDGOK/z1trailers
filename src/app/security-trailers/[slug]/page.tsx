@@ -200,7 +200,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <section id="overview" className="relative h-auto min-h-[90vh] md:min-h-screen w-full flex flex-col justify-between overflow-hidden pb-10 pt-32 md:pt-40 px-6 md:px-10 border-b border-brand-teal/20 bg-[#05080c]">
          
          {/* Render either Static Background OR custom grid for the 3D Viewer */}
-         {!['z1-apex', 'z1-scout'].includes(slug) && (
+         {!['z1-apex', 'z1-scout', 'z1-guardian'].includes(slug) && (
            <div className="absolute inset-0 z-0 pointer-events-none">
              <Image 
                src={product.img} 
@@ -231,12 +231,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
          {/* Hero Middle Content: Interactive Hardware Viewer OR Spacer */}
          <div className="relative z-20 flex-grow flex items-center justify-center -mt-10 md:-mt-20">
-            {['z1-apex', 'z1-scout'].includes(slug) ? (
+            {['z1-apex', 'z1-scout', 'z1-guardian'].includes(slug) ? (
               <InteractiveHardwareViewer frames={[
-                `/images/products/${slug}/frame-1.png`,
-                `/images/products/${slug}/frame-2.png`,
-                `/images/products/${slug}/frame-3.png`,
-                `/images/products/${slug}/frame-4.png`
+                `/images/products/${slug === 'z1-guardian' ? 'z1-apex' : slug}/frame-1.png`,
+                `/images/products/${slug === 'z1-guardian' ? 'z1-apex' : slug}/frame-2.png`,
+                `/images/products/${slug === 'z1-guardian' ? 'z1-apex' : slug}/frame-3.png`,
+                `/images/products/${slug === 'z1-guardian' ? 'z1-apex' : slug}/frame-4.png`
               ]} />
             ) : (
               <div className="h-[30vh] w-full" />

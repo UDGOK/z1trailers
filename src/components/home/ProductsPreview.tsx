@@ -24,7 +24,7 @@ export default function ProductsPreview() {
        price: "$2,250",
        period: "/MO",
        icon: Sun,
-       img: "/images/products/z1-guardian.png",
+       img: "/images/products/z1-apex/frame-4.png",
        href: "/security-trailers/z1-guardian"
     },
     {

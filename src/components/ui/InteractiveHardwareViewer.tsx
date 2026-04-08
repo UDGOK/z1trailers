@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface HardwareViewerProps {
   frames: string[];
@@ -10,39 +11,47 @@ interface HardwareViewerProps {
 export default function InteractiveHardwareViewer({ frames }: HardwareViewerProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startFrame, setStartFrame] = useState(0);
 
-  const handlePointerMove = (e: React.PointerEvent | React.TouchEvent) => {
-    if (!containerRef.current) return;
-    
-    // Prevent scrolling when swiping on touch devices
-    if (e.type === 'touchmove' && e.cancelable) {
-      e.preventDefault();
-    }
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setStartFrame(currentFrame);
+    // @ts-ignore - set pointer capture for smooth out of bounds dragging
+    e.target.setPointerCapture(e.pointerId);
+  };
 
-    const { left, width } = containerRef.current.getBoundingClientRect();
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
     
-    // Get clientX based on event type (Pointer vs Touch)
-    let clientX = 0;
-    if ('touches' in e) {
-       clientX = e.touches[0].clientX;
-    } else {
-       clientX = (e as React.PointerEvent).clientX;
-    }
+    const diff = e.clientX - startX;
+    const { width } = containerRef.current.getBoundingClientRect();
+    
+    // Smoothly step based on width drag length
+    const stepSize = width / (frames.length * 1.5);
+    const frameDiff = Math.floor(diff / stepSize);
+    
+    let nextFrame = startFrame + frameDiff;
+    nextFrame = Math.max(0, Math.min(nextFrame, frames.length - 1));
+    setCurrentFrame(nextFrame);
+  };
 
-    const x = Math.max(0, Math.min(clientX - left, width));
-    
-    // Split the width into 'frames.length' segments
-    const segmentWidth = width / frames.length;
-    const frameIndex = Math.min(Math.floor(x / segmentWidth), frames.length - 1);
-    setCurrentFrame(frameIndex);
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(false);
+    // @ts-ignore
+    e.target.releasePointerCapture(e.pointerId);
   };
 
   return (
     <div 
       ref={containerRef}
+      onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
-      onTouchMove={handlePointerMove}
-      className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center cursor-ew-resize group select-none touch-none"
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      className={`relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center group select-none touch-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
     >
       {/* Background Neon Grid & Pedeastal */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pb-20 pointer-events-none">
@@ -54,12 +63,13 @@ export default function InteractiveHardwareViewer({ frames }: HardwareViewerProp
         <Image
           key={src}
           src={src}
-          alt={`Hardware View \${index + 1}`}
+          alt={`Hardware View ${index + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className={`object-contain transition-all duration-300 pointer-events-none drop-shadow-[0_40px_80px_rgba(27,154,170,0.15)] z-10 \${
-            index === currentFrame ? "opacity-100 scale-105 md:scale-100" : "opacity-0 scale-95"
+          className={`object-contain transition-all duration-300 pointer-events-none drop-shadow-[0_40px_80px_rgba(27,154,170,0.15)] z-10 ${
+            index === currentFrame ? "opacity-100 scale-105 md:scale-100" : "opacity-0 scale-95 hidden md:block" // Avoid too many dom paints on mobile
           }`}
+          style={{ display: index === currentFrame ? 'block' : 'none' }}
           priority={index === 0}
         />
       ))}
