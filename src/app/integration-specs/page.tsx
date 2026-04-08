@@ -2,6 +2,7 @@ import { Check, Shield, Camera, Server, Network, Video, Download } from "lucide-
 import Image from "next/image";
 import { Metadata } from 'next';
 import PrintButton from "@/components/shared/PrintButton";
+import BackButton from "@/components/shared/BackButton";
 
 export const metadata: Metadata = {
   title: 'Hardware & System Integrations | Z1 Trailers',
@@ -30,12 +31,21 @@ export default function IntegrationSpecSheet() {
       */}
       
       {/* Screen-Only Header Toolbar */}
-      <div className="print:hidden bg-[#0a1628] py-4 px-8 flex justify-between items-center border-b border-brand-teal/20 sticky top-0 z-50">
-         <div className="flex items-center gap-3">
-           <Network className="w-5 h-5 text-brand-teal" />
-           <span className="font-display font-medium text-white tracking-widest uppercase text-sm">Z1 Command OS Integrations</span>
+      <div className="print:hidden bg-[#0a1628] py-4 px-6 md:px-8 flex justify-between items-center border-b border-brand-teal/20 sticky top-0 z-[100]">
+         <div className="flex items-center gap-4 md:gap-8">
+           <BackButton />
+           <div className="hidden sm:flex items-center gap-3 border-l border-white/10 pl-6">
+             <Network className="w-4 h-4 text-brand-teal" />
+             <span className="font-display font-medium text-white tracking-widest uppercase text-xs">Spec Sheet 1.2</span>
+           </div>
          </div>
-         <PrintButton />
+         <div className="flex items-center gap-4">
+           {/* Mobile-only label to clarify action */}
+           <span className="hidden md:inline-block font-mono text-[9px] text-brand-teal uppercase tracking-widest">
+             Generates Printable A4
+           </span>
+           <PrintButton />
+         </div>
       </div>
 
       {/* A4 Document Area */}
