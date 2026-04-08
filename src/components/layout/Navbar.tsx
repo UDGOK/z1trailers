@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 // --- Sub-component for Trillion-Dollar Products Dropdown ---
 function ProductsDropdown() {
   const products = [
-    { name: "Z1 Scout", desc: "ENTRY // 5 DAY BATTERY", icon: Crosshair, href: "/security-trailers/z1-scout", img: "/images/products/z1-scout.png" },
+    { name: "Z1 Scout", desc: "ENTRY // 5 DAY BATTERY", icon: Crosshair, href: "/security-trailers/z1-scout", img: "/images/products/z1-scout/menu-hero.jpg" },
     { name: "Z1 Guardian", desc: "MID // 10 DAY BATTERY", icon: Sun, href: "/security-trailers/z1-guardian", img: "/images/products/z1-guardian.png" },
     { name: "Z1 Apex", desc: "ADV // THERMAL + LPR", icon: Shield, href: "/security-trailers/z1-apex", img: "/images/products/z1-apex.png" },
 
