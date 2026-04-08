@@ -294,7 +294,7 @@ export default function TrailerConfigurator({
         className="relative w-full max-w-[1100px] h-[90vh] md:h-[85vh] flex flex-col md:flex-row bg-[#05080c] border border-brand-teal/30 rounded-2xl shadow-[0_0_50px_rgba(27,154,170,0.15)] overflow-y-auto md:overflow-hidden"
       >
         {/* GLOBAL CLOSE BUTTON */}
-        <button onClick={onClose} className="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white z-[60] bg-black/50 p-2 rounded-full md:bg-transparent md:p-0">
+        <button aria-label="Close Configurator" onClick={onClose} className="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white z-[60] bg-black/50 p-2 rounded-full md:bg-transparent md:p-0">
           <X className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
@@ -338,7 +338,7 @@ export default function TrailerConfigurator({
                             <p className="font-mono text-[9px] text-brand-teal">{c.type}</p>
                          </div>
                        </div>
-                       <button onClick={() => removeCamera(c.id)} className="text-[#ff3333] hover:text-white p-2">
+                       <button aria-label="Remove Camera" onClick={() => removeCamera(c.id)} className="text-[#ff3333] hover:text-white p-2">
                           <X className="w-4 h-4" />
                        </button>
                      </motion.div>
@@ -589,6 +589,7 @@ export default function TrailerConfigurator({
                               <div className="flex items-center justify-between mb-3 text-[#b0b0b0] border-b border-[#333] pb-2">
                                 <p className="font-mono text-[10px] uppercase">Z1 Power LiFePO4 Upgrades</p>
                                 <button 
+                                  aria-label="View Battery Tech Specs"
                                   onMouseEnter={() => setShowBatteryInfo(true)}
                                   onMouseLeave={() => setShowBatteryInfo(false)}
                                   className="text-brand-teal hover:text-white flex items-center gap-1 font-mono text-[10px] uppercase"

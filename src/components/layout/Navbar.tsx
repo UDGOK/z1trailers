@@ -434,7 +434,7 @@ const MobileAccordionItem = ({ item, closeMenu }: { item: any, closeMenu: () => 
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="font-display font-black text-2xl uppercase tracking-widest text-white flex-1">{item.name}</span>
-        <button className="w-12 h-12 flex items-center justify-end text-brand-teal pointer-events-none">
+        <button aria-label={`Toggle ${item.name} menu`} className="w-12 h-12 flex items-center justify-end text-brand-teal pointer-events-none">
           <ChevronDown className={cn("w-6 h-6 transition-transform duration-300", isOpen && "rotate-180")} />
         </button>
       </div>
@@ -512,7 +512,7 @@ export default function Navbar() {
 
       <div className="pointer-events-auto h-20 lg:h-24 w-full bg-white/95 backdrop-blur-xl border-b border-brand-mist/80 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 shadow-sm relative z-50">
         
-        <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group shrink-0">
+        <Link href="/" aria-label="Z1 Trailers Homepage" className="flex items-center space-x-3 lg:space-x-4 group shrink-0">
           <img src="/Logo.png" alt="Z1 Trailers" className="h-10 lg:h-12 object-contain" />
           <div className="flex flex-col">
             <span className="font-display font-black text-xl lg:text-2xl text-brand-navy uppercase tracking-[0.25em] leading-none group-hover:text-brand-teal transition-colors">
@@ -584,6 +584,7 @@ export default function Navbar() {
 
           {/* Hamburger Menu Toggle (Mobile Only) */}
           <button 
+            aria-label="Toggle Navigation Menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden w-12 h-12 flex items-center justify-center bg-brand-navy text-white pointer-events-auto relative overflow-hidden group"
           >

@@ -11,18 +11,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-10 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
           <div className="md:col-span-1">
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" aria-label="Z1 Trailers Homepage" className="inline-block mb-6">
               <div className="flex items-center space-x-3">
                 <img src="/Logo.png" alt="Z1 Trailers" className="h-10 object-contain brightness-0 invert" />
                 <span className="font-display font-black text-xl text-white uppercase tracking-[0.2em]">Trailers</span>
               </div>
             </Link>
-            <p className="font-mono text-[11px] text-slate-400 uppercase tracking-widest leading-relaxed mb-8">
+            <p className="font-mono text-[11px] text-slate-300 uppercase tracking-widest leading-relaxed mb-8">
               Advanced mobile intelligence.<br/>Tactical surveillance endpoints.<br/>Zero infrastructure required.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:border-brand-teal hover:text-brand-teal text-white/50 transition-all"><Mail className="w-4 h-4" /></Link>
-              <Link href="#" className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:border-brand-teal hover:text-brand-teal text-white/50 transition-all"><MapPin className="w-4 h-4" /></Link>
+              <Link href="#" aria-label="Email Z1 Trailers" className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:border-brand-teal hover:text-brand-teal text-white/50 transition-all"><Mail className="w-4 h-4" /></Link>
+              <Link href="#" aria-label="Z1 Trailers Locations" className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:border-brand-teal hover:text-brand-teal text-white/50 transition-all"><MapPin className="w-4 h-4" /></Link>
             </div>
           </div>
           
@@ -77,12 +77,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-           <p className="font-mono text-[9px] text-slate-400 uppercase tracking-widest">
+           <p className="font-mono text-[9px] text-slate-300 uppercase tracking-widest">
              &copy; {new Date().getFullYear()} Z1 Trailers LLC. All tactical operations reserved.
            </p>
            <div className="flex space-x-6 mt-4 md:mt-0">
-             <Link href="/privacy" className="font-mono text-[9px] text-slate-400 hover:text-white uppercase tracking-widest">Privacy Protocol</Link>
-             <Link href="/terms" className="font-mono text-[9px] text-slate-400 hover:text-white uppercase tracking-widest">Terms of Service</Link>
+             <Link href="/privacy" className="font-mono text-[9px] text-slate-300 hover:text-white uppercase tracking-widest">Privacy Protocol</Link>
+             <Link href="/terms" className="font-mono text-[9px] text-slate-300 hover:text-white uppercase tracking-widest">Terms of Service</Link>
            </div>
         </div>
       </div>
