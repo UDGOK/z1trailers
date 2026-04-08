@@ -222,8 +222,8 @@ export default function EventsPage() {
           <div className="absolute inset-0 bg-brand-navy/70 z-10 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent z-10" />
           <img
-            src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&q=80&w=1600"
-            alt="Event security surveillance for festivals and concerts"
+            src="/images/industries/events-day.jpg"
+            alt="Z1 Security Trailer Event Surveillance"
             className="w-full h-full object-cover scale-105 contrast-125 grayscale-[30%]"
           />
           <motion.div
@@ -383,6 +383,56 @@ export default function EventsPage() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━ SECTION 3.5: 24/7 AUTONOMOUS SHIFT (DAY / NIGHT) ━━━━━━━━━━━━ */}
+      <section className="py-24 bg-[#020406] border-t border-brand-teal/20 shadow-[inset_0_20px_50px_rgba(0,0,0,0.5)]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-16 relative z-10">
+          <p className="font-mono text-[10px] text-brand-teal uppercase tracking-[0.3em] font-bold mb-4">Continuous_Overwatch // 24/7 Operations</p>
+          <h2 className="font-display font-black text-3xl md:text-5xl uppercase tracking-tighter leading-none mb-6 text-white">
+            Complete <span className="text-brand-teal drop-shadow-[0_0_10px_rgba(27,154,170,0.5)]">Circadian Control.</span>
+          </h2>
+          <p className="font-mono text-xs md:text-sm max-w-2xl mx-auto uppercase tracking-widest leading-loose text-white/50">
+            Hover over the deployment below to simulate nightfall. High-output perimeter strobes, thermal arrays, and PTZ illuminators engage autonomously the moment ambient light drops.
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Interactive Day/Night Container */}
+          <div className="relative w-full aspect-video rounded-sm overflow-hidden group border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] cursor-crosshair">
+            {/* 1. The Daytime Base Image */}
+            <img src="/images/industries/events-day.jpg" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Daytime Event Setup" />
+            
+            {/* 2. The Nighttime Fading Image */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-[1s] ease-in z-10">
+              <img src="/images/industries/events-night.jpg" className="w-full h-full object-cover scale-105" alt="Nighttime Event Setup" />
+              
+              {/* Optional Physical Hardware Glow Enhancements */}
+              <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-40 h-40 bg-white blur-[120px] opacity-0 group-hover:opacity-40 transition-opacity duration-[2s] pointer-events-none" />
+              
+              <div className="absolute bottom-6 left-6 flex items-center space-x-3 bg-black/60 backdrop-blur-md px-4 py-2 border border-red-500/30">
+                 <div className="w-2 h-2 bg-red-500 rounded-full animate-ping shadow-[0_0_15px_red]" />
+                 <span className="font-mono text-[10px] uppercase text-red-500 tracking-widest font-bold">NIGHT VISION // ACTIVE</span>
+              </div>
+            </div>
+
+            {/* Hover instruction overlay (Disappears on hover) */}
+            <div className="absolute inset-x-0 bottom-0 py-10 bg-gradient-to-t from-black via-black/50 to-transparent z-20 flex justify-center opacity-100 group-hover:opacity-0 transition-opacity duration-500">
+               <span className="font-mono text-[10px] uppercase text-brand-teal tracking-[0.3em] bg-brand-navy/80 px-6 py-2 border border-brand-teal/30 shadow-[0_0_20px_rgba(27,154,170,0.2)] animate-pulse">
+                [ HOVER MOUSE TO TERMINATE SUNLIGHT ]
+               </span>
+            </div>
+            
+            {/* Tactical Targeting Reticle overlay (Appears on Hover) */}
+            <div className="absolute inset-0 border border-brand-teal/10 pointer-events-none z-20 group-hover:border-brand-teal/50 transition-colors duration-1000">
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-brand-teal/30 rounded-full opacity-0 group-hover:opacity-100 scale-150 group-hover:scale-100 transition-all duration-[1.5s] ease-out" />
+               <Crosshair className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-brand-teal opacity-0 group-hover:opacity-100 transition-opacity duration-[2s]" strokeWidth={1} />
+               
+               <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-brand-teal m-6 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-300" />
+               <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-brand-teal m-6 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-300" />
             </div>
           </div>
         </div>
