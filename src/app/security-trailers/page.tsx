@@ -13,7 +13,7 @@ export default function HardwarePage() {
       desc: "Compact, rapid-deployment endpoint for immediate event containment and short-term lot surveillance.",
       specs: ["5-Day Solar Autonomy", "Quad AI Array", "18ft Mast Extent", "Dual-SIM Teltonika LTE"],
       icon: Crosshair,
-      bg: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
+      bg: "/images/products/z1-scout/frame-4.png",
       href: "/security-trailers/z1-scout"
     },
     {

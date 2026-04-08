@@ -14,7 +14,7 @@ export default function ProductsPreview() {
        price: "$1,850",
        period: "/MO",
        icon: Crosshair,
-       img: "/images/products/z1-scout.png",
+       img: "/images/products/z1-scout/frame-4.png",
        href: "/security-trailers/z1-scout"
     },
     {
