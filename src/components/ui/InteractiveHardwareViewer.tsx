@@ -27,14 +27,16 @@ export default function InteractiveHardwareViewer({ frames }: HardwareViewerProp
     if (!isDragging || !containerRef.current) return;
     
     const diff = e.clientX - startX;
-    const { width } = containerRef.current.getBoundingClientRect();
     
-    // Smoothly step based on width drag length
-    const stepSize = width / (frames.length * 1.5);
+    // Constant rotation speed: 1 frame every 40 pixels dragged
+    // Dragging left (negative diff) should rotate model right (positive frame index)
+    const stepSize = 40; 
     const frameDiff = Math.floor(diff / stepSize);
     
-    let nextFrame = startFrame + frameDiff;
-    nextFrame = Math.max(0, Math.min(nextFrame, frames.length - 1));
+    // Modulo wrapping for infinite 360 loop
+    let nextFrame = startFrame - frameDiff;
+    nextFrame = ((nextFrame % frames.length) + frames.length) % frames.length;
+    
     setCurrentFrame(nextFrame);
   };
 
@@ -66,10 +68,9 @@ export default function InteractiveHardwareViewer({ frames }: HardwareViewerProp
           alt={`Hardware View ${index + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className={`object-contain transition-all duration-300 pointer-events-none drop-shadow-[0_40px_80px_rgba(27,154,170,0.15)] z-10 ${
-            index === currentFrame ? "opacity-100 scale-105 md:scale-100" : "opacity-0 scale-95 hidden md:block" // Avoid too many dom paints on mobile
+          className={`object-contain transition-all duration-150 ease-out pointer-events-none drop-shadow-[0_40px_80px_rgba(27,154,170,0.15)] z-10 ${
+            index === currentFrame ? "opacity-100 scale-100" : "opacity-0 scale-95" 
           }`}
-          style={{ display: index === currentFrame ? 'block' : 'none' }}
           priority={index === 0}
         />
       ))}
