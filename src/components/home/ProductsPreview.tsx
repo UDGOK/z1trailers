@@ -116,8 +116,9 @@ export default function ProductsPreview() {
             >
               {/* Cinematic Image Container */}
               <div className="relative h-64 overflow-hidden bg-black">
-                 <div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply z-10 transition-opacity group-hover:opacity-10 duration-700" />
-                 <Image src={model.img} alt={model.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover grayscale-[60%] scale-105 group-hover:scale-100 group-hover:grayscale-[20%] transition-all duration-1000 ease-out" />
+                 <div className="absolute inset-0 bg-brand-navy/30 mix-blend-multiply z-10 transition-opacity group-hover:opacity-0 duration-700 pointer-events-none" />
+                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(27,154,170,0.1)_0%,transparent_70%)] pointer-events-none" />
+                 <Image src={model.img} alt={model.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain py-6 px-4 grayscale-[30%] scale-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000 ease-out drop-shadow-[0_10px_20px_rgba(27,154,170,0.1)]" />
                  
                  {/* Targeting UI */}
                  <div className="absolute top-4 left-4 z-20 font-mono text-[9px] bg-black/60 backdrop-blur-md border border-brand-teal/30 text-brand-teal px-3 py-1.5 uppercase tracking-widest shadow-[0_0_10px_rgba(27,154,170,0.2)]">
