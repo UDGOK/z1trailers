@@ -503,75 +503,115 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* 
-        SECTION 5: INTEGRATIONS (Developer API & VMS)
+        SECTION 5: INTEGRATIONS (Camect & Uniview Alliance)
       */}
       <section id="integrations" className="py-32 bg-[#020406] border-t border-brand-mist/10 relative overflow-hidden">
          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(27,154,170,0.1)_0%,#020406_80%)] pointer-events-none" />
          
-         <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex flex-col md:flex-row gap-20">
+         <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex flex-col lg:flex-row gap-20">
             
-            <div className="w-full md:w-1/2">
+            <div className="w-full lg:w-1/2">
                <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-wider mb-6 text-white">System <span className="text-slate-300">Integrations.</span></h2>
                <p className="font-mono text-xs text-slate-300 tracking-widest uppercase mb-12 leading-loose">
-                 We don't do walled gardens. {product.name} seamlessly pipes its encrypted video streams and AI analytic metadata straight into your existing security operations center.
+                 Powered by Z1 Command OS, our hardware native-integrates with industry-standard NVRs and Edge AI platforms. We deliver universal compatibility—seamlessly absorbing legacy and modern camera feeds into your centralized monitoring station.
                </p>
                
                <div className="space-y-4">
-                  <div className="flex items-center border border-white/5 bg-black/50 backdrop-blur-md p-6 group transform hover:translate-x-2 transition-transform">
-                     <Network className="w-6 h-6 text-brand-teal mr-6" />
+                  <div className="flex items-center border border-white/5 bg-black/50 backdrop-blur-md p-6 group transform hover:translate-x-2 transition-transform shadow-2xl">
+                     <Database className="w-6 h-6 text-brand-teal mr-6" />
                      <div>
-                        <p className="font-display font-bold uppercase tracking-widest text-sm text-white">VMS Sync (Genetec, Milestone)</p>
-                        <p className="font-mono text-[9px] uppercase tracking-widest text-slate-400 mt-1 flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2" /> Native ONVIF Support</p>
+                        <p className="font-display font-bold uppercase tracking-widest text-sm text-white drop-shadow-md">Uniview NVR Protocol</p>
+                        <p className="font-mono text-[9px] uppercase tracking-widest text-slate-400 mt-1 flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2" /> Universal ONVIF (Profile S, G, T)</p>
                      </div>
                   </div>
-                  <div className="flex items-center border border-white/5 bg-black/50 backdrop-blur-md p-6 group transform hover:translate-x-2 transition-transform">
-                     <Webhook className="w-6 h-6 text-brand-teal mr-6" />
+                  <div className="flex items-center border border-brand-teal/20 bg-[#0a111a]/80 backdrop-blur-md p-6 group transform hover:translate-x-2 transition-transform shadow-[0_0_20px_rgba(27,154,170,0.15)]">
+                     <Cpu className="w-6 h-6 text-brand-teal mr-6 group-hover:scale-110 transition-transform" />
                      <div>
-                        <p className="font-display font-bold uppercase tracking-widest text-sm text-white">Trigger Webhooks</p>
-                        <p className="font-mono text-[9px] uppercase tracking-widest text-slate-400 mt-1 flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-brand-teal mr-2" /> Dispatch alerts to Slack/Teams</p>
+                        <p className="font-display font-bold uppercase tracking-widest text-sm text-white drop-shadow-md">Camect Edge AI Hub</p>
+                        <p className="font-mono text-[9px] uppercase tracking-widest text-slate-400 mt-1 flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-brand-teal mr-2 shadow-[0_0_8px_#1B9AAA]" /> Real-time Threat Classification & Filtering</p>
                      </div>
                   </div>
                </div>
                
-               <div className="mt-12 flex space-x-4">
-                  <a href="#" className="flex-1 bg-brand-teal/10 hover:bg-brand-teal/20 border border-brand-teal/30 px-6 py-4 flex items-center justify-between transition-colors group">
-                     <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-teal">API Docs</span>
-                     <ArrowRight className="w-4 h-4 text-brand-teal opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </a>
-                  <a href="#" className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-4 flex items-center justify-between transition-colors group">
-                     <span className="font-display font-bold text-xs uppercase tracking-widest text-white">Spec Sheet PDF</span>
-                     <FileText className="w-4 h-4 text-white opacity-50 group-hover:opacity-100 transition-opacity" />
+               <div className="mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                  <Link href="/get-a-quote" className="flex-1 bg-brand-teal/10 hover:bg-brand-teal/20 border border-brand-teal/30 px-6 py-4 flex items-center justify-between transition-colors group relative overflow-hidden">
+                     <div className="absolute inset-0 bg-brand-teal/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                     <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-teal relative z-10">Request Integration</span>
+                     <ArrowRight className="w-4 h-4 text-brand-teal opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
+                  </Link>
+                  <a href="#" className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-4 flex items-center justify-between transition-colors group relative overflow-hidden">
+                     <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                     <span className="font-display font-bold text-xs uppercase tracking-widest text-white relative z-10">Spec Sheet PDF</span>
+                     <FileText className="w-4 h-4 text-white opacity-50 group-hover:opacity-100 transition-opacity relative z-10" />
                   </a>
                </div>
             </div>
 
-            <div className="w-full md:w-1/2 relative min-h-[400px] hidden md:flex items-center justify-center">
-               <div className="relative w-[80%] h-[80%]">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-navy border border-brand-teal/50 rounded-full flex items-center justify-center z-20 shadow-[0_0_50px_rgba(27,154,170,0.2)]">
-                     <span className="font-display font-black text-2xl text-white">Z1.OS</span>
-                  </div>
-                  
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-black border border-white/10 rounded-full flex flex-col items-center justify-center z-10 animate-[bounce_8s_infinite]">
-                     <Webhook className="w-5 h-5 text-slate-400 mb-1" />
-                     <span className="font-mono text-[8px] text-slate-400 uppercase tracking-widest">Webhooks</span>
-                  </div>
-                  <div className="absolute bottom-10 left-0 w-28 h-28 bg-black border border-white/10 rounded-full flex flex-col items-center justify-center z-10 animate-[bounce_6s_infinite]">
-                     <Database className="w-6 h-6 text-slate-400 mb-1" />
-                     <span className="font-mono text-[8px] text-slate-400 uppercase tracking-widest">Genetec</span>
-                  </div>
-                  <div className="absolute bottom-0 right-10 w-20 h-20 bg-black border border-brand-teal/20 rounded-full flex flex-col items-center justify-center z-10 animate-[bounce_7s_infinite]">
-                     <Lock className="w-4 h-4 text-brand-teal mb-1" />
-                     <span className="font-mono text-[8px] text-brand-teal uppercase tracking-widest">AuthO</span>
-                  </div>
+            <div className="w-full lg:w-1/2 relative min-h-[500px] hidden md:flex flex-col overflow-hidden">
+               {/* Creative Auto-Scrolling Matrix Grid */}
+               <div className="absolute inset-0 bg-gradient-to-b from-[#020406] via-transparent to-[#020406] z-20 pointer-events-none" />
+               <div className="absolute inset-0 bg-gradient-to-r from-[#020406] via-transparent to-transparent z-20 pointer-events-none" />
+               
+               <div className="flex space-x-6 w-full h-full justify-center rotate-[-5deg] scale-105 translate-x-12">
+                 
+                 {/* Scroll Column 1 (Hardware Brands) */}
+                 <div className="flex flex-col space-y-6 animate-scroll-y opacity-70">
+                    {[
+                      "Hikvision", "Dahua", "Axis", "Bosch", "Hanwha", 
+                      "Uniview", "Amcrest", "Reolink", "Lorex", "Wyze",
+                      "Vivotek", "Mobotix", "Panasonic", "Sony", "Pelco",
+                      // Seamless infinite clone loop
+                      "Hikvision", "Dahua", "Axis", "Bosch", "Hanwha", 
+                      "Uniview", "Amcrest", "Reolink", "Lorex", "Wyze",
+                      "Vivotek", "Mobotix", "Panasonic", "Sony", "Pelco"
+                    ].map((brand, i) => (
+                      <div key={i} className="px-6 py-4 border border-white/5 bg-[#0a111a]/50 backdrop-blur-sm whitespace-nowrap inline-flex flex-col">
+                         <span className="font-display font-black text-xl text-white uppercase tracking-widest opacity-80">{brand}</span>
+                         <span className="block font-mono text-[8px] text-brand-teal uppercase tracking-widest mt-1">NVR / IPC Sync</span>
+                      </div>
+                    ))}
+                 </div>
 
-                  <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-20">
-                     <line x1="50%" y1="50%" x2="100%" y2="0%" stroke="#1B9AAA" strokeWidth="1" strokeDasharray="4 4" className="animate-[slide_2s_linear_infinite]" />
-                     <line x1="50%" y1="50%" x2="0%" y2="80%" stroke="#1B9AAA" strokeWidth="1" strokeDasharray="4 4" className="animate-[slide_3s_linear_infinite]" />
-                     <line x1="50%" y1="50%" x2="90%" y2="100%" stroke="#1B9AAA" strokeWidth="1" strokeDasharray="4 4" className="animate-[slide_4s_linear_infinite]" />
-                  </svg>
+                 {/* Scroll Column 2 (Monitoring Partner Nodes) - Reverse Scroll */}
+                 <div className="flex flex-col space-y-6 animate-scroll-y-reverse mt-20 opacity-90">
+                    {[
+                      "Immix", "Sentinel", "Netwatch", "Bold Manitou", "Stages",
+                      "DICE Corp", "MASterMind", "Micro Key", "SBN", "Sims",
+                      "Immix", "Sentinel", "Netwatch", "Bold Manitou", "Stages",
+                      "DICE Corp", "MASterMind", "Micro Key", "SBN", "Sims",
+                      // Seamless infinite clone loop
+                      "Immix", "Sentinel", "Netwatch", "Bold Manitou", "Stages",
+                      "DICE Corp", "MASterMind", "Micro Key", "SBN", "Sims"
+                    ].map((partner, i) => (
+                      <div key={i} className="px-6 py-4 border border-brand-teal/40 bg-brand-teal/5 backdrop-blur-sm whitespace-nowrap shadow-[0_0_15px_rgba(27,154,170,0.2)] group transition-all">
+                         <span className="font-display font-black text-xl text-brand-teal uppercase tracking-widest flex items-center group-hover:text-white transition-colors drop-shadow-md">
+                           <Network className="w-4 h-4 mr-3" />
+                           {partner}
+                         </span>
+                         <span className="block font-mono text-[8px] text-white uppercase tracking-widest mt-1 opacity-80">Monitoring Station API</span>
+                      </div>
+                    ))}
+                 </div>
+
                </div>
             </div>
 
+            <style>{`
+              @keyframes scroll-y {
+                0% { transform: translateY(0%); }
+                100% { transform: translateY(-50%); }
+              }
+              @keyframes scroll-y-reverse {
+                0% { transform: translateY(-33.333%); }
+                100% { transform: translateY(0%); }
+              }
+              .animate-scroll-y {
+                animation: scroll-y 25s linear infinite;
+              }
+              .animate-scroll-y-reverse {
+                animation: scroll-y-reverse 20s linear infinite;
+              }
+            `}</style>
          </div>
       </section>
 
