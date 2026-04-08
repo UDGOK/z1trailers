@@ -2,10 +2,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import BatteryCharge from "@/components/ui/BatteryCharge";
 import AIDetectionsGrid from "@/components/shared/AIDetectionsGrid";
-import { ArrowRight, Crosshair, Sun, Shield, MapPin, Zap, FileText, Battery, ChevronDown, Cpu, Wifi, Activity, Database, Globe, Lock, Network, Webhook, Maximize, Target, Check, Settings } from "lucide-react";
+import { Shield, Zap, Target, Lock, Crosshair, ChevronRight, CheckCircle2, ChevronDown, Wrench, Menu, Battery, Radio, Server, Monitor, FileText, ArrowRight, Video, Cpu, Database, Network, Webhook, Sun, Wifi, Check, Maximize, Globe, Activity, Settings } from "lucide-react";
+import Image from "next/image";
+import IntegrationTrigger from "@/components/home/IntegrationTrigger";
 import ConfiguratorTrigger from "@/components/configurator/ConfiguratorTrigger";
 import { Metadata } from 'next';
-import Image from 'next/image';
 
 const hardwareDb: Record<string, any> = {
   "z1-scout": {
@@ -534,16 +535,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                </div>
                
                <div className="mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                  <Link href="/get-a-quote" className="flex-1 bg-brand-teal/10 hover:bg-brand-teal/20 border border-brand-teal/30 px-6 py-4 flex items-center justify-between transition-colors group relative overflow-hidden">
+                  <IntegrationTrigger className="flex-1 bg-brand-teal/10 hover:bg-brand-teal/20 border border-brand-teal/30 px-6 py-4 flex items-center justify-between transition-colors group relative overflow-hidden w-full text-left cursor-pointer">
                      <div className="absolute inset-0 bg-brand-teal/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                     <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-teal relative z-10">Request Integration</span>
-                     <ArrowRight className="w-4 h-4 text-brand-teal opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
-                  </Link>
-                  <a href="#" className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-4 flex items-center justify-between transition-colors group relative overflow-hidden">
+                     <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-teal relative z-10 w-full flex justify-between pr-4 items-center">
+                       Request Integration
+                       <ArrowRight className="w-4 h-4 text-brand-teal opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                     </span>
+                  </IntegrationTrigger>
+                  <Link href="/integration-specs" className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-4 flex items-center justify-between transition-colors group relative overflow-hidden">
                      <div className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                     <span className="font-display font-bold text-xs uppercase tracking-widest text-white relative z-10">Spec Sheet PDF</span>
-                     <FileText className="w-4 h-4 text-white opacity-50 group-hover:opacity-100 transition-opacity relative z-10" />
-                  </a>
+                     <span className="font-display font-bold text-xs uppercase tracking-widest text-white relative z-10 pr-4 w-full flex justify-between items-center">
+                       Spec Sheet PDF
+                       <FileText className="w-4 h-4 text-white opacity-50 group-hover:opacity-100 transition-opacity relative z-10" />
+                     </span>
+                  </Link>
                </div>
             </div>
 
@@ -565,8 +570,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       "Uniview", "Amcrest", "Reolink", "Lorex", "Wyze",
                       "Vivotek", "Mobotix", "Panasonic", "Sony", "Pelco"
                     ].map((brand, i) => (
-                      <div key={i} className="px-6 py-4 border border-white/5 bg-[#0a111a]/50 backdrop-blur-sm whitespace-nowrap inline-flex flex-col">
-                         <span className="font-display font-black text-xl text-white uppercase tracking-widest opacity-80">{brand}</span>
+                      <div key={i} className="px-4 py-3 border border-white/5 bg-[#0a111a]/50 backdrop-blur-sm whitespace-nowrap inline-flex flex-col">
+                         <span className="font-display font-black text-sm text-white uppercase tracking-widest opacity-80">{brand}</span>
                          <span className="block font-mono text-[8px] text-brand-teal uppercase tracking-widest mt-1">NVR / IPC Sync</span>
                       </div>
                     ))}
@@ -583,9 +588,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       "Immix", "Sentinel", "Netwatch", "Bold Manitou", "Stages",
                       "DICE Corp", "MASterMind", "Micro Key", "SBN", "Sims"
                     ].map((partner, i) => (
-                      <div key={i} className="px-6 py-4 border border-brand-teal/40 bg-brand-teal/5 backdrop-blur-sm whitespace-nowrap shadow-[0_0_15px_rgba(27,154,170,0.2)] group transition-all">
-                         <span className="font-display font-black text-xl text-brand-teal uppercase tracking-widest flex items-center group-hover:text-white transition-colors drop-shadow-md">
-                           <Network className="w-4 h-4 mr-3" />
+                      <div key={i} className="px-4 py-3 border border-brand-teal/40 bg-brand-teal/5 backdrop-blur-sm whitespace-nowrap shadow-[0_0_15px_rgba(27,154,170,0.2)] group transition-all">
+                         <span className="font-display font-black text-sm text-brand-teal uppercase tracking-widest flex items-center group-hover:text-white transition-colors drop-shadow-md">
+                           <Network className="w-3 h-3 mr-2" />
                            {partner}
                          </span>
                          <span className="block font-mono text-[8px] text-white uppercase tracking-widest mt-1 opacity-80">Monitoring Station API</span>
