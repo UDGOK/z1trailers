@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Network, Send } from "lucide-react";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 interface IntegrationRequestModalProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface IntegrationRequestModalProps {
 }
 
 export default function IntegrationRequestModal({ isOpen, onClose }: IntegrationRequestModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,6 +22,10 @@ export default function IntegrationRequestModal({ isOpen, onClose }: Integration
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -63,9 +69,9 @@ export default function IntegrationRequestModal({ isOpen, onClose }: Integration
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
@@ -197,6 +203,7 @@ export default function IntegrationRequestModal({ isOpen, onClose }: Integration
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
