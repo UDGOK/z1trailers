@@ -84,7 +84,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": `Z1 Trailers - ${cityName} Tactical Division`,
-      "image": "https://z1trailers.com/og-image.jpg",
+      "image": "https://www.z1trailers.com/og-image.jpg",
       "description": cityData.desc,
       "address": {
         "@type": "PostalAddress",
@@ -92,7 +92,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ s
         "addressRegion": stateName,
         "addressCountry": "US"
       },
-      "url": `https://z1trailers.com/locations/${state}/${city}`,
+      "url": `https://www.z1trailers.com/locations/${state}/${city}`,
       "telephone": "(918) 520-3823",
       "isPartOf": {
         "@id": "https://www.z1trailers.com/#organization"

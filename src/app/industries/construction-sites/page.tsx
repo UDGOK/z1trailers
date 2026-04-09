@@ -680,8 +680,8 @@ export default function ConstructionSitesPage() {
             "@type": "Article",
             "headline": "Construction Site Security Trailer: Comprehensive Protection for Your Job Site",
             "description": "Protect your construction site with mobile security trailers. Reduce theft by 87% with autonomous surveillance, night vision & real-time alerts.",
-            "author": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://z1trailers.com" },
-            "publisher": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://z1trailers.com" },
+            "author": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://www.z1trailers.com" },
+            "publisher": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://www.z1trailers.com" },
             "datePublished": "2026-04-04",
             "dateModified": new Date().toISOString().split("T")[0]
           })

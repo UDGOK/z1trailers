@@ -9,6 +9,15 @@ export default function AnimatedTelemetry() {
   const [targets, setTargets] = useState([{ id: 1, x: 20, y: 30 }, { id: 2, x: 70, y: 60 }]);
   const [logs, setLogs] = useState(["SYSTEM ARMED", "THERMAL ONLINE"]);
   const [isArmed, setIsArmed] = useState(true);
+  const [timeStamp, setTimeStamp] = useState("00:00:00");
+
+  // Hydration-safe clock — only ticks on the client
+  useEffect(() => {
+    const tick = () => setTimeStamp(new Date().toISOString().split('T')[1].slice(0, 8));
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Simulate changing power output
   useEffect(() => {
@@ -199,7 +208,7 @@ export default function AnimatedTelemetry() {
 
            <div className="relative z-30 flex justify-between items-start w-full">
               <span className="font-mono text-[7px] bg-red-500 text-white px-2 py-0.5 uppercase tracking-widest animate-pulse font-bold">REC</span>
-              <span className="font-mono text-[8px] text-white/70 tracking-widest">{new Date().toISOString().split('T')[1].slice(0,8)}</span>
+              <span className="font-mono text-[8px] text-white/70 tracking-widest">{timeStamp}</span>
            </div>
            
            <p className="font-mono text-[9px] text-white uppercase tracking-[0.3em] relative z-20 mt-auto flex items-center bg-black/40 p-2 backdrop-blur-sm">

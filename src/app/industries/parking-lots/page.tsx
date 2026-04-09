@@ -692,8 +692,8 @@ export default function ParkingLotsPage() {
             "@type": "Article",
             "headline": "Parking Lot Security Trailer: Advanced Protection for Parking Facilities",
             "description": "Reduce parking lot crime by 78% with mobile security trailers. License plate capture, live monitoring & rapid deployment.",
-            "author": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://z1trailers.com" },
-            "publisher": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://z1trailers.com" },
+            "author": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://www.z1trailers.com" },
+            "publisher": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://www.z1trailers.com" },
             "datePublished": "2026-04-04",
             "dateModified": new Date().toISOString().split("T")[0]
           })

@@ -701,8 +701,8 @@ export default function EventsPage() {
             "@type": "Article",
             "headline": "Event Security Trailer Rental: Professional-Grade Surveillance for Any Event",
             "description": "Rent mobile security trailers for events, festivals & concerts. Rapid deployment, crowd monitoring, live feeds & instant alerts.",
-            "author": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://z1trailers.com" },
-            "publisher": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://z1trailers.com" },
+            "author": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://www.z1trailers.com" },
+            "publisher": { "@type": "Organization", "name": "Z1 Trailers", "url": "https://www.z1trailers.com" },
             "datePublished": "2026-04-04",
             "dateModified": new Date().toISOString().split("T")[0]
           })

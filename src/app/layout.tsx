@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   description: "Deploy solar-powered, AI-equipped tactical surveillance trailers across the Mid-South in under 15 minutes. Pure tactical advantage.",
   openGraph: {
     type: "website",
-    url: "https://z1trailers.com",
+    url: "https://www.z1trailers.com",
     title: "Z1 Trailers | Mobile Security Surveillance",
     description: "Autonomous solar-powered, AI-equipped tactical surveillance endpoints.",
     siteName: "Z1 Trailers",
     images: [{
-      url: "https://z1trailers.com/Logo.png",
+      url: "https://www.z1trailers.com/Logo.png",
       width: 1200,
       height: 630,
       alt: "Z1 Trailers - Tactical Mobile Security",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Z1 Trailers",
     description: "Tactical Mobile Surveillance Endpoints.",
-    images: ["https://z1trailers.com/Logo.png"],
+    images: ["https://www.z1trailers.com/Logo.png"],
   }
 };
 

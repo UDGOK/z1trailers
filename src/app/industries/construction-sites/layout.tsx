@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Construction Site Security Trailer | Z1 Trailers",
     description: "Protect your construction site with mobile security trailers. Reduce theft by 87% with autonomous surveillance, night vision & real-time alerts.",
-    url: "https://z1trailers.com/industries/construction-sites",
+    url: "https://www.z1trailers.com/industries/construction-sites",
     siteName: "Z1 Trailers",
     type: "article",
   },
   alternates: {
-    canonical: "https://z1trailers.com/industries/construction-sites",
+    canonical: "https://www.z1trailers.com/industries/construction-sites",
   },
 };
 

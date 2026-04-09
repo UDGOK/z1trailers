@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Parking Lot Security Trailer | Z1 Trailers",
     description: "Reduce parking lot crime by 78% with mobile security trailers. License plate capture, live monitoring & rapid deployment.",
-    url: "https://z1trailers.com/industries/parking-lots",
+    url: "https://www.z1trailers.com/industries/parking-lots",
     siteName: "Z1 Trailers",
     type: "article",
   },
   alternates: {
-    canonical: "https://z1trailers.com/industries/parking-lots",
+    canonical: "https://www.z1trailers.com/industries/parking-lots",
   },
 };
 

@@ -24,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/studio/']
       }
     ],
-    sitemap: 'https://z1trailers.com/sitemap.xml',
-    host: 'https://z1trailers.com'
+    sitemap: 'https://www.z1trailers.com/sitemap.xml',
+    host: 'https://www.z1trailers.com'
   }
 }

@@ -143,7 +143,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "offers": [
       {
         "@type": "Offer",
-        "url": `https://z1trailers.com/security-trailers/${slug}`,
+        "url": `https://www.z1trailers.com/security-trailers/${slug}`,
         "priceCurrency": "USD",
         "price": product.price,
         "priceValidUntil": "2027-12-31",
@@ -157,7 +157,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       },
       {
         "@type": "Offer",
-        "url": `https://z1trailers.com/security-trailers/${slug}`,
+        "url": `https://www.z1trailers.com/security-trailers/${slug}`,
         "priceCurrency": "USD",
         "price": product.buyPrice,
         "priceValidUntil": "2027-12-31",

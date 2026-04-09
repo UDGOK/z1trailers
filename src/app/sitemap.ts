@@ -3,7 +3,7 @@ import { locationDb } from '@/lib/locationData'
 import { client } from '@/sanity/lib/client'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://z1trailers.com'
+  const baseUrl = 'https://www.z1trailers.com'
   
   // 1. Tactical Static Routes (Priority 1.0 - 0.8)
   const staticRoutes = [

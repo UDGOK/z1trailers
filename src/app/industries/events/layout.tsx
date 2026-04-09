@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Event Security Trailer Rental | Z1 Trailers",
     description: "Rent mobile security trailers for events, festivals & concerts. Rapid deployment, crowd monitoring, live feeds & instant alerts.",
-    url: "https://z1trailers.com/industries/events",
+    url: "https://www.z1trailers.com/industries/events",
     siteName: "Z1 Trailers",
     type: "article",
   },
   alternates: {
-    canonical: "https://z1trailers.com/industries/events",
+    canonical: "https://www.z1trailers.com/industries/events",
   },
 };
 

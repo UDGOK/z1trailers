@@ -50,19 +50,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "isPartOf": {
       "@id": "https://www.z1trailers.com/#organization"
     },
-    "image": post.mainImage ? ["https://z1trailers.com/images/LogoHR.png"] : [], 
+    "image": post.mainImage ? ["https://www.z1trailers.com/images/LogoHR.png"] : [], 
     "datePublished": post.publishedAt || new Date().toISOString(),
     "author": {
       "@type": "Person",
       "name": post.authorName || derivedAuthor,
-      "url": post.authorLinkedin || "https://z1trailers.com"
+      "url": post.authorLinkedin || "https://www.z1trailers.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Z1 Trailers",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://z1trailers.com/images/LogoHR.png"
+        "url": "https://www.z1trailers.com/images/LogoHR.png"
       }
     }
   };
