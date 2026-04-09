@@ -60,11 +60,21 @@ export default function Home() {
     ]
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.z1trailers.com/#website",
+    "url": "https://www.z1trailers.com",
+    "name": "Z1 Trailers",
+    "description": "Mobile Security Surveillance Trailers — Rent or Buy",
+    "publisher": { "@id": "https://www.z1trailers.com/#organization" }
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([faqSchema, websiteSchema]) }}
       />
       <div className="relative isolate overflow-hidden bg-brand-ice pt-32 pb-16 lg:pt-48 lg:pb-32 flex flex-col items-center">
         {/* Subtle grid background */}

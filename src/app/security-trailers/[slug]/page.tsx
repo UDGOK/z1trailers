@@ -126,6 +126,45 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   }
 
   // Next-Gen Product JSON-LD Schema for Generative AI (AEO)
+  const offers: any[] = [];
+  if (product.price > 0) {
+    offers.push({
+      "@type": "Offer",
+      "url": `https://www.z1trailers.com/security-trailers/${slug}`,
+      "priceCurrency": "USD",
+      "price": product.price,
+      "priceValidUntil": "2027-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Z1 Trailers" },
+      "description": "Monthly rental lease price."
+    });
+  }
+  if (product.buyPrice > 0) {
+    offers.push({
+      "@type": "Offer",
+      "url": `https://www.z1trailers.com/security-trailers/${slug}`,
+      "priceCurrency": "USD",
+      "price": product.buyPrice,
+      "priceValidUntil": "2027-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Z1 Trailers" },
+      "description": "Full hardware acquisition price."
+    });
+  }
+  // If custom pricing (Apex), use a descriptive offer instead of $0
+  if (offers.length === 0) {
+    offers.push({
+      "@type": "Offer",
+      "url": `https://www.z1trailers.com/security-trailers/${slug}`,
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Z1 Trailers" },
+      "description": "Custom pricing — contact for quote."
+    });
+  }
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -140,36 +179,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "isPartOf": {
       "@id": "https://www.z1trailers.com/#organization"
     },
-    "offers": [
-      {
-        "@type": "Offer",
-        "url": `https://www.z1trailers.com/security-trailers/${slug}`,
-        "priceCurrency": "USD",
-        "price": product.price,
-        "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "Organization",
-          "name": "Z1 Trailers"
-        },
-        "description": "Monthly rental lease price."
-      },
-      {
-        "@type": "Offer",
-        "url": `https://www.z1trailers.com/security-trailers/${slug}`,
-        "priceCurrency": "USD",
-        "price": product.buyPrice,
-        "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "Organization",
-          "name": "Z1 Trailers"
-        },
-        "description": "Full hardware acquisition price."
-      }
-    ]
+    "offers": offers
   };
 
   // SEO/AEO FAQ Schema ensuring exact match answers for LLM bots
@@ -189,10 +199,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     }))
   };
 
+  // BreadcrumbList for rich SERP breadcrumbs
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.z1trailers.com" },
+      { "@type": "ListItem", "position": 2, "name": "Security Trailers", "item": "https://www.z1trailers.com/security-trailers" },
+      { "@type": "ListItem", "position": 3, "name": product.name, "item": `https://www.z1trailers.com/security-trailers/${slug}` }
+    ]
+  };
+
   return (
     <div className="bg-[#05080c] min-h-screen text-white font-sans selection:bg-brand-teal selection:text-white pb-24">
       {/* Inject Dual JSON-LD Payload for max LLM extraction */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `[${JSON.stringify(productSchema)}, ${JSON.stringify(faqSchema)}]` }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([productSchema, faqSchema, breadcrumbSchema]) }} />
 
       {/* 
         SECTION 1: OVERVIEW & MASSIVE CINEMATIC HERO 

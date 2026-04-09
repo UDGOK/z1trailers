@@ -66,13 +66,16 @@ export default function RootLayout({
     "location": [
       {
         "@type": "Place",
-        "name": "Z1 Trailers — Tulsa Branch",
+        "name": "Z1 Trailers — Oklahoma Distribution (Pam Distributing)",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "11413 E 58th St",
           "addressLocality": "Tulsa",
           "addressRegion": "OK",
+          "postalCode": "74146",
           "addressCountry": "US"
-        }
+        },
+        "telephone": "+18008888101"
       },
       {
         "@type": "Place",
